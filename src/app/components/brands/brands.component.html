@@ -1,0 +1,19 @@
+<div class="brands">
+    <tui-carousel
+        [draggable]="true"
+        [itemsCount]="6"
+        [(index)]="index"
+    >
+        <ng-container *ngFor="let brand of brands; let i = index">
+            <img
+                width="90px"
+                *tuiItem
+                alt="{{brand.name}}"
+                draggable="false"
+                src="{{brand.logo}}"
+                class="item"
+                [class.item_active]="i === index + 1"
+            />
+        </ng-container>
+    </tui-carousel>
+</div>

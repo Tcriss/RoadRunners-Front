@@ -1,0 +1,16 @@
+<tui-tabs class="navbar">
+    <div class="logo">
+      <h1 class="tui-text_h3 title">RoadRunners</h1>
+    </div>
+    <div class="items">
+      <a
+      *ngFor="let route of routes"
+      tuiTab
+      [routerLink]='[route.path]'
+      routerLinkActive
+      >
+        {{route.name}}
+      </a>
+    </div>
+    <div class="empty"></div>
+  </tui-tabs>
