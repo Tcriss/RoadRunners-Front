@@ -1,1 +1,29 @@
-<p>home works!</p>
+<div tuiCarouselButtons class="wrapper" id="home">
+
+    <h2 class="tui-text_h1 title">Destacado</h2>
+
+    <tui-carousel
+        #carousel
+        [itemsCount]='2'
+        [draggable]="true"
+        [duration]="4000"
+        [(index)]="index"
+    >
+        <ng-container *ngFor="let item of items">
+            <tui-island class="content" *tuiItem [style.backgroundImage]="item.img">
+                <img src="{{item.img}}">
+                <h2 class="tui-island__title">{{ item.name }}</h2>
+                <a tuiButton>Ver vehiculo</a>
+            </tui-island>
+        </ng-container>
+    </tui-carousel>
+    <tui-pagination
+        size="m"
+        class="pagination"
+        [length]="items.length"
+        [(index)]="index"
+    ></tui-pagination>
+    
+    <app-brands></app-brands>
+    <app-articles></app-articles>
+</div>

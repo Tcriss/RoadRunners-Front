@@ -1,0 +1,19 @@
+.navbar{
+    display: grid;
+    grid-template-areas: 'logo items empty';
+    grid-template-columns: 25% 1fr 25%;
+
+    .logo{
+        grid-area: logo;
+    }
+
+    .items{
+        grid-area: items;
+        display: flex;
+        justify-content: center;
+    }
+
+    .empty{
+        grid-area: empty;
+    }
+}
