@@ -1,28 +1,15 @@
-<div class="tui-col_md-4">
-    <tui-island
-        size="l"
-        textAlign="center"
-    >
-        <div class="tui-island__content">
-            <figure class="tui-island__figure">
-                <div class="some-figure"></div>
-            </figure>
-            <div>
-                <h3 class="tui-island__title">Debit card</h3>
-                <p class="tui-island__paragraph">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.
-                </p>
-                <button
-                    tuiButton
-                    type="button"
-                    appearance="flat"
-                    size="m"
-                    class="tui-island__footer-button"
-                >
-                    Button
-                </button>
-            </div>
-        </div>
+<div class="articles">
+    <tui-island class="article" *ngFor="let article of articles">
+        <h3 class="tui-island__title">{{article.brand}}</h3>
+        <p class="tui-island__paragraph">{{article.model}}</p>
+        <p class="tui-island__paragraph tui-island__paragraph_button">
+          <button
+            tuiButton
+            type="button"
+            appearance="secondary"
+          >
+            Ver vehiculo
+          </button>
+        </p>
     </tui-island>
 </div>
