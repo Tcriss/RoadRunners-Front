@@ -1,4 +1,5 @@
 export interface Iapi{
+  _id: string,
   owner_email: string,
   location: string,
   brand: string,
@@ -7,5 +8,6 @@ export interface Iapi{
   condition: string,
   fuel: string,
   year: string,
-  price: string
+  price: string,
+  img: string
 }

@@ -1,15 +1,15 @@
 <div class="articles">
     <tui-island class="article" *ngFor="let article of articles">
-        <h3 class="tui-island__title">{{article.brand}}</h3>
-        <p class="tui-island__paragraph">{{article.model}}</p>
+        <img src="{{article.img}}" alt="">
+
+        <h3 class="tui-island__title">{{article.brand}} {{article.model}}</h3>
+        <p class="tui-island__paragraph" >{{article.price | currency}}</p>
         <p class="tui-island__paragraph tui-island__paragraph_button">
-          <button
-            tuiButton
-            type="button"
-            appearance="secondary"
-          >
-            Ver vehiculo
-          </button>
+          <a 
+          tuiButton 
+          appearance="secondary"
+          [routerLink]="['/vehicle', article._id]"
+          >Ver vehiculo</a>
         </p>
     </tui-island>
 </div>

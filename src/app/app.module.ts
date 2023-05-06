@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule } from '@taiga-ui/core';
+import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule } from '@taiga-ui/core';
 import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule } from '@taiga-ui/kit';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SellCarComponent } from './components/sell-car/sell-car.component';
+import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SellCarComponent } from './components/sell-car/sell-car.component';
     CategoryComponent,
     ArticlesComponent,
     NavbarComponent,
-    SellCarComponent
+    SellCarComponent,
+    VehicleDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { SellCarComponent } from './components/sell-car/sell-car.component';
     TuiButtonModule,
     TuiThemeNightModule, 
     TuiModeModule,
-    TuiPushModule
+    TuiPushModule,
+    TuiLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
