@@ -1,5 +1,4 @@
 <div tuiCarouselButtons class="wrapper" id="home">
-
     <h2 class="tui-text_h1 title">Destacado</h2>
 
     <tui-carousel
@@ -13,7 +12,7 @@
             <tui-island class="content" *tuiItem [style.backgroundImage]="item.img">
                 <img src="{{item.img}}">
                 <h2 class="tui-island__title">{{ item.name }}</h2>
-                <a tuiButton>Ver vehiculo</a>
+                <a tuiButton >Ver vehiculo</a>
             </tui-island>
         </ng-container>
     </tui-carousel>
@@ -23,7 +22,8 @@
         [length]="items.length"
         [(index)]="index"
     ></tui-pagination>
-    
+    <h1 class="tui-text_h1">Marcas</h1>
     <app-brands></app-brands>
+    <h1 class="tui-text_h1">Recientes agregados</h1>
     <app-articles></app-articles>
 </div>

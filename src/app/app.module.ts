@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule } from '@taiga-ui/core';
-import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule } from '@taiga-ui/kit';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule } from '@taiga-ui/core';
+import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule } from '@taiga-ui/kit';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,9 +13,8 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { AlertsComponent } from './services/alerts/alerts/alerts.component';
-import { BackComponent } from './services/back/back/back.component';
 import { SellCarComponent } from './components/sell-car/sell-car.component';
+import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +25,14 @@ import { SellCarComponent } from './components/sell-car/sell-car.component';
     CategoryComponent,
     ArticlesComponent,
     NavbarComponent,
-    AlertsComponent,
-    BackComponent,
-    SellCarComponent
+    SellCarComponent,
+    VehicleDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     TuiRootModule,
     TuiAlertModule,
     TuiDialogModule,
@@ -43,7 +43,9 @@ import { SellCarComponent } from './components/sell-car/sell-car.component';
     TuiIslandModule,
     TuiButtonModule,
     TuiThemeNightModule, 
-    TuiModeModule
+    TuiModeModule,
+    TuiPushModule,
+    TuiLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
