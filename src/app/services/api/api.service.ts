@@ -14,10 +14,10 @@ export class ApiService {
   }
 
   show():Observable<Iapi[]> {
-    return this.http.get<any>(this.url);
+    return this.http.get<Iapi[]>(this.url);
   }
 
-  getCar(id:string):Observable<{}> {
-    return this.http.get<Iapi>(this.url+id);
+  getVehicle(id:string):Observable<Iapi[]> {
+    return this.http.get<Iapi[]>(this.url+id);
   }
 }
