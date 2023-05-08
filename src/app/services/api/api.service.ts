@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Iapi } from './api';
+import { iForm } from 'src/app/components/sell-form/form';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,15 @@ export class ApiService {
     this.url = 'https://roadrunners-backend.onrender.com/';
   }
 
-  show():Observable<Iapi[]> {
+  async show():Promise<Observable<Iapi[]>> {
     return this.http.get<Iapi[]>(this.url);
   }
 
-  getVehicle(id:string):Observable<Iapi[]> {
+  async getVehicle(id:string):Promise<Observable<Iapi[]>> {
     return this.http.get<Iapi[]>(this.url+id);
+  }
+
+  async postVehicle(form: {}):Promise<Observable<{}>>{
+    return this.http.post(this.url+'/insert', form);
   }
 }
