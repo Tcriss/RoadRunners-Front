@@ -17,12 +17,11 @@ import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 export class ArticlesComponent implements OnInit {
   articles:Iapi[] = [];
 
-  constructor(private data:ApiService){}
+  constructor(public data:ApiService){}
 
   ngOnInit(): void {
-    this.data.show().subscribe(res => {
-      this.articles = res;
-    });
-    console.log(this.articles);
+    this.data.show().then(res =>{
+      res.subscribe(data => this.articles = data)
+    }).catch(err => console.log(err));
   }
 }

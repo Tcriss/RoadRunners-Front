@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule } from '@taiga-ui/core';
-import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule } from '@taiga-ui/kit';
+import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule } from '@taiga-ui/core';
+import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule } from '@taiga-ui/kit';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,8 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SellCarComponent } from './components/sell-car/sell-car.component';
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
+import { SellFormComponent } from './components/sell-form/sell-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,16 @@ import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-de
     ArticlesComponent,
     NavbarComponent,
     SellCarComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    SellFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     TuiRootModule,
     TuiAlertModule,
     TuiDialogModule,
@@ -45,7 +50,13 @@ import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-de
     TuiThemeNightModule, 
     TuiModeModule,
     TuiPushModule,
-    TuiLoaderModule
+    TuiLoaderModule,
+    TuiInputModule,
+    TuiComboBoxModule,
+    TuiDataListWrapperModule,
+    TuiDropdownModule,
+    TuiInputYearModule,
+    TuiDataListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
