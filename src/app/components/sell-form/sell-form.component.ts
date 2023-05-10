@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, ɵgetUnknownElementStrictMode } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 import { ApiService } from 'src/app/services/api/api.service';
-import { iForm } from './form';
 
 @Component({
   selector: 'app-sell-form',
@@ -17,37 +17,47 @@ import { iForm } from './form';
 })
 export class SellFormComponent {
   readonly items = ['Black', 'Gold', 'Silver'];
-  sellVehicleForm = new FormGroup({
-    owner_email: new FormControl(''),
-    location: new FormControl(''),
-    brand: new FormControl(''),
-    type: new FormControl(''),
-    model: new FormControl(''),
-    condition: new FormControl(''),
-    fuel: new FormControl(''),
-    year: new FormControl(''),
-    price: new FormControl(''),
-    img: new FormControl('')
-  });
+  sellVehicleForm: FormGroup;
 
-  form:{};
-
-  constructor(private api:ApiService){
-    this.form = {
-      owner_email: this.sellVehicleForm.value.owner_email,
-      location: this.sellVehicleForm.value.location,
-      brand: this.sellVehicleForm.value.brand,
-      type: this.sellVehicleForm.value.type,
-      model: this.sellVehicleForm.value.model,
-      condition: this.sellVehicleForm.value.condition,
-      fuel: this.sellVehicleForm.value.fuel,
-      year: this.sellVehicleForm.value.year,
-      price: this.sellVehicleForm.value.price,
-      img: this.sellVehicleForm.value.img
-    }
+  constructor(
+    private api:ApiService,
+    private fb:FormBuilder,
+    private alerts:AlertsService
+    ){
+    this.sellVehicleForm = this.fb.group({
+        owner_email: [''],
+        location: [''],
+        brand: [''],
+        type: [''],
+        model: [''],
+        condition: [''],
+        fuel: [''],
+        year: [''],
+        price: [''],
+        img: ['']
+    })
   }
 
-  async publish(){
-    await this.api.postVehicle(this.form);
+  publish(){
+    let form = {
+      Owner_email: this.sellVehicleForm.value.owner_email,
+      Location: this.sellVehicleForm.value.location,
+      Brand: this.sellVehicleForm.value.brand,
+      Type: this.sellVehicleForm.value.type,
+      Model: this.sellVehicleForm.value.model,
+      Condition: this.sellVehicleForm.value.condition,
+      Fuel: this.sellVehicleForm.value.fuel,
+      Year: this.sellVehicleForm.value.year,
+      Price: this.sellVehicleForm.value.price,
+      Img: this.sellVehicleForm.value.img
+    };
+
+    (this.api.postVehicle(form)).subscribe({
+        next(res:unknown){
+          console.log(res);
+        },error(err){
+          console.log(err.message);
+        }
+      });
   }
 }
