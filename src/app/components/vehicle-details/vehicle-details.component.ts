@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Iapi } from 'src/app/services/api/api';
 import { ApiService } from 'src/app/services/api/api.service';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
+import { AlertsService } from 'src/app/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -20,7 +21,8 @@ export class VehicleDetailsComponent implements OnInit {
 
   constructor(
     private route:ActivatedRoute,
-    private data:ApiService
+    private data:ApiService,
+    private alerts:AlertsService
     ){
       this.details = [];
     }
@@ -29,7 +31,10 @@ export class VehicleDetailsComponent implements OnInit {
     const params = this.route.snapshot.paramMap;
     const id:string = String(params.get('id'));
     this.data.getVehicle(id).then(res =>{
-      res.subscribe(data => this.details = data)
-    }).catch(err => console.log(err));
+      res.subscribe(data => {
+        this.details = data;
+        this.alerts.notification('tuiIconXCircleLarge','probando','texto');
+      })
+    }).catch(err => this.alerts.notification('tuiIconXCircleLarge','Error con los datos',err));
   }
 }

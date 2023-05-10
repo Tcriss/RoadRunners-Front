@@ -56,7 +56,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TuiDataListWrapperModule,
     TuiDropdownModule,
     TuiInputYearModule,
-    TuiDataListModule
+    TuiDataListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

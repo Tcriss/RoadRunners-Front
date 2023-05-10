@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Iapi } from './api';
-import { iForm } from 'src/app/components/sell-form/form';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,7 @@ export class ApiService {
     return this.http.get<Iapi[]>(this.url+id);
   }
 
-  async postVehicle(form: {}):Promise<Observable<{}>>{
-    return this.http.post(this.url+'/insert', form);
+  postVehicle(form: {}):Observable<{}>{
+    return this.http.post(this.url+'insert', form);
   }
 }

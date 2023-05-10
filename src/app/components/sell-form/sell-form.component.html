@@ -1,6 +1,6 @@
 <div class="sell-fom">
 
-    <form [formGroup]="sellVehicleForm">
+    <form (ngSubmit)="publish()" [formGroup]="sellVehicleForm">
         <div class="form">
             <tui-input formControlName="owner_email">E-mail
                 <input tuiTextfield placeholder="E-mail para contactarte"/>
@@ -69,6 +69,6 @@
             </tui-input>
         </div>
         <br/>
-        <button tuiButton>Publicar Vehiculo</button>
+        <button type="submit" tuiButton>Publicar Vehiculo</button>
     </form>
 </div>
