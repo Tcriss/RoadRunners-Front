@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule } from '@taiga-ui/core';
-import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule } from '@taiga-ui/kit';
+import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule } from '@taiga-ui/kit';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { SellCarComponent } from './components/sell-car/sell-car.component';
 import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-details.component';
 import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TypesComponent } from './components/types/types.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     SellCarComponent,
     VehicleDetailsComponent,
-    SellFormComponent
+    SellFormComponent,
+    TypesComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TuiDropdownModule,
     TuiInputYearModule,
     TuiDataListModule,
+    TuiAvatarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
