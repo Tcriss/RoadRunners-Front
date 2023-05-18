@@ -1,8 +1,9 @@
 @mixin mid {
-  @media only screen and (max-width: 1050px) {
-    @content;
+    @media only screen and (max-width: 1050px) {
+      @content;
+    }
   }
-}
+
 
 .content{
     box-sizing: border-box;
