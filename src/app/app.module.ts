@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule } from '@taiga-ui/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule } from '@taiga-ui/kit';
+import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,9 @@ import { VehicleDetailsComponent } from './components/vehicle-details/vehicle-de
 import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TypesComponent } from './components/types/types.component';
+import { LoaderInterceptor } from './shared/interceptors/spinner.interceptor';
+import { SearchComponent } from './components/search/search.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { TypesComponent } from './components/types/types.component';
     SellCarComponent,
     VehicleDetailsComponent,
     SellFormComponent,
-    TypesComponent
+    TypesComponent,
+    SearchComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -45,23 +51,26 @@ import { TypesComponent } from './components/types/types.component';
     TuiDialogModule,
     AppRoutingModule,
     TuiTabsModule,
-    TuiCarouselModule,
     TuiPaginationModule,
-    TuiIslandModule,
     TuiButtonModule,
     TuiThemeNightModule, 
     TuiModeModule,
     TuiPushModule,
-    TuiLoaderModule,
     TuiInputModule,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiDropdownModule,
     TuiInputYearModule,
     TuiDataListModule,
-    TuiAvatarModule
+    TuiLoaderModule,
+    TuiTextfieldControllerModule,
+    TuiMoneyModule,
+    TuiCarouselModule,
+    TuiIslandModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

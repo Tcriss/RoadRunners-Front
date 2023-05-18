@@ -6,7 +6,7 @@
         <div class="resume">
             <h3 class="tui-text_h3">{{details[0].year}} {{details[0].brand}}</h3>
             <p class="tui-text_h3">{{details[0].model}}</p>
-            <p class="tui-text_xl">{{details[0].price}}</p>
+            <p class="tui-text_xl"><tui-money currency="USD" [value]="details[0].price"></tui-money></p>
         </div>
         <div class="detail">
             <p class="tui-text_h3"><strong>Contacto:</strong> {{details[0].owner_email}}</p>

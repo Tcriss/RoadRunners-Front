@@ -8,6 +8,6 @@ export interface Iapi{
   condition: string,
   fuel: string,
   year: string,
-  price: string,
+  price: number,
   img: string
 }

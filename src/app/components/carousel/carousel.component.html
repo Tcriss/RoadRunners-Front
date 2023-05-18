@@ -1,0 +1,33 @@
+<div tuiCarouselButtons class="wrapper carousel">
+    <tui-carousel
+    [duration]="4000"
+    [itemsCount]="4" 
+    #carousel class="carousel"
+    >
+        <tui-island *ngFor="let article of articles">
+            <img src="{{article.img}}">
+            <h2 class="tui-island__title">{{article.brand}} {{article.model}}</h2>
+            <p>
+                King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy
+                Grail, encountering many, very silly obstacles.
+            </p>
+            <div>
+                <button tuiButton appearance="primary" type="button">
+                    Adquirir<tui-money currency="EUR" [value]="article.price"></tui-money>
+                </button>
+                <button
+                    tuiButton
+                    type="button"
+                    class="tui-space_left-2"
+                >
+                    Ver vehiculo
+                </button>
+            </div>
+        </tui-island>
+    </tui-carousel>
+    <tui-pagination
+        size="s"
+        class="pagination"
+        [length]="articles.length"
+    ></tui-pagination>
+</div>

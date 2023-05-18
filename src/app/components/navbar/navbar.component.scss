@@ -1,11 +1,22 @@
+@mixin mid {
+    @media only screen and (max-width: 1050px) {
+      @content;
+    }
+  }
+
 .navbar{
+    box-sizing: border-box;
     display: grid;
-    grid-template-areas: 'logo items empty';
-    grid-template-columns: 25% 1fr 25%;
+    grid-template-areas: 'logo items';
+    grid-template-columns: 1fr 1fr;
     position: fixed;
     z-index: 2;
-    width: 100%;
+    width: 75%;
     background-color: rgba(255, 255, 255, 0.873);
+
+    @include mid{
+        margin: 5px;
+    }
 
     .logo{
         grid-area: logo;
@@ -15,9 +26,6 @@
         grid-area: items;
         display: flex;
         justify-content: center;
-    }
-
-    .empty{
-        grid-area: empty;
+        gap: 20px;
     }
 }

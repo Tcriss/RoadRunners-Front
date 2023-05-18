@@ -38,7 +38,7 @@ export class SellFormComponent {
         condition: [''],
         fuel: [''],
         year: [''],
-        price: [''],
+        price: [],
         img: ['']
     })
   }
