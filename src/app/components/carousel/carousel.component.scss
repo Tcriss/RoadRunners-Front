@@ -1,3 +1,26 @@
 .carousel{
-    width: 100%;
+
+    .island{
+        border-radius: 15px;
+        padding: 10px;
+
+        .year-tag{
+            line-height: 0.2;
+            font-size: 15px;
+        }
+
+        img{
+            border-radius: 15px;
+            width: 100%;
+        }
+
+        div{
+            display: flex;
+            justify-content: space-between;
+
+            p{
+                font-size: 16px;
+            }
+        }
+    }
 }

@@ -9,6 +9,8 @@ import { Iapi } from 'src/app/shared/interfaces/api';
 })
 export class CarouselComponent implements OnInit {
   articles:Iapi[] = [];
+  index = 2;
+  tag = 'Hello';
 
   constructor(private data:ApiService){}
 

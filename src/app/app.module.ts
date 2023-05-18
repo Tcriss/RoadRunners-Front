@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TuiAlertModule, TuiDialogModule, TuiRootModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
-import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule } from '@taiga-ui/kit';
+import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule, TuiTagModule } from '@taiga-ui/kit';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -67,6 +67,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     TuiMoneyModule,
     TuiCarouselModule,
     TuiIslandModule,
+    TuiTagModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}

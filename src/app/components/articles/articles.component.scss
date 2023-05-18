@@ -4,6 +4,11 @@
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 
+    .year-tag{
+        line-height: 0.2;
+        font-size: 15px;
+    }
+
     .loader{
         position: fixed;
         z-index: 10;
@@ -15,6 +20,15 @@
         img{
             border-radius: 15px;
             width: 100%;
+        }
+
+        div{
+            display: flex;
+            justify-content: space-between;
+
+            p{
+                font-size: 16px;
+            }
         }
     }
 }

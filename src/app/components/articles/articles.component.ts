@@ -18,6 +18,7 @@ import { SpinnerService } from 'src/app/services/spinner/spinner.service';
 export class ArticlesComponent implements OnInit {
   isLoading = this.loader.loading;
   articles:Iapi[] = [];
+  tag = 'Hello';
 
   constructor(
     private data:ApiService,

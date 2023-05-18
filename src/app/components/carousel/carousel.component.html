@@ -1,33 +1,33 @@
-<div tuiCarouselButtons class="wrapper carousel">
-    <tui-carousel
-    [duration]="4000"
-    [itemsCount]="4" 
-    #carousel class="carousel"
+<div tuiCarouselButtons class="wrapper">
+    <tui-carousel 
+        class="carousel"
+        [duration]="4000"
+        [(index)]="index"
+        [draggable]="true"
+        [itemsCount]="3"
+        [style.--tui-carousel-gap]="5"
     >
-        <tui-island *ngFor="let article of articles">
-            <img src="{{article.img}}">
-            <h2 class="tui-island__title">{{article.brand}} {{article.model}}</h2>
-            <p>
-                King Arthur and his Knights of the Round Table embark on a surreal, low-budget search for the Holy
-                Grail, encountering many, very silly obstacles.
-            </p>
-            <div>
-                <button tuiButton appearance="primary" type="button">
-                    Adquirir<tui-money currency="EUR" [value]="article.price"></tui-money>
-                </button>
-                <button
-                    tuiButton
-                    type="button"
-                    class="tui-space_left-2"
-                >
-                    Ver vehiculo
-                </button>
-            </div>
-        </tui-island>
+        <ng-container *ngFor="let item of articles">
+            <tui-island class="island" *tuiItem>
+                <img draggable="false" src="{{item.img}}">
+                <p class="tui-text_body-xl year-tag"><strong>{{item.year}}</strong></p>
+                <h2 class="tui-island__title">{{item.brand}} {{item.model}}</h2>
+                <div>
+                    <p class="tui-text_h1"> <tui-money currency="USD" [value]="item.price"></tui-money></p>
+                    <a 
+                        tuiButton 
+                        appearance="secondary"
+                        [routerLink]="['/vehicle', item._id]"
+                    >Ver vehiculo</a>
+                </div>
+            </tui-island>
+        </ng-container>
     </tui-carousel>
+    <br>
     <tui-pagination
-        size="s"
+        size="m"
         class="pagination"
         [length]="articles.length"
+        [(index)]="index"
     ></tui-pagination>
 </div>
