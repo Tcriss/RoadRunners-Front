@@ -6,9 +6,10 @@
 
 
 .content{
+    box-sizing: border-box;
     margin: 0px 200px;
 
     @include mid{
-        margin: 0px;
+        margin: 5px;
     }
 }

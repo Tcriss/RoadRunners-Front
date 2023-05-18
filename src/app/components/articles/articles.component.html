@@ -1,15 +1,23 @@
 <div class="articles">
+  <tui-loader
+    class="inline-flex tui-space_right-2 loader"
+    *ngIf="isLoading | async"
+    [showLoader]="true"
+    [inheritColor]="true"
+    [overlay]="true"
+  >
+  </tui-loader>
     <tui-island class="article" *ngFor="let article of articles">
         <img src="{{article.img}}" alt="">
-
-        <h3 class="tui-island__title">{{article.brand}} {{article.model}}</h3>
-        <p class="tui-island__paragraph" >{{article.price}}</p>
-        <p class="tui-island__paragraph tui-island__paragraph_button">
+        <p class="tui-text_body-xl year-tag"><strong>{{article.year}}</strong></p>
+        <h2 class="tui-island__title">{{article.brand}} {{article.model}}</h2>
+        <div>
+          <p class="tui-island__paragraph" ><tui-money currency="USD" [value]="article.price"></tui-money></p>
           <a 
-          tuiButton 
-          appearance="secondary"
-          [routerLink]="['/vehicle', article._id]"
+            tuiButton 
+            appearance="secondary"
+            [routerLink]="['/vehicle', article._id]"
           >Ver vehiculo</a>
-        </p>
+        </div>
     </tui-island>
 </div>

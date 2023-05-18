@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Iapi } from 'src/app/services/api/api';
+import { Iapi } from 'src/app/shared/interfaces/api';
 import { ApiService } from 'src/app/services/api/api.service';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { AlertsService } from 'src/app/services/alerts/alerts.service';
@@ -33,7 +33,7 @@ export class VehicleDetailsComponent implements OnInit {
     this.data.getVehicle(id).then(res =>{
       res.subscribe(data => {
         this.details = data;
-        this.alerts.notification('tuiIconXCircleLarge','probando','texto');
+        // this.alerts.notification('tuiIconXCircleLarge','probando','texto');
       })
     }).catch(err => this.alerts.notification('tuiIconXCircleLarge','Error con los datos',err));
   }

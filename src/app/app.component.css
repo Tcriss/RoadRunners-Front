@@ -1,0 +1,8 @@
+.content {
+  margin: 0px 200px;
+}
+@media only screen and (max-width: 1050px) {
+  .content {
+    margin: 0px;
+  }
+}/*# sourceMappingURL=app.component.css.map */

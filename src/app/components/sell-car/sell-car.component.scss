@@ -1,8 +1,8 @@
 .sell{
     display: flex;
     gap: 15px;
-    background-image: url('../../../assets/vehicle.jpg');
-    background-size: cover;
+    background-image: url('../../../assets/images/self-drive.jpg');
+    background-size: auto;
     opacity: 90%;
     padding: 25px;
     border-radius: 15px;
@@ -12,8 +12,8 @@
 
         p, h1, h3{
             font-weight: 300;
-            text-shadow: 1px 1px 2px rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
+            text-shadow: 0px 0px 1px rgb(0, 0, 0);
+            color: rgb(0, 0, 0);
         }
     }
 

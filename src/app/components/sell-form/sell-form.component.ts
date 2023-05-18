@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { AlertsService } from 'src/app/services/alerts/alerts.service';
 import { ApiService } from 'src/app/services/api/api.service';
+import { brands, types } from 'src/assets/brands';
 
 @Component({
   selector: 'app-sell-form',
@@ -16,7 +17,11 @@ import { ApiService } from 'src/app/services/api/api.service';
     })]
 })
 export class SellFormComponent {
-  readonly items = ['Black', 'Gold', 'Silver'];
+  brands:Array<any> = brands;
+  readonly type = types;
+  readonly condition = ['Usado','Nuevo'];
+  readonly fuel = ['Electrico','Gasolina','Gasoi'];
+
   sellVehicleForm: FormGroup;
 
   constructor(
@@ -33,7 +38,7 @@ export class SellFormComponent {
         condition: [''],
         fuel: [''],
         year: [''],
-        price: [''],
+        price: [],
         img: ['']
     })
   }
