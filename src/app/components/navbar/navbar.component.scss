@@ -6,24 +6,18 @@
 
 .navbar{
     box-sizing: border-box;
-    display: grid;
-    grid-template-areas: 'logo items';
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     position: fixed;
+    justify-content: space-around;
     z-index: 2;
-    width: 75%;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.873);
 
     @include mid{
         margin: 5px;
     }
 
-    .logo{
-        grid-area: logo;
-    }
-
     .items{
-        grid-area: items;
         display: flex;
         justify-content: center;
         gap: 20px;
