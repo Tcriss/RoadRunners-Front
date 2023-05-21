@@ -6,9 +6,8 @@
 
 .navbar{
     box-sizing: border-box;
-    display: grid;
-    grid-template-areas: 'logo items';
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     z-index: 2;
     width: 75%;
@@ -19,11 +18,11 @@
     }
 
     .logo{
-        grid-area: logo;
+        display: flex;
+        align-items: center;
     }
 
     .items{
-        grid-area: items;
         display: flex;
         justify-content: center;
         gap: 20px;

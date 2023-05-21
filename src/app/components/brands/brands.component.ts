@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class BrandsComponent {
     index = 0;
+    count = 6;
  
     brands:Array<{name:string,logo:string}> = [
         { name: 'Hyundai', logo: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flistcarbrands.com%2Fwp-content%2Fuploads%2F2016%2F03%2Fhyundai-logo-white.jpg&f=1&nofb=1&ipt=17faf25a642de95b4c1f3f288e41b20678896d6470fc8aab59dcee24b6ecd6fe&ipo=images' },
@@ -16,4 +17,9 @@ export class BrandsComponent {
         { name: 'Mercedes', logo: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpngimg.com%2Fuploads%2Fmercedes%2Fmercedes_PNG80145.png&f=1&nofb=1&ipt=63893c0d422403c7fb61a2a2deb9a34b12a471edfc94b14603c5af986fad0d5e&ipo=images' },
         { name: 'Ford', logo: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.carlogos.org%2Flogo%2FFord-logo-1929-1440x900.png&f=1&nofb=1&ipt=f1bafdd8ca39f8f30153dc8e0fea39f1f71e3304fb02f2825999157e9b9f1605&ipo=images' }
     ];
+
+    responsive(){
+
+    }
+
 }
