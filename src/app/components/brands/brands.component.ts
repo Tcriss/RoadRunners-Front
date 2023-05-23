@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-brands',
   templateUrl: './brands.component.html',
-  styleUrls: ['./brands.component.scss']
+  styleUrls: ['./brands.component.scss'],
 })
-export class BrandsComponent {
+export class BrandsComponent implements OnInit {
+    screenVW = window.innerWidth;
     index = 0;
-    count = 6;
+    count:number = 0;
  
     brands:Array<{name:string,logo:string}> = [
         { name: 'Hyundai', logo: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flistcarbrands.com%2Fwp-content%2Fuploads%2F2016%2F03%2Fhyundai-logo-white.jpg&f=1&nofb=1&ipt=17faf25a642de95b4c1f3f288e41b20678896d6470fc8aab59dcee24b6ecd6fe&ipo=images' },
@@ -18,8 +19,21 @@ export class BrandsComponent {
         { name: 'Ford', logo: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.carlogos.org%2Flogo%2FFord-logo-1929-1440x900.png&f=1&nofb=1&ipt=f1bafdd8ca39f8f30153dc8e0fea39f1f71e3304fb02f2825999157e9b9f1605&ipo=images' }
     ];
 
-    responsive(){
-
+    constructor(){
+      this.responsive();
+      console.log(this.screenVW);
     }
 
+    ngOnInit(): void {}
+
+    responsive(){
+      if(this.screenVW < 440){
+        this.count = 3;
+      }else if(this.screenVW > 440 && this.screenVW < 650){
+        this.count = 4;
+      }else if(this.screenVW > 650){
+        this.count = 6;
+      }
+      return this.count;
+    }
 }
