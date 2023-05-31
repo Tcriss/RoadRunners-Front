@@ -1,5 +1,15 @@
 # RoadRunners
 
+This a project to test my knowledge in Angular, just for learning, not a real project.
+
+I use a UI Kit named Taiga UI to help me with de desing [Taiga UI Get Started](https://taiga-ui.dev/getting-started).
+
+## Screenshots preview
+
+![Preview del Home Screen](src/assets/previews/RR-preview.png)
+![Preview del Home Screen](src/assets/previews/RR-preview1.png)
+![Preview Detalles del Vehiculo](src/assets/previews/RR-preview3.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
 ## Development server
@@ -22,9 +32,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-
-## Screenshots preview
-
-![Preview del Home Screen](src/assets/previews/RR-preview.png)
-![Preview del Home Screen](src/assets/previews/RR-preview1.png)
-![Preview Detalles del Vehiculo](src/assets/previews/RR-preview3.png)
