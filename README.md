@@ -2,7 +2,7 @@
 
 This a project to test my knowledge in Angular, just for learning, not a real project.
 
-I use a UI Kit named Taiga UI to help me with de desing [Taiga UI Get Started](https://taiga-ui.dev/getting-started).
+In the UI, I use Taiga UI, is UI kit that helps frontend developers with pre-built components for a better UI [Taiga UI Documentation](https://taiga-ui.dev/getting-started).
 
 ## Screenshots preview
 
