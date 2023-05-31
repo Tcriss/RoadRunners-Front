@@ -33,7 +33,7 @@ export class VehicleDetailsComponent implements OnInit {
     this.data.getVehicle(id).then(res =>{
       res.subscribe(data => {
         this.details = data;
-        this.alerts.notification('tuiIconXCircleLarge','probando','texto');
+        // this.alerts.notification('tuiIconXCircleLarge','probando','texto');
       })
     }).catch(err => this.alerts.notification('tuiIconXCircleLarge','Error con los datos',err));
   }

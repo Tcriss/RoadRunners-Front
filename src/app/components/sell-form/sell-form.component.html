@@ -2,25 +2,22 @@
 
     <form (ngSubmit)="publish()" [formGroup]="sellVehicleForm">
         <div class="form">
-            <tui-input 
-            formControlName="owner_email"
-            tuiTextfieldIcon="tuiIconMailLarge"
-            >E-mail
+            <tui-input formControlName="owner_email">E-mail
                 <input tuiTextfield placeholder="E-mail para contactarte"/>
             </tui-input>
 
-            <tui-input tuiTextfieldIcon="tuiIconMapPinLarge" formControlName="location">Ubicacion
+            <tui-input formControlName="location">Ubicacion
                 <input tuiTextfield placeholder="Ubicacion de la venta"/>
             </tui-input>
 
-            <tui-combo-box tuiTextfieldIcon="" formControlName="brand">Marca
+            <tui-combo-box formControlName="brand">Marca
                 <tui-data-list-wrapper
                     *tuiDataList
                     [items]="brands"
                 ></tui-data-list-wrapper>
             </tui-combo-box>
 
-            <tui-combo-box tuiTextfieldIcon="" formControlName="type">Tipo
+            <tui-combo-box formControlName="type">Tipo
                 <input
                     tuiTextfield
                     placeholder="Tipo de vehiculo"
@@ -46,7 +43,7 @@
                 ></tui-data-list-wrapper>
             </tui-combo-box>
 
-            <tui-combo-box tuiTextfieldIcon="" formControlName="fuel">Combustible
+            <tui-combo-box formControlName="fuel">Combustible
                 <input
                     tuiTextfield
                     placeholder="Tipo de Combustible"
@@ -63,11 +60,11 @@
                 />
             </tui-input-year>
 
-            <tui-input tuiTextfieldIcon="tuiIconDollarSignLarge" formControlName="price">Precio
+            <tui-input formControlName="price">Precio
                 <input tuiTextfield placeholder=""/>
             </tui-input>
 
-            <tui-input tuiTextfieldIcon="tuiIconImageLarge" formControlName="img">Foto
+            <tui-input formControlName="img">Foto
                 <input tuiTextfield placeholder=""/>
             </tui-input>
         </div>

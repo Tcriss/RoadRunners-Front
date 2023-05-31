@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
   routes:Array<{name: string, path:string}> = [
-    { name: 'Home', path: '/home' },
-    { name: 'Vehicles', path: '/vehicles' },
-    { name: 'Sell your vehicle', path: '/sell-car'}
+    { name: 'Inicio', path: '/home' },
+    { name: 'Vehiculos', path: '/vehicles' },
+    { name: 'Publica tu vehiculo', path: '/sell-car'}
   ];
 }

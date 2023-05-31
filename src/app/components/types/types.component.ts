@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Type } from 'src/assets/brands';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-types',
