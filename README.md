@@ -27,5 +27,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ![Preview del Home Screen](assets/previews/RR-preview.png)
 ![Preview del Home Screen](assets/previews/RR-preview1.png)
-![Preview del Home Screen](assets/previews/RR-preview2.png)
 ![Preview Detalles del Vehiculo](assets/previews/RR-preview3.png)
