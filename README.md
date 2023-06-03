@@ -4,6 +4,8 @@ This a project to test my knowledge in Angular, just for learning, not a real pr
 
 In the UI, I use Taiga UI, is UI kit that helps frontend developers with pre-built components for a better UI [Taiga UI Documentation](https://taiga-ui.dev/getting-started).
 
+I made this project in collaboration with my partner [HaroldMart backend repository](https://github.com/HaroldMart/RoadRunners-Backend).
+
 ## Screenshots preview
 
 ![Preview del Home Screen](src/assets/previews/RR-preview.png)
