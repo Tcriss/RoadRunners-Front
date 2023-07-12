@@ -17,8 +17,8 @@ export class ApiService {
     return this.http.get<Iapi[]>(this.url);
   }
 
-  async getVehicle(id:string):Promise<Observable<Iapi[]>> {
-    return this.http.get<Iapi[]>(this.url+id);
+   getVehicle(id:string): Observable<Iapi> {
+    return this.http.get<Iapi>(this.url+id);
   }
 
   postVehicle(form: {}):Observable<{}>{

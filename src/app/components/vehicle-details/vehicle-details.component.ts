@@ -18,6 +18,19 @@ import { AlertsService } from 'src/app/services/alerts/alerts.service';
 })
 export class VehicleDetailsComponent implements OnInit {
   details:Iapi[];
+  product: Iapi = {
+    _id: '',
+    owner_email: '',
+    location: '',
+    brand: '',
+    type: '',
+    model: '',
+    condition: '',
+    fuel: '',
+    year: '',
+    price: 0,
+    img: ''
+  };
 
   constructor(
     private route:ActivatedRoute,
@@ -25,16 +38,13 @@ export class VehicleDetailsComponent implements OnInit {
     private alerts:AlertsService
     ){
       this.details = [];
+      const params = this.route.snapshot.paramMap;
+      const id: string = String(params.get('id'));
+      this.data.getVehicle(id).subscribe(data => {
+        this.product = data;
+      });
     }
 
   ngOnInit() {
-    const params = this.route.snapshot.paramMap;
-    const id:string = String(params.get('id'));
-    this.data.getVehicle(id).then(res =>{
-      res.subscribe(data => {
-        this.details = data;
-        // this.alerts.notification('tuiIconXCircleLarge','probando','texto');
-      })
-    }).catch(err => this.alerts.notification('tuiIconXCircleLarge','Error con los datos',err));
   }
 }
