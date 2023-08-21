@@ -13,12 +13,12 @@ export class ApiService {
     this.url = 'https://roadrunners-backend.onrender.com/';
   }
 
-  async show():Promise<Observable<Api[]>> {
-    return this.http.get<Api[]>(this.url);
+  async show(): Promise<Observable<Api[]>> {
+    return await this.http.get<Api[]>(this.url);
   }
 
-   getVehicle(id:string): Observable<Api> {
-    return this.http.get<Api>(this.url+id);
+  async getVehicle(id:string): Promise<Observable<Api>> {
+    return await this.http.get<Api>(this.url+id);
   }
 
   postVehicle(form: {}):Observable<{}>{
