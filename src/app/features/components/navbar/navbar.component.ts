@@ -19,7 +19,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
         overflow: 'visible',
       })),
       transition('close <=> open',
-        animate('300ms ease-in')
+        animate('300ms ease')
       ),
     ])
   ]
