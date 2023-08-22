@@ -8,18 +8,23 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class ApiService {
+
   url: string;
 
-  constructor(public http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.url = environment.api_url;
   }
 
-  async show(): Promise<Observable<Api[]>> {
-    return await this.http.get<Api[]>(this.url);
+  show(): Observable<Api[]> {
+    return this.http.get<Api[]>(this.url);
   }
 
-  async getVehicle(id:string): Promise<Observable<Api>> {
-    return await this.http.get<Api>(this.url+id);
+  getVehicle(id: string): Observable<Api> {
+    return this.http.get<Api>(this.url+id);
+  }
+
+  getVehiclesByBrand(brand: string): Observable<Api[]> {
+    return this.http.get<Api[]>(this.url+'brand/'+brand);
   }
 
   postVehicle(form: {}):Observable<{}>{

@@ -21,13 +21,14 @@ export class ArticlesComponent implements OnInit {
   tag = 'Hello';
 
   constructor(
-    private data:ApiService,
-    private loader:SpinnerService
+    private data: ApiService,
+    private loader: SpinnerService
   ){}
 
   ngOnInit(): void {
-    this.data.show().then(res =>{
-      res.subscribe(data => this.articles = data)
-    }).catch(err => console.log(err));
+    this.data.show().subscribe({
+      next: res => this.articles = res,
+      error: err => console.log(err)
+    })
   }
 }

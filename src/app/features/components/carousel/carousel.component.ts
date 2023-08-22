@@ -13,14 +13,15 @@ export class CarouselComponent implements OnInit {
   screenVW = screen.width;
   count = 0;
 
-  constructor(private data:ApiService){
+  constructor(private data: ApiService){
     this.responsive();
   }
 
   ngOnInit(): void {
-    this.data.show().then(res =>{
-      res.subscribe(data => this.articles = data)
-    }).catch(err => console.log(err));
+    this.data.show().subscribe({
+      next: res => this.articles = res,
+      error: err => console.log(err)
+    })
   }
 
   responsive(){

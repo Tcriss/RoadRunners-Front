@@ -1,3 +1,9 @@
+@mixin mobileView {
+    @media screen and (max-width: 850px) {
+        @content
+    }
+}
+
 .navbar{
     box-sizing: border-box;
     display: flex;
@@ -8,6 +14,7 @@
     box-sizing: border-box;
     top: 0;
     width: 100%;
+    align-items: center;
 
     .logo{
         display: flex;
@@ -18,5 +25,77 @@
         display: flex;
         justify-content: center;
         gap: 20px;
+
+        .nav-link-item {
+
+            @include mobileView {
+                display: none;
+            }
+        }
+
+        .items-mobile {
+
+            .nav-button {
+                display: none;
+                background-color: rgba(0, 0, 0, 0);
+                border: none;
+                transition: transform 400ms;
+    
+                &:active {
+                    transform: scale(0.7);
+                }
+        
+                @include mobileView {
+                    display: block;
+                }
+            }
+    
+            .side-nav-menu {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 260px;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.94);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+    
+                .nav-header {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    
+                    .close-side-nav {
+                        background-color: rgba(0, 0, 0, 0);
+                        border: none;
+                        transition: transform 400ms;
+    
+                        &:active {
+                            transform: scale(0.7);
+                        }
+                    }
+    
+                    .empty-box {
+                        width: 30px;
+                    }
+                }
+    
+                .nav-items {
+                    display: grid;
+    
+                    .nav-link {
+                        padding: 20px;
+                        text-decoration: none;
+                        color: black;
+                    }
+                }
+    
+                .credits {
+                    text-transform: uppercase;
+                }
+            }
+        }
     }
 }
