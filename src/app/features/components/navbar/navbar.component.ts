@@ -9,14 +9,17 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('expansion', [
       state('close', style({
-        width: '0', 
+        transform: 'translateX(260px)', 
+        opacity: 0.8,
         overflow: 'hidden',
       })),
       state('open', style({
+        transform: 'translateX(0)',
+        opacity: 1,
         overflow: 'visible',
       })),
       transition('close <=> open',
-        animate('400ms')
+        animate('300ms ease-in')
       ),
     ])
   ]
