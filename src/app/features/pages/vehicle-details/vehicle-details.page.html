@@ -1,0 +1,19 @@
+<div class="details">
+    <div class="image">
+        <img src="{{product.img}}">
+    </div>
+    <div class="detail-cont">
+        <div class="resume">
+            <h3 class="tui-text_h3">{{product.year}} {{product.brand}}</h3>
+            <p class="tui-text_h3">{{product.model}}</p>
+            <p class="tui-text_xl"><tui-money currency="USD" [value]="product.price"></tui-money></p>
+        </div>
+        <div class="detail">
+            <p class="tui-text_h3"><strong>Contacto:</strong> {{product.owner_email}}</p>
+            <p class="tui-text_xl"><strong>Ubicacion:</strong> {{product.location}}</p>
+            <p class="tui-text_xl"><strong>Tipo:</strong> {{product.type}}</p>
+            <p class="tui-text_xl"><strong>Combustion: </strong> {{product.fuel}}</p>
+        </div>
+        <button tuiButton >Contactar para comprar</button>
+    </div>
+</div>

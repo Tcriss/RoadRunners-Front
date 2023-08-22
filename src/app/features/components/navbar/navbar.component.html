@@ -1,0 +1,55 @@
+<tui-tabs class="navbar">
+    <!-- navigation bar -->
+    <div class="logo">
+      <img src="./assets/images/Logo.png" width="200px">
+    </div>
+    <div class="items">
+      <a
+      class="nav-link-item"
+      *ngFor="let route of routes"
+      tuiTab
+      [routerLink]='[route.path]'
+      routerLinkActive
+      >
+        {{route.name}}
+      </a>
+      <!-- <app-search></app-search> -->
+      <!-- mobile navigation menu -->
+      <div class="items-mobile">
+        <button class="nav-button" (click)="expanded = !expanded">
+          <tui-svg
+            src="tuiIconMoreHorizontalLarge"
+            class="icon"
+          ></tui-svg>
+        </button>
+        <div class="side-nav-menu" [@expansion]="!expanded? 'close' : 'open'">
+  
+          <div class="nav-header">
+            <div class="empty-box"></div>
+            <h1>Menú</h1>
+            <button class="close-side-nav" (click)="expanded = !expanded">
+              <tui-svg
+                src="tuiIconCloseLarge"
+                class="icon"
+              ></tui-svg>
+            </button>
+          </div>
+  
+          <div class="nav-items">
+            <a
+              class="nav-link"
+              *ngFor="let route of routes"
+              [routerLink]='[route.path]'
+              routerLinkActive
+            >
+              {{route.name}}
+            </a>
+          </div>
+  
+          <div class="credits">
+            <p>2023 © RoadRunners</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </tui-tabs>
