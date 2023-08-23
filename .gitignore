@@ -44,3 +44,5 @@ Thumbs.db
 # enviroments variables
 environments.js
 enviroment.development.js
+
+src/environments/
