@@ -12,6 +12,7 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { TypesComponent } from './components/types/types.component';
 import { FeaturesComponent } from './features.component';
+import { ProcessComponent } from './components/process/process.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FeaturesComponent } from './features.component';
     NavbarComponent,
     ArticlesComponent,
     CarouselComponent,
-    TypesComponent
+    TypesComponent,
+    ProcessComponent
   ],
   imports: [
     CommonModule,

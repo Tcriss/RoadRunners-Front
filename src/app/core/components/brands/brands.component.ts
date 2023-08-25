@@ -46,7 +46,6 @@ export class BrandsComponent implements OnInit {
 
     constructor(){
       this.responsive();
-      console.log(this.screenVW);
     }
 
     ngOnInit(): void {}
