@@ -5,14 +5,17 @@ import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule,
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
-    FooterComponent
+    FooterComponent,
+    LoadingScreenComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TuiLoaderModule
   ],
   exports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { FooterComponent } from './components/footer/footer.component';
     TuiIslandModule,
     TuiTagModule,
     TuiSvgModule,
-    FooterComponent
+    FooterComponent,
+    LoadingScreenComponent
   ]
 })
 export class SharedModule { }

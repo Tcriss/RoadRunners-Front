@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavBarLink } from 'src/app/core/interfaces/navbar-link';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -25,6 +25,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class NavbarComponent {
+
+  @ViewChild('img') img!: ElementRef<HTMLImageElement>;
   routes: NavBarLink[] = [
     { 
       name: 'Inicio', 
@@ -39,6 +41,5 @@ export class NavbarComponent {
       path: '/sell-car'
     }
   ];
-
   expanded: boolean = false;
 }

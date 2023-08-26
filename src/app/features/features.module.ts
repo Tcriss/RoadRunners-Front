@@ -13,6 +13,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { TypesComponent } from './components/types/types.component';
 import { FeaturesComponent } from './features.component';
 import { ProcessComponent } from './components/process/process.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from '../shared/interceptors/spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,14 @@ import { ProcessComponent } from './components/process/process.component';
     CommonModule,
     FeaturesRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+  ],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: LoaderInterceptor, 
+      multi: true
+    }
   ]
 })
 export class FeaturesModule { }

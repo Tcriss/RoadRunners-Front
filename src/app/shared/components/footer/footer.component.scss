@@ -1,0 +1,29 @@
+@mixin mid {
+    @media only screen and (max-width: 1050px) {
+      @content;
+    }
+  }
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 0px 200px;
+    height: 200px;
+
+    @include mid{
+        padding: 5px;
+    }
+
+    .image {
+        .logo {
+            width: 100px;
+        }
+
+        .logo-brand {
+            width: 200px;
+        }
+    }
+}
