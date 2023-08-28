@@ -6,10 +6,7 @@ import { Brand } from '../../interfaces/brand';
   templateUrl: './brands.component.html',
   styleUrls: ['./brands.component.scss'],
 })
-export class BrandsComponent implements OnInit {
-    screenVW = window.innerWidth;
-    index = 0;
-    count:number = 0;
+export class BrandsComponent {
  
     brands: Brand[] = [
         { 
@@ -43,21 +40,4 @@ export class BrandsComponent implements OnInit {
           link: ''
         }
     ];
-
-    constructor(){
-      this.responsive();
-    }
-
-    ngOnInit(): void {}
-
-    responsive(){
-      if(this.screenVW < 440){
-        this.count = 3;
-      }else if(this.screenVW > 440 && this.screenVW < 650){
-        this.count = 4;
-      }else if(this.screenVW > 650){
-        this.count = 6;
-      }
-      return this.count;
-    }
 }
