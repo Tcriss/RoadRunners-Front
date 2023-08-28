@@ -18,7 +18,7 @@ const routes: Routes = [
                 title: 'Inicio'
             },
             {
-                path: 'vehicles',
+                path: 'vehicles/:brand',
                 component: VehiclesPage,
                 title: 'Vehiculos'
             },

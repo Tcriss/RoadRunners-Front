@@ -15,6 +15,7 @@ import { FeaturesComponent } from './features.component';
 import { ProcessComponent } from './components/process/process.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from '../shared/interceptors/spinner.interceptor';
+import { BrandsComponent } from './components/brands/brands.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LoaderInterceptor } from '../shared/interceptors/spinner.interceptor';
     ArticlesComponent,
     CarouselComponent,
     TypesComponent,
-    ProcessComponent
+    ProcessComponent,
+    BrandsComponent
   ],
   imports: [
     CommonModule,

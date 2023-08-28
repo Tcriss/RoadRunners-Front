@@ -34,7 +34,7 @@ export class NavbarComponent {
     },
     { 
       name: 'Vehiculos', 
-      path: '/vehicles' 
+      path: '/vehicles/all' 
     },
     { 
       name: 'Publica tu vehiculo', 

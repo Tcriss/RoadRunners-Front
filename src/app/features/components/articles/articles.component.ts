@@ -18,6 +18,7 @@ import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service'
 export class ArticlesComponent implements OnInit {
   isLoading = this.loader.loading;
   articles: Api[] = [];
+  articlesByBrand: Api[] = [];
   tag = 'Hello';
 
   constructor(
@@ -28,6 +29,13 @@ export class ArticlesComponent implements OnInit {
   ngOnInit(): void {
     this.data.show().subscribe({
       next: res => this.articles = res,
+      error: err => console.log(err)
+    });
+  }
+
+  getByBrand(brand: string) {
+    this.data.getVehiclesByBrand(brand).subscribe({
+      next: res => this.articlesByBrand = res,
       error: err => console.log(err)
     })
   }
