@@ -6,7 +6,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  animations: [
+  animations: [ 
     trigger('expansion', [
       state('close', style({
         transform: 'translateX(260px)', 

@@ -3,12 +3,14 @@ import { CategoryComponent } from './components/category/category.component';
 import { SearchComponent } from './components/search/search.component';
 import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { SharedModule } from '../shared/shared.module';
+import { EmptyComponent } from './components/empty/empty.component';
 
 @NgModule({
   declarations: [
     CategoryComponent,
     SearchComponent,
-    SellFormComponent
+    SellFormComponent,
+    EmptyComponent
   ],
   imports: [
     SharedModule
@@ -16,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
   exports: [
     CategoryComponent,
     SearchComponent,
-    SellFormComponent
+    SellFormComponent,
+    EmptyComponent
   ]
 })
 export class CoreModule { }

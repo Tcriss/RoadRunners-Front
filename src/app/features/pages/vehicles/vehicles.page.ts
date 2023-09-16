@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class VehiclesPage {
 
+  itemsLength!: number;
+
+  recieveArticles(event: number) {
+    let number: number = event;
+    this.itemsLength = number;
+  }
 }
