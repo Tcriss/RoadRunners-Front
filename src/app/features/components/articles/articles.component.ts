@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Api } from 'src/app/core/interfaces/api';
 import { ApiService } from '../../../core/services/api/api.service';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
@@ -16,8 +16,11 @@ import { SpinnerService } from 'src/app/shared/services/spinner/spinner.service'
     })]
 })
 export class ArticlesComponent implements OnInit {
+
+  @Output() sendToParent = new EventEmitter<number>();
   isLoading = this.loader.loading;
   articles: Api[] = [];
+  articlesByBrand: Api[] = [];
   tag = 'Hello';
 
   constructor(
@@ -27,7 +30,20 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.data.show().subscribe({
-      next: res => this.articles = res,
+      next: res => {
+        this.articles = res;
+        console.log(this.articles);
+        this.sendToParent.emit(this.articles.length);
+      },
+      error: err => console.log(err)
+    });
+  }
+
+  getByBrand(brand: string) {
+    this.data.getVehiclesByBrand(brand).subscribe({
+      next: res => {
+        this.articlesByBrand = res
+      },
       error: err => console.log(err)
     })
   }

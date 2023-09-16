@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavBarLink } from 'src/app/core/interfaces/navbar-link';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
@@ -6,7 +6,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  animations: [
+  animations: [ 
     trigger('expansion', [
       state('close', style({
         transform: 'translateX(260px)', 
@@ -25,6 +25,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class NavbarComponent {
+
+  @ViewChild('img') img!: ElementRef<HTMLImageElement>;
   routes: NavBarLink[] = [
     { 
       name: 'Inicio', 
@@ -32,13 +34,12 @@ export class NavbarComponent {
     },
     { 
       name: 'Vehiculos', 
-      path: '/vehicles' 
+      path: '/vehicles/all' 
     },
     { 
       name: 'Publica tu vehiculo', 
       path: '/sell-car'
     }
   ];
-
   expanded: boolean = false;
 }

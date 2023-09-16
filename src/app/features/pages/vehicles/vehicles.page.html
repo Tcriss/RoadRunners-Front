@@ -1,1 +1,4 @@
-<app-articles></app-articles>
+<div class="content">
+    <app-empty *ngIf="itemsLength <= 0"></app-empty>
+    <app-articles (sendToParent)="recieveArticles($event)"></app-articles>
+</div>

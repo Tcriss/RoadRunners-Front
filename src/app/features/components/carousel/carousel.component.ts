@@ -8,30 +8,15 @@ import { Api } from 'src/app/core/interfaces/api';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
+  
   articles: Api[] = [];
-  index = 2;
-  screenVW = screen.width;
-  count = 0;
 
-  constructor(private data: ApiService){
-    this.responsive();
-  }
+  constructor(private data: ApiService){}
 
   ngOnInit(): void {
     this.data.show().subscribe({
       next: res => this.articles = res,
       error: err => console.log(err)
     })
-  }
-
-  responsive(){
-    if(this.screenVW < 440){
-      this.count = 1;
-    }else if(this.screenVW > 440 && this.screenVW < 650){
-      this.count = 2;
-    }else if(this.screenVW > 650){
-      this.count = 3;
-    }
-    return this.count;
   }
 }

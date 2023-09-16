@@ -5,23 +5,17 @@ import { SpinnerService } from "../services/spinner/spinner.service";
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor{
-    private apiRequests = 0;
     
     constructor(private loader:SpinnerService){}
-
+    
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-        if(this.apiRequests === 0){
-            this.loader.show();
-        }
-        this.apiRequests++;
-
-        return next.handle(req).pipe(finalize(()=> this.stopLoader()));
-    }
-
-    private stopLoader(){
-        this.apiRequests--;
-        if(this.apiRequests === 0){
-            this.loader.hide();
-        }
+        this.loader.show();
+        console.log('cargando');
+        return next.handle(req).pipe(
+            finalize(()=> {
+                this.loader.hide();
+                console.log('termino la carga');
+            })
+        );
     }
 }

@@ -16,9 +16,33 @@
     width: 100%;
     align-items: center;
 
+    .block {
+        width: 50px;
+        display: none;
+
+        @include mobileView {
+            display: block;
+        }
+    }
+
     .logo{
         display: flex;
         align-items: center;
+
+        .logo-brand {
+            @include mobileView {
+                display: none;
+            }
+        }
+
+        .logo-img {
+            width: 50px;
+            display: none;
+
+            @include mobileView {
+                display: block;
+            }
+        }
     }
 
     .items{

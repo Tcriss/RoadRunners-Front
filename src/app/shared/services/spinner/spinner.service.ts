@@ -14,4 +14,8 @@ export class SpinnerService {
   hide():void{
     this.loading.next(false);
   }
+
+  getStatus() {
+    return this.loading;
+  }
 }
