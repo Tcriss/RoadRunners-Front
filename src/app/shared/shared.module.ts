@@ -4,14 +4,9 @@ import { TuiAlertModule, TuiDialogModule, TuiButtonModule, TuiThemeNightModule, 
 import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule, TuiTagModule } from '@taiga-ui/kit';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './components/footer/footer.component';
-import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
-  declarations: [
-    FooterComponent,
-    LoadingScreenComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -40,9 +35,7 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     TuiCarouselModule,
     TuiIslandModule,
     TuiTagModule,
-    TuiSvgModule,
-    FooterComponent,
-    LoadingScreenComponent
+    TuiSvgModule
   ]
 })
 export class SharedModule { }

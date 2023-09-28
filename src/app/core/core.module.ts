@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
-import { CategoryComponent } from './components/category/category.component';
-import { SearchComponent } from './components/search/search.component';
-import { SellFormComponent } from './components/sell-form/sell-form.component';
+import { SearchComponent } from '../features/explore/components/search/search.component';
 import { SharedModule } from '../shared/shared.module';
 import { EmptyComponent } from './components/empty/empty.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
-    CategoryComponent,
     SearchComponent,
-    SellFormComponent,
     EmptyComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    FooterComponent,
+    LoadingScreenComponent
   ],
   imports: [
     SharedModule
   ],
   exports: [
-    CategoryComponent,
     SearchComponent,
-    SellFormComponent,
     EmptyComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    FooterComponent,
+    LoadingScreenComponent
   ]
 })
 export class CoreModule { }
