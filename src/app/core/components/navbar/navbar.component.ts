@@ -28,30 +28,8 @@ export class NavbarComponent {
   @ViewChild('navBar') navBar!: ElementRef<any>;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
   expanded: boolean = false;
-  routes: NavBarLink[] = [
-    { 
-      name: 'Inicio', 
-      path: '/explore/home' 
-    },
-    { 
-      name: 'Vehiculos', 
-      path: '/explore/vehicles' 
-    },
-    { 
-      name: 'Buscar', 
-      path: '/explore/search'
-    },
-    {
-      name: 'Publicar',
-      path: '/publish'
-    },
-    {
-      name: 'Contacto',
-      path: '/explore/contact'
-    }
-  ];
 
-  constructor ( private renderer: Renderer2 ) {}
+  constructor ( private renderer: Renderer2) {}
 
   @HostListener('document:scroll') onScroll() {
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {

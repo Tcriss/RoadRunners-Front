@@ -123,6 +123,8 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         }
 
         .side-nav-menu {
+            box-sizing: border-box;
+            padding: 10px;
             position: fixed;
             top: 0;
             right: 0;
@@ -134,6 +136,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             justify-content: space-between;
             align-items: center;
             box-shadow: 0px 0px 6px rgb(208, 208, 208);
+            z-index: 3;
 
             .nav-header {
                 width: 100%;
@@ -156,13 +159,10 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             }
 
             .nav-items {
+                box-sizing: border-box;
+                width: 100%;
                 display: grid;
-
-                .nav-link {
-                    padding: 20px;
-                    text-decoration: none;
-                    color: black;
-                }
+                gap: 10px;
             }
 
             .credits {

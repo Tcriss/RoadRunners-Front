@@ -5,6 +5,7 @@ import { EmptyComponent } from './components/empty/empty.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     EmptyComponent,
     ComingSoonComponent,
     FooterComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    NavbarComponent
   ],
   imports: [
     SharedModule
@@ -22,7 +24,8 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     EmptyComponent,
     ComingSoonComponent,
     FooterComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    NavbarComponent
   ]
 })
 export class CoreModule { }

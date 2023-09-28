@@ -1,6 +1,23 @@
 <tui-root>
     <app-loading-screen></app-loading-screen>
-    <app-navbar></app-navbar>
+    <app-navbar>
+        <a
+            class="link-item"
+            *ngFor="let route of routes"
+            [routerLink]='[route.path]'
+            routerLinkActive="active"
+        >{{route.name}}</a>
+
+        <div 
+            class="nav-item" 
+            [routerLink]='[route.path]' 
+            routerLinkActive="nav-link-item-active" 
+            *ngFor="let route of routes"
+        >
+            <i class="icon {{route.icon}}"></i>
+            <a class="nav-link-item">{{route.name}}</a>
+        </div>
+    </app-navbar>
     <router-outlet></router-outlet>
     <app-footer></app-footer>
 </tui-root>

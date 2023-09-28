@@ -4,13 +4,7 @@
       <img class="logo-img" src="./assets/images/RR-logo-dark.png">
     </div>
     <div class="items">
-      <a
-        class="nav-link-item"
-        *ngFor="let route of routes"
-        tuiTab
-        [routerLink]='[route.path]'
-        routerLinkActive="active"
-      >{{route.name}}</a>
+      <ng-content select=".link-item"></ng-content>
     </div>
     <button class="publish-button --tui-font-heading">Publicar vehículo</button>
     <div class="items-mobile">
@@ -18,26 +12,16 @@
         <i class="fi fi-rr-bars-sort icon"></i>
       </button>
       <div class="side-nav-menu" [@expansion]="!expanded? 'close' : 'open'">
-
         <div class="nav-header">
           <div class="empty-box"></div>
           <h1>Menú</h1>
           <button class="close-side-nav" (click)="expanded = !expanded">
-            cerrar
+            <i class="fi fi-br-cross"></i>
           </button>
         </div>
-
         <div class="nav-items">
-          <a
-            class="nav-link"
-            *ngFor="let route of routes"
-            [routerLink]='[route.path]'
-            routerLinkActive
-          >
-            {{route.name}}
-          </a>
+          <ng-content select=".nav-item"></ng-content>
         </div>
-
         <div class="credits">
           <p>2023 © RoadRunners</p>
         </div>

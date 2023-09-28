@@ -6,13 +6,11 @@ import { AppComponent } from './app.component'
 import { LoaderInterceptor } from './core/interceptors/spinner.interceptor';
 import { TuiRootModule } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared.module';
-import { NavbarComponent } from './navbar/navbar.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserAnimationsModule,
     TuiRootModule,
     HttpClientModule,
-    SharedModule
+    CoreModule
   ],
   providers: [
     { 
