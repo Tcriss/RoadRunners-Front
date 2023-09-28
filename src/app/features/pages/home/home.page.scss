@@ -2,8 +2,15 @@
     @media screen and (max-width: 450px) {
         @content
     }
-}
+};
 
+@mixin tabletView {
+    @media screen and (max-width: 1000px) {
+        @content
+    }
+};
+
+$box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
 
 .home{
     display: flex;
@@ -12,53 +19,78 @@
 
     .hero{
         box-sizing: border-box;
-        border-radius: 15px;
-        height: 90vh;
-        background-color: #F2F4F8;
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+        height: 100vh;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.57%, #FFF 100%), linear-gradient(180deg, rgba(145, 178, 243, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(../../../../assets/images/hero-bg.png), lightgray 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding: 130px 0px;
+
+        @include mobileView {
+            padding: 60px 10px;
+            justify-content: center;
+        }
 
         .text {
-            padding: 0px 30px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-
-            @include mobileView {
-                align-items: center;
-            }
+            text-align: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.712);
 
             .title {
                 font-size: 50px;
                 line-height: 3.7rem;
+                margin: 0;
+                font-weight: 200;
 
                 @include mobileView {
                     font-size: 30px;
-                    line-height: 2.0rem;
+                    line-height: 4.0rem;
                 }
             }
 
             .description {
-                font-size: 15px;
-                line-height: 1.7rem;
+                font-size: 130px;
+                text-transform: uppercase;
+                font-weight: bold;
+                line-height: 120px;
+                margin: 20px;
+
+                @include mobileView {
+                    font-size: 40px;
+                    line-height: 2.7rem;
+                }
             }
         }
         
         .image {
             display: flex;
             align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0px;
 
             img {
-                width: 100%;
+                width: 90%;
             }
         }
     }
 
     .content{
+        margin: 0px 200px;
         display: flex;
         flex-direction: column;
         gap: 20px;
         background-color: white;
+
+        @include tabletView {
+            margin: 0px 20px;
+        }
 
         .title_section{
             color: #6b6e80;

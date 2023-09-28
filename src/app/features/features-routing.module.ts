@@ -6,6 +6,8 @@ import { VehicleDetailsPage } from "./pages/vehicle-details/vehicle-details.page
 import { SellCarPage } from "./pages/sell-car/sell-car.page";
 import { UpdatePageTitle } from "../core/services/pageTitleStrategy";
 import { FeaturesComponent } from "./features.component";
+import { SearchPage } from "./pages/search-page/search.page";
+import { ContactPage } from "./pages/contact/contact.page";
 
 const routes: Routes = [
     {
@@ -31,6 +33,16 @@ const routes: Routes = [
                 path: 'sell-car',
                 component: SellCarPage,
                 title: 'Vender vehículo'
+            },
+            {
+                path: 'search',
+                component: SearchPage,
+                title: 'Buqueda'
+            },
+            {
+                path: 'contact',
+                component: ContactPage,
+                title: 'Contacto'
             }
         ]
     }

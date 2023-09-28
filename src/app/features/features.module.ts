@@ -16,6 +16,8 @@ import { ProcessComponent } from './components/process/process.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptor } from '../shared/interceptors/spinner.interceptor';
 import { BrandsComponent } from './components/brands/brands.component';
+import { SearchPage } from './pages/search-page/search.page';
+import { ContactPage } from './pages/contact/contact.page';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { BrandsComponent } from './components/brands/brands.component';
     CarouselComponent,
     TypesComponent,
     ProcessComponent,
-    BrandsComponent
+    BrandsComponent,
+    ContactPage,
+    SearchPage
   ],
   imports: [
     CommonModule,

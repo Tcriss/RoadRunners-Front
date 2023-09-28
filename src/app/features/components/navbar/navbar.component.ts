@@ -1,7 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { NavBarLink } from 'src/app/core/interfaces/navbar-link';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -25,8 +24,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   ]
 })
 export class NavbarComponent {
-
+  
+  @ViewChild('navBar') navBar!: ElementRef<any>;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
+  expanded: boolean = false;
   routes: NavBarLink[] = [
     { 
       name: 'Inicio', 
@@ -37,9 +38,23 @@ export class NavbarComponent {
       path: '/vehicles/all' 
     },
     { 
-      name: 'Publica tu vehiculo', 
-      path: '/sell-car'
+      name: 'Buscar', 
+      path: '/search'
+    },
+    {
+      name: 'Contacto',
+      path: '/contact'
     }
   ];
-  expanded: boolean = false;
+
+  constructor ( private renderer: Renderer2 ) {}
+
+  @HostListener('document:scroll') onScroll() {
+    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+      this.renderer.addClass(this.navBar.nativeElement, 'scrolled');
+    } else if (document.body.scrollTop < 5 || document.documentElement.scrollTop < 5) {
+      this.renderer.removeClass(this.navBar.nativeElement, 'scrolled');
+    }
+  }
+  
 }

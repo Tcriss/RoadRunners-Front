@@ -9,7 +9,8 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
-    background-color: rgba(255, 255, 255, 0.653);
+    background-color: rgba(255, 255, 255, 0.862);
+    backdrop-filter: blur(10px);
     gap: 30px;
 
     .logo {
