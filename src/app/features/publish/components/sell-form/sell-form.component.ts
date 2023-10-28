@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { AlertsService } from '../../../../core/services/alerts/alerts.service';
-import { ApiService } from '../../../../core/services/api/api.service';
+import { VehicleDataService } from '../../../../core/services/vehicle-data/vehicle-data.service';
 import { brands, types } from 'src/app/core/interfaces/brand';
 
 @Component({
@@ -25,7 +25,7 @@ export class SellFormComponent {
   sellVehicleForm: FormGroup;
 
   constructor(
-    private api:ApiService,
+    private api:VehicleDataService,
     private fb:FormBuilder,
     private alerts:AlertsService
     ){

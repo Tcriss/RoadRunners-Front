@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Api } from 'src/app/core/interfaces/api';
-import { ApiService } from 'src/app/core/services/api/api.service';
+import { Vehicle } from 'src/app/core/interfaces/vehicle';
+import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 
 @Component({
@@ -10,14 +10,14 @@ import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
   styleUrls: ['./vehicle-details.page.scss'],
   providers: [
     tuiButtonOptionsProvider({
-        shape: 'rounded',
-        appearance: TuiAppearance.Primary,
-        size: 'l',
+      shape: 'rounded',
+      appearance: TuiAppearance.Primary,
+      size: 'l',
     })]
 })
 export class VehicleDetailsPage {
-  details: Api[];
-  product: Api = {
+
+  vehicle: Vehicle = {
     _id: '',
     owner_email: '',
     location: '',
@@ -28,18 +28,28 @@ export class VehicleDetailsPage {
     fuel: '',
     year: '',
     price: 0,
-    img: ''
+    images: []
   };
 
   constructor(
-    private route:ActivatedRoute,
-    private data:ApiService
-    ){
-      this.details = [];
-      const params = this.route.snapshot.paramMap;
-      const id: string = String(params.get('id'));
-      this.data.getVehicle(id).subscribe(data => {
-        this.product = data;
-      });
+    private route: ActivatedRoute,
+    private data: VehicleDataService
+  ) {
+    const params = this.route.snapshot.paramMap;
+    const id: string = String(params.get('id'));
+    this.data.getVehicle(id).subscribe(data => {
+      console.log(data);
+      this.vehicle = data;
+    });
+  }
+
+  toBase64(buffer: any) {
+    var binary = '';
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
     }
+    return window.btoa(binary);
+  }
 }

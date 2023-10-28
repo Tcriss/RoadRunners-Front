@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Api } from 'src/app/core/interfaces/api';
-import { ApiService } from 'src/app/core/services/api/api.service';
+import { Vehicle } from 'src/app/core/interfaces/vehicle';
+import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { SpinnerService } from 'src/app/core/services/spinner/spinner.service';
 
@@ -19,24 +19,32 @@ export class ArticlesComponent implements OnInit {
 
   @Output() sendToParent = new EventEmitter<number>();
   isLoading = this.loader.loading;
-  articles: Api[] = [];
-  articlesByBrand: Api[] = [];
-  tag = 'Hello';
+  articles: Vehicle[] = [];
+  articlesByBrand: Vehicle[] = [];
 
   constructor(
-    private data: ApiService,
+    private data: VehicleDataService,
     private loader: SpinnerService
   ){}
 
   ngOnInit(): void {
-    this.data.show().subscribe({
+    this.data.showVehicles().subscribe({
       next: res => {
         this.articles = res;
-        console.log(this.articles);
         this.sendToParent.emit(this.articles.length);
       },
       error: err => console.log(err)
     });
+  }
+
+  toBase64(buffer: any) {
+    var binary = '';
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
   }
 
   getByBrand(brand: string) {

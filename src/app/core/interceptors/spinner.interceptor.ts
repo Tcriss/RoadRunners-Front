@@ -10,11 +10,9 @@ export class LoaderInterceptor implements HttpInterceptor{
     
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         this.loader.show();
-        console.log('cargando');
         return next.handle(req).pipe(
             finalize(()=> {
                 this.loader.hide();
-                console.log('termino la carga');
             })
         );
     }

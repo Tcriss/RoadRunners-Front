@@ -1,57 +1,12 @@
 .wrapper{
-    display: flex;
-    flex-direction: row-reverse;
-    overflow-x: scroll;
-    gap: 30px;
-    padding: 20px;
-    border-radius: 15px;
+    width: 100%;
 
-    .island{
-        width: 300px;
-        border-radius: 15px;
-        box-shadow: 0px 1px 6px 4px #f2f2f2;
-        text-decoration: none;
-        border: 1px solid #f2f2f2;
-
-        .year-tag{
-            line-height: 0.2;
-            font-size: 15px;
-        }
-
-        .image{
-            height: 200px;
-            overflow: hidden;
-            border-radius: 15px 15px 0px 0px;
-
-            & > img{
-                object-fit: cover;
-                height: 100%;
-            }
-        }
-
-        .description {
-            padding: 10px;
-
-            div{
-                display: flex;
-                justify-content: center;
-    
-                .buy-button {
-                    border-radius: 15px;
-                    text-decoration: none;
-                    width: 100%;
-                    border: solid 1px #4fa7f6;
-                    padding: 10px;
-                    text-transform: uppercase;
-                    text-align: center;
-                    transition: border 400ms;
-    
-                    &:hover {
-                        border: solid 1 #1449a2;
-                        color: #1449a2;
-                    } 
-                }
-            }
-        }
+    app-articles {
+        padding: 20px 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        overflow-x: scroll;
+        gap: 30px;
     }
 }

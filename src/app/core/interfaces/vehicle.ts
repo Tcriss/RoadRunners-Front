@@ -1,4 +1,6 @@
-export interface Api{
+import { Image } from "./image";
+
+export interface Vehicle{
   _id: string,
   owner_email: string,
   location: string,
@@ -9,5 +11,5 @@ export interface Api{
   fuel: string,
   year: string,
   price: number,
-  img: string
+  images: Image[]
 }
