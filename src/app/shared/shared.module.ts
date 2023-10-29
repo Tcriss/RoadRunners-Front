@@ -37,7 +37,9 @@ import { TuiPreviewModule } from '@taiga-ui/addon-preview';
     TuiIslandModule,
     TuiTagModule,
     TuiSvgModule,
-    TuiPreviewModule
+    TuiPreviewModule,
+    TuiDropdownModule,
+    TuiAvatarModule
   ]
 })
 export class SharedModule { }

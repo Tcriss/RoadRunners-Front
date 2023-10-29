@@ -1,6 +1,7 @@
-import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
-import { NavBarLink } from 'src/app/core/interfaces/navbar-link';
+import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -29,7 +30,11 @@ export class NavbarComponent {
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
   expanded: boolean = false;
 
-  constructor ( private renderer: Renderer2) {}
+  constructor ( 
+    public auth: AuthService,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) public document: Document
+  ) {}
 
   @HostListener('document:scroll') onScroll() {
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {

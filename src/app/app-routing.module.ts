@@ -14,9 +14,9 @@ const routes: Routes = [
     loadChildren: () => import('./features/publish/publish.module').then(m => m.PublishModule)
   },
   {
-    title: 'Sesión',
-    path: 'auth',
-    loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)
+    title: 'Configuración',
+    path: 'settings',
+    loadChildren: () => import('./features/settings/settings.module').then(m => m.SettingsModule)
   },
   {
     path: '**',

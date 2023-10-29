@@ -7,7 +7,6 @@ import { SellFormComponent } from './components/sell-form/sell-form.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
 @NgModule({
   declarations: [
     PublishComponent,
