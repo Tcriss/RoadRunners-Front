@@ -7,17 +7,29 @@
       <ng-content select=".link-item"></ng-content>
     </div>
     <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-      <button class="publish'button" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">Cerrar Sesión</button>
+      <tui-hosted-dropdown
+	        tuiDropdownAlign="right"
+	        tuiDropdownHover
+	        [content]="content"
+	        [(open)]="open"
+	    >
       <tui-avatar
+        tuiHostedDropdownHost
         avatarUrl="tuiIconUser"
         new
         size="m"
         text="alex inkin"
       ></tui-avatar>
+	        <ng-template #content>
+	            <tui-data-list (click)="onClick()">
+                <ng-content  select=".option"></ng-content>
+                <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption><tui-svg src="tuiIconLogOut"></tui-svg>  Cerrar Sesión</button>
+	            </tui-data-list>
+	        </ng-template>
+	    </tui-hosted-dropdown>
     </ng-container>
-
     <ng-template #loggedOut>
-      <button class="publish'button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+      <button class="logIn-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
     </ng-template>
     <div class="items-mobile">
       <button class="nav-button" (click)="expanded = !expanded">

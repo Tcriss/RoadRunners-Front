@@ -1,0 +1,10 @@
+.settings {
+    width: 100%;
+    display: flex;
+
+    .side-bar {
+        width: 300px;
+        height: 100vh;
+        position: fixed;
+    }    
+}

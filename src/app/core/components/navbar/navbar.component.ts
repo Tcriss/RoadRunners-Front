@@ -29,12 +29,19 @@ export class NavbarComponent {
   @ViewChild('navBar') navBar!: ElementRef<any>;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
   expanded: boolean = false;
+  open: boolean = false;
+  index: number = 0;
 
   constructor ( 
     public auth: AuthService,
     private renderer: Renderer2,
     @Inject(DOCUMENT) public document: Document
   ) {}
+	 
+	onClick(): void {
+	  this.open = false;
+	  this.index = 1;
+	}
 
   @HostListener('document:scroll') onScroll() {
     if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {

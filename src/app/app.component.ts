@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavBarLink } from './core/interfaces/navbar-link';
+import { Options } from './core/interfaces/options';
 
 @Component({
   selector: 'app-root',
@@ -30,4 +31,17 @@ export class AppComponent {
       path: '/publish'
     }
   ];
+
+  options: Options[] = [
+    { 
+      icon: 'tuiIconUser',
+      name: 'Pérfil', 
+      path: '/settings/profile' 
+    },
+    { 
+      icon: 'tuiIconSettings',
+      name: 'Cuenta', 
+      path: '/settings/account' 
+    },
+  ]
 }

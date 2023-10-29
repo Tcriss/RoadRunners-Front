@@ -54,21 +54,25 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         }
     }
 
-    .publish-button {
+    .logIn-button {
         padding: 10px 15px;
-        border-radius: 50px;
+        border-radius: 15px;
         border: none;
-        background-color: $base;
-        color: white;
+        background-color: transparent;
+        color: rgb(0, 0, 0);
         font-size: 16px;
-        transition: background-color 400ms;
+        transition: all 400ms;
 
         &:hover {
+            color: white;
             background-color: $hover;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
 
         &:active {
+            color: white;
             background-color: $active;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
     }
 

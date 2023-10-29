@@ -1,0 +1,6 @@
+<div class="link" *ngFor="let link of links">
+    <a [routerLink]="[link.path]">
+        <i class="{{link.icon}}"></i>
+        {{link.name}}
+    </a>
+</div>

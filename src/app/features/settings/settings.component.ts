@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
-  template: ``,
-  styleUrls: []
+  templateUrl: './settings.page.html',
+  styleUrls: ['./settings.page.scss']
 })
 export class SettingsComponent {
 

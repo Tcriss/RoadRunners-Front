@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TuiAlertModule, TuiDialogModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule, TuiSvgModule } from '@taiga-ui/core';
+import { TuiAlertModule, TuiDialogModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule, TuiSvgModule, TuiHostedDropdownModule } from '@taiga-ui/core';
 import { TuiTabsModule, TuiCarouselModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule, TuiTagModule } from '@taiga-ui/kit';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CommonModule } from '@angular/common';
@@ -39,7 +39,8 @@ import { TuiPreviewModule } from '@taiga-ui/addon-preview';
     TuiSvgModule,
     TuiPreviewModule,
     TuiDropdownModule,
-    TuiAvatarModule
+    TuiAvatarModule,
+    TuiHostedDropdownModule
   ]
 })
 export class SharedModule { }

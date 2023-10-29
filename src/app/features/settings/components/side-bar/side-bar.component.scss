@@ -1,0 +1,32 @@
+.link {
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+
+    &:hover {
+        background-color: #28586b;
+        color: white;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    
+        .nav-link-item {
+          color: white;
+        }
+    }
+    
+    &:active {
+        background-color: #1f4453;
+        color: white;
+        transform: scale(0.90);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    
+        .nav-link-item {
+          color: white;
+        }
+    }
+}
+
+.active {
+    font-weight: 600;
+    color: black;
+}

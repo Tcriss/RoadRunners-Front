@@ -8,6 +8,17 @@
             routerLinkActive="active"
         >{{route.name}}</a>
 
+        <a
+            tuiOption
+            class="option"
+            *ngFor="let option of options"
+            [routerLink]='[option.path]'
+            routerLinkActive="active"
+        >
+            <tui-svg [src]="option.icon"></tui-svg>
+            {{option.name}}
+        </a>
+
         <div 
             class="nav-item" 
             [routerLink]='[route.path]' 

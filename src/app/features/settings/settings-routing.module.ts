@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilePage } from './pages/profile/profile.page';
 import { AccountPage } from './pages/account/account.page';
+import { SettingsComponent } from './settings.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage,
+    component: SettingsComponent,
     children: [
       {
         title: 'Perfil',
