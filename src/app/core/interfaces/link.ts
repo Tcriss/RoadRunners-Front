@@ -1,4 +1,4 @@
-export interface NavBarLink {
+export interface Link {
     icon: string,
     name: string, 
     path:string

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Options } from 'src/app/core/interfaces/options';
+import { AuthService } from '@auth0/auth0-angular';
+import { Link } from 'src/app/core/interfaces/link';
+import { map, pipe } from 'rxjs';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,16 +10,21 @@ import { Options } from 'src/app/core/interfaces/options';
 })
 export class SideBarComponent {
 
-  links: Options[] = [
+  links: Link[] = [
     {
       icon: 'fi fi-rr-user',
       name: 'Perfil',
-      path: '/profile'
+      path: '/settings/profile'
     },
     {
       icon: 'fi fi-rr-settings',
       name: 'Configuración',
-      path: '/account'
+      path: '/settings/account'
     }
   ]
+  user$ = this.auth.user$;
+  code$ = this.user$.pipe(map((user) => JSON.stringify(user, null, 2)));
+  title = 'Decoded ID Token';
+
+  constructor( private auth: AuthService) {}
 }

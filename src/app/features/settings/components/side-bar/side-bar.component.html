@@ -1,6 +1,21 @@
-<div class="link" *ngFor="let link of links">
-    <a [routerLink]="[link.path]">
-        <i class="{{link.icon}}"></i>
-        {{link.name}}
-    </a>
-</div>
+<ng-container *ngIf="user$ | async as user">
+    <div class="profile">
+        <div class="profile-header">
+            <img [src]="user.picture" alt="Profile" class="avatar" />
+            <h2 class="title">{{ user.name }}</h2>
+            <span class="description">{{ user.email }}</span>
+        </div>
+        <ng-container *ngIf="code$ | async as code">
+            <div class="profile__details">
+                <!-- <app-code-snippet
+            [title]="title"
+            [code]="code"
+          ></app-code-snippet> -->
+            </div>
+        </ng-container>
+    </div>
+</ng-container>
+<a class="link" *ngFor="let link of links" [routerLink]="[link.path]" routerLinkActive="active">
+    <i class="{{link.icon}}"></i>
+    {{link.name}}
+</a>

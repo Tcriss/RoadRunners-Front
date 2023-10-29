@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavBarLink } from './core/interfaces/navbar-link';
-import { Options } from './core/interfaces/options';
+import { Link } from './core/interfaces/link';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { Options } from './core/interfaces/options';
 })
 export class AppComponent {
 
-  routes: NavBarLink[] = [
+  routes: Link[] = [
     { 
       icon: 'fi fi-bs-home',
       name: 'Inicio', 
@@ -32,7 +31,7 @@ export class AppComponent {
     }
   ];
 
-  options: Options[] = [
+  options: Link[] = [
     { 
       icon: 'tuiIconUser',
       name: 'Pérfil', 
