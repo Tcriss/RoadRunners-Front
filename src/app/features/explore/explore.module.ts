@@ -16,7 +16,6 @@ import { TypesComponent } from './components/types/types.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 
-
 @NgModule({
   declarations: [
     ExploreComponent,
