@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProfilePage } from './pages/profile/profile.page';
 import { AccountPage } from './pages/account/account.page';
 import { SettingsComponent } from './settings.component';
+import { UserPostsPage } from './pages/posts/user-posts.page';
 
 const routes: Routes = [
   {
@@ -20,10 +21,15 @@ const routes: Routes = [
         component: AccountPage
       },
       {
+        title: 'Publicaciones',
+        path: 'my-posts',
+        component: UserPostsPage
+      },
+      {
         path: '**',
         redirectTo: '/profile',
         pathMatch: 'full'
-      }
+      },
     ]
   }
 ];

@@ -9,13 +9,12 @@
         >{{route.name}}</a>
 
         <a
-            tuiOption
             class="option"
             *ngFor="let option of options"
             [routerLink]='[option.path]'
             routerLinkActive="active"
         >
-            <tui-svg [src]="option.icon"></tui-svg>
+            <i [class]="option.icon"></i>
             {{option.name}}
         </a>
 

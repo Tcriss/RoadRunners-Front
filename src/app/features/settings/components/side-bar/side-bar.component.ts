@@ -17,6 +17,11 @@ export class SideBarComponent {
       path: '/settings/profile'
     },
     {
+      icon: 'fi fi-rr-car',
+      name: 'Vehículos publicados',
+      path: '/settings/my-posts'
+    },
+    {
       icon: 'fi fi-rr-settings',
       name: 'Configuración',
       path: '/settings/account'
@@ -26,5 +31,7 @@ export class SideBarComponent {
   code$ = this.user$.pipe(map((user) => JSON.stringify(user, null, 2)));
   title = 'Decoded ID Token';
 
-  constructor( private auth: AuthService) {}
+  constructor( private auth: AuthService) {
+    console.log(this.code$);
+  }
 }

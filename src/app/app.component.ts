@@ -33,12 +33,17 @@ export class AppComponent {
 
   options: Link[] = [
     { 
-      icon: 'tuiIconUser',
+      icon: 'fi fi-rr-user',
       name: 'Pérfil', 
       path: '/settings/profile' 
     },
+    {
+      icon: 'fi fi-rr-car',
+      name: 'Vehículos publicados',
+      path: '/settings/my-posts'
+    },
     { 
-      icon: 'tuiIconSettings',
+      icon: 'fi fi-rr-settings',
       name: 'Cuenta', 
       path: '/settings/account' 
     },

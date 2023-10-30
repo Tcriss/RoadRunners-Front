@@ -31,6 +31,7 @@ export class NavbarComponent {
   expanded: boolean = false;
   open: boolean = false;
   index: number = 0;
+  user$ = this.auth.user$;
 
   constructor ( 
     public auth: AuthService,

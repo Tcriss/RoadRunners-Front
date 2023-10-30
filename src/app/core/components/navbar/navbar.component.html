@@ -13,16 +13,17 @@
 	        [content]="content"
 	        [(open)]="open"
 	    >
-      <tui-avatar
-        tuiHostedDropdownHost
-        avatarUrl="tuiIconUser"
-        new
-        size="m"
-        text="alex inkin"
-      ></tui-avatar>
+      <div *ngIf="user$ | async as user" tuiHostedDropdownHost class="profile-section">
+        <p class="text">{{user.name}}</p>
+        <tui-avatar
+          text="{{user.name}}"
+          size="s"
+          avatarUrl="{{user.picture}}"
+        ></tui-avatar>
+      </div>
 	        <ng-template #content>
-	            <tui-data-list (click)="onClick()">
-                <ng-content  select=".option"></ng-content>
+	            <tui-data-list class="data-list" (click)="onClick()">
+                <ng-content select=".option"></ng-content>
                 <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption><tui-svg src="tuiIconLogOut"></tui-svg>  Cerrar Sesión</button>
 	            </tui-data-list>
 	        </ng-template>
