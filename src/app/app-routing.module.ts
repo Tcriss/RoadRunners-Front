@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, TitleStrategy } from '@angular/router';
 import { UpdatePageTitle } from './core/services/pageTitleStrategy';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
   {
     title: 'Configuración',
     path: 'settings',
-    loadChildren: () => import('./features/settings/settings.module').then(m => m.SettingsModule)
+    loadChildren: () => import('./features/settings/settings.module').then(m => m.SettingsModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

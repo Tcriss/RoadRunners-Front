@@ -1,11 +1,26 @@
+@mixin responsive($number) {
+    @media(max-width: $number) {
+        @content
+    }
+}
+
 .settings {
     width: 100%;
     display: flex;
+    padding: 60px 20%;
+    box-sizing: border-box;
+    gap: 30px;
+    padding: 60px 200px;
+
+    @include responsive(1000px) {
+        padding: 60px 20px;
+    }
 
     .side-bar {
+        border-radius: 15px;
         box-sizing: border-box;
         width: 250px;
-        height: 100vh;
+        height: 90vh;
         position: sticky;
         z-index: 1;
         background-color: rgba(255, 255, 255, 0.94);
@@ -20,6 +35,9 @@
     }
 
     .content {
-        margin: 0px 20%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
     }
 }

@@ -19,8 +19,10 @@ export class ProfilePage {
     this.profileForm = this.fb.group({
       picture: [''],
       name: [''],
-      password: ['']
-    })
+      email: [''],
+      password: [''],
+      phoneNumber: ['']
+    });
   }
 
 }

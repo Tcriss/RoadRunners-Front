@@ -1,29 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.profile{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  .profile-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    .avatar {
-      border-radius: 15px;
-      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
-  
-    .title {
-      font-weight: 600;
-    }
-  }
+.title {
+  text-align: center;
 }
 
 .link {
