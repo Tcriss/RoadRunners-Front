@@ -12,7 +12,8 @@ const routes: Routes = [
   {
     title: 'Publicar',
     path: 'publish',
-    loadChildren: () => import('./features/publish/publish.module').then(m => m.PublishModule)
+    loadChildren: () => import('./features/publish/publish.module').then(m => m.PublishModule),
+    canActivate: [AuthGuard]
   },
   {
     title: 'Configuración',

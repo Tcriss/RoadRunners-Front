@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Link } from 'src/app/core/interfaces/link';
+
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
-  styleUrls: ['./side-bar.component.scss']
+  styleUrls: ['./side-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideBarComponent {
 

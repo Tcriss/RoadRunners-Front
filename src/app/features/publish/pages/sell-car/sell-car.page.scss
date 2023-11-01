@@ -1,34 +1,37 @@
-@mixin tabletView {
-    @media screen and (max-width: 1000px) {
+@mixin responsive($number) {
+    @media(max-width: $number) {
         @content
     }
-};
+}
 
-.sell{
-    display: flex;
-    gap: 15px;
-    opacity: 90%;
-    padding: 25px;
-    border-radius: 15px;
-    margin: 0px 200px;
-    height: 100vh;
-    min-height: 400px;
+.sell-car {
+    padding: 0px 200px;
 
-    @include tabletView {
-        margin: 0px 20px;
+    @include responsive(1000px) {
+        padding: 60px 20px;
     }
 
-    .banner{
-        width: 40%;
+    .sell{
+        display: flex;
+        gap: 15px;
+        flex-direction: column;
 
-        p, h1, h3{
-            font-weight: 300;
-            text-shadow: 0px 0px 1px rgb(0, 0, 0);
-            color: rgb(0, 0, 0);
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-    }
 
-    .form{
-        width: 60%;
+        .images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }

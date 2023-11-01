@@ -1,0 +1,21 @@
+.contact-info {
+    height: 100vh;
+    display: grid;
+    gap: 20px;
+    width: 50%;
+    place-content: center;
+    align-self: center;
+
+    .form-title {
+        text-align: center;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        border-radius: 15px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+}

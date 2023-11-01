@@ -1,0 +1,18 @@
+<ng-container [formGroup]="form" >
+    <div class="contact-info">
+        <h1 class="form-title">Información de contacto</h1>
+        <form class="contact-form" action="">
+            <tui-input formControlName="ownerEmail">E-mail
+                <input tuiTextfield placeholder="E-mail para contactarte"/>
+            </tui-input>
+
+            <tui-input formControlName="location">Ubicacion
+                <input tuiTextfield placeholder="Ubicacion de la venta"/>
+            </tui-input>
+
+            <tui-input formControlName="price">Precio
+                <input type="number" tuiTextfield placeholder=""/>
+            </tui-input>
+        </form>
+    </div>
+</ng-container>

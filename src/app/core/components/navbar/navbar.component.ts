@@ -45,7 +45,7 @@ export class NavbarComponent {
 	}
 
   @HostListener('document:scroll') onScroll() {
-    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    if (document.body.scrollTop > 2 || document.documentElement.scrollTop > 2) {
       this.renderer.addClass(this.navBar.nativeElement, 'scrolled');
     } else if (document.body.scrollTop < 5 || document.documentElement.scrollTop < 5) {
       this.renderer.removeClass(this.navBar.nativeElement, 'scrolled');
