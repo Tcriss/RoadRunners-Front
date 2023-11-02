@@ -1,0 +1,51 @@
+.profile {
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .profile-header {
+        display: flex;
+        gap: 20px;
+        
+        .profile-picture {
+            border-radius: 15px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            .profile-name {
+                font-size: 30px;
+                font-weight: 800;
+                margin: 0;
+            }
+    
+            .profile-email {
+                font-size: 18px;
+                color: rgb(103, 103, 103);
+                margin: 0;
+            }
+        }
+    }
+
+    .profile-description {
+        width: 100%;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+
+        .profile-field {
+            
+            .field-name {
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

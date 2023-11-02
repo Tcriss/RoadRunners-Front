@@ -6,7 +6,32 @@
     <div class="items">
       <ng-content select=".link-item"></ng-content>
     </div>
-    <button class="publish-button --tui-font-heading">Publicar vehículo</button>
+    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+      <tui-hosted-dropdown
+	        tuiDropdownAlign="right"
+	        tuiDropdownHover
+	        [content]="content"
+	        [(open)]="open"
+	    >
+      <div *ngIf="user$ | async as user" tuiHostedDropdownHost class="profile-section">
+        <p class="text">{{user.name}}</p>
+        <tui-avatar
+          text="{{user.name}}"
+          size="s"
+          avatarUrl="{{user.picture}}"
+        ></tui-avatar>
+      </div>
+	        <ng-template #content>
+	            <tui-data-list class="data-list" (click)="onClick()">
+                <ng-content select=".option"></ng-content>
+                <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption><tui-svg src="tuiIconLogOut"></tui-svg>  Cerrar Sesión</button>
+	            </tui-data-list>
+	        </ng-template>
+	    </tui-hosted-dropdown>
+    </ng-container>
+    <ng-template #loggedOut>
+      <button class="logIn-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+    </ng-template>
     <div class="items-mobile">
       <button class="nav-button" (click)="expanded = !expanded">
         <i class="fi fi-rr-bars-sort icon"></i>

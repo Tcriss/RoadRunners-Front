@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SellFormComponent } from './sell-form.component';
+import { AccountPage } from './account.page';
 
-describe('SellFormComponent', () => {
-  let component: SellFormComponent;
-  let fixture: ComponentFixture<SellFormComponent>;
+describe('SettingsComponent', () => {
+  let component: AccountPage;
+  let fixture: ComponentFixture<AccountPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SellFormComponent ]
+      declarations: [ AccountPage ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SellFormComponent);
+    fixture = TestBed.createComponent(AccountPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

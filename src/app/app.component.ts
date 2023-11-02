@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavBarLink } from './core/interfaces/navbar-link';
+import { Link } from './core/interfaces/link';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { NavBarLink } from './core/interfaces/navbar-link';
 })
 export class AppComponent {
 
-  routes: NavBarLink[] = [
+  routes: Link[] = [
     { 
       icon: 'fi fi-bs-home',
       name: 'Inicio', 
@@ -30,4 +30,22 @@ export class AppComponent {
       path: '/publish'
     }
   ];
+
+  options: Link[] = [
+    { 
+      icon: 'fi fi-rr-user',
+      name: 'Pérfil', 
+      path: '/settings/profile' 
+    },
+    {
+      icon: 'fi fi-rr-car',
+      name: 'Vehículos publicados',
+      path: '/settings/my-posts'
+    },
+    { 
+      icon: 'fi fi-rr-settings',
+      name: 'Cuenta', 
+      path: '/settings/account' 
+    },
+  ]
 }

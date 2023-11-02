@@ -1,6 +1,7 @@
-import { Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
-import { NavBarLink } from 'src/app/core/interfaces/navbar-link';
+import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { AuthService } from '@auth0/auth0-angular';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -28,11 +29,23 @@ export class NavbarComponent {
   @ViewChild('navBar') navBar!: ElementRef<any>;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
   expanded: boolean = false;
+  open: boolean = false;
+  index: number = 0;
+  user$ = this.auth.user$;
 
-  constructor ( private renderer: Renderer2) {}
+  constructor ( 
+    public auth: AuthService,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) public document: Document
+  ) {}
+	 
+	onClick(): void {
+	  this.open = false;
+	  this.index = 1;
+	}
 
   @HostListener('document:scroll') onScroll() {
-    if (document.body.scrollTop > 5 || document.documentElement.scrollTop > 5) {
+    if (document.body.scrollTop > 2 || document.documentElement.scrollTop > 2) {
       this.renderer.addClass(this.navBar.nativeElement, 'scrolled');
     } else if (document.body.scrollTop < 5 || document.documentElement.scrollTop < 5) {
       this.renderer.removeClass(this.navBar.nativeElement, 'scrolled');

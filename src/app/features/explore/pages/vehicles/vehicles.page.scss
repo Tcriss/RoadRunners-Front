@@ -1,3 +1,19 @@
+@mixin responsive($number) {
+    @media(max-width: $number) {
+        @content
+    }
+}
+
 .content {
-    padding: 20px 0px;
+    padding: 60px 200px;
+
+    @include responsive(1000px){
+        padding: 60px 20px;
+    }
+
+    .articles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
 }

@@ -8,6 +8,16 @@
             routerLinkActive="active"
         >{{route.name}}</a>
 
+        <a
+            class="option"
+            *ngFor="let option of options"
+            [routerLink]='[option.path]'
+            routerLinkActive="active"
+        >
+            <i [class]="option.icon" routerLinkActive="active"></i>
+            {{option.name}}
+        </a>
+
         <div 
             class="nav-item" 
             [routerLink]='[route.path]' 

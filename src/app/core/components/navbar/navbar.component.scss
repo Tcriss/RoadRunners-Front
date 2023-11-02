@@ -27,7 +27,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
     top: 0;
     width: 100%;
     align-items: center;
-    height: 50px;
+    height: 60px;
     transition: all 400ms;
 
     @include tabletView {
@@ -54,21 +54,54 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         }
     }
 
-    .publish-button {
-        padding: 10px 15px;
-        border-radius: 50px;
-        border: none;
-        background-color: $base;
-        color: white;
-        font-size: 16px;
-        transition: background-color 400ms;
+    .profile-section {
+        border-radius: 15px;
+        padding: 0px 15px;
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        transition: all 400ms;
+
+        .text {
+            font-weight: 800;
+            font-size: 16px;
+        }
 
         &:hover {
+            color: white;
             background-color: $hover;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
 
         &:active {
+            color: white;
             background-color: $active;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+    }
+
+    
+    .logIn-button {
+        padding: 10px 15px;
+        border-radius: 15px;
+        border: none;
+        background-color: transparent;
+        color: rgb(0, 0, 0);
+        font-size: 16px;
+        transition: all 400ms;
+        font-family: Poppins;
+
+        &:hover {
+            color: white;
+            background-color: $hover;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        }
+
+        &:active {
+            color: white;
+            background-color: $active;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         }
     }
 
@@ -137,6 +170,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             align-items: center;
             box-shadow: 0px 0px 6px rgb(208, 208, 208);
             z-index: 3;
+            backdrop-filter: blur(20px);
 
             .nav-header {
                 width: 100%;

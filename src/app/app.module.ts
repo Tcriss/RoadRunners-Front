@@ -7,6 +7,8 @@ import { LoaderInterceptor } from './core/interceptors/spinner.interceptor';
 import { TuiRootModule } from '@taiga-ui/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
+import { AuthModule } from '@auth0/auth0-angular';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,15 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     TuiRootModule,
     HttpClientModule,
-    CoreModule
+    CoreModule,
+    SharedModule,
+    AuthModule.forRoot({
+      domain: 'dev-3f45fsqiwdpfl2ds.us.auth0.com',
+      clientId: 'aphDtO4yTGzIEsmp9Wa37msp7cC2X5tX',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    })
   ],
   providers: [
     { 

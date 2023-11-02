@@ -1,0 +1,5 @@
+<h2 class="title">Configuración del usuario</h2>
+<a class="link" *ngFor="let link of links" [routerLink]="[link.path]" routerLinkActive="active">
+    <i class="{{link.icon}}"></i>
+    {{link.name}}
+</a>
