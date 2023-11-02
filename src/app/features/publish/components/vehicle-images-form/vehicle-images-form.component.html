@@ -9,13 +9,12 @@
                 </button>
             </div>
             <input class="images-input" (change)="previewImage($event)" id="images-input" type="file" accept="image/png, image/jpg, image/jpeg" multiple>
-            <label class="images-label" for="images-input">
+            <label class="images-label" for="images-input" #label>
                 <div class="logo">
                     <i class="fi fi-rr-inbox-out logo"></i>
                 </div>
-                <p>Clickea aquí para subir las imagenes o arrastralas</p>
+                <p>Clickea aquí para subir las imagenes</p>
             </label>
-            <!-- <tui-error [error]="['maxLength'] | tuiFieldError | async" [formControl]="control"></tui-error> -->
         </form>
     </div>
 </ng-container>

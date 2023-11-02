@@ -10,9 +10,14 @@
                 <input tuiTextfield placeholder="Ubicacion de la venta"/>
             </tui-input>
 
-            <tui-input formControlName="price">Precio
-                <input type="number" tuiTextfield placeholder=""/>
-            </tui-input>
+            <tui-input-number
+                tuiHintContent="Dollar sign is commonly placed BEFORE the amount. Use [prefix]."
+                formControlName="price"
+                [tuiTextfieldPrefix]="'RD$ ' | tuiCurrency"
+                decimal="never"
+            >
+            Precio del vehículo
+        </tui-input-number>
         </form>
     </div>
 </ng-container>

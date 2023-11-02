@@ -1,13 +1,18 @@
 <div class="sell-car">
     <div class="sell">
-        <!-- <app-sell-form></app-sell-form> -->
         <ng-container [formGroup]="sellVehicleForm">
-            <app-vehicle-info-form class="info" formGroupName="info"></app-vehicle-info-form>
-            <app-vehicle-images-form class="images" formGroupName="images"></app-vehicle-images-form>
-            <app-contact-info-form class="contact" formGroupName="contact"></app-contact-info-form>
+            <tui-carousel class="slider" #carousel>
+                <app-vehicle-info-form *tuiItem class="info" formGroupName="info"></app-vehicle-info-form>
+                <app-vehicle-images-form *tuiItem class="images" formGroupName="images"></app-vehicle-images-form>
+                <app-contact-info-form *tuiItem class="contact" formGroupName="contact"></app-contact-info-form>
+            </tui-carousel>
         </ng-container>
-        <pre style="margin-top:50px; border: 1px solid red; width: fit-content">
+        <!-- <pre style="margin-top:50px; border: 1px solid red; width: fit-content">
             {{sellVehicleForm.value | json}}
-        </pre>
+        </pre> -->
+    </div>
+    <div class="actions">
+        <button (click)="carousel.prev()" class="backward-button">Regresar</button>
+        <button (click)="carousel.next()" class="forward-button">Siguiente</button>
     </div>
 </div>

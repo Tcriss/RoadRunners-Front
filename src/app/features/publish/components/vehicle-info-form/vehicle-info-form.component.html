@@ -1,10 +1,9 @@
 <ng-container [formGroup]="form">
     <div class="vehicle-info">
-        <i class="fi fi-rr-cars"></i>
         <h1 class="form-title">Información del vehículo</h1>
         <form class="vehicle-info-form" action="">
             <tui-combo-box formControlName="brand">Marca
-                <tui-data-list-wrapper *tuiDataList [items]="brands"></tui-data-list-wrapper>
+                <tui-data-list-wrapper *tuiDataList [items]="brandsList"></tui-data-list-wrapper>
             </tui-combo-box>
 
             <tui-combo-box formControlName="type">Tipo

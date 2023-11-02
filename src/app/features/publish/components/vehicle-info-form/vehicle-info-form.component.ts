@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { brands, types } from 'src/app/core/interfaces/brand';
+import { Brand } from 'src/app/core/interfaces/brand';
+import { brands } from 'src/app/core/utils/brands.list';
+import { types } from 'src/app/core/utils/types.list';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 
 @Component({
   selector: 'app-vehicle-info-form',
@@ -11,7 +14,7 @@ export class VehicleInfoFormComponent implements OnInit {
 
   @Input() formGroupName!: string;
   form!: FormGroup;
-  brands:Array<any> = brands;
+  brandsList = brands;
   readonly type = types;
   readonly condition = ['Usado','Nuevo'];
   readonly fuel = ['Electrico','Gasolina','Gasoi'];
@@ -21,5 +24,4 @@ export class VehicleInfoFormComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.rootForm.control.get(this.formGroupName) as FormGroup;
   }
-
 }

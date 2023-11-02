@@ -5,33 +5,84 @@
 }
 
 .sell-car {
-    padding: 0px 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    @include responsive(1000px) {
-        padding: 60px 20px;
+    .sell {
+        width: 100%;
+
+        .slider {
+            width: 100%;
+
+            .info {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+    
+            .images {
+                overflow-y: scroll;
+            }
+    
+            .contact {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
     }
 
-    .sell{
+    .actions {
+        position: sticky;
+        bottom: 0px;
         display: flex;
-        gap: 15px;
-        flex-direction: column;
+        justify-content: space-around;
+        width: 50%;
+        align-self: center;
+        padding: 20px;
 
-        .info {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        button {
+            border-radius: 15px;
+            border: none;
+            font-size: 16px;
+            font-family: Poppins;
+            height: 60px;
+            width: 150px;
+            cursor: pointer;
+            transition: all 400ms;
         }
 
-        .images {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .backward-button {
+            background-color: rgba(255, 255, 255, 0.873);
+            backdrop-filter: saturate(180%) blur(20px);
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            color: black;
+
+            &:hover {
+                box-shadow: rgba(149, 157, 165, 0.503) 0px 8px 24px;
+                background-color: #437994;
+                color: white;
+            }
+
+            &:active {
+                color: white;
+                background-color: #32627a;
+            }
         }
 
-        .contact {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .forward-button {
+            background-color: #234454;
+            color: white;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+            &:hover {
+                background-color: #32627a;
+            }
+
+            &:active {
+                background-color: #0d1a20;
+            }
         }
     }
 }

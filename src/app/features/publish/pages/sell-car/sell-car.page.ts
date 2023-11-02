@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { maxFilesLength } from '../../validators/max-file.validator';
 
@@ -9,6 +9,7 @@ import { maxFilesLength } from '../../validators/max-file.validator';
 })
 export class SellCarPage {
 
+  @ViewChild('swiper') swiperEl!: ElementRef<any>;
   sellVehicleForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -22,7 +23,7 @@ export class SellCarPage {
         year: ['']
       }),
       images: this.fb.group({
-        images: []
+        images: [null]
       }),
       contact: this.fb.group({
         ownerEmail: [''],

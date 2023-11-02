@@ -6,7 +6,7 @@ export function maxFilesLength(maxLength: number): ValidatorFn {
         value.length > maxLength
             ? {
                 maxLength: new TuiValidationError(
-                    'Error: maximum limit - 5 files for upload',
+                    'Error: maximum limit - 7 files for upload',
                 ),
             }
             : null;
