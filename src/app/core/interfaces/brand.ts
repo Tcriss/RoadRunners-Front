@@ -1,5 +1,5 @@
 export interface Brand {
     name: string;
-    logo?: string;
+    logoUrl?: string;
     link?: string;
 }

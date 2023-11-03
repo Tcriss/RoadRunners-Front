@@ -18,27 +18,27 @@ export class TypesComponent {
   types: Brand[] = [
     { 
       name: 'Sedán', 
-      logo: '../../../../assets/images/sedan.png',
+      logoUrl: '../../../../assets/images/vehicle-type/sedan.png',
       link: ''
     },
     { 
       name: 'Jepeeta', 
-      logo: '../../../../assets/images/SUV.png',
+      logoUrl: '../../../../assets/images/vehicle-type/SUV.png',
       link: ''
     },
     { 
       name: 'Camioneta', 
-      logo: '../../../../assets/images/pick-up.png',
+      logoUrl: '../../../../assets/images/vehicle-type/pick-up.png',
       link: ''
     },
     { 
       name: 'Sport', 
-      logo: '../../../../assets/images/sport.png',
+      logoUrl: '../../../../assets/images/vehicle-type/sport.png',
       link: ''
     },
     { 
       name: 'Camión', 
-      logo: '../../../../assets/images/truck.jpg',
+      logoUrl: '../../../../assets/images/vehicle-type/truck.jpg',
       link: ''
     }
   ]

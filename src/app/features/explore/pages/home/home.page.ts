@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage {
-  index = 2;
+  articlesCount = -8;
  
   readonly items = [
     { name: 'Carro1', img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F2.bp.blogspot.com%2F-vB74hrPmTPg%2FUSg61t6EEHI%2FAAAAAAAA3-Y%2FVuIWLF-GYHk%2Fs1600%2FChevrolet-Camaro-ZL1-Blanco_Fondos-de-Pantalla-de-Carros-Deportivos.jpg&f=1&nofb=1&ipt=3917ac3dd97040a41b4d9edd9328469a82a66399fe78c912a4ede783e7be2c36&ipo=images'},

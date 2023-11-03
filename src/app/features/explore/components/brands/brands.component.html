@@ -2,9 +2,9 @@
     <a [routerLink]="['/vehicles', brand.link]" *ngFor="let brand of brands; let i = index">
         <img
             width="90px"
-            alt="{{brand.name}}"
+            [alt]="brand.name"
             draggable="false"
-            src="{{brand.logo}}"
+            [src]="brand.logoUrl"
             class="item"
         />
     </a>

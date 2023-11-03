@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, AfterViewInit } from '@angular/core';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
 import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
@@ -15,8 +15,9 @@ import { SpinnerService } from 'src/app/core/services/spinner/spinner.service';
         size: 'm',
     })]
 })
-export class ArticlesComponent implements OnInit {
+export class ArticlesComponent implements OnInit, AfterViewInit {
 
+  @Input() articlesCount: number = 0;
   @Output() sendToParent = new EventEmitter<number>();
   isLoading = this.loader.loading;
   articles: Vehicle[] = [];
@@ -25,12 +26,16 @@ export class ArticlesComponent implements OnInit {
   constructor(
     private data: VehicleDataService,
     private loader: SpinnerService
-  ){}
+  ) {}
 
   ngOnInit(): void {
+    
+  }
+
+  ngAfterViewInit(): void {
     this.data.showVehicles().subscribe({
       next: res => {
-        this.articles = res;
+        this.articles = res.slice(this.articlesCount);
         this.sendToParent.emit(this.articles.length);
       },
       error: err => console.log(err)
