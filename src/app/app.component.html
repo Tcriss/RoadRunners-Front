@@ -18,10 +18,20 @@
             {{option.name}}
         </a>
 
-        <div 
-            class="nav-item" 
-            [routerLink]='[route.path]' 
-            routerLinkActive="nav-link-item-active" 
+      <a
+        class="mobile-option"
+        *ngFor="let option of options"
+        [routerLink]='[option.path]'
+        routerLinkActive="active"
+      >
+        <i [class]="option.icon" routerLinkActive="active"></i>
+        {{option.name}}
+      </a>
+
+        <div
+            class="nav-item"
+            [routerLink]='[route.path]'
+            routerLinkActive="nav-link-item-active"
             *ngFor="let route of routes"
         >
             <i class="icon {{route.icon}}"></i>

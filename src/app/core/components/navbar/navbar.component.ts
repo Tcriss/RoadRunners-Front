@@ -6,39 +6,38 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  animations: [ 
+  animations: [
     trigger('expansion', [
       state('close', style({
-        transform: 'translateX(260px)', 
+        transform: 'translateX(300px)',
         opacity: 0.8,
-        overflow: 'hidden',
       })),
       state('open', style({
         transform: 'translateX(0)',
         opacity: 1,
-        overflow: 'visible',
       })),
       transition('close <=> open',
-        animate('300ms ease')
+        animate('400ms ease')
       ),
     ])
   ]
 })
 export class NavbarComponent {
-  
-  @ViewChild('navBar') navBar!: ElementRef<any>;
+
+  @ViewChild('navBar') navBar!: ElementRef;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
   expanded: boolean = false;
   open: boolean = false;
+  mobileOpen: boolean = false;
   index: number = 0;
   user$ = this.auth.user$;
 
-  constructor ( 
+  constructor (
     public auth: AuthService,
     private renderer: Renderer2,
     @Inject(DOCUMENT) public document: Document
   ) {}
-	 
+
 	onClick(): void {
 	  this.open = false;
 	  this.index = 1;
@@ -51,5 +50,5 @@ export class NavbarComponent {
       this.renderer.removeClass(this.navBar.nativeElement, 'scrolled');
     }
   }
-  
+
 }
