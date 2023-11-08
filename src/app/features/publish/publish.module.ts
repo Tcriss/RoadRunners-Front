@@ -7,9 +7,9 @@ import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { VehicleInfoFormComponent } from './components/vehicle-info-form/vehicle-info-form.component';
 import { ContactInfoFormComponent } from './components/contact-info-form/contact-info-form.component';
-import { VehicleImagesFormComponent } from './components/vehicle-images-form/vehicle-images-form.component';
 import { TuiCarouselModule, TuiInputNumberModule } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
+import { VehicleImagesFormComponent } from './components/vehicle-images-form/vehicle-images-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
     SellCarPage,
     VehicleInfoFormComponent,
     ContactInfoFormComponent,
-    VehicleImagesFormComponent
+    VehicleImagesFormComponent,
   ],
   imports: [
     CommonModule,

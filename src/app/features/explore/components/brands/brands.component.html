@@ -1,5 +1,5 @@
 <div class="brands">
-    <a [routerLink]="['/vehicles', brand.link]" *ngFor="let brand of brands; let i = index">
+    <a class="brand" [routerLink]="['/vehicles', brand.link]" *ngFor="let brand of brands; let i = index">
         <img
             width="90px"
             [alt]="brand.name"

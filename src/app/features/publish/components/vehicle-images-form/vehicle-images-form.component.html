@@ -1,20 +1,18 @@
-<ng-container [formGroup]="form">
-    <div class="vehicle-images">
-        <h1 class="form-title">Imagenes del vehículo</h1>
-        <form class="images-form">
-            <div class="image-preview" *ngFor="let image of previewImages; index as i">
-                <img [src]="image">
-                <button (click)="deletePreview(i)" class="delete-preview">
-                    <i class="fi fi-rr-trash"></i>
-                </button>
-            </div>
-            <input class="images-input" (change)="previewImage($event)" id="images-input" type="file" accept="image/png, image/jpg, image/jpeg" multiple>
-            <label class="images-label" for="images-input" #label>
-                <div class="logo">
-                    <i class="fi fi-rr-inbox-out logo"></i>
-                </div>
-                <p>Clickea aquí para subir las imagenes</p>
-            </label>
-        </form>
+<ng-container>
+  <div class="images">
+    <h1 class="form-title">Imagenes del vehículo</h1>
+    <div class="images-form">
+      <div class="image-preview" *ngFor="let image of previewImages; index as i">
+        <img [src]="image">
+        <button (click)="deletePreview(i)" class="delete-preview">
+          <i class="fi fi-rr-trash"></i>
+        </button>
+      </div>
+      <input class="images-input" (change)="previewImage($event)" id="images-input" type="file" accept="image/png, image/jpg, image/jpeg" multiple>
+      <label class="images-label" for="images-input" #label>
+        <div class="logo"><i class="fi fi-rr-inbox-out logo"></i></div>
+        <p>Clickea aquí para subir las imagenes</p>
+      </label>
     </div>
+  </div>
 </ng-container>

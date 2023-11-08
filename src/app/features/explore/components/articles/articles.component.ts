@@ -28,9 +28,7 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
     private loader: SpinnerService
   ) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   ngAfterViewInit(): void {
     this.data.showVehicles().subscribe({

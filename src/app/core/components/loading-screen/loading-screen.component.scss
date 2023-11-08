@@ -9,8 +9,7 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
-    background-color: rgba(255, 255, 255, 0.862);
-    backdrop-filter: blur(10px);
+    background-color: white;
     gap: 30px;
 
     .logo {
@@ -23,7 +22,7 @@
         justify-content: center;
         position: relative;
         width: 50px;
-        height: 50px;    
+        height: 50px;
 
         div {
             box-sizing: border-box;

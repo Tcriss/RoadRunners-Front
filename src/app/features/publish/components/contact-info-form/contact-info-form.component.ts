@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-info-form',
@@ -9,12 +9,11 @@ import { FormGroup, FormGroupDirective } from '@angular/forms';
 export class ContactInfoFormComponent implements OnInit {
 
   @Input() formGroupName!: string;
-  form!: FormGroup
+  form!: FormGroup;
 
   constructor(private rootForm: FormGroupDirective) {}
 
   ngOnInit(): void {
     this.form = this.rootForm.control.get(this.formGroupName) as FormGroup;
   }
-
 }

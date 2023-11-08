@@ -16,8 +16,16 @@ export class VehicleInfoFormComponent implements OnInit {
   form!: FormGroup;
   brandsList = brands;
   readonly type = types;
-  readonly condition = ['Usado','Nuevo'];
-  readonly fuel = ['Electrico','Gasolina','Gasoi'];
+  readonly condition = [
+    'Usado',
+    'Nuevo'
+  ];
+  readonly fuel = [
+    'Eléctrico',
+    'Gasolina',
+    'Gasoil',
+    'Híbrido'
+  ];
 
   constructor(private rootForm: FormGroupDirective) {}
 

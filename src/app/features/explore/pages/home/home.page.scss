@@ -87,7 +87,6 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         flex-direction: column;
         gap: 20px;
         background-color: white;
-        align-items: center;
 
         @include tabletView {
             margin: 0px 20px;
@@ -123,6 +122,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             cursor: pointer;
             transition: all 400ms;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            align-self: center;
 
             &:hover {
                 background-color: #32627a;

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class VehicleDataService {
-  
+
   url: string = environment.url;
   key: string = environment.key;
   headers: HttpHeaders = new HttpHeaders().set('API_KEY', this.key);
@@ -27,7 +27,7 @@ export class VehicleDataService {
     return this.http.get<Vehicle[]>(this.url+'brand/'+brand, { headers: this.headers });
   }
 
-  postVehicle(form: {}):Observable<{}>{
-    return this.http.post(this.url+'insert', form, { headers: this.headers });
+  postVehicle(form: unknown): Observable<unknown> {
+    return this.http.post<unknown>(this.url+'insert', form, { headers: this.headers });
   }
 }

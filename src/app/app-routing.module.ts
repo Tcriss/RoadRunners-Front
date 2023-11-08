@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, TitleStrategy } from '@angular/router';
-import { UpdatePageTitle } from './core/services/pageTitleStrategy';
+import { UpdatePageTitle } from './core/utils/pageTitleStrategy';
 import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
