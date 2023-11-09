@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@mixin responsive($number) {
+  @media(max-width: $number) {
+    @content
+  }
+}
+
+.title {
+  text-align: center;
+
+  @include responsive(725px) {
+    display: none;
+  }
+}
+
+.hide-button {
+  display: none;
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+
+  @include responsive(725px) {
+    display: block;
+  }
+}
+
+.link {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  transition: all 400ms;
+  text-decoration: none;
+  align-items: center;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #28586b;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  }
+
+  &:active {
+    background-color: #1f4453;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
+    font-weight: 800;
+  }
+
+  i {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+
+    @include responsive(725px) {
+      display: none;
+    }
+  }
+}
+
+.active {
+  background-color: #28586b;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  font-weight: 800;
+}

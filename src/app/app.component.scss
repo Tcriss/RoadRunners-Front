@@ -1,14 +1,119 @@
+@import url('https://cdn-uicons.flaticon.com/uicons-bold-straight/css/uicons-bold-straight.css');
+@import url('https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css');
+
 @mixin mid {
   @media only screen and (max-width: 1050px) {
     @content;
   }
 }
 
-.content{
-    box-sizing: border-box;
-    margin: 0px 200px;
+;
 
-    @include mid{
-        margin: 5px;
+@mixin mobileView {
+  @media screen and (max-width: 850px) {
+    @content
+  }
+}
+
+;
+
+.link-item {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #5e6e7b;
+  transition: all 400ms;
+  text-decoration: none;
+
+  @include mobileView {
+    display: none;
+  }
+
+  &:hover,
+  &:active {
+    color: black;
+    font-weight: 600;
+  }
+}
+
+.nav-item {
+  box-sizing: border-box;
+  display: flex;
+  color: black;
+  align-items: center;
+  font-size: 16px;
+  width: 100%;
+  transition: all 400ms;
+  border-radius: 15px;
+  padding: 20px;
+  gap: 20px;
+
+  .nav-link-item {
+    text-decoration: none;
+    transition: all 400ms;
+  }
+
+  &:hover {
+    background-color: #28586b;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+    .nav-link-item {
+      color: white;
     }
+  }
+
+  &:active {
+    background-color: #1f4453;
+    color: white;
+    transform: scale(0.90);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+    .nav-link-item {
+      color: white;
+    }
+  }
+}
+
+.option {
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+  transition: all 400ms;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.mobile-option {
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+  transition: all 400ms;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.active {
+  font-weight: 600;
+  color: black;
+}
+
+.nav-link-item-active {
+  background-color: #1f4453;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+  .nav-link-item {
+    font-weight: 600;
+    color: white;
+  }
 }

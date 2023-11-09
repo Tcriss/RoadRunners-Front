@@ -1,0 +1,20 @@
+.vehicle-info {
+    height: 100vh;
+    display: grid;
+    gap: 20px;
+    width: 80%;
+    place-content: center;
+    align-self: center;
+
+    .form-title {
+        text-align: center;
+    }
+    
+    .vehicle-info-form {
+        width: 100%;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

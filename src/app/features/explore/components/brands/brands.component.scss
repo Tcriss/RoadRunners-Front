@@ -1,0 +1,21 @@
+.brands {
+    width: 100%;
+    padding: 20px 0px;
+    overflow-x: scroll;
+    display: flex;
+    gap: 50px;
+
+    .brand {
+        padding: 10px;
+        border-radius: 15px;
+        transition: all 400ms;
+        
+        &:hover {
+            transform: translateY(-10px);
+        }
+
+        &:active {
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    }
+}

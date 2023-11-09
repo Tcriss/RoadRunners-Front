@@ -1,7 +1,43 @@
 <tui-root>
     <app-loading-screen></app-loading-screen>
-    <div class="content">
-        <router-outlet></router-outlet>
-    </div>
+    <app-navbar>
+        <a
+            class="link-item"
+            *ngFor="let route of routes"
+            [routerLink]='[route.path]'
+            routerLinkActive="active"
+        >{{route.name}}</a>
+
+        <a
+            class="option"
+            *ngFor="let option of options"
+            [routerLink]='[option.path]'
+            routerLinkActive="active"
+        >
+            <i [class]="option.icon" routerLinkActive="active"></i>
+            {{option.name}}
+        </a>
+
+      <a
+        class="mobile-option"
+        *ngFor="let option of options"
+        [routerLink]='[option.path]'
+        routerLinkActive="active"
+      >
+        <i [class]="option.icon" routerLinkActive="active"></i>
+        {{option.name}}
+      </a>
+
+        <div
+            class="nav-item"
+            [routerLink]='[route.path]'
+            routerLinkActive="nav-link-item-active"
+            *ngFor="let route of routes"
+        >
+            <i class="icon {{route.icon}}"></i>
+            <a class="nav-link-item">{{route.name}}</a>
+        </div>
+    </app-navbar>
+    <router-outlet></router-outlet>
     <app-footer></app-footer>
 </tui-root>

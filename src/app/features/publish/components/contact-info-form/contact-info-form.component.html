@@ -1,0 +1,22 @@
+<ng-container [formGroup]="form" >
+    <div class="contact-info">
+        <h1 class="form-title">Información de contacto</h1>
+        <form class="contact-form" action="">
+            <tui-input formControlName="ownerEmail">Correo electronico
+                <input tuiTextfield placeholder="E-mail para contactarte"/>
+            </tui-input>
+
+            <tui-input formControlName="location">Ubicación
+                <input tuiTextfield placeholder="Ubicacion de la venta"/>
+            </tui-input>
+
+            <tui-input-number
+                formControlName="price"
+                [tuiTextfieldPrefix]="'RD$ ' | tuiCurrency"
+                decimal="never"
+            >
+              Precio del vehículo
+            </tui-input-number>
+        </form>
+    </div>
+</ng-container>

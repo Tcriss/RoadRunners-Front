@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
-import { TuiAlertService } from '@taiga-ui/core';
-import { TuiPushService } from '@taiga-ui/kit';
 import { switchMap, take } from 'rxjs/operators';
+import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
+import { TUI_PROMPT, TuiPromptData } from '@taiga-ui/kit';
 
 @Injectable({
   providedIn: 'root'
@@ -9,19 +9,15 @@ import { switchMap, take } from 'rxjs/operators';
 export class AlertsService {
 
   constructor(
-    @Inject(TuiPushService) protected readonly push: TuiPushService,
     @Inject(TuiAlertService) protected readonly alert: TuiAlertService,
+    @Inject(TuiDialogService) private readonly dialog: TuiDialogService
   ) { }
 
-  notification(icon:string,title:string, text:string){
-    this.push.open(text, {
-        heading: title,
-        type: 'Notificacion',
-        icon: icon,
-        buttons: ['Roads?', '1.21 Gigawatts!?!'],
-      }).pipe(
-        take(1),
-        switchMap(button => this.alert.open(button)),
-    ).subscribe();
+  alertMe(title: string, description: string, buttons: {}): void {
+    this.dialog.open(description, {
+      label: title,
+      size: 's',
+      data: buttons,
+    }).subscribe();
   }
 }

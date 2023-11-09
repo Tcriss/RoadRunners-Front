@@ -1,0 +1,33 @@
+<ng-container [formGroup]="form">
+    <div class="vehicle-info">
+        <h1 class="form-title">Información del vehículo</h1>
+        <form class="vehicle-info-form" action="">
+            <tui-combo-box formControlName="brand">Marca
+                <tui-data-list-wrapper *tuiDataList [items]="brandsList"></tui-data-list-wrapper>
+            </tui-combo-box>
+
+            <tui-combo-box formControlName="type">Tipo
+                <input tuiTextfield placeholder="Tipo de vehiculo" />
+                <tui-data-list-wrapper *tuiDataList [items]="type"></tui-data-list-wrapper>
+            </tui-combo-box>
+
+            <tui-input formControlName="model">Modelo
+                <input tuiTextfield placeholder="Modelo del vehiculo" />
+            </tui-input>
+
+            <tui-combo-box formControlName="condition">Condicion
+                <input tuiTextfield placeholder="Condicion del vehiculo" />
+                <tui-data-list-wrapper *tuiDataList [items]="condition"></tui-data-list-wrapper>
+            </tui-combo-box>
+
+            <tui-combo-box formControlName="fuel">Combustible
+                <input tuiTextfield placeholder="Tipo de Combustible" />
+                <tui-data-list-wrapper *tuiDataList [items]="fuel"></tui-data-list-wrapper>
+            </tui-combo-box>
+
+            <tui-input-year formControlName="year" class="b-form">Año del vehículo
+                <input tuiTextfield />
+            </tui-input-year>
+        </form>
+    </div>
+</ng-container>

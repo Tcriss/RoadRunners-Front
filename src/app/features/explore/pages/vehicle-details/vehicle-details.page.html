@@ -1,0 +1,22 @@
+<div class="details">
+    <div class="image-gallery">
+        <img (click)="show()" class="image{{i}}" *ngFor="let image of vehicle.images; index as i" src="data:{{image.contentType}};base64,{{toBase64(image.data.data)}}">
+    </div>
+    <div class="detail">
+        <div class="resume">
+            <a class="tui-text_h3" (click)="goBack()">
+              <i class="fi fi-rr-arrow-small-left icon"></i>
+              {{vehicle.year}} {{vehicle.brand}}
+            </a>
+            <p class="tui-text_h3">{{vehicle.model}}</p>
+            <p class="tui-text_xl"><tui-money currency="USD" [value]="vehicle.price"></tui-money></p>
+        </div>
+        <div class="information">
+            <p class="tui-text_h3"><strong>Contacto:</strong> {{vehicle.owner_email}}</p>
+            <p class="tui-text_xl"><strong>Ubicacion:</strong> {{vehicle.location}}</p>
+            <p class="tui-text_xl"><strong>Tipo:</strong> {{vehicle.type}}</p>
+            <p class="tui-text_xl"><strong>Combustion: </strong> {{vehicle.fuel}}</p>
+        </div>
+        <button class="button">Contactar para comprar</button>
+    </div>
+</div>

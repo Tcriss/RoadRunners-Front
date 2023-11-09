@@ -1,0 +1,20 @@
+<div class="sell-car">
+    <div class="sell">
+        <form (ngSubmit)="publishVehicle()" [formGroup]="sellVehicleForm" enctype="multipart/form-data">
+            <tui-carousel class="slider" #carousel>
+                <app-vehicle-info-form *tuiItem class="info" formGroupName="info"></app-vehicle-info-form>
+                <app-vehicle-images-form *tuiItem class="images" formGroupName="images"></app-vehicle-images-form>
+                <app-contact-info-form *tuiItem class="contact" formGroupName="contact"></app-contact-info-form>
+            </tui-carousel>
+            <div class="actions">
+                <button type="button" (click)="carousel.prev()" class="backward-button">Regresar</button>
+                <ng-container *ngIf="!sellVehicleForm.valid; else valid">
+                    <button type="button" (click)="carousel.next()" class="forward-button">Siguiente</button>
+                </ng-container>
+                <ng-template #valid>
+                    <button type="submit" class="forward-button submit-button">Publicar Vehículo</button>
+                </ng-template>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+@mixin mobileView($width) {
+    @media screen and (max-width: $width) {
+        @content
+    }
+};
+
+$box-shadow: rgba(0, 0, 0, 0.281) 0px 25px 20px -20px;
+
+.process {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 10px;
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .title {
+            text-align: center;
+            color: #6b6e80;
+            line-height: 30px;
+        }
+
+        .process-list {
+            width: 100%;
+            display: grid;
+            list-style-type: none;
+            padding: 0;
+            font-size: 16px;
+            line-height: 30px;
+            gap: 20px;
+
+            .process-item {
+                box-sizing: border-box;
+                width: 100%;
+                align-items: center;
+                gap: 10px;
+                display: flex;
+
+                @include mobileView(790px) {
+                    flex-direction: column;
+                    text-align: center;
+                    align-items: center;
+                }
+
+                .icon {
+                    box-sizing: border-box;
+                    padding: 20px;
+                    border-radius: 15px;
+                    background-color: #477a8b;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: $box-shadow;
+
+                    .logo {
+                        font-size: 25px;
+                        height: 25px;
+                    }
+                }
+
+                .description {
+                    display: grid;
+
+                    h3 {
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        margin: 0;
+                    }
+
+                    p {
+                        margin: 0;
+                        color: #6b6e80;
+                    }
+                }
+            }
+        }
+    }
+
+    .image {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        @include mobileView(790px) {
+            justify-content: center;
+        }
+
+        img {
+            width: 90%;
+            border-radius: 10px;
+        }
+    }
+}
