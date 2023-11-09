@@ -6,6 +6,8 @@ import { ProfilePage } from './pages/profile/profile.page';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { UserPostsPage } from './pages/posts/user-posts.page';
+import {CoreModule} from "../../core/core.module";
+import {AccountPage} from "./pages/account/account.page";
 
 @NgModule({
   declarations: [
@@ -13,11 +15,13 @@ import { UserPostsPage } from './pages/posts/user-posts.page';
     ProfilePage,
     SideBarComponent,
     UserPostsPage,
+    AccountPage
   ],
-  imports: [
-    SettingsRoutingModule,
-    CommonModule,
-    SharedModule
-  ]
+    imports: [
+        SettingsRoutingModule,
+        CommonModule,
+        SharedModule,
+        CoreModule
+    ]
 })
 export class SettingsModule { }

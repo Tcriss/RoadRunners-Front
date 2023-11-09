@@ -9,7 +9,7 @@
         </button>
       </div>
       <input class="images-input" (change)="previewImage($event)" id="images-input" type="file" accept="image/png, image/jpg, image/jpeg" multiple>
-      <label class="images-label" for="images-input" #label>
+      <label class="images-label" for="images-input" *ngIf="previewImages.length < 7" #label>
         <div class="logo"><i class="fi fi-rr-inbox-out logo"></i></div>
         <p>Clickea aquí para subir las imagenes</p>
       </label>

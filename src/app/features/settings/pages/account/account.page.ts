@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
-  templateUrl: './Account.page.html',
-  styleUrls: ['./Account.page.scss']
+  templateUrl: './account.page.html',
+  styleUrls: ['./account.page.scss']
 })
-export class AccountPage {
-
-}
+export class AccountPage {}

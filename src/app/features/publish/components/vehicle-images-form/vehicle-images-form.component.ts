@@ -1,5 +1,6 @@
 import {Component, ElementRef, Renderer2, ViewChild, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective} from '@angular/forms';
+import {AlertsService} from "../../../../core/services/alerts/alerts.service";
 
 @Component({
   selector: 'app-vehicle-images-form',
@@ -12,7 +13,11 @@ export class VehicleImagesFormComponent implements OnInit{
   @Input() formGroupName!: string;
   previewImages: unknown[] = [];
   form!: FormGroup;
-  constructor(private rootForm: FormGroupDirective ) {
+
+  constructor(
+    private rootForm: FormGroupDirective,
+    private alerts: AlertsService,
+  ) {
   }
 
   ngOnInit() {
@@ -20,15 +25,24 @@ export class VehicleImagesFormComponent implements OnInit{
   }
 
   previewImage(event: any) {
-    for (let i = 0; i < event.target.files.length; i++) {
-      const file: File = event.target.files[i];
-      this.form.patchValue([...event.target.files]);
+    if (event.target.files.lenght <= 7) {
+      for (let i = 0; i < event.target.files.length; i++) {
+        const file: File = event.target.files[i];
+        this.form.patchValue([...event.target.files]);
         const reader = new FileReader();
         reader.onload = (e: any) => {
           const imageDataUrl = e.target.result;
           this.previewImages.push(imageDataUrl);
         };
         reader.readAsDataURL(file);
+      }
+    } else {
+      this.alerts.alertMe(
+        'Limite de imagenes',
+        'Solo es posible subir un máximo de 7 imagenes.',
+        {
+          button: 'Aceptar'
+        });
     }
   }
 
