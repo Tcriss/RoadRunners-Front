@@ -1,11 +1,13 @@
 <div class="details">
     <div class="image-gallery">
-        <img (click)="show()" class="image{{i}}" *ngFor="let image of vehicle.images; index as i"
-            src="data:{{image.contentType}};base64,{{toBase64(image.data.data)}}">
+        <img (click)="show()" class="image{{i}}" *ngFor="let image of vehicle.images; index as i" src="data:{{image.contentType}};base64,{{toBase64(image.data.data)}}">
     </div>
     <div class="detail">
         <div class="resume">
-            <h3 class="tui-text_h3">{{vehicle.year}} {{vehicle.brand}}</h3>
+            <a class="tui-text_h3" (click)="goBack()">
+              <i class="fi fi-rr-arrow-small-left icon"></i>
+              {{vehicle.year}} {{vehicle.brand}}
+            </a>
             <p class="tui-text_h3">{{vehicle.model}}</p>
             <p class="tui-text_xl"><tui-money currency="USD" [value]="vehicle.price"></tui-money></p>
         </div>
@@ -18,33 +20,3 @@
         <button class="button">Contactar para comprar</button>
     </div>
 </div>
-
-<ng-template #preview let-preview>
-    <tui-preview [rotatable]="true" (tuiSwipe)="onSwipe($event)">
-        <tui-preview-title>Preview de fotos</tui-preview-title>
-        <tui-preview-pagination [length]="length"></tui-preview-pagination>
-        <button icon="tuiIconClose" title="Close" tuiIconButton tuiPreviewAction type="button" (click)="preview.complete()"></button>
-        <img *polymorpheusOutlet="previewContent as src" alt="preview" [src]="src" />
-    </tui-preview>
-</ng-template>
-
-<ng-template #contentSample>
-    <div class="content">
-        <h1>Important document</h1>
- 
-        <p>Hello everyone! This is some important document in A4 format, although it is made using html</p>
- 
-        <p>
-            This shows that the component preview can work with absolutely any content: this way you can show any
-            template, image, pdf or even iframe with your favorite site. We will put this content in the center of the
-            portal and provide the user with control over it, and we will provide you with convenient levers to change
-            it and process actions.
-        </p>
- 
-        <img
-            alt="logo"
-            src="https://github.com/taiga-family/ng-polymorpheus/raw/master/projects/demo/assets/logo.svg"
-            class="polymorpheus"
-        />
-    </div>
-</ng-template>

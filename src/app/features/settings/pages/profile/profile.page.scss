@@ -1,18 +1,22 @@
+@mixin responsive($number) {
+  @media(max-width: $number) {
+    @content
+  }
+}
+
 .profile {
     width: 100%;
-    display: flex;
+    display: grid;
     gap: 30px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
 
     .profile-header {
         display: flex;
+        flex-wrap: wrap;
         gap: 20px;
-        
+
         .profile-picture {
             border-radius: 15px;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
         }
 
         .profile {
@@ -25,7 +29,7 @@
                 font-weight: 800;
                 margin: 0;
             }
-    
+
             .profile-email {
                 font-size: 18px;
                 color: rgb(103, 103, 103);
@@ -40,8 +44,12 @@
         gap: 20px;
         grid-template-columns: repeat(2, 1fr);
 
+        @include responsive(550px) {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
         .profile-field {
-            
+
             .field-name {
                 font-weight: 600;
                 text-transform: uppercase;

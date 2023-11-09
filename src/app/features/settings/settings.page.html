@@ -1,6 +1,9 @@
 <div class="settings">
-    <app-side-bar class="side-bar"></app-side-bar>
+    <app-side-bar class="side-bar" #sideBar [@expansion]="!expanded? 'close' : 'open'"></app-side-bar>
     <div class="content">
+        <button (click)="expanded = !expanded" type="button" class="open-sidebar-button">
+          <i class="fi fi-rr-angle-right"></i>
+        </button>
         <router-outlet></router-outlet>
     </div>
 </div>

@@ -1,11 +1,10 @@
 import { Component, Inject, ViewChild, TemplateRef } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
 import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
 import { TuiAppearance, TuiDialogContext, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { TuiPreviewDialogService } from '@taiga-ui/addon-preview';
-import { tuiClamp,TuiSwipe } from '@taiga-ui/cdk';
-import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -41,6 +40,7 @@ export class VehicleDetailsPage {
   constructor(
     private route: ActivatedRoute,
     private data: VehicleDataService,
+    private location: Location,
     @Inject(TuiPreviewDialogService) private readonly previewService: TuiPreviewDialogService
   ) {
     const params = this.route.snapshot.paramMap;
@@ -67,19 +67,7 @@ export class VehicleDetailsPage {
     });
   }
 
-  get previewContent(): PolymorpheusContent {
-    return this.index === 0 && this.contentSample
-	            ? this.contentSample
-	            : 'https://avatars.githubusercontent.com/u/10106368';
-  }
-
-  onSwipe(swipe: any): void {
-    if (swipe.direction === 'left') {
-        this.index = tuiClamp(this.index + 1, 0, this.length - 1);
-    }
-
-    if (swipe.direction === 'right') {
-        this.index = tuiClamp(this.index - 1, 0, this.length - 1);
-    }
+  goBack(): void {
+    this.location.back();
   }
 }
