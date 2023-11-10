@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from '@auth0/auth0-angular';
 import { SharedModule } from './shared/shared.module';
-import { environment } from "../environments/environment.development";
+import { environment } from "../environments/environment";
 
 @NgModule({
   declarations: [
