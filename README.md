@@ -8,9 +8,16 @@ I made this project in collaboration with my partner [HaroldMart backend reposit
 
 ## Screenshots preview
 
-![Preview del Home Screen](src/assets/previews/RR-preview.png)
-![Preview del Home Screen](src/assets/previews/RR-preview1.png)
-![Preview Detalles del Vehiculo](src/assets/previews/RR-preview3.png)
+### Home Screen
+![Preview del Home Screen](src/assets/previews/preview.png)
+### Vehicles Screen
+![Preview del Vehiculos](src/assets/previews/preview3.png)
+### Vehicle Details Screen
+![Preview Detalles del Vehiculo](src/assets/previews/preview2.png)
+### Publishing a vehicle Screen
+![Preview al agregar Vehiculo](src/assets/previews/preview7.png)
+![Preview al agregar Vehiculo](src/assets/previews/preview8.png)
+![Preview al agregar Vehiculo](src/assets/previews/preview9.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
