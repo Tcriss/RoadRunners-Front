@@ -25,7 +25,7 @@ export class VehicleImagesFormComponent implements OnInit{
   }
 
   previewImage(event: any) {
-    if (event.target.files.lenght <= 7) {
+    if (event.target.files.length < 8) {
       for (let i = 0; i < event.target.files.length; i++) {
         const file: File = event.target.files[i];
         this.form.patchValue([...event.target.files]);
