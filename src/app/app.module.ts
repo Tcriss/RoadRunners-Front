@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from '@auth0/auth0-angular';
 import { SharedModule } from './shared/shared.module';
+import { environment } from "../environments/environment.development";
 
 @NgModule({
   declarations: [
@@ -22,18 +23,12 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    AuthModule.forRoot({
-      domain: 'dev-3f45fsqiwdpfl2ds.us.auth0.com',
-      clientId: 'aphDtO4yTGzIEsmp9Wa37msp7cC2X5tX',
-      authorizationParams: {
-        redirect_uri: window.location.origin
-      }
-    })
+    AuthModule.forRoot(environment.config)
   ],
   providers: [
-    { 
-      provide: HTTP_INTERCEPTORS, 
-      useClass: LoaderInterceptor, 
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
       multi: true
     }
   ],
