@@ -1,26 +1,18 @@
-import { Component, Inject, ViewChild, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
 import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
-import { TuiAppearance, TuiDialogContext, tuiButtonOptionsProvider } from '@taiga-ui/core';
-import { TuiPreviewDialogService } from '@taiga-ui/addon-preview';
+import { SpinnerService } from 'src/app/core/services/spinner/spinner.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-vehicle-details',
   templateUrl: './vehicle-details.page.html',
   styleUrls: ['./vehicle-details.page.scss'],
-  providers: [
-    tuiButtonOptionsProvider({
-      shape: 'rounded',
-      appearance: TuiAppearance.Primary,
-      size: 'l',
-    })]
 })
 export class VehicleDetailsPage {
 
-  @ViewChild('preview') readonly preview?: TemplateRef<TuiDialogContext>;
-  @ViewChild('contentSample') readonly contentSample?: TemplateRef<Record<string, unknown>>;
   length: number = 0;
   index: number = 0;
   vehicle: Vehicle = {
@@ -36,12 +28,13 @@ export class VehicleDetailsPage {
     price: 0,
     images: []
   };
+  isLoading$: Subject<boolean> = this.loading.getStatus();
 
   constructor(
     private route: ActivatedRoute,
     private data: VehicleDataService,
     private location: Location,
-    @Inject(TuiPreviewDialogService) private readonly previewService: TuiPreviewDialogService
+    private loading: SpinnerService
   ) {
     const params = this.route.snapshot.paramMap;
     const id: string = String(params.get('id'));
@@ -61,13 +54,7 @@ export class VehicleDetailsPage {
     return window.btoa(binary);
   }
 
-  show(): void {
-    this.previewService.open(this.preview || 'No hay preview').subscribe({
-        complete: () => console.info('complete'),
-    });
-  }
-
-  goBack(): void {
+  getBack(): void {
     this.location.back();
   }
 }

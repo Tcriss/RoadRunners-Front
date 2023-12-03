@@ -13,7 +13,8 @@ import { BrandsComponent } from './components/brands/brands.component';
 import { ProcessComponent } from './components/process/process.component';
 import { TypesComponent } from './components/types/types.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CoreModule } from 'src/app/core/core.module';
+import { LoadingScreenComponent } from 'src/app/core/components/loading-screen/loading-screen.component';
+import { ComingSoonComponent } from 'src/app/core/components/coming-soon/coming-soon.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +32,9 @@ import { CoreModule } from 'src/app/core/core.module';
   imports: [
     CommonModule,
     ExploreRoutingModule,
-    CoreModule,
-    SharedModule
+    SharedModule,
+    LoadingScreenComponent,
+    ComingSoonComponent
   ]
 })
 export class ExploreModule { }

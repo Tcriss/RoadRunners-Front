@@ -7,7 +7,7 @@
 .content {
     padding: 60px 200px;
 
-    @include responsive(1000px){
+    @include responsive(1100px){
         padding: 60px 20px;
     }
 
@@ -15,5 +15,14 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 20px;
+    }
+
+    .empty {
+        height: 100vh;
+
+        p {
+            text-align: center;
+            font-size: 30px;
+        }
     }
 }

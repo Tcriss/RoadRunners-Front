@@ -1,19 +1,13 @@
 import { Component, EventEmitter, OnInit, Output, Input, AfterViewInit } from '@angular/core';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
 import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
-import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { SpinnerService } from 'src/app/core/services/spinner/spinner.service';
+import { AlertsService } from 'src/app/core/services/alerts/alerts.service';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],
-  providers: [
-    tuiButtonOptionsProvider({
-        shape: 'rounded',
-        appearance: TuiAppearance.Secondary,
-        size: 'm',
-    })]
 })
 export class ArticlesComponent implements OnInit, AfterViewInit {
 
@@ -25,18 +19,19 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   constructor(
     private data: VehicleDataService,
-    private loader: SpinnerService
+    private loader: SpinnerService,
+    private alerts: AlertsService
   ) {}
 
   ngOnInit(): void { }
 
   ngAfterViewInit(): void {
     this.data.showVehicles().subscribe({
-      next: res => {
+      next: (res) => {
         this.articles = res.slice(this.articlesCount);
         this.sendToParent.emit(this.articles.length);
       },
-      error: err => console.log(err)
+      error: (err) => this.alerts.notify('Error al traer articulos',err.message,'error'),
     });
   }
 
@@ -52,10 +47,8 @@ export class ArticlesComponent implements OnInit, AfterViewInit {
 
   getByBrand(brand: string) {
     this.data.getVehiclesByBrand(brand).subscribe({
-      next: res => {
-        this.articlesByBrand = res
-      },
-      error: err => console.log(err)
+      next: res => this.articlesByBrand = res,
+      error: err => this.alerts.notify('Error al traer articulos',err.message,'error'),
     })
   }
 }

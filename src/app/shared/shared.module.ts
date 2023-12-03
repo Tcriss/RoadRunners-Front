@@ -1,42 +1,28 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TuiAlertModule, TuiDialogModule, TuiButtonModule, TuiThemeNightModule, TuiModeModule, TuiLoaderModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule, TuiSvgModule, TuiHostedDropdownModule } from '@taiga-ui/core';
-import { TuiTabsModule, TuiPaginationModule, TuiIslandModule, TuiPushModule, TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule, TuiTagModule, TuiInputFilesModule, TuiInputPhoneModule, TuiFilterByInputPipeModule } from '@taiga-ui/kit';
+import { TuiModeModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule, TuiSvgModule, TuiHostedDropdownModule, TuiAlertModule, TuiDialogModule } from '@taiga-ui/core';
+import { TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule, TuiInputPhoneModule, TuiFilterByInputPipeModule } from '@taiga-ui/kit';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 import { CommonModule } from '@angular/common';
-import { TuiPreviewModule } from '@taiga-ui/addon-preview';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    TuiLoaderModule,
-  ],
+  imports: [],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     TuiAlertModule,
     TuiDialogModule,
-    TuiTabsModule,
-    TuiPaginationModule,
-    TuiButtonModule,
-    TuiThemeNightModule, 
     TuiModeModule,
-    TuiPushModule,
     TuiInputModule,
     TuiComboBoxModule,
     TuiDataListWrapperModule,
     TuiDropdownModule,
     TuiInputYearModule,
     TuiDataListModule,
-    TuiLoaderModule,
     TuiTextfieldControllerModule,
     TuiMoneyModule,
-    TuiIslandModule,
-    TuiTagModule,
     TuiSvgModule,
-    TuiPreviewModule,
     TuiDropdownModule,
     TuiAvatarModule,
     TuiHostedDropdownModule,

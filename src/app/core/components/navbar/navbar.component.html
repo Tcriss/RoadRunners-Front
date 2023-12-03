@@ -1,80 +1,67 @@
 <nav class="navbar" #navBar>
-    <div #logo class="logo">
-      <img class="logo-brand" src="./assets/images/RR-logo-brand-dark.png" width="200px">
-      <img class="logo-img" src="./assets/images/RR-logo-dark.png">
+  <div #logo class="logo">
+    <img class="logo-brand" src="./assets/images/RR-logo-brand-dark.png" width="200px">
+    <img class="logo-img" src="./assets/images/RR-logo-dark.png">
+  </div>
+  <div class="items">
+    <ng-container *ngTemplateOutlet="links"></ng-container>
+  </div>
+  @if (auth.isAuthenticated$ && user$ | async; as user) {
+  <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open">
+    <div class="profile-section" tuiHostedDropdownHost>
+      <p class="text">{{user.name}}</p>
+      <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
     </div>
-    <div class="items">
-      <ng-content select=".link-item"></ng-content>
-    </div>
-    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-      <tui-hosted-dropdown
-          class="dropdown"
-	        tuiDropdownAlign="right"
-	        tuiDropdownHover
-	        [content]="content"
-	        [(open)]="open"
-	    >
-      <div *ngIf="user$ | async as user" tuiHostedDropdownHost class="profile-section">
-        <p class="text">{{user.name}}</p>
-        <tui-avatar
-          text="{{user.name}}"
-          size="s"
-          avatarUrl="{{user.picture}}"
-        ></tui-avatar>
-      </div>
-	        <ng-template #content>
-	            <tui-data-list class="data-list" (click)="onClick()">
-                <ng-content select=".option"></ng-content>
-                <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption><tui-svg src="tuiIconLogOut"></tui-svg>  Cerrar Sesión</button>
-	            </tui-data-list>
-	        </ng-template>
-	    </tui-hosted-dropdown>
-    </ng-container>
-    <ng-template #loggedOut>
-      <button class="log-in-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
-    </ng-template>
-    <div class="items-mobile">
-      <button type="button" class="nav-button" (click)="expanded = !expanded">
-        <i class="fi fi-rr-bars-sort icon"></i>
-      </button>
-      <div class="side-nav-menu" [@expansion]="!expanded? 'close' : 'open'">
-        <div class="nav-header">
-          <div class="empty-box"></div>
-          <h1>Menú</h1>
-          <button class="close-side-nav" (click)="expanded = !expanded">
-            <i class="fi fi-br-cross"></i>
+    <ng-template #options_list>
+      <tui-data-list class="data-list" (click)="onClick()">
+        <tui-opt-group>
+            <ng-container *ngTemplateOutlet="optionLinks"></ng-container>
+        </tui-opt-group>
+        <tui-opt-group>
+          <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption>
+            <tui-svg src="tuiIconLogOut"></tui-svg> 
+            Cerrar Sesión
           </button>
-        </div>
-        <div class="nav-items">
-          <ng-content select=".nav-item"></ng-content>
-        </div>
-        <div class="credits">
-          <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOutUser">
-            <tui-hosted-dropdown
-              tuiDropdownAlign="center"
-              [content]="mobile"
-              [(open)]="mobileOpen"
-            >
-              <div *ngIf="user$ | async as user" tuiHostedDropdownHost class="profile-section">
-                <p class="text">{{user.name}}</p>
-                <tui-avatar
-                  text="{{user.name}}"
-                  size="s"
-                  avatarUrl="{{user.picture}}"
-                ></tui-avatar>
-              </div>
-              <ng-template #mobile>
-                <tui-data-list class="mobile-data-list" (click)="onClick()">
-                  <ng-content select=".mobile-option"></ng-content>
-                  <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption><tui-svg src="tuiIconLogOut"></tui-svg>  Cerrar Sesión</button>
-                </tui-data-list>
-              </ng-template>
-            </tui-hosted-dropdown>
-          </ng-container>
-          <ng-template #loggedOutUser>
-            <button class="log-in-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+        </tui-opt-group>
+      </tui-data-list>
+    </ng-template>
+  </tui-hosted-dropdown>
+  } @else {
+  <button class="log-in-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+  }
+  <div class="items-mobile">
+    <button type="button" class="nav-button" (click)="expanded = !expanded">
+      <i class="fi fi-rr-bars-sort icon"></i>
+    </button>
+    <div class="side-nav-menu" [@expansion]="!expanded? 'close' : 'open'">
+      <div class="nav-header">
+        <h1>Menú</h1>
+        <button class="close-side-nav" (click)="expanded = !expanded">
+          <i class="fi fi-br-cross"></i>
+        </button>
+      </div>
+      <div class="nav-items">
+        <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+      </div>
+      <div class="credits">
+        @if (auth.isAuthenticated$ | async) {
+        <tui-hosted-dropdown tuiDropdownAlign="center" [content]="mobile" [(open)]="mobileOpen">
+          <div *ngIf="user$ | async as user" tuiHostedDropdownHost class="profile-section">
+            <p class="text">{{user.name}}</p>
+            <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+          </div>
+          <ng-template #mobile>
+            <tui-data-list class="mobile-data-list" (click)="onClick()">
+              <ng-container *ngTemplateOutlet="optionLinks"></ng-container>
+              <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption><tui-svg
+                  src="tuiIconLogOut"></tui-svg> Cerrar Sesión</button>
+            </tui-data-list>
           </ng-template>
-        </div>
+        </tui-hosted-dropdown>
+        } @else {
+        <button class="log-in-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+        }
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
