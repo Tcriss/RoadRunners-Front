@@ -61,11 +61,13 @@ export class SellCarPage {
           { button: 'Aceptar' });
         this.sellVehicleForm.reset();
       },
-      error: (err) => this.alerts.alertMe(
+      error: (err) => {
+        this.alerts.alertMe(
         'Error al agregar vehículo', err.message,
         {
           button: 'Aceptar'
-        }),
+        });
+      }
     });
   }
 

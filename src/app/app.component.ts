@@ -28,10 +28,10 @@ export class AppComponent {
       icon: 'fi fi-rr-megaphone',
       name: 'Publicar',
       path: '/publish'
-    }
+    },
+    
   ];
-
-  options: Link[] = [
+  optionLinks: Link[] = [
     { 
       icon: 'fi fi-rr-user',
       name: 'Pérfil', 
@@ -47,5 +47,5 @@ export class AppComponent {
       name: 'Cuenta', 
       path: '/settings/account' 
     },
-  ]
+  ];
 }

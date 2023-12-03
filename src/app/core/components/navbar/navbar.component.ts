@@ -1,11 +1,16 @@
-import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild, TemplateRef, ContentChild, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { TuiDropdownHostModule } from '@taiga-ui/cdk';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 @Component({
+  standalone: true,
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
+  imports: [SharedModule],
   animations: [
     trigger('expansion', [
       state('close', style({
@@ -26,6 +31,11 @@ export class NavbarComponent {
 
   @ViewChild('navBar') navBar!: ElementRef;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
+  @ContentChild('links') links!: TemplateRef<unknown>;
+  @ContentChild('linksSideNavBar') navLinks!: TemplateRef<unknown>;
+  @ContentChild('optionLink') optionLinks!: TemplateRef<unknown>;
+  // @ContentChild('mobile_options') mobile_options!: TemplateRef<unknown>;
+
   expanded: boolean = false;
   open: boolean = false;
   mobileOpen: boolean = false;
@@ -35,7 +45,7 @@ export class NavbarComponent {
   constructor (
     public auth: AuthService,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) public document: Document
+    @Inject(DOCUMENT) public document: Document,
   ) {}
 
 	onClick(): void {
@@ -50,5 +60,4 @@ export class NavbarComponent {
       this.renderer.removeClass(this.navBar.nativeElement, 'scrolled');
     }
   }
-
 }
