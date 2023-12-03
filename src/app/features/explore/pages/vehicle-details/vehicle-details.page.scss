@@ -12,7 +12,7 @@ $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   gap: 20px;
   padding: 60px 200px;
 
-  @include responsive(1000px) {
+  @include responsive(1100px) {
     padding: 60px 20px;
   }
 

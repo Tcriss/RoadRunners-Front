@@ -14,7 +14,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   animations: [
     trigger('expansion', [
       state('close', style({
-        transform: 'translateX(300px)',
+        transform: 'translateX(-300px)',
         opacity: 0.8,
       })),
       state('open', style({

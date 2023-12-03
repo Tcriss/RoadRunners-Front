@@ -17,7 +17,7 @@ export class SideBarComponent {
     },
     {
       icon: 'fi fi-rr-car',
-      name: 'Mis publicados',
+      name: 'Publicaciones',
       path: '/settings/my-posts'
     },
     {

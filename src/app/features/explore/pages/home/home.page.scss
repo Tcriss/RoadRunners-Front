@@ -5,7 +5,7 @@
 };
 
 @mixin tabletView {
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1100px) {
         @content
     }
 };

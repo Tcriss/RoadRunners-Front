@@ -7,7 +7,6 @@ import { HomePage } from './pages/home/home.page';
 import { VehiclesPage } from './pages/vehicles/vehicles.page';
 import { VehicleDetailsPage } from './pages/vehicle-details/vehicle-details.page';
 import { SearchPage } from './pages/search-page/search.page';
-import { ContactPage } from './pages/contact/contact.page';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { BrandsComponent } from './components/brands/brands.component';
 import { ProcessComponent } from './components/process/process.component';
@@ -23,7 +22,6 @@ import { ComingSoonComponent } from 'src/app/core/components/coming-soon/coming-
     VehiclesPage,
     VehicleDetailsPage,
     SearchPage,
-    ContactPage,
     ArticlesComponent,
     BrandsComponent,
     ProcessComponent,

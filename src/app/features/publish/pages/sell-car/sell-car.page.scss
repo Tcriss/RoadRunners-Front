@@ -1,8 +1,8 @@
-@mixin responsive($number) {
-    @media(max-width: $number) {
-        @content
-    }
-}
+// @mixin responsive($number) {
+//     @media(max-width: $number) {
+//         @content
+//     }
+// }
 
 .sell-car {
     display: flex;

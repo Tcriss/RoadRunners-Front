@@ -1,41 +1,41 @@
 <nav class="navbar" #navBar>
+  <div class="box"></div>
   <div #logo class="logo">
     <img class="logo-brand" src="./assets/images/RR-logo-brand-dark.png" width="200px">
-    <img class="logo-img" src="./assets/images/RR-logo-dark.png">
   </div>
   <div class="items">
     <ng-container *ngTemplateOutlet="links"></ng-container>
   </div>
   @if (auth.isAuthenticated$ && user$ | async; as user) {
-  <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open">
-    <div class="profile-section" tuiHostedDropdownHost>
-      <p class="text">{{user.name}}</p>
-      <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
-    </div>
-    <ng-template #options_list>
-      <tui-data-list class="data-list" (click)="onClick()">
-        <tui-opt-group>
-            <ng-container *ngTemplateOutlet="optionLinks"></ng-container>
-        </tui-opt-group>
-        <tui-opt-group>
-          <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption>
-            <tui-svg src="tuiIconLogOut"></tui-svg> 
-            Cerrar Sesión
-          </button>
-        </tui-opt-group>
-      </tui-data-list>
-    </ng-template>
-  </tui-hosted-dropdown>
+    <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open">
+      <div class="profile-section" tuiHostedDropdownHost>
+        <p class="text">{{user.name}}</p>
+        <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+      </div>
+      <ng-template #options_list>
+        <tui-data-list class="data-list" (click)="onClick()">
+          <tui-opt-group>
+              <ng-container *ngTemplateOutlet="optionLinks"></ng-container>
+          </tui-opt-group>
+          <tui-opt-group>
+            <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption>
+              <tui-svg src="tuiIconLogOut"></tui-svg> 
+              Cerrar Sesión
+            </button>
+          </tui-opt-group>
+        </tui-data-list>
+      </ng-template>
+    </tui-hosted-dropdown>
   } @else {
-  <button class="log-in-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+    <button class="log-in-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
   }
   <div class="items-mobile">
     <button type="button" class="nav-button" (click)="expanded = !expanded">
-      <i class="fi fi-rr-bars-sort icon"></i>
+      <i class="fi fi-br-apps icon"></i>
     </button>
     <div class="side-nav-menu" [@expansion]="!expanded? 'close' : 'open'">
       <div class="nav-header">
-        <h1>Menú</h1>
+        <img src="./assets/images/RR-logo-dark.png" width="50px">
         <button class="close-side-nav" (click)="expanded = !expanded">
           <i class="fi fi-br-cross"></i>
         </button>
