@@ -1,18 +1,8 @@
-@mixin mobileView {
-    @media screen and (max-width: 850px) {
+@mixin responsive($number) {
+    @media screen and (max-width: $number) {
         @content
     }
 }
-
-;
-
-@mixin tabletView {
-    @media screen and (max-width: 1100px) {
-        @content
-    }
-}
-
-;
 
 $base: #5e6e7b;
 $active: #414c55;
@@ -24,7 +14,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    z-index: 2;
+    z-index: 4;
     background-color: transparent;
     position: fixed;
     top: 0;
@@ -33,11 +23,13 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
     height: 60px;
     transition: all 400ms;
 
-    @include tabletView {
+    @include responsive(1100px) {
         padding: 0 20px;
     }
 
-    @include mobileView {
+    @include responsive(850px) {
+        flex-direction: row-reverse;
+
         .dropdown {
             display: none;
         }
@@ -47,23 +39,21 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         }
     }
 
+    .box {
+        display: none;
+
+        @include responsive(850px) {
+            display: block;
+            width: 40px;
+        }
+    }
+
     .logo {
         display: flex;
         align-items: center;
 
         .logo-brand {
-            @include mobileView {
-                display: none;
-            }
-        }
-
-        .logo-img {
-            width: 50px;
-            display: none;
-
-            @include mobileView {
-                display: block;
-            }
+            align-self: center;
         }
     }
 
@@ -104,7 +94,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         transition: all 400ms;
         font-family: 'Poppins', sans-serif;
 
-        @include mobileView {
+        @include responsive(850px) {
             display: none;
         }
 
@@ -131,7 +121,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             transition: all 400ms;
             text-decoration: none;
 
-            @include mobileView {
+            @include responsive(850px) {
                 display: none;
             }
 
@@ -151,7 +141,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
     .items-mobile {
         display: none;
 
-        @include mobileView {
+        @include responsive(850px) {
             display: block;
         }
 
@@ -175,7 +165,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             padding: 10px;
             position: fixed;
             top: 0;
-            right: 0;
+            left: 0;
             width: 260px;
             height: 100vh;
             background-color: rgba(255, 255, 255, 0.94);

@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Inject, Renderer2, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from "@angular/animations";
 
 @Component({
-  selector: 'app-settings',
-  templateUrl: './settings.page.html',
-  styleUrls: ['./settings.page.scss'],
+    selector: 'app-settings',
+    templateUrl: './settings.page.html',
+    styleUrls: ['./settings.page.scss'],
     animations: [
         trigger('expansion', [
             state('close', style({
-                transform: 'translateX(-120px)',
-                opacity: 0.8,
+                transform: 'translateX(-300px)',
+                opacity: 0.5,
             })),
             state('open', style({
                 transform: 'translateX(0)',
@@ -23,7 +23,7 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
 })
 export class SettingsComponent {
 
-  expanded: boolean = false;
+    expanded: boolean = false;
 
-  constructor() {}
+    constructor(private renderer: Renderer2) { }
 }

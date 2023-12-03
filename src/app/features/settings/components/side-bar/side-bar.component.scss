@@ -9,24 +9,12 @@
 .title {
   text-align: center;
 
-  @include responsive(725px) {
+  @include responsive(800px) {
     display: none;
   }
 }
 
-.hide-button {
-  display: none;
-  border: none;
-  padding: 15px;
-  border-radius: 15px;
-
-  @include responsive(725px) {
-    display: block;
-  }
-}
-
 .link {
-  box-sizing: border-box;
   width: 100%;
   border-radius: 15px;
   padding: 20px;
@@ -36,6 +24,11 @@
   text-decoration: none;
   align-items: center;
   font-size: 16px;
+
+  @include responsive(800px) {
+    flex-direction: column;
+    padding: 5px;
+  }
 
   &:hover {
     background-color: #28586b;
@@ -60,9 +53,11 @@
 
   p {
     margin: 0;
+    text-decoration: none;
 
-    @include responsive(725px) {
-      display: none;
+    @include responsive(800px) {
+      text-align: center;
+      font-size: 14px;
     }
   }
 }

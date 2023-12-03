@@ -4,7 +4,6 @@ import { HomePage } from './pages/home/home.page';
 import { VehiclesPage } from './pages/vehicles/vehicles.page';
 import { VehicleDetailsPage } from './pages/vehicle-details/vehicle-details.page';
 import { SearchPage } from './pages/search-page/search.page';
-import { ContactPage } from './pages/contact/contact.page';
 import { ExploreComponent } from './explore.component';
 
 const routes: Routes = [
@@ -31,11 +30,6 @@ const routes: Routes = [
         title: 'Busqueda',
         path: 'search',
         component: SearchPage
-      },
-      {
-        title: 'Contacto',
-        path: 'contact',
-        component: ContactPage
       },
       {
         path: '**',
