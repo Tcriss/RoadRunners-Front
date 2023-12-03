@@ -1,13 +1,23 @@
-<div class="article" *ngFor="let article of articles">
-  <div class="image">
-    <img src="data:{{article.images[0].contentType}};base64,{{toBase64(article.images[0].data.data)}}" alt="">
-  </div>
-  <div class="description">
-    <p class="tui-text_body-xl year-tag"><strong>{{article.year}}</strong></p>
-    <h2 class="tui-island__title">{{article.brand}} {{article.model}}</h2>
-    <p class="price"><tui-money currency="USD" [value]="article.price"></tui-money></p>
-    <div>
-      <a class="buy-button" [routerLink]="['/explore/vehicle/', article._id]">Ver vehiculo</a>
+@defer (when isLoading | async) {
+  @for(article of articles; track article._id){
+    <div class="article">
+      <div class="image">
+        @if (article.images.length >= 1) {
+          <img src="data:{{article.images[0].contentType}};base64,{{toBase64(article.images[0].data.data)}}" alt="">
+        } @else {
+          <img src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
+        }
+      </div>
+      <div class="description">
+        <p class="tui-text_body-xl year-tag"><strong>{{article.year}}</strong></p>
+        <h2 class="tui-island__title">{{article.brand}} {{article.model}}</h2>
+        <p class="price"><tui-money currency="USD" [value]="article.price"></tui-money></p>
+        <div>
+          <a class="buy-button" [routerLink]="['/explore/vehicle/', article._id]">Ver vehiculo</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  }
+} @placeholder {
+  <app-loading-screen [componentHeight]="'100vh'" ></app-loading-screen>
+}

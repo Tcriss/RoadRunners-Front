@@ -1,13 +1,21 @@
-import { Component } from '@angular/core';
-import { SpinnerService } from '../../services/spinner/spinner.service';
+import { Component, Input } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-loading-screen',
-  templateUrl: './loading-screen.component.html',
-  styleUrls: ['./loading-screen.component.scss']
+  template: `
+    <div class="overlay" [style]="{height: componentHeight}">
+      <img class="logo" src="./assets/images/RR-logo-dark.png" alt="">
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+  `,
+  styleUrls: ['./loading-screen.component.scss'],
 })
 export class LoadingScreenComponent {
-  isLoading$ = this.loader.getStatus();
 
-  constructor(private loader: SpinnerService) {}
+  @Input() componentHeight: string = '';
+
+  constructor() {
+    console.log(this.componentHeight);
+  }
 }

@@ -19,7 +19,7 @@ I made this project in collaboration with my partner [HaroldMart backend reposit
 ![Preview al agregar Vehiculo](src/assets/previews/preview8.png)
 ![Preview al agregar Vehiculo](src/assets/previews/preview9.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4 and was updated to Angular 17.0.3.
 
 ## Development server
 
