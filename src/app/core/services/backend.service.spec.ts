@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VehicleDataService } from './vehicle-data.service';
+import { VehicleDataService } from './backend.service';
 
 describe('ApiService', () => {
   let service: VehicleDataService;

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
-import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
-import { SpinnerService } from 'src/app/core/services/spinner/spinner.service';
+import { BackendService } from 'src/app/core/services/backend.service';
+import { SpinnerService } from 'src/app/core/services/spinner.service';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -32,7 +32,7 @@ export class VehicleDetailsPage {
 
   constructor(
     private route: ActivatedRoute,
-    private data: VehicleDataService,
+    private data: BackendService,
     private location: Location,
     private loading: SpinnerService
   ) {

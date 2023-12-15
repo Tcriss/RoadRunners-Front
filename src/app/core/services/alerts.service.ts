@@ -1,5 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
+import { TUI_PROMPT, TuiPromptData } from '@taiga-ui/kit';
+import { switchMap } from 'rxjs/operators';
 import swal from 'sweetalert2';
 
 @Injectable({
@@ -29,11 +31,23 @@ export class AlertsService {
     });
   }
 
-  alertMe(title: string, description: string, buttons: {}): void {
+  alertMe(title: string, description: string, button: string) {
     this.dialog.open(description, {
       label: title,
       size: 's',
-      data: buttons,
+      data: { button: button },
     }).subscribe();
+  }
+
+  askMe(title: string, description: string, confirmed: string, denied: string) {
+    return this.dialog.open<boolean>(TUI_PROMPT, {
+      label: title,
+      size: 's',
+      data: {
+        content: description,
+        yes: confirmed,
+        no: denied,
+      },
+    })
   }
 }

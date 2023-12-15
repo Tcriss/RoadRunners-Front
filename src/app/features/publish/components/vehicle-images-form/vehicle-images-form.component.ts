@@ -1,6 +1,6 @@
 import {Component, ElementRef, Renderer2, ViewChild, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective} from '@angular/forms';
-import {AlertsService} from "../../../../core/services/alerts/alerts.service";
+import {AlertsService} from "../../../../core/services/alerts.service";
 
 @Component({
   selector: 'app-vehicle-images-form',
@@ -37,12 +37,7 @@ export class VehicleImagesFormComponent implements OnInit{
         reader.readAsDataURL(file);
       }
     } else {
-      this.alerts.alertMe(
-        'Limite de imagenes',
-        'Solo es posible subir un máximo de 7 imagenes.',
-        {
-          button: 'Aceptar'
-        });
+      this.alerts.alertMe('Limite de imagenes','Solo es posible subir un máximo de 7 imagenes.','Aceptar');
     }
   }
 

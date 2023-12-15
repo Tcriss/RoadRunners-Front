@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SettingsComponent } from './settings.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfilePage } from './pages/profile/profile.page';
@@ -19,7 +18,6 @@ import { ComingSoonComponent } from 'src/app/core/components/coming-soon/coming-
   ],
   imports: [
     SettingsRoutingModule,
-    CommonModule,
     SharedModule,
     ComingSoonComponent
   ]

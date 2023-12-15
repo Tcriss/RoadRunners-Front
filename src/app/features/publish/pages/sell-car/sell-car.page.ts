@@ -1,8 +1,8 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { maxFilesLength } from '../../validators/max-file.validator';
-import { VehicleDataService } from 'src/app/core/services/vehicle-data/vehicle-data.service';
-import { AlertsService } from 'src/app/core/services/alerts/alerts.service';
+import { BackendService } from 'src/app/core/services/backend.service';
+import { AlertsService } from 'src/app/core/services/alerts.service';
 
 @Component({
   selector: 'app-sell-car',
@@ -16,9 +16,8 @@ export class SellCarPage {
 
   constructor(
     private fb: FormBuilder,
-    private vehicleService: VehicleDataService,
-    private alerts: AlertsService,
-    private renderer: Renderer2
+    private backendService: BackendService,
+    private alerts: AlertsService
   ) {
     this.sellVehicleForm = this.fb.group({
       info: this.fb.group({
@@ -53,22 +52,36 @@ export class SellCarPage {
     for (let i = 0; i < this.sellVehicleForm.value.images.length; i++) {
       formData.append('images', this.sellVehicleForm.value.images[i]);
     }
-    this.vehicleService.postVehicle(formData).subscribe({
-      next: (res) => {
-        this.alerts.alertMe(
-          'Vehículo agregado exitosamente',
-          `${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`,
-          { button: 'Aceptar' });
-        this.sellVehicleForm.reset();
-      },
-      error: (err) => {
-        this.alerts.alertMe(
-        'Error al agregar vehículo', err.message,
-        {
-          button: 'Aceptar'
+    this.alerts.askMe(
+      'Publicar',
+      `¿Deseas publicar a ${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model}?`,
+      'Publicar','Cancelar'
+    ).subscribe(res => {
+      if (res == true) {
+        this.backendService.postVehicle(formData).subscribe({
+          next: (res) => {
+            this.alerts.notify('Vehículo agregado exitosamente',`${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`,'success');
+            this.sellVehicleForm.reset();
+          },
+          error: (err) => {
+            switch(err.status) {
+              case 401:
+                this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.','error');
+                break;
+              case 404:
+                this.alerts.notify('Error al agregar vehículo', 'Error al guardar vehículo.','error');
+                break;
+              case 500:
+                this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.','error');
+                break;
+              default:
+                this.alerts.notify('Error al agregar vehículo', err.message,'error');
+                break;
+            }
+          }
         });
       }
-    });
+    })
   }
 
 }

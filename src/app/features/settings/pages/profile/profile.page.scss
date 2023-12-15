@@ -10,6 +10,11 @@
     display: grid;
     gap: 30px;
 
+    form {
+        display: grid;
+        gap: 30px;
+    }
+
     .profile-header {
         display: flex;
         flex-wrap: wrap;
@@ -20,7 +25,7 @@
             box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
         }
 
-        .profile {
+        .profile-data {
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
@@ -54,6 +59,90 @@
             .field-name {
                 font-weight: 600;
                 text-transform: uppercase;
+            }
+
+            input {
+                border: 1px solid rgb(182, 182, 182);
+                border-radius: 10px;
+                padding: 10px;
+                transition: all 400ms;
+
+                &:hover {
+                    border: 1px solid #32627a;
+                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                }
+    
+                &:active {
+                    border: 1px solid #0d1a20;
+                }
+
+                &:focus {
+                    border: 1px solid #0d1a20;
+                }
+            }
+        }
+    }
+
+    .profile-actions {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+
+        button {
+            border-radius: 15px;
+            border: none;
+            font-size: 16px;
+            font-family: Poppins;
+            height: 50px;
+            cursor: pointer;
+            transition: all 400ms;
+        }
+
+        .edit-button {
+            padding: 0 50px;
+            background-color: #234454;
+            color: white;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+            &:hover {
+                background-color: #32627a;
+            }
+
+            &:active {
+                background-color: #0d1a20;
+            }
+        }
+
+        .getBack-button {
+            padding: 0 20px;
+            background-color: transparent;
+            color: black;
+
+            &:hover {
+                background-color: #32627a;
+                color: white;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            }
+
+            &:active {
+                background-color: #0d1a20;
+                color: white;
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            }
+        }
+
+        .save-button {
+            padding: 0 30px;
+            background-color: #234454;
+            color: white;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+            &:hover {
+                background-color: #32627a;
+            }
+
+            &:active {
+                background-color: #0d1a20;
             }
         }
     }
