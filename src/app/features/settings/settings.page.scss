@@ -7,8 +7,8 @@
 .settings {
     width: 100%;
     display: flex;
-    box-sizing: border-box;
     padding: 60px 200px;
+    gap: 20px;
 
     @include responsive(1100px) {
         padding: 60px 20px;
@@ -35,127 +35,17 @@
         @include responsive(800px) {
             display: none;
         }
-
-        .content {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-    }
-
-    .mobile-side-bar {
-        box-sizing: border-box;
-        width: 130px;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 2;
-        background-color: rgba(255, 255, 255, 0.94);
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 6px rgb(208, 208, 208);
-        backdrop-filter: blur(20px);
-        padding: 10px;
-        transition: all 400ms;
-        padding-top: 80px;
-
-        @include responsive(800px) {
-            display: flex;
-        }
-
-        .close-button {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: none;
-            border-radius: 10px;
-            background: transparent;
-            transition: all 400ms;
-            padding: 0;
-
-            &:hover {
-                background-color: rgb(222, 42, 42);
-                color: white;
-            }
-
-            &:active {
-                background-color: rgb(148, 26, 26);
-                color: white;
-            }
-
-            .icon {
-                display: flex;
-                font-size: 20px;
-                align-items: center;
-            }
-        }
-
-        .content {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
     }
 
     .content {
+        width: calc(100% - 140px);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
         gap: 20px;
         flex-grow: 1;
-        height: 100vh;
-
-        .header {
-            width: 100%;
-            display: none;
-            gap: 20px;
-            align-items: center;
-
-            @include responsive(800px) {
-                display: flex;
-            }
-
-            h1 {
-                margin: 0;
-            }
-
-            .open-sidebar-button {
-                width: 40px;
-                height: 40px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border: none;
-                border-radius: 10px;
-                align-self: start;
-                background: transparent;
-                transition: all 400ms;
-                padding: 0;
-
-                &:hover {
-                    background-color: rgb(40, 76, 142);
-                    color: white;
-                }
-
-                &:active {
-                    background-color: rgb(23, 44, 83);
-                    color: white;
-                }
-
-                .icon {
-                    display: flex;
-                    font-size: 24px;
-                    align-items: center;
-                }
-            }
-        }
+        min-height: 100vh;
+        height: auto;
     }
 }

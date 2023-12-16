@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { maxFilesLength } from '../../validators/max-file.validator';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { AlertsService } from 'src/app/core/services/alerts.service';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-sell-car',
@@ -11,11 +12,13 @@ import { AlertsService } from 'src/app/core/services/alerts.service';
 })
 export class SellCarPage {
 
+  user$ = this.auth.user$
   sellVehicleForm: FormGroup;
   previewImages: unknown[] = [];
 
   constructor(
     private fb: FormBuilder,
+    private auth: AuthService,
     private backendService: BackendService,
     private alerts: AlertsService
   ) {
@@ -37,9 +40,11 @@ export class SellCarPage {
     });
   }
 
-  publishVehicle() {
+  publishVehicle(uid: any) {
     const formData = new FormData();
 
+    formData.append('portrait', this.sellVehicleForm.value.images[0]);
+    formData.append('owner', uid);
     formData.append('owner_email', this.sellVehicleForm.value.contact.ownerEmail);
     formData.append('location', this.sellVehicleForm.value.contact.location);
     formData.append('brand', this.sellVehicleForm.value.info.brand);

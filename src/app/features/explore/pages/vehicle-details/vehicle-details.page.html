@@ -26,5 +26,25 @@
         </div>
     </div>
 } @placeholder {
-    <app-loading-screen [componentHeight]="'100vh'"></app-loading-screen>
+    <div class="skeleton">
+        <div class="image-gallery">
+            @for (image of [].constructor(7); track image; let i = $index) {
+                <div class="image{{i}}"></div>
+            }
+        </div>
+        <div class="detail">
+            <div class="resume">
+                <div class="get-back"></div>
+                <div class="model"></div>
+                <p></p>
+            </div>
+            <div class="information">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <button class="button"></button>
+        </div>
+    </div>
 }

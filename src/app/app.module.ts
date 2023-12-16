@@ -41,6 +41,7 @@ import { TuiPromptModule } from '@taiga-ui/kit';
           },
           {
             uri: `${env.url}update/*`,
+            httpMethod: 'post',
             tokenOptions: {
               authorizationParams: {
                 audience: env.config.audience,
@@ -49,6 +50,7 @@ import { TuiPromptModule } from '@taiga-ui/kit';
           },
           {
             uri: `${env.url}delete/*`,
+            httpMethod: 'delete',
             tokenOptions: {
               authorizationParams: {
                 audience: env.config.audience,

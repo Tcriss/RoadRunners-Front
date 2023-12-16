@@ -13,10 +13,10 @@ import { Subject } from 'rxjs';
 })
 export class VehicleDetailsPage {
 
-  length: number = 0;
   index: number = 0;
   vehicle: Vehicle = {
     _id: '',
+    owner: '',
     owner_email: '',
     location: '',
     brand: '',
@@ -38,10 +38,7 @@ export class VehicleDetailsPage {
   ) {
     const params = this.route.snapshot.paramMap;
     const id: string = String(params.get('id'));
-    this.data.getVehicle(id).subscribe(data => {
-      this.vehicle = data;
-      this.length = this.vehicle.images.length;
-    });
+    this.data.getVehicle(id).subscribe(data => this.vehicle = data);
   }
 
   toBase64(buffer: any) {

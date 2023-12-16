@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { AlertsService } from 'src/app/core/services/alerts.service';
-import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +19,7 @@ export class ProfilePage implements OnInit {
     private auth: AuthService,
     private fb: FormBuilder,
     private backend: BackendService,
-    private alerts: AlertsService
+    private alerts: AlertsService,
   ) {
     this.profileForm = this.fb.group({
       name: [''],

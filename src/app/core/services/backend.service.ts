@@ -29,6 +29,10 @@ export class BackendService {
     return this.http.post<unknown>(this.url+'insert', form);
   }
 
+  deleteVehicle(id: string): Observable<unknown> {
+    return this.http.delete<unknown>(`${this.url}delete/${id}`);
+  }
+
   updateUser(uid: string | undefined, user: unknown): Observable<unknown> {
     return this.http.patch<unknown>(`${this.url}user/${uid}`,user)
   }

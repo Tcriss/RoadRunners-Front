@@ -2,6 +2,8 @@ import { Image } from "./image";
 
 export interface Vehicle{
   _id: string,
+  portrait?: Image,
+  owner: string,
   owner_email: string,
   location: string,
   brand: string,
@@ -11,5 +13,5 @@ export interface Vehicle{
   fuel: string,
   year: string,
   price: number,
-  images: Image[]
+  images?: Image[]
 }
