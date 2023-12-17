@@ -1,0 +1,136 @@
+@mixin mobileView {
+    @media screen and (max-width: 450px) {
+        @content
+    }
+};
+
+@mixin tabletView {
+    @media screen and (max-width: 1100px) {
+        @content
+    }
+};
+
+$box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
+
+.home{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .hero{
+        box-sizing: border-box;
+        height: 100vh;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.57%, #FFF 100%), linear-gradient(180deg, rgba(145, 178, 243, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%), url(../../../../../assets/images/hero-bg.png), lightgray 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding: 130px 0px;
+
+        @include mobileView {
+            padding: 60px 10px;
+            justify-content: center;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.712);
+
+            .title {
+                font-size: 50px;
+                line-height: 3.7rem;
+                margin: 0;
+                font-weight: 200;
+
+                @include mobileView {
+                    font-size: 30px;
+                    line-height: 4.0rem;
+                }
+            }
+
+            .description {
+                font-size: 130px;
+                text-transform: uppercase;
+                font-weight: bold;
+                line-height: 120px;
+                margin: 20px;
+
+                @include mobileView {
+                    font-size: 40px;
+                    line-height: 2.7rem;
+                }
+            }
+        }
+        
+        .image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 0px;
+
+            img {
+                width: 90%;
+            }
+        }
+    }
+
+    .content{
+        margin: 0px 200px 30px 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: white;
+
+        @include tabletView {
+            margin: 0px 20px;
+        }
+
+        .title_section{
+            color: #6b6e80;
+            width: 100%;
+        }
+
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .show-more-button {
+            background-color: #234454;
+            color: white;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            font-family: Poppins;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            width: 290px;
+            cursor: pointer;
+            transition: all 400ms;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            align-self: center;
+
+            &:hover {
+                background-color: #32627a;
+            }
+
+            &:active {
+                background-color: #0d1a20;
+            }
+        }
+    }
+}

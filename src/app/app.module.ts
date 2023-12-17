@@ -32,38 +32,36 @@ import { TuiPromptModule } from '@taiga-ui/kit';
       httpInterceptor: {
         allowedList: [
           {
-            uri: `${env.url}insert`,
+            uri: env.url + "insert",
             tokenOptions: {
               authorizationParams: {
                 audience: env.config.audience,
-              },
-            },
+              }
+            }
           },
           {
-            uri: `${env.url}update/*`,
-            httpMethod: 'post',
+            uri: env.url + "update/*",
             tokenOptions: {
               authorizationParams: {
                 audience: env.config.audience,
-              },
-            },
+              }
+            }
           },
           {
-            uri: `${env.url}delete/*`,
-            httpMethod: 'delete',
+            uri: env.url + "delete/*",
             tokenOptions: {
               authorizationParams: {
                 audience: env.config.audience,
-              },
-            },
+              }
+            }
           },
           {
-            uri: `${env.url}user/*`,
+            uri: env.url + "user/*",
             tokenOptions: {
               authorizationParams: {
                 audience: env.config.audience,
-              },
-            },
+              }
+            }
           },
         ]
       }

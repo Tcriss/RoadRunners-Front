@@ -8,7 +8,7 @@
           <i class="fi fi-rr-trash"></i>
         </button>
       </div>
-      <input class="images-input" (change)="previewImage($event)" id="images-input" type="file" accept="image/png, image/jpg, image/jpeg" multiple>
+      <input class="images-input" (change)="previewImage($event)" id="images-input" type="file" accept="image/png, image/jpg, image/jpeg, image/webp" multiple>
       <label class="images-label" for="images-input" *ngIf="previewImages.length < 7" #label>
         <div class="logo"><i class="fi fi-rr-inbox-out logo"></i></div>
         <p>Clickea aquí para subir las imagenes</p>

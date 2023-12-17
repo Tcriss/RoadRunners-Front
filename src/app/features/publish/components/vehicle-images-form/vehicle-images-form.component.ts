@@ -1,13 +1,13 @@
-import {Component, ElementRef, Renderer2, ViewChild, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, FormGroupDirective} from '@angular/forms';
-import {AlertsService} from "../../../../core/services/alerts.service";
+import { Component, ElementRef, ViewChild, Input, OnInit } from '@angular/core';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { AlertsService } from "../../../../core/services/alerts.service";
 
 @Component({
   selector: 'app-vehicle-images-form',
   templateUrl: './vehicle-images-form.component.html',
   styleUrls: ['./vehicle-images-form.component.scss']
 })
-export class VehicleImagesFormComponent implements OnInit{
+export class VehicleImagesFormComponent implements OnInit {
 
   @ViewChild('label') label!: ElementRef<any>;
   @Input() formGroupName!: string;
@@ -21,7 +21,7 @@ export class VehicleImagesFormComponent implements OnInit{
   }
 
   ngOnInit() {
-      this.form = this.rootForm.control.get(this.formGroupName) as FormGroup;
+    this.form = this.rootForm.control.get(this.formGroupName) as FormGroup;
   }
 
   previewImage(event: any) {
@@ -37,7 +37,7 @@ export class VehicleImagesFormComponent implements OnInit{
         reader.readAsDataURL(file);
       }
     } else {
-      this.alerts.alertMe('Limite de imagenes','Solo es posible subir un máximo de 7 imagenes.','Aceptar');
+      this.alerts.alertMe('Limite de imagenes', 'Solo es posible subir un máximo de 7 imagenes.', 'Aceptar');
     }
   }
 

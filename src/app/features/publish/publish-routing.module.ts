@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SellCarPage } from './pages/sell-car/sell-car.page';
+import { SellCarView } from './views/sell-car/sell-car.view';
 
 const routes: Routes = [
   {
     title: 'Publicar vehiculo',
     path: '**',
-    component: SellCarPage,
+    component: SellCarView,
   }
 ];
 

@@ -3,3 +3,8 @@
     <i class="{{link.icon}}"></i>
   <p>{{link.name}}</p>
 </a>
+
+<a class="toolbar-link" *ngFor="let link of links" [routerLink]="[link.path]" routerLinkActive="toolbar-link-active">
+  <i class="{{link.icon}}"></i>
+<p>{{link.name}}</p>
+</a>

@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePage } from './pages/home/home.page';
-import { VehiclesPage } from './pages/vehicles/vehicles.page';
-import { VehicleDetailsPage } from './pages/vehicle-details/vehicle-details.page';
-import { SearchPage } from './pages/search-page/search.page';
 import { ExploreComponent } from './explore.component';
+import { HomeView } from './views/home/home.view';
+import { VehiclesView } from './views/vehicles/vehicles.view';
+import { VehicleDetailsView } from './views/vehicle-details/details.view';
 
 const routes: Routes = [
   {
@@ -14,22 +13,17 @@ const routes: Routes = [
       {
         title: 'Inicio',
         path: 'home',
-        component: HomePage
+        component: HomeView
       },
       {
         title: 'Vehículos',
         path: 'vehicles',
-        component: VehiclesPage
+        component: VehiclesView
       },
       {
         title: 'Detalles del vehículo',
         path: 'vehicle/:id',
-        component: VehicleDetailsPage
-      },
-      {
-        title: 'Busqueda',
-        path: 'search',
-        component: SearchPage
+        component: VehicleDetailsView
       },
       {
         path: '**',

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfilePage } from './pages/profile/profile.page';
-import { AccountPage } from './pages/account/account.page';
 import { SettingsComponent } from './settings.component';
-import { UserPostsPage } from './pages/posts/user-posts.page';
+import { ProfileView } from './views/profile/profile.view';
+import { AccountView } from './views/account/account.view';
+import { UserPostsView } from './views/posts/posts.view';
 
 const routes: Routes = [
   {
@@ -13,17 +13,17 @@ const routes: Routes = [
       {
         title: 'Perfil',
         path: 'profile',
-        component: ProfilePage
+        component: ProfileView
       },
       {
         title: 'Cuenta',
         path: 'account',
-        component: AccountPage
+        component: AccountView
       },
       {
         title: 'Publicaciones',
         path: 'my-posts',
-        component: UserPostsPage
+        component: UserPostsView
       },
       {
         path: '**',
