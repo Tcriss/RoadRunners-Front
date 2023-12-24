@@ -7,12 +7,12 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { BrandsComponent } from './components/brands/brands.component';
 import { ProcessComponent } from './components/process/process.component';
 import { TypesComponent } from './components/types/types.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { LoadingScreenComponent } from 'src/app/core/components/loading-screen/loading-screen.component';
-import { ComingSoonComponent } from 'src/app/core/components/coming-soon/coming-soon.component';
 import { HomeView } from './views/home/home.view';
 import { VehiclesView } from './views/vehicles/vehicles.view';
 import { VehicleDetailsView } from './views/vehicle-details/details.view';
+import { SharedModule } from '../../shared/shared.module';
+import { LoadingScreenComponent } from '../../core/components/loading-screen/loading-screen.component';
+import { ComingSoonComponent } from '../../core/components/coming-soon/coming-soon.component';
 
 @NgModule({
   declarations: [

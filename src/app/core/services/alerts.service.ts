@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
-import { TUI_PROMPT, TuiPromptData } from '@taiga-ui/kit';
+import { TUI_PROMPT } from '@taiga-ui/kit';
 
 @Injectable({
   providedIn: 'root'

@@ -2,10 +2,10 @@ import { Component, OnInit, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Vehicle } from 'src/app/core/interfaces/vehicle';
-import { AlertsService } from 'src/app/core/services/alerts.service';
-import { BackendService } from 'src/app/core/services/backend.service';
-import { SpinnerService } from 'src/app/core/services/spinner.service';
+import { BackendService } from '../../../../core/services/backend.service';
+import { AlertsService } from '../../../../core/services/alerts.service';
+import { SpinnerService } from '../../../../core/services/spinner.service';
+import { Vehicle } from '../../../../core/interfaces/vehicle';
 
 @Component({
   templateUrl: './posts.view.html',

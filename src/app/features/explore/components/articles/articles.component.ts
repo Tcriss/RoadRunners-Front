@@ -1,10 +1,10 @@
 import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, inject, DestroyRef } from '@angular/core';
-import { Vehicle } from 'src/app/core/interfaces/vehicle';
-import { BackendService } from 'src/app/core/services/backend.service';
-import { SpinnerService } from 'src/app/core/services/spinner.service';
-import { AlertsService } from 'src/app/core/services/alerts.service';
 import { Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BackendService } from '../../../../core/services/backend.service';
+import { SpinnerService } from '../../../../core/services/spinner.service';
+import { AlertsService } from '../../../../core/services/alerts.service';
+import { Vehicle } from '../../../../core/interfaces/vehicle';
 
 @Component({
   selector: 'app-articles',

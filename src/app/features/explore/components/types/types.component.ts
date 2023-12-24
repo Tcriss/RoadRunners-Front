@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Brand } from 'src/app/core/interfaces/brand';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
+import { Brand } from '../../../../core/interfaces/brand';
 
 @Component({
   selector: 'app-types',
@@ -15,6 +15,7 @@ import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 ],
 })
 export class TypesComponent {
+  
   types: Brand[] = [
     { 
       name: 'Sedán', 

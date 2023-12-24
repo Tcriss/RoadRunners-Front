@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Link } from 'src/app/core/interfaces/link';
+import { Link } from '../../../../core/interfaces/link';
+
 
 @Component({
   selector: 'app-side-bar',

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { AlertsService } from "../../../../core/services/alerts.service";
 
