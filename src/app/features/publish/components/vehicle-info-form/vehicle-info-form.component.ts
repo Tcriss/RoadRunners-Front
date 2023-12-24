@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { Brand } from 'src/app/core/interfaces/brand';
-import { brands } from 'src/app/core/utils/brands.list';
-import { types } from 'src/app/core/utils/types.list';
-import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+import { brands } from '../../../../core/utils/brands.list';
+import { types } from '../../../../core/utils/types.list';
 
 @Component({
   selector: 'app-vehicle-info-form',

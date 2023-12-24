@@ -1,11 +1,11 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Vehicle } from 'src/app/core/interfaces/vehicle';
-import { BackendService } from 'src/app/core/services/backend.service';
-import { SpinnerService } from 'src/app/core/services/spinner.service';
 import { Subject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Vehicle } from '../../../../core/interfaces/vehicle';
+import { BackendService } from '../../../../core/services/backend.service';
+import { SpinnerService } from '../../../../core/services/spinner.service';
 
 @Component({
   selector: 'app-vehicle-details',

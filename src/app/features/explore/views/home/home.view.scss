@@ -34,7 +34,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             justify-content: center;
         }
 
-        .text {
+        .header {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -57,7 +57,7 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             .description {
                 font-size: 130px;
                 text-transform: uppercase;
-                font-weight: bold;
+                font-weight: 800;
                 line-height: 120px;
                 margin: 20px;
 
