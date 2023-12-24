@@ -1,15 +1,9 @@
-@mixin responsive($number) {
-    @media(max-width: $number) {
-        @content
-    }
-}
-
-.sell-car {
+.edit-car {
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    .sell {
+    .edition {
         width: 100%;
 
         .slider {

@@ -9,11 +9,14 @@ import { TuiCarouselModule, TuiInputNumberModule } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { VehicleImagesFormComponent } from './components/vehicle-images-form/vehicle-images-form.component';
 import { SellCarView } from './views/sell-car/sell-car.view';
+import { EditCarView } from './views/edit-car/edit-car.view';
+import { LoadingScreenComponent } from 'src/app/core/components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
     PublishComponent,
     SellCarView,
+    EditCarView,
     VehicleInfoFormComponent,
     ContactInfoFormComponent,
     VehicleImagesFormComponent,
@@ -24,7 +27,8 @@ import { SellCarView } from './views/sell-car/sell-car.view';
     SharedModule,
     TuiCarouselModule,
     TuiInputNumberModule,
-    TuiCurrencyPipeModule
+    TuiCurrencyPipeModule,
+    LoadingScreenComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

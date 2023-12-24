@@ -1,8 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { TuiAlertService, TuiDialogService } from '@taiga-ui/core';
 import { TUI_PROMPT, TuiPromptData } from '@taiga-ui/kit';
-import { switchMap } from 'rxjs/operators';
-import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +13,10 @@ export class AlertsService {
   ) { }
 
   notify(title: string, description: string, icon: any) {
-    swal.fire({
-      toast: true,
-      icon: icon,
-      title: title,
-      text: description,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.addEventListener('mouseenter', swal.stopTimer)
-        toast.addEventListener('mouseleave', swal.resumeTimer)
-      }
-    });
+    this.alert.open(description, {
+      label: title,
+      status: icon,
+    }).subscribe();
   }
 
   alertMe(title: string, description: string, button: string) {

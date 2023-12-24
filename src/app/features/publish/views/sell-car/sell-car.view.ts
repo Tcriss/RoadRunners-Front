@@ -72,7 +72,6 @@ export class SellCarView implements OnInit {
       `¿Deseas publicar a ${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model}?`,
       'Publicar','Cancelar'
     ).subscribe(res => {
-      console.log(formData);
       if (res == true) {
         this.backendService.postVehicle(formData).subscribe({
           next: (res) => {

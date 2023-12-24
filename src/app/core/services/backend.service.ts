@@ -14,26 +14,30 @@ export class BackendService {
   constructor(private http: HttpClient) {}
 
   showVehicles(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(this.url );
+    return this.http.get<Vehicle[]>(this.url);
   }
 
   getVehicle(id: string): Observable<Vehicle> {
-    return this.http.get<Vehicle>(this.url+id);
+    return this.http.get<Vehicle>(this.url + id);
   }
 
   getVehiclesByBrand(brand: string): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(this.url+'brand/'+brand);
+    return this.http.get<Vehicle[]>(this.url + 'brand/' + brand);
   }
 
-  postVehicle(form: unknown): Observable<unknown> {
-    return this.http.post<unknown>(this.url+'insert', form);
+  postVehicle(vehicle: unknown): Observable<unknown> {
+    return this.http.post<unknown>(this.url + 'insert', vehicle);
+  }
+
+  patchVehicle(id: string, vehicle: unknown): Observable<unknown> {
+    return this.http.patch<unknown>(this.url + 'update' + id, vehicle);
   }
 
   deleteVehicle(id: string): Observable<unknown> {
-    return this.http.delete<unknown>(`${this.url}delete/${id}`);
+    return this.http.delete<unknown>(this.url + 'delete/' + id);
   }
 
   updateUser(uid: string | undefined, user: unknown): Observable<unknown> {
-    return this.http.patch<unknown>(`${this.url}user/${uid}`,user)
+    return this.http.patch<unknown>(this.url + 'user/' + uid, user)
   }
 }

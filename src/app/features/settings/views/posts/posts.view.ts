@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
 import { AlertsService } from 'src/app/core/services/alerts.service';
@@ -16,17 +18,21 @@ export class UserPostsView implements OnInit {
   uid: any = '';
   isLoading$ = this.loader.loading;
   item: number = 3;
+  private destroyRef = inject(DestroyRef);
 
   constructor(
     private auth: AuthService,
     private backend: BackendService,
     private alerts: AlertsService,
-    private loader: SpinnerService
+    private loader: SpinnerService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.user$.subscribe(user => this.uid = user?.sub);
-    this.backend.showVehicles().subscribe({
+    this.backend.showVehicles()
+    .pipe(takeUntilDestroyed(this.destroyRef))
+    .subscribe({
       next: (vehicles) => this.myVehicles = vehicles.filter(vehicle => vehicle.owner == this.uid),
       error: (err) => {
         switch (err.status) {
@@ -49,6 +55,10 @@ export class UserPostsView implements OnInit {
       binary += String.fromCharCode(bytes[i]);
     }
     return window.btoa(binary);
+  }
+
+  edit(id: string) {
+    this.router.navigate([`/publish/edit/${id}`]);
   }
 
   delete(id: string) {
@@ -79,9 +89,5 @@ export class UserPostsView implements OnInit {
         })
       }
     });
-  }
-
-  edit(id: string) {
-    this.alerts.alertMe('Función aún no disponible', 'Esta función se encuentra en desarrollo', 'Aceptar');
   }
 }

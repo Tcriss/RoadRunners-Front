@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { SpinnerService } from 'src/app/core/services/spinner.service';
 import { Subject } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -29,6 +30,9 @@ export class VehicleDetailsView {
     images: []
   };
   isLoading$: Subject<boolean> = this.loading.getStatus();
+  private params = this.route.snapshot.paramMap;
+  private id: string = String(this.params.get('id'));
+  private distroyRef = inject(DestroyRef);
 
   constructor(
     private route: ActivatedRoute,
@@ -36,9 +40,9 @@ export class VehicleDetailsView {
     private location: Location,
     private loading: SpinnerService
   ) {
-    const params = this.route.snapshot.paramMap;
-    const id: string = String(params.get('id'));
-    this.data.getVehicle(id).subscribe(data => this.vehicle = data);
+    this.data.getVehicle(this.id)
+    .pipe(takeUntilDestroyed(this.distroyRef))
+    .subscribe(data => this.vehicle = data);
   }
 
   toBase64(buffer: any) {

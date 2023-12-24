@@ -9,19 +9,20 @@ import { AlertsService } from "../../../../core/services/alerts.service";
 })
 export class VehicleImagesFormComponent implements OnInit {
 
-  @ViewChild('label') label!: ElementRef<any>;
   @Input() formGroupName!: string;
+  @Input({alias: 'images'}) images!: [];
   previewImages: unknown[] = [];
   form!: FormGroup;
 
   constructor(
     private rootForm: FormGroupDirective,
     private alerts: AlertsService,
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.form = this.rootForm.control.get(this.formGroupName) as FormGroup;
+    this.previewImages = this.images;
+    console.log(this.previewImages)
   }
 
   previewImage(event: any) {
@@ -53,5 +54,6 @@ export class VehicleImagesFormComponent implements OnInit {
 
   deletePreview(index: number) {
     this.previewImages.splice(index, 1);
+    this.form.patchValue([...this.previewImages]);
   }
 }

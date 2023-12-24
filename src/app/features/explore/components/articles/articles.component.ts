@@ -1,16 +1,17 @@
-import { Component, EventEmitter, OnInit, Output, Input, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, inject, DestroyRef } from '@angular/core';
 import { Vehicle } from 'src/app/core/interfaces/vehicle';
 import { BackendService } from 'src/app/core/services/backend.service';
 import { SpinnerService } from 'src/app/core/services/spinner.service';
 import { AlertsService } from 'src/app/core/services/alerts.service';
 import { Subscription } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],
 })
-export class ArticlesComponent implements OnInit, OnDestroy {
+export class ArticlesComponent {
 
   @Input() articlesCount: number = 0;
   @Output() sendToParent = new EventEmitter<number>();
@@ -18,15 +19,16 @@ export class ArticlesComponent implements OnInit, OnDestroy {
   articles: Vehicle[] = [];
   articlesByBrand: Vehicle[] = [];
   subcription!: Subscription;
+  private destroyRef = inject(DestroyRef);
 
   constructor(
     private data: BackendService,
     private loader: SpinnerService,
     private alerts: AlertsService
-  ) { }
-
-  ngOnInit(): void {
-    this.subcription = this.data.showVehicles().subscribe({
+  ) {
+    this.subcription = this.data.showVehicles()
+    .pipe(takeUntilDestroyed(this.destroyRef))
+    .subscribe({
       next: (res) => {
         this.articles = res.slice(this.articlesCount);
         this.sendToParent.emit(this.articles.length);
@@ -36,16 +38,15 @@ export class ArticlesComponent implements OnInit, OnDestroy {
           case 401:
             this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
             break;
+          case 500:
+            this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
+            break;
           default:
             this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
             break;
         }
       },
     });
-  }
-
-  ngOnDestroy(): void {
-    this.subcription.unsubscribe;
   }
 
   toBase64(buffer: any) {

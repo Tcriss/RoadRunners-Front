@@ -27,9 +27,8 @@ export class AppComponent {
     {
       icon: 'fi fi-rr-megaphone',
       name: 'Publicar',
-      path: '/publish'
+      path: '/publish/sell'
     },
-    
   ];
   optionLinks: Link[] = [
     { 
