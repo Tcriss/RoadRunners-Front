@@ -138,7 +138,6 @@ $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       color: white;
       font-weight: 800;
       font-size: 20px;
-      font-family: 'Poppins', sans-serif;
       box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 
       @include responsive(450px) {
@@ -256,7 +255,6 @@ $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       border: 1px solid rgb(201, 201, 201);
       font-weight: 800;
       font-size: 20px;
-      font-family: 'Poppins', sans-serif;
       background-color: hsl(200, 20%, 95%);
       animation: loading-animation 1s linear infinite alternate;
     }

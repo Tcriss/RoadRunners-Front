@@ -17,6 +17,10 @@
         </div>
       </div>
     </div>
+  } @empty {
+    <div class="empty">
+      <h1>Aún no hay articulos, ¿quieres ser el primero en agregar uno?</h1>
+    </div>
   }
 } @placeholder {
   @for(skeleton of [].constructor(8); track skeleton) {
@@ -34,3 +38,18 @@
     </div>
   }
 }
+
+<!-- @for(skeleton of [].constructor(8); track skeleton) {
+  <div class="skeleton">
+    <div class="image">
+    </div>
+    <div class="description">
+      <div class="Year"></div>
+      <div class="brand"></div>
+      <div class="price"></div>
+      <div>
+        <div class="buy-button"></div>
+      </div>
+    </div>
+  </div>
+} -->

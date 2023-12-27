@@ -13,6 +13,8 @@ import { VehicleDetailsView } from './views/vehicle-details/details.view';
 import { SharedModule } from '../../shared/shared.module';
 import { LoadingScreenComponent } from '../../core/components/loading-screen/loading-screen.component';
 import { ComingSoonComponent } from '../../core/components/coming-soon/coming-soon.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { TuiCheckboxModule, TuiInputRangeModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,18 @@ import { ComingSoonComponent } from '../../core/components/coming-soon/coming-so
     ArticlesComponent,
     BrandsComponent,
     ProcessComponent,
-    TypesComponent
+    TypesComponent,
+    FilterBarComponent
   ],
   imports: [
     CommonModule,
     ExploreRoutingModule,
     SharedModule,
     LoadingScreenComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    TuiCheckboxModule,
+    TuiRadioLabeledModule,
+    TuiInputRangeModule
   ]
 })
 export class ExploreModule { }

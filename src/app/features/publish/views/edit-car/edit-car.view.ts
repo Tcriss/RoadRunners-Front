@@ -48,11 +48,10 @@ export class EditCarView {
       }),
       images: [[], Validators.required],
     });
-    this.initialFormValue = this.editVehicleForm.value;
   }
 
   ngOnInit(): void {
-      this.backend.getVehicle(this.id)
+    this.backend.getVehicle(this.id)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (vehicle) => {
@@ -69,23 +68,22 @@ export class EditCarView {
               ownerEmail: vehicle.owner_email,
               location: vehicle.location,
               price: vehicle.price
-            },
-            images: vehicle.images
+            }
           });
         },
         error: (err) => {
-          switch(err.status) {
+          switch (err.status) {
             case 401:
-              this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.','error');
+              this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
               break;
             case 404:
-              this.alerts.notify('Error al editar vehículo', 'Error al guardar vehículo.','error');
+              this.alerts.notify('Error al editar vehículo', 'Error al guardar vehículo.', 'error');
               break;
             case 500:
-              this.alerts.notify('Ooops', 'Ha ocurrido un error intentalo mas tarde, intentalo más tarde.','error');
+              this.alerts.notify('Ooops', 'Ha ocurrido un error intentalo mas tarde, intentalo más tarde.', 'error');
               break;
             default:
-              this.alerts.notify('Error', err.message,'error');
+              this.alerts.notify('Error', err.message, 'error');
               break;
           }
         },
@@ -93,55 +91,50 @@ export class EditCarView {
   }
 
   updateVehicle(uid: any) {
-    const formData = new FormData();
-    const actualValue = this.editVehicleForm.value;
+    let formData = new FormData();
 
     // checks what fields were changed to upload those who were changed
-    if(this.initialFormValue.owner !== actualValue.owner) formData.append('owner', actualValue.owner);
-    if(this.initialFormValue.images[0] !== actualValue.images[0]) formData.append('portrait', actualValue.images[0]);
-    if(this.initialFormValue.ownerEmail !== actualValue.owner_email) formData.append('owner_email', actualValue.ownerEmail);
-    if(this.initialFormValue.location !== actualValue.location) formData.append('location', actualValue.location);
-    if(this.initialFormValue.brand !== actualValue.brand) formData.append('brand', actualValue.brand);
-    if(this.initialFormValue.type !== actualValue.type) formData.append('type', actualValue.type);
-    if(this.initialFormValue.model !== actualValue.model) formData.append('model', actualValue.model);
-    if(this.initialFormValue.condition !== actualValue.condition) formData.append('condition', actualValue.condition);
-    if(this.initialFormValue.fuel !== actualValue.fuel) formData.append('fuel', actualValue.fuel);
-    if(this.initialFormValue.year !== actualValue.year) formData.append('year', actualValue.year);
-    if(this.initialFormValue.price !== actualValue.price) formData.append('price', actualValue.price);
-    for (let i = 0; i < this.editVehicleForm.value.images.length; i++) {
-      if(this.initialFormValue.images[i] !== actualValue.images[i]) formData.append('images', this.editVehicleForm.value.images[i]);
-    }
+    formData.append('owner', uid);
+    formData.append('owner_email', this.editVehicleForm.value.contact.ownerEmail);
+    formData.append('location', this.editVehicleForm.value.contact.location);
+    formData.append('brand', this.editVehicleForm.value.info.brand);
+    formData.append('type', this.editVehicleForm.value.info.type);
+    formData.append('model', this.editVehicleForm.value.info.model);
+    formData.append('condition', this.editVehicleForm.value.info.condition);
+    formData.append('fuel', this.editVehicleForm.value.info.fuel);
+    formData.append('year', this.editVehicleForm.value.info.year);
+    formData.append('price', this.editVehicleForm.value.contact.price);
 
-    this.alerts.askMe('Guardar Cambios',`¿Deseas Guardar los cambios de este vehículo?`,'Publicar','Cancelar')
-    .pipe(takeUntilDestroyed(this.destroyRef))
-    .subscribe(res => {
-      if (res == true) {
-        this.backend.patchVehicle(this.id, formData)
-        .pipe(takeUntilDestroyed(this.destroyRef))
-        .subscribe({
-          next: (res) => {
-            this.alerts.notify('Vehículo editado exitosamente',`${this.editVehicleForm.value.info.brand} ${this.editVehicleForm.value.info.model} editado.`,'success');
-            this.router.navigate(['/settings/my-posts']);
-          },
-          error: (err) => {
-            switch(err.status) {
-              case 401:
-                this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.','error');
-                break;
-              case 404:
-                this.alerts.notify('Error al editar vehículo', 'Error al guardar vehículo.','error');
-                break;
-              case 500:
-                this.alerts.notify('Ooops', 'Ha ocurrido un error, intentalo mas tarde, intentalo más tarde.','error');
-                break;
-              default:
-                this.alerts.notify('Error al editar vehículo', err.message,'error');
-                break;
-            }
-          },
-        });
-      }
-    });
+    this.alerts.askMe('Guardar Cambios', `¿Deseas Guardar los cambios de este vehículo?`, 'Publicar', 'Cancelar')
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(res => {
+        if (res == true) {
+          this.backend.putVehicle(this.id, formData)
+            .pipe(takeUntilDestroyed(this.destroyRef))
+            .subscribe({
+              next: (res) => {
+                this.alerts.notify('Vehículo editado exitosamente', `${this.editVehicleForm.value.info.brand} ${this.editVehicleForm.value.info.model} editado.`, 'success');
+                this.router.navigate(['/settings/my-posts']);
+              },
+              error: (err) => {
+                switch (err.status) {
+                  case 401:
+                    this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
+                    break;
+                  case 404:
+                    this.alerts.notify('Error al editar vehículo', 'Error al guardar vehículo.', 'error');
+                    break;
+                  case 500:
+                    this.alerts.notify('Ooops', 'Ha ocurrido un error, intentalo mas tarde, intentalo más tarde.', 'error');
+                    break;
+                  default:
+                    this.alerts.notify('Error al editar vehículo', err.message, 'error');
+                    break;
+                }
+              },
+            });
+        }
+      });
   }
 
 }

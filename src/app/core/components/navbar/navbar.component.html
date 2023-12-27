@@ -7,7 +7,7 @@
     <ng-container *ngTemplateOutlet="links"></ng-container>
   </div>
   @if (auth.isAuthenticated$ && user$ | async; as user) {
-    <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open">
+    <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open" tuiDropdownHover>
       <div class="profile-section" tuiHostedDropdownHost>
         <p class="text">{{user.name}}</p>
         <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>

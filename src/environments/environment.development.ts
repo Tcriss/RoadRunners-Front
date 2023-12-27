@@ -9,4 +9,5 @@ export const environment = {
         redirect_uri: window.location.origin
       }
     }
+    
 };

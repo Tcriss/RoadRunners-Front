@@ -1,25 +1,22 @@
 @defer(when isLoading$ | async) {
-    <div class="edit-car">
-        <div class="edition">
-            @if (user$ | async; as user) {
-                <form (ngSubmit)="updateVehicle(user.sub)" [formGroup]="editVehicleForm">
-                    <tui-carousel class="slider" #carousel>
-                        <app-vehicle-info-form *tuiItem class="info" formGroupName="info" />
-                        <app-vehicle-images-form *tuiItem class="images" formGroupName="images" [images]="editVehicleForm.value.images" />
-                        <app-contact-info-form *tuiItem class="contact" formGroupName="contact" />
-                    </tui-carousel>
-                    <div class="actions">
-                        <button type="button" (click)="carousel.prev()" class="backward-button">Regresar</button>
-                        @if (!editVehicleForm.valid) {
-                            <button type="button" (click)="carousel.next()" class="forward-button">Siguiente</button>
-                        } @else {
-                            <button type="submit" class="forward-button submit-button">Publicar Vehículo</button>
-                        }
-                    </div>
-                </form>
-            }
-        </div>
+<div class="edit-car">
+    <div class="edition">
+        @if (user$ | async; as user) {
+        <form (ngSubmit)="updateVehicle(user.sub)" [formGroup]="editVehicleForm">
+            <tui-carousel class="slider" #carousel>
+                <app-vehicle-info-form *tuiItem class="info" formGroupName="info" />
+                <!-- <app-vehicle-images-form *tuiItem class="images" formGroupName="images"/> -->
+                <app-contact-info-form *tuiItem class="contact" formGroupName="contact" />
+            </tui-carousel>
+            <div class="actions">
+                <button type="button" (click)="carousel.prev()" class="backward-button">Regresar</button>
+                <button type="submit" class="forward-button submit-button">Editar Vehículo</button>
+                <button type="button" (click)="carousel.next()" class="forward-button">Siguiente</button>
+            </div>
+        </form>
+        }
     </div>
+</div>
 } @placeholder {
-    <app-loading-screen componentHeight="100vh" />
+<app-loading-screen componentHeight="100vh" />
 }

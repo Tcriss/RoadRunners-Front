@@ -1,7 +1,7 @@
 @defer (when isLoading$ | async) {
     <div class="details">
         <div class="image-gallery">
-            @for (image of vehicle.images; track image.data.data; let i = $index) {
+            @for (image of vehicle.images; track i; let i = $index) {
                 <img class="image{{i}}" src="data:{{image.contentType}};base64,{{toBase64(image.data.data)}}">
             } @empty {
                 <img class="image1" src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">

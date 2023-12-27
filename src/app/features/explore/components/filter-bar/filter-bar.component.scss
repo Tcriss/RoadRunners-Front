@@ -1,0 +1,19 @@
+@mixin responsive($number) {
+    @media(max-width: $number) {
+        @content
+    }
+}
+
+.title {
+    text-align: center;
+
+    @include responsive(800px) {
+        display: none;
+    }
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(80px,1fr));
+    gap: 5px;
+}

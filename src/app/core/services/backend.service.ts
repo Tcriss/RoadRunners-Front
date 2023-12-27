@@ -11,9 +11,7 @@ export class BackendService {
 
   private url: string = env.url;
 
-  constructor(private http: HttpClient) {
-    console.log(env.production);
-  }
+  constructor(private http: HttpClient) { }
 
   showVehicles(): Observable<Vehicle[]> {
     return this.http.get<Vehicle[]>(this.url);
@@ -31,8 +29,8 @@ export class BackendService {
     return this.http.post<unknown>(this.url + 'insert', vehicle);
   }
 
-  patchVehicle(id: string, vehicle: unknown): Observable<unknown> {
-    return this.http.patch<unknown>(this.url + 'update' + id, vehicle);
+  putVehicle(id: string, vehicle: unknown): Observable<unknown> {
+    return this.http.put<unknown>(this.url + 'update/' + id, vehicle);
   }
 
   deleteVehicle(id: string): Observable<unknown> {

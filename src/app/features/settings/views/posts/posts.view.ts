@@ -30,6 +30,20 @@ export class UserPostsView implements OnInit {
 
   ngOnInit(): void {
     this.user$.subscribe(user => this.uid = user?.sub);
+    this.getUserPosts();
+  }
+
+  toBase64(buffer: any) {
+    var binary = '';
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  }
+
+  getUserPosts() {
     this.backend.showVehicles()
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
@@ -47,16 +61,6 @@ export class UserPostsView implements OnInit {
     });
   }
 
-  toBase64(buffer: any) {
-    var binary = '';
-    var bytes = new Uint8Array(buffer);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
-
   edit(id: string) {
     this.router.navigate([`/publish/edit/${id}`]);
   }
@@ -65,7 +69,10 @@ export class UserPostsView implements OnInit {
     this.alerts.askMe('Eliminar vehiculo', '¿Seguro que deseas eliminar esta publicación?', 'Aceptar', 'Cancelar').subscribe(res => {
       if (res == true) {
         this.backend.deleteVehicle(id).subscribe({
-          next: (res) => this.alerts.notify('Vehículo eliminado', 'El vehículo fue eliminado satisfactoriamente.', 'success'),
+          next: (res) => {
+            this.alerts.notify('Vehículo eliminado', 'El vehículo fue eliminado satisfactoriamente.', 'success');
+            this.getUserPosts();
+          },
           error: (err) => {
             console.log(err);
             switch (err.status) {

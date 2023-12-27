@@ -10,7 +10,7 @@ import { AlertsService } from "../../../../core/services/alerts.service";
 export class VehicleImagesFormComponent implements OnInit {
 
   @Input() formGroupName!: string;
-  @Input({alias: 'images'}) images!: [];
+  @Input({ alias: 'images' }) images!: [];
   previewImages: unknown[] = [];
   form!: FormGroup;
 
@@ -21,22 +21,11 @@ export class VehicleImagesFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.rootForm.control.get(this.formGroupName) as FormGroup;
-    this.previewImages = this.images;
-    console.log(this.previewImages)
   }
 
   previewImage(event: any) {
     if (event.target.files.length < 8) {
-      for (let i = 0; i < event.target.files.length; i++) {
-        const file: File = event.target.files[i];
-        this.form.patchValue([...event.target.files]);
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-          const imageDataUrl = e.target.result;
-          this.previewImages.push(imageDataUrl);
-        };
-        reader.readAsDataURL(file);
-      }
+      this.form.patchValue([...event.target.files]);
     } else {
       this.alerts.alertMe('Limite de imagenes', 'Solo es posible subir un máximo de 7 imagenes.', 'Aceptar');
     }
@@ -51,6 +40,16 @@ export class VehicleImagesFormComponent implements OnInit {
   //   }
   //   return new Blob([int8Array], { type: 'image/jpeg' });
   // }
+
+  toBase64(buffer: any) {
+    var binary = '';
+    var bytes = new Uint8Array(buffer);
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  }
 
   deletePreview(index: number) {
     this.previewImages.splice(index, 1);

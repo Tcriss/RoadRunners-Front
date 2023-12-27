@@ -1,29 +1,21 @@
 import { Component, Renderer2 } from '@angular/core';
-import { animate, state, style, transition, trigger } from "@angular/animations";
 
 @Component({
     selector: 'app-settings',
-    templateUrl: './settings.page.html',
+    template: `
+    <div class="settings">
+        <app-side-bar class="side-bar" #sideBar></app-side-bar>
+        <div class="toolbar">
+            <app-side-bar></app-side-bar>
+        </div>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    `,
     styleUrls: ['./settings.page.scss'],
-    animations: [
-        trigger('expansion', [
-            state('close', style({
-                transform: 'translateX(-300px)',
-                opacity: 0.5,
-            })),
-            state('open', style({
-                transform: 'translateX(0)',
-                opacity: 1,
-            })),
-            transition('close <=> open',
-                animate('400ms ease')
-            ),
-        ])
-    ]
 })
 export class SettingsComponent {
 
     expanded: boolean = false;
-
-    constructor(private renderer: Renderer2) { }
 }

@@ -1,9 +1,14 @@
 <div class="content">
-    @if (itemsLength == 0) {
-        <div class="empty">
-            <p>Aún no hay nada aqui, se el primero en encender los motres agregando un vehículo.</p>
-        </div>
-    } @else {
-        <app-articles class="articles" (sendToParent)="recieveArticles($event)"></app-articles>
-    }
+    <div class="filter-bar">
+        <app-filter-bar/>
+    </div>
+    <div class="articles-content">
+        @if (itemsLength == 0) {
+            <div class="empty">
+                <p>Aún no hay nada aqui, se el primero en encender los motres agregando un vehículo.</p>
+            </div>
+        } @else {
+            <app-articles class="articles" (sendToParent)="recieveArticles($event)"/>
+        }
+    </div>
 </div>

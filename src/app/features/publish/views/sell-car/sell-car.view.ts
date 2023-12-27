@@ -4,6 +4,7 @@ import { maxFilesLength } from '../../validators/max-file.validator';
 import { AuthService } from '@auth0/auth0-angular';
 import { BackendService } from '../../../../core/services/backend.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
+import { Vehicle } from '../../../../core/interfaces/vehicle';
 
 @Component({
   selector: 'app-sell-car',
@@ -51,9 +52,8 @@ export class SellCarView implements OnInit {
   }
 
   publishVehicle(uid: any) {
-    const formData = new FormData();
+    let formData = new FormData;
 
-    formData.append('portrait', this.sellVehicleForm.value.images[0]);
     formData.append('owner', uid);
     formData.append('owner_email', this.sellVehicleForm.value.contact.ownerEmail);
     formData.append('location', this.sellVehicleForm.value.contact.location);
@@ -67,30 +67,31 @@ export class SellCarView implements OnInit {
     for (let i = 0; i < this.sellVehicleForm.value.images.length; i++) {
       formData.append('images', this.sellVehicleForm.value.images[i]);
     }
+
     this.alerts.askMe(
       'Publicar',
       `¿Deseas publicar a ${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model}?`,
-      'Publicar','Cancelar'
+      'Publicar', 'Cancelar'
     ).subscribe(res => {
       if (res == true) {
         this.backendService.postVehicle(formData).subscribe({
           next: (res) => {
-            this.alerts.notify('Vehículo agregado exitosamente',`${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`,'success');
+            this.alerts.notify('Vehículo agregado exitosamente', `${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`, 'success');
             this.sellVehicleForm.reset();
           },
           error: (err) => {
-            switch(err.status) {
+            switch (err.status) {
               case 401:
-                this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.','error');
+                this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
                 break;
               case 404:
-                this.alerts.notify('Error al agregar vehículo', 'Error al guardar vehículo.','error');
+                this.alerts.notify('Error al agregar vehículo', 'Error al guardar vehículo.', 'error');
                 break;
               case 500:
-                this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.','error');
+                this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.', 'error');
                 break;
               default:
-                this.alerts.notify('Error al agregar vehículo', err.message,'error');
+                this.alerts.notify('Error al agregar vehículo', err.message, 'error');
                 break;
             }
           }
