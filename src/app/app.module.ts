@@ -5,11 +5,12 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'
 import { LoaderInterceptor } from './core/interceptors/spinner.interceptor';
-import { TuiRootModule } from '@taiga-ui/core';
-import { AuthModule } from '@auth0/auth0-angular';
-import { environment } from "../environments/environment";
+import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from "../environments/environment";
 import { FooterComponent } from './core/components/footer/footer.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { TuiPromptModule } from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,58 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
     HttpClientModule,
     NavbarComponent,
     FooterComponent,
-    AuthModule.forRoot(environment.config),
+    TuiAlertModule,
+    TuiPromptModule,
+    TuiDialogModule,
+    AuthModule.forRoot({
+      ...env.config,
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: env.url + "insert",
+            tokenOptions: {
+              authorizationParams: {
+                audience: env.config.audience,
+              }
+            }
+          },
+          {
+            uri: env.url + "update/*",
+            tokenOptions: {
+              authorizationParams: {
+                audience: env.config.audience,
+              }
+            }
+          },
+          {
+            uri: env.url + "delete/*",
+            tokenOptions: {
+              authorizationParams: {
+                audience: env.config.audience,
+              }
+            }
+          },
+          {
+            uri: env.url + "user/*",
+            tokenOptions: {
+              authorizationParams: {
+                audience: env.config.audience,
+              }
+            }
+          },
+        ]
+      }
+    }),
 ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
       multi: true
     }
   ],

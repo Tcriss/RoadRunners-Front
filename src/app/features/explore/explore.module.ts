@@ -3,36 +3,40 @@ import { CommonModule } from '@angular/common';
 
 import { ExploreRoutingModule } from './explore-routing.module';
 import { ExploreComponent } from './explore.component';
-import { HomePage } from './pages/home/home.page';
-import { VehiclesPage } from './pages/vehicles/vehicles.page';
-import { VehicleDetailsPage } from './pages/vehicle-details/vehicle-details.page';
-import { SearchPage } from './pages/search-page/search.page';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { BrandsComponent } from './components/brands/brands.component';
 import { ProcessComponent } from './components/process/process.component';
 import { TypesComponent } from './components/types/types.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { LoadingScreenComponent } from 'src/app/core/components/loading-screen/loading-screen.component';
-import { ComingSoonComponent } from 'src/app/core/components/coming-soon/coming-soon.component';
+import { HomeView } from './views/home/home.view';
+import { VehiclesView } from './views/vehicles/vehicles.view';
+import { VehicleDetailsView } from './views/vehicle-details/details.view';
+import { SharedModule } from '../../shared/shared.module';
+import { LoadingScreenComponent } from '../../core/components/loading-screen/loading-screen.component';
+import { ComingSoonComponent } from '../../core/components/coming-soon/coming-soon.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { TuiCheckboxModule, TuiInputRangeModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [
     ExploreComponent,
-    HomePage,
-    VehiclesPage,
-    VehicleDetailsPage,
-    SearchPage,
+    HomeView,
+    VehiclesView,
+    VehicleDetailsView,
     ArticlesComponent,
     BrandsComponent,
     ProcessComponent,
-    TypesComponent
+    TypesComponent,
+    FilterBarComponent
   ],
   imports: [
     CommonModule,
     ExploreRoutingModule,
     SharedModule,
     LoadingScreenComponent,
-    ComingSoonComponent
+    ComingSoonComponent,
+    TuiCheckboxModule,
+    TuiRadioLabeledModule,
+    TuiInputRangeModule
   ]
 })
 export class ExploreModule { }

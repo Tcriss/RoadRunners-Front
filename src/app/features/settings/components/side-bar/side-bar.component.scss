@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 @mixin responsive($number) {
   @media(max-width: $number) {
     @content
@@ -26,8 +24,7 @@
   font-size: 16px;
 
   @include responsive(800px) {
-    flex-direction: column;
-    padding: 5px;
+    display: none;
   }
 
   &:hover {
@@ -62,9 +59,64 @@
   }
 }
 
+.toolbar-link {
+  width: 100%;
+  padding: 5px;
+  display: none;
+  gap: 10px;
+  transition: all 400ms;
+  text-decoration: none;
+  align-items: center;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.873);
+  backdrop-filter: blur(20px);
+
+  @include responsive(800px) {
+    display: flex;
+  }
+
+  &:hover {
+    color: #28586b;
+    border-bottom: 2px solid #28586b;
+  }
+
+  &:active {
+    color: #1f4453;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    font-weight: 800;
+    border-bottom: 2px solid #1f4453;
+  }
+
+  i {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+    text-decoration: none;
+
+    @include responsive(800px) {
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+}
+
 .active {
   background-color: #28586b;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   font-weight: 800;
+}
+
+.toolbar-link-active {
+  background-color: transparent;
+  color: #28586b;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  font-weight: 800;
+  border-bottom: 2px solid #28586b;
 }

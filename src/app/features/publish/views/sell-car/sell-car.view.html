@@ -1,0 +1,21 @@
+<div class="sell-car">
+    <div class="sell">
+        @if (user$ | async; as user) {
+        <form (ngSubmit)="publishVehicle(user.sub)" [formGroup]="sellVehicleForm" enctype="multipart/form-data">
+            <tui-carousel class="slider" #carousel>
+                <app-vehicle-info-form *tuiItem class="info" formGroupName="info"></app-vehicle-info-form>
+                <app-vehicle-images-form *tuiItem class="images" formGroupName="images"></app-vehicle-images-form>
+                <app-contact-info-form *tuiItem class="contact" formGroupName="contact"></app-contact-info-form>
+            </tui-carousel>
+            <div class="actions">
+                <button type="button" (click)="carousel.prev()" class="backward-button">Regresar</button>
+                @if (sellVehicleForm.valid) {
+                    <button type="submit" class="forward-button submit-button">Publicar Vehículo</button>
+                } @else {
+                    <button type="button" (click)="carousel.next()" class="forward-button">Siguiente</button>
+                }
+            </div>
+        </form>
+        }
+    </div>
+</div>

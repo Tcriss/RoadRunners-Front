@@ -1,0 +1,21 @@
+<div class="home">
+    <div class="hero">
+        <div class="header">
+            <h3 class="title">Encuentra</h3>
+            <h1 class="description">Tu Vehículo ideal</h1>
+        </div>
+        <div class="image">
+            <img src="./assets/images/vehicle.png">
+        </div>
+    </div>
+    <div class="content">
+        <h2 class="title_section">Tenemos todos los tipos</h2>
+        <app-types></app-types>
+        <app-process></app-process>
+        <h2 class="title_section">Marcas</h2>
+        <app-brands></app-brands>
+        <h2 class="title_section">Recientes agregados</h2>
+        <app-articles [articlesCount]="articlesCount" class="articles"></app-articles>
+        <a class="show-more-button" routerLink="/explore/vehicles">Mostrar todos los vehículos</a>
+    </div>
+</div>

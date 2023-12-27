@@ -92,7 +92,6 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         color: white;
         font-size: 16px;
         transition: all 400ms;
-        font-family: 'Poppins', sans-serif;
 
         @include responsive(850px) {
             display: none;

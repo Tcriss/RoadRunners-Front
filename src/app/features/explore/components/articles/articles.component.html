@@ -2,8 +2,8 @@
   @for(article of articles; track article._id){
     <div class="article">
       <div class="image">
-        @if (article.images.length >= 1) {
-          <img src="data:{{article.images[0].contentType}};base64,{{toBase64(article.images[0].data.data)}}" alt="">
+        @if (article.portrait) {
+          <img src="data:{{article.portrait.contentType}};base64,{{toBase64(article.portrait.data.data)}}" alt="">
         } @else {
           <img src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
         }
@@ -17,7 +17,39 @@
         </div>
       </div>
     </div>
+  } @empty {
+    <div class="empty">
+      <h1>Aún no hay articulos, ¿quieres ser el primero en agregar uno?</h1>
+    </div>
   }
 } @placeholder {
-  <app-loading-screen [componentHeight]="'100vh'" ></app-loading-screen>
+  @for(skeleton of [].constructor(8); track skeleton) {
+    <div class="skeleton">
+      <div class="image">
+      </div>
+      <div class="description">
+        <div class="Year"></div>
+        <div class="brand"></div>
+        <div class="price"></div>
+        <div>
+          <div class="buy-button"></div>
+        </div>
+      </div>
+    </div>
+  }
 }
+
+<!-- @for(skeleton of [].constructor(8); track skeleton) {
+  <div class="skeleton">
+    <div class="image">
+    </div>
+    <div class="description">
+      <div class="Year"></div>
+      <div class="brand"></div>
+      <div class="price"></div>
+      <div>
+        <div class="buy-button"></div>
+      </div>
+    </div>
+  </div>
+} -->

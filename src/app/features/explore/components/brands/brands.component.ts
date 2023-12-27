@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Brand } from 'src/app/core/interfaces/brand';
+import { Brand } from '../../../../core/interfaces/brand';
 
 @Component({
   selector: 'app-brands',

@@ -15,7 +15,5 @@ export class LoadingScreenComponent {
 
   @Input() componentHeight: string = '';
 
-  constructor() {
-    console.log(this.componentHeight);
-  }
+  constructor() {}
 }
