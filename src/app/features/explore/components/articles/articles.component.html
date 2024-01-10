@@ -3,9 +3,9 @@
     <div class="article">
       <div class="image">
         @if (article.portrait) {
-          <img src="data:{{article.portrait.contentType}};base64,{{toBase64(article.portrait.data.data)}}" alt="">
+          <img ngSrc="data:{{article.portrait.contentType}};base64,{{toBase64(article.portrait.data.data)}}" fill>
         } @else {
-          <img src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
+          <img ngSrc="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
         }
       </div>
       <div class="description">

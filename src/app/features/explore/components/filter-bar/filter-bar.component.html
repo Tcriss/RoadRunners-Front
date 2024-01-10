@@ -1,93 +1,68 @@
-<h2 class="title">Filtrar</h2>
 <form [formGroup]="filter">
+    <tui-input 
+        formControlName="search"
+        tuiTextfieldSize="m" 
+        [tuiTextfieldCleaner]="true"
+        [tuiTextfieldLabelOutside]="true"
+        tuiTextfieldIconLeft="tuiIconSearch"
+    >
+        Buscar...
+        <input tuiTextfield type="text" />
+    </tui-input>
     <div class="fuel">
         <h4>Combustible</h4>
         <div class="list options">
-            <tui-radio-labeled
-                formControlName="fuel"
-                class="tui-space_bottom-3"
-                item="Todos"
-            >
+            <tui-radio-labeled formControlName="fuel" class="tui-space_bottom-3" item="Todos">
                 Todos
             </tui-radio-labeled>
             @for(fuel of fuel; track $index) {
-                <tui-radio-labeled
-                    formControlName="fuel"
-                    class="tui-space_bottom-3"
-                    [item]="fuel"
-                >
-                    {{ fuel }}
-                </tui-radio-labeled>
+            <tui-radio-labeled formControlName="fuel" class="tui-space_bottom-3" [item]="fuel">
+                {{ fuel }}
+            </tui-radio-labeled>
             }
         </div>
     </div>
     <div class="condition">
         <h4>Condición</h4>
         <div class="list options">
-            <tui-radio-labeled
-                formControlName="condition"
-                class="tui-space_bottom-3"
-                item="Todos"
-            >
+            <tui-radio-labeled formControlName="condition" class="tui-space_bottom-3" item="Todos">
                 Todos
             </tui-radio-labeled>
             @for(condition of condition; track $index) {
-                <tui-radio-labeled
-                    formControlName="condition"
-                    class="tui-space_bottom-3"
-                    [item]="condition"
-                >
-                    {{ condition }}
-                </tui-radio-labeled>
+            <tui-radio-labeled formControlName="condition" class="tui-space_bottom-3" [item]="condition">
+                {{ condition }}
+            </tui-radio-labeled>
             }
         </div>
     </div>
     <div class="type">
         <h4>Tipo de vehiculo</h4>
         <div class="list options">
-            <tui-radio-labeled
-                formControlName="type"
-                class="tui-space_bottom-3"
-                item="Todos"
-            >
+            <tui-radio-labeled formControlName="type" class="tui-space_bottom-3" item="Todos">
                 Todos
             </tui-radio-labeled>
             @for(type of type; track $index) {
-                <tui-radio-labeled
-                    formControlName="type"
-                    class="tui-space_bottom-3"
-                    [item]="type"
-                >
-                    {{ type }}
-                </tui-radio-labeled>
+            <tui-radio-labeled formControlName="type" class="tui-space_bottom-3" [item]="type">
+                {{ type }}
+            </tui-radio-labeled>
             }
         </div>
     </div>
-    <div class="location">
+    <!-- <div class="location">
         <h4>Localización</h4>
-        
-    </div>
+
+    </div> -->
     <div class="brands">
         <h4>Marcas</h4>
-        <tui-combo-box 
-            formControlName="brand" 
-            [tuiTextfieldLabelOutside]="true"
-            [tuiTextfieldSize]="'m'"
-        >
+        <tui-combo-box formControlName="brand" [tuiTextfieldLabelOutside]="true" [tuiTextfieldSize]="'m'">
             <tui-data-list-wrapper *tuiDataList [items]="brands"></tui-data-list-wrapper>
         </tui-combo-box>
     </div>
-    <div class="money-range">
+    <!-- <div class="money-range">
         <h4>Costo</h4>
-        <tui-input-range
-            formControlName="money"
-            [max]="max"
-            [min]="min"
-            [quantum]="quantum"
-            [tuiTextfieldLabelOutside]="true"
-            [tuiTextfieldSize]="'m'"
-	></tui-input-range>
-    </div>
+        <tui-input-range formControlName="price" [max]="max" [min]="min" [quantum]="quantum"
+            [tuiTextfieldLabelOutside]="true" [tuiTextfieldSize]="'m'"></tui-input-range>
+    </div> -->
     <!-- <div class="options">
         <tui-checkbox-labeled formControlName="testValue1">
             Taiga UI
