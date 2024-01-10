@@ -23,6 +23,7 @@ export class FilterBarComponent {
 
   constructor(private fb: FormBuilder) {
     this.filter = this.fb.group({
+      search: '',
       fuel: 'Todos',
       condition: 'Todos',
       type: 'Todos',
