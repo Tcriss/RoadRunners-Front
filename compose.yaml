@@ -1,0 +1,9 @@
+version: '1.0'
+services: 
+  app: 
+    container_name: roadrunners-front
+    build: .
+    ports:
+      - 4200:80
+    expose:
+      - 80
