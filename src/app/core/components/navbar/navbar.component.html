@@ -53,8 +53,9 @@
           <ng-template #mobile>
             <tui-data-list class="mobile-data-list" (click)="onClick()">
               <ng-container *ngTemplateOutlet="optionLinks"></ng-container>
-              <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption><tui-svg
-                  src="tuiIconLogOut"></tui-svg> Cerrar Sesión</button>
+              <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption>
+                <tui-svg src="tuiIconLogOut"></tui-svg> Cerrar Sesión
+              </button>
             </tui-data-list>
           </ng-template>
         </tui-hosted-dropdown>

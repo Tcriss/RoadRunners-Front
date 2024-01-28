@@ -3,9 +3,9 @@
     <div class="article">
       <div class="image">
         @if (article.portrait) {
-          <img ngSrc="data:{{article.portrait.contentType}};base64,{{toBase64(article.portrait.data.data)}}" fill>
+          <img src="data:{{article.portrait.contentType}};base64,{{toBase64(article.portrait.data.data)}}" fill>
         } @else {
-          <img ngSrc="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
+          <img src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
         }
       </div>
       <div class="description">
@@ -16,10 +16,6 @@
           <a class="buy-button" [routerLink]="['/explore/vehicle/', article._id]">Ver vehiculo</a>
         </div>
       </div>
-    </div>
-  } @empty {
-    <div class="empty">
-      <h1>Aún no hay articulos, ¿quieres ser el primero en agregar uno?</h1>
     </div>
   }
 } @placeholder {
