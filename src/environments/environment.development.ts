@@ -1,10 +1,11 @@
 export const environment = {
     production: false,
     url: 'http://localhost:3000/',
+    // put your auth0 congi in order to it work properly
     config: {
-      domain: 'dev-3f45fsqiwdpfl2ds.us.auth0.com',
-      clientId: 'aphDtO4yTGzIEsmp9Wa37msp7cC2X5tX',
-      audience: 'https://roadrunners-api/',
+      domain: '',
+      clientId: '',
+      audience: '',
       authorizationParams: {
         redirect_uri: window.location.origin
       }
