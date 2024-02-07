@@ -18,6 +18,29 @@ h4 {
 
 .options {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(80px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 5px;
+}
+
+.btn-search {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    height: 44px;
+    margin-top: calc(20px + 17.29px);
+    background-color: #234454;
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 400ms;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    &:hover {
+        background-color: #32627a;
+    }
+
+    &:active {
+        background-color: #0d1a20;
+    }
 }

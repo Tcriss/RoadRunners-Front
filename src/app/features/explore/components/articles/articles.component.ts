@@ -1,18 +1,20 @@
-import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, inject, DestroyRef } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, inject, DestroyRef, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BackendService } from '../../../../core/services/backend.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
 import { Vehicle } from '../../../../core/interfaces/vehicle';
+import { Params } from '@angular/router';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],
 })
-export class ArticlesComponent {
+export class ArticlesComponent implements OnChanges{
 
+  @Input({ alias: 'filteredParams' }) params: Params = {};
   @Input() articlesCount: number = 0;
   @Output() sendToParent = new EventEmitter<number>();
   isLoading = this.loader.loading;
@@ -26,27 +28,77 @@ export class ArticlesComponent {
     private loader: SpinnerService,
     private alerts: AlertsService
   ) {
-    this.subcription = this.data.showVehicles()
-    .pipe(takeUntilDestroyed(this.destroyRef))
-    .subscribe({
-      next: (res) => {
-        this.articles = res.slice(this.articlesCount);
-        this.sendToParent.emit(this.articles.length);
-      },
-      error: (err) => {
-        switch (err.status) {
-          case 401:
-            this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
-            break;
-          case 500:
-            this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
-            break;
-          default:
-            this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
-            break;
-        }
-      },
-    });
+    if (this.params) {
+      this.subcription = this.data.showVehicles(this.params)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) => {
+          this.articles = res.slice(this.articlesCount);
+          this.sendToParent.emit(this.articles.length);
+        },
+        error: (err) => {
+          switch (err.status) {
+            case 401:
+              this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
+              break;
+            case 500:
+              this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
+              break;
+            default:
+              this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
+              break;
+          }
+        },
+      });
+    } else {
+      this.subcription = this.data.showVehicles()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) => {
+          this.articles = res.slice(this.articlesCount);
+          this.sendToParent.emit(this.articles.length);
+        },
+        error: (err) => {
+          switch (err.status) {
+            case 401:
+              this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
+              break;
+            case 500:
+              this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
+              break;
+            default:
+              this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
+              break;
+          }
+        },
+      });
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['params'].currentValue) {
+      this.subcription = this.data.showVehicles(this.params)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (res) => {
+          this.articles = res.slice(this.articlesCount);
+          this.sendToParent.emit(this.articles.length);
+        },
+        error: (err) => {
+          switch (err.status) {
+            case 401:
+              this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
+              break;
+            case 500:
+              this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
+              break;
+            default:
+              this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
+              break;
+          }
+        },
+      });
+    }
   }
 
   toBase64(buffer: any) {

@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Vehicle } from '../interfaces/vehicle';
 import { environment as env } from '../../../environments/environment';
+import { Params } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class BackendService {
 
   constructor(private http: HttpClient) { }
 
-  showVehicles(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(this.url);
+  showVehicles(params?: Params): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(this.url, {
+      params: params,
+    });
   }
 
   getVehicle(id: string): Observable<Vehicle> {

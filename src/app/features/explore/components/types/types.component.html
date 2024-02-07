@@ -1,6 +1,8 @@
 <div class="type-cont">
-    <div class="type" *ngFor="let type of types">
-        <img src="{{type.logoUrl}}" width="150px">
-        <a class="link-button" [routerLink]="[type.link]">{{type.name}}</a>
-    </div>
+    @for(type of types; track $index) {
+        <div class="type">
+            <img src="{{type.logoUrl}}" width="150px">
+            <a class="link-button" [routerLink]="[type.link]" [queryParams]="{ type: type.name }" >{{type.name}}</a>
+        </div>
+    }
 </div>

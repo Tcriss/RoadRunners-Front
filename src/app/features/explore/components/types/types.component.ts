@@ -20,27 +20,27 @@ export class TypesComponent {
     { 
       name: 'Sedán', 
       logoUrl: '../../../../assets/images/vehicle-type/sedan.png',
-      link: ''
+      link: '/explore/vehicles'
     },
     { 
       name: 'Jepeeta', 
       logoUrl: '../../../../assets/images/vehicle-type/SUV.png',
-      link: ''
+      link: '/explore/vehicles'
     },
     { 
       name: 'Camioneta', 
       logoUrl: '../../../../assets/images/vehicle-type/pick-up.png',
-      link: ''
+      link: '/explore/vehicles'
     },
     { 
       name: 'Sport', 
       logoUrl: '../../../../assets/images/vehicle-type/sport.png',
-      link: ''
+      link: '/explore/vehicles'
     },
     { 
       name: 'Camión', 
       logoUrl: '../../../../assets/images/vehicle-type/truck.jpg',
-      link: ''
+      link: '/explore/vehicles'
     }
   ]
 

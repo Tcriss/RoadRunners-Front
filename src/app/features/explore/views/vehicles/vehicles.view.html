@@ -1,14 +1,14 @@
 <div class="content">
     <div class="filter-bar">
-        <app-filter-bar/>
+        <app-filter-bar [urlParams]="params.value" (filterParams)="handleParams($event)"/>
     </div>
     <div class="articles-content">
         @if (itemsLength == 0) {
             <div class="empty">
-                <p>Aún no hay nada aqui, se el primero en encender los motres agregando un vehículo.</p>
+                <p class="empty-ms">Aún no hay nada aqui, se el primero en encender los motores agregando un vehículo.</p>
             </div>
         } @else {
-            <app-articles class="articles" (sendToParent)="recieveArticles($event)"/>
+            <app-articles class="articles" [filteredParams]="params.value" (sendToParent)="recieveArticles($event)"/>
         }
     </div>
 </div>

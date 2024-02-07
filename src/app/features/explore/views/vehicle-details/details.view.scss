@@ -62,8 +62,7 @@ $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       border-radius: 15px;
       box-shadow: $box-shadow;
       padding: 10px;
-      background-color: rgba(255, 255, 255, 0.23);
-      backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.645);
       height: auto;
 
       a {
@@ -121,8 +120,7 @@ $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       padding: 10px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      background-color: rgba(255, 255, 255, 0.23);
-      backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.782);
 
       p {
         font-size: 1.0rem;
@@ -196,8 +194,7 @@ $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       border-radius: 15px;
       border: 1px solid rgb(201, 201, 201);
       padding: 10px;
-      background-color: rgba(255, 255, 255, 0.23);
-      backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.782);
       height: auto;
 
       .get-back {
@@ -234,8 +231,7 @@ $box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       padding: 10px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      background-color: rgba(255, 255, 255, 0.23);
-      backdrop-filter: blur(20px);
+      background-color: rgba(255, 255, 255, 0.782);
       gap: 20px;
 
       div {

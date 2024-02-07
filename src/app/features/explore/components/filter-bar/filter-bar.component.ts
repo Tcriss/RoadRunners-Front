@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { fuel } from '../../../../core/utils/fuel.list';
-import { condition } from '../../../../core/utils/condition.list';
 import { types } from '../../../../core/utils/types.list';
 import { brands } from '../../../../core/utils/brands.list';
+import { Params } from '@angular/router';
 
 @Component({
   selector: 'app-filter-bar',
   templateUrl: './filter-bar.component.html',
   styleUrl: './filter-bar.component.scss'
 })
-export class FilterBarComponent {
+export class FilterBarComponent implements OnInit {
 
-  fuel: string[] = fuel;
-  condition: string[] = condition;
+  @Input({alias: 'urlParams', required: true}) params: Params = {};
+  @Output() filterParams = new EventEmitter<Params>;
   type: string[] = types;
   brands: string[] = brands;
   max: number = 5000000;
@@ -23,14 +22,33 @@ export class FilterBarComponent {
 
   constructor(private fb: FormBuilder) {
     this.filter = this.fb.group({
-      search: '',
-      fuel: 'Todos',
-      condition: 'Todos',
-      type: 'Todos',
-      location: 'Todas',
-      brand: 'Todas',
+      model: '',
+      fuel: '',
+      condition: '',
+      type: '',
+      location: '',
+      brand: '',
       year: '',
-      price: 250000,
+      price: undefined,
     });
+  }
+
+  ngOnInit(): void {
+    if(this.params) {
+      this.filter.patchValue({
+        type: this.params['type'],
+        brand: this.params['brand']
+      });
+    }
+  }
+
+  search(): void {
+    const filtered: Params = this.filter.value;
+    for(let key in filtered) {
+      if ( filtered[key] == '' || filtered[key] == undefined) {
+        delete filtered[key];
+      }
+    }
+    this.filterParams.emit(filtered);
   }
 }
