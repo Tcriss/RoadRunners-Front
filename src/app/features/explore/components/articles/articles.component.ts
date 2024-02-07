@@ -27,8 +27,10 @@ export class ArticlesComponent implements OnChanges{
     private data: BackendService,
     private loader: SpinnerService,
     private alerts: AlertsService
-  ) {
-    if (this.params) {
+  ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['params'].currentValue) {
       this.subcription = this.data.showVehicles(this.params)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
@@ -52,32 +54,6 @@ export class ArticlesComponent implements OnChanges{
       });
     } else {
       this.subcription = this.data.showVehicles()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res) => {
-          this.articles = res.slice(this.articlesCount);
-          this.sendToParent.emit(this.articles.length);
-        },
-        error: (err) => {
-          switch (err.status) {
-            case 401:
-              this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
-              break;
-            case 500:
-              this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
-              break;
-            default:
-              this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
-              break;
-          }
-        },
-      });
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['params'].currentValue) {
-      this.subcription = this.data.showVehicles(this.params)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {
