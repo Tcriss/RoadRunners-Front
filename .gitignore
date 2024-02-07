@@ -44,4 +44,3 @@ Thumbs.db
 /src/environments/environment.development.ts
 /src/environments/environment.docker.ts
 src/environments/environment.development.ts
-src/environments/environment.development.ts
