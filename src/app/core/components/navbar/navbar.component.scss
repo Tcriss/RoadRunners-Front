@@ -174,7 +174,6 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             align-items: center;
             box-shadow: 0 0 6px rgb(208, 208, 208);
             z-index: 3;
-            backdrop-filter: blur(20px);
 
             .nav-header {
                 width: 100%;
@@ -204,14 +203,31 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             }
 
             .credits {
-                text-transform: uppercase;
+                .log-in-btn {
+                    padding: 10px 15px;
+                    border-radius: 12px;
+                    border: none;
+                    background-color: #234454;
+                    color: white;
+                    font-size: 16px;
+                    transition: all 400ms;
+
+                    &:hover {
+                        background-color: #28586b;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
+                    }
+
+                    &:active {
+                        background-color: #1f4453;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
+                    }
+                }
             }
         }
     }
 }
 
 .scrolled {
-    background-color: rgba(255, 255, 255, 0.873);
-    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.93);
     box-shadow: $box-shadow;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { brands } from '../../../../core/utils/brands.list';
 import { types } from '../../../../core/utils/types.list';
@@ -8,7 +8,8 @@ import { condition } from '../../../../core/utils/condition.list';
 @Component({
   selector: 'app-vehicle-info-form',
   templateUrl: './vehicle-info-form.component.html',
-  styleUrls: ['./vehicle-info-form.component.scss']
+  styleUrls: ['./vehicle-info-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VehicleInfoFormComponent implements OnInit {
 

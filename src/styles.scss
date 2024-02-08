@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css');
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 
 html {
     box-sizing: border-box;
@@ -11,5 +11,17 @@ html {
 *:before,
 *:after {
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+}
+
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    .empty-ms {
+        line-height: 60px;
+        font-weight: 600 !important;
+        color: rgb(160, 160, 160);
+    }
 }

@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Link } from '../../../../core/interfaces/link';
 
-
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',

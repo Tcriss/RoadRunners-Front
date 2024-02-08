@@ -48,15 +48,15 @@ export class AppComponent {
       path: '/explore/vehicles'
     },
     {
-      icon: 'fi fi-br-search',
-      name: 'Buscar',
-      path: '/explore/search'
-    },
-    {
       icon: 'fi fi-rr-megaphone',
       name: 'Publicar',
       path: '/publish/sell'
     },
+    // {
+    //   icon: 'fi fi-br-search',
+    //   name: 'Acerca de',
+    //   path: '/'
+    // },
   ];
   
   optionLinks: Link[] = [
