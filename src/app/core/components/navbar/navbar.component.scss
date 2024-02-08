@@ -203,7 +203,25 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
             }
 
             .credits {
-                text-transform: uppercase;
+                .log-in-btn {
+                    padding: 10px 15px;
+                    border-radius: 12px;
+                    border: none;
+                    background-color: #234454;
+                    color: white;
+                    font-size: 16px;
+                    transition: all 400ms;
+
+                    &:hover {
+                        background-color: #28586b;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
+                    }
+
+                    &:active {
+                        background-color: #1f4453;
+                        box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
+                    }
+                }
             }
         }
     }
