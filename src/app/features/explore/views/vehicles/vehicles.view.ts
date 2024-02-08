@@ -1,11 +1,12 @@
-import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.view.html',
-  styleUrls: ['./vehicles.view.scss']
+  styleUrls: ['./vehicles.view.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VehiclesView implements OnInit {
 

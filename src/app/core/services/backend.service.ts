@@ -32,12 +32,12 @@ export class BackendService {
     return this.http.post<unknown>(this.url + 'insert', vehicle);
   }
 
-  putVehicle(id: string, vehicle: unknown): Observable<unknown> {
-    return this.http.put<unknown>(this.url + 'update/' + id, vehicle);
+  putVehicle(id: string, vehicle: Vehicle): Observable<string> {
+    return this.http.put<string>(this.url + 'update/' + id, vehicle);
   }
 
-  deleteVehicle(id: string): Observable<unknown> {
-    return this.http.delete<unknown>(this.url + 'delete/' + id);
+  deleteVehicle(id: string): Observable<string> {
+    return this.http.delete<string>(this.url + 'delete/' + id);
   }
 
   updateUser(uid: string | undefined, user: unknown): Observable<unknown> {

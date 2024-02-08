@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, inject, DestroyRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, inject, DestroyRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { BackendService } from '../../../../core/services/backend.service';
@@ -11,6 +11,7 @@ import { Params } from '@angular/router';
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticlesComponent implements OnChanges{
 
@@ -52,7 +53,8 @@ export class ArticlesComponent implements OnChanges{
           }
         },
       });
-    } else {
+    }
+    if (changes['params'].currentValue == undefined) {
       this.subcription = this.data.showVehicles()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({

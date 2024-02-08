@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,11 +6,13 @@ import { AuthService } from '@auth0/auth0-angular';
 import { BackendService } from '../../../../core/services/backend.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
+import { Vehicle } from '../../../../core/interfaces/vehicle';
 
 @Component({
   selector: 'app-edit-car',
   templateUrl: './edit-car.view.html',
-  styleUrl: './edit-car.view.scss'
+  styleUrl: './edit-car.view.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditCarView {
 
@@ -91,25 +93,26 @@ export class EditCarView {
   }
 
   updateVehicle(uid: any) {
-    let formData = new FormData();
 
-    // checks what fields were changed to upload those who were changed
-    formData.append('owner', uid);
-    formData.append('owner_email', this.editVehicleForm.value.contact.ownerEmail);
-    formData.append('location', this.editVehicleForm.value.contact.location);
-    formData.append('brand', this.editVehicleForm.value.info.brand);
-    formData.append('type', this.editVehicleForm.value.info.type);
-    formData.append('model', this.editVehicleForm.value.info.model);
-    formData.append('condition', this.editVehicleForm.value.info.condition);
-    formData.append('fuel', this.editVehicleForm.value.info.fuel);
-    formData.append('year', this.editVehicleForm.value.info.year);
-    formData.append('price', this.editVehicleForm.value.contact.price);
+    const update: Vehicle = {
+      _id: this.id,
+      owner: uid,
+      owner_email: this.editVehicleForm.value.contact.ownerEmail,
+      location: this.editVehicleForm.value.contact.location,
+      brand: this.editVehicleForm.value.info.brand,
+      type: this.editVehicleForm.value.info.type,
+      model: this.editVehicleForm.value.info.model,
+      condition: this.editVehicleForm.value.info.condition,
+      fuel: this.editVehicleForm.value.info.fuel,
+      year: this.editVehicleForm.value.info.year,
+      price:  this.editVehicleForm.value.contact.price
+    };
 
     this.alerts.askMe('Guardar Cambios', `¿Deseas Guardar los cambios de este vehículo?`, 'Publicar', 'Cancelar')
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(res => {
         if (res == true) {
-          this.backend.putVehicle(this.id, formData)
+          this.backend.putVehicle(this.id, update)
             .pipe(takeUntilDestroyed(this.destroyRef))
             .subscribe({
               next: (res) => {

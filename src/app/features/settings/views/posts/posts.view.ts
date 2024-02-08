@@ -1,4 +1,4 @@
-import { Component, OnInit, DestroyRef, inject } from '@angular/core';
+import { Component, OnInit, DestroyRef, inject, ChangeDetectionStrategy } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
@@ -9,7 +9,8 @@ import { Vehicle } from '../../../../core/interfaces/vehicle';
 
 @Component({
   templateUrl: './posts.view.html',
-  styleUrls: ['./posts.view.scss']
+  styleUrls: ['./posts.view.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserPostsView implements OnInit {
 

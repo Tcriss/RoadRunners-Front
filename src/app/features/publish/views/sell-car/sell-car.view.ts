@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { maxFilesLength } from '../../validators/max-file.validator';
 import { AuthService } from '@auth0/auth0-angular';
@@ -9,7 +9,8 @@ import { Vehicle } from '../../../../core/interfaces/vehicle';
 @Component({
   selector: 'app-sell-car',
   templateUrl: './sell-car.view.html',
-  styleUrls: ['./sell-car.view.scss']
+  styleUrls: ['./sell-car.view.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SellCarView implements OnInit {
 

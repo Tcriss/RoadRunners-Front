@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { AlertsService } from "../../../../core/services/alerts.service";
 
 @Component({
   selector: 'app-vehicle-images-form',
   templateUrl: './vehicle-images-form.component.html',
-  styleUrls: ['./vehicle-images-form.component.scss']
+  styleUrls: ['./vehicle-images-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VehicleImagesFormComponent implements OnInit {
 
@@ -24,11 +25,12 @@ export class VehicleImagesFormComponent implements OnInit {
   }
 
   previewImage(event: any) {
-    if (event.target.files.length < 8) {
-      this.form.patchValue([...event.target.files]);
-    } else {
+    if (event.target.files.length > 7) {
       this.alerts.alertMe('Limite de imagenes', 'Solo es posible subir un máximo de 7 imagenes.', 'Aceptar');
+      return;
     }
+
+    this.form.patchValue([...event.target.files]);
   }
 
   // dataURItoBlob(file: File): Blob {

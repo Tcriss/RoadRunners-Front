@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -11,6 +11,7 @@ import { SpinnerService } from '../../../../core/services/spinner.service';
   selector: 'app-vehicle-details',
   templateUrl: './details.view.html',
   styleUrls: ['./details.view.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VehicleDetailsView {
 

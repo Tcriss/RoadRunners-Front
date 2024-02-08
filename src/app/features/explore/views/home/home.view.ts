@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.view.html',
-  styleUrls: ['./home.view.scss']
+  styleUrls: ['./home.view.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeView {
+
   articlesCount = -8;
+  params: Params = {};
 
   readonly items = [
     {
@@ -26,4 +30,8 @@ export class HomeView {
       img: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1.bp.blogspot.com%2F-wj4c26_IqWs%2FT107sfkD_8I%2FAAAAAAAAWNo%2Fix60UzOcS4E%2Fs1600%2FImagenes-de-Carros-Deportivos_01.jpg&f=1&nofb=1&ipt=4ac949eaa0d53cb788773943db0d9f2530b4236362b0234012c78930fe0fc379&ipo=images' 
     }
   ];
+
+  constructor(private activeRoute: ActivatedRoute) {
+    this.activeRoute.queryParams.subscribe(params => this.params = params);
+  }
 }

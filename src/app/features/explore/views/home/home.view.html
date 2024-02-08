@@ -15,7 +15,7 @@
         <h2 class="title_section">Marcas</h2>
         <app-brands></app-brands>
         <h2 class="title_section">Recientes agregados</h2>
-        <app-articles [articlesCount]="articlesCount" class="articles"></app-articles>
+        <app-articles [articlesCount]="articlesCount" [filteredParams]="params" class="articles"></app-articles>
         <a class="show-more-button" routerLink="/explore/vehicles">Mostrar todos los vehículos</a>
     </div>
 </div>

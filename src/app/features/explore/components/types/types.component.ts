@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 import { Brand } from '../../../../core/interfaces/brand';
 
@@ -6,6 +6,7 @@ import { Brand } from '../../../../core/interfaces/brand';
   selector: 'app-types',
   templateUrl: './types.component.html',
   styleUrls: ['./types.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     tuiButtonOptionsProvider({
         shape: 'rounded',
@@ -23,7 +24,7 @@ export class TypesComponent {
       link: '/explore/vehicles'
     },
     { 
-      name: 'Jepeeta', 
+      name: 'Jeepeta', 
       logoUrl: '../../../../assets/images/vehicle-type/SUV.png',
       link: '/explore/vehicles'
     },

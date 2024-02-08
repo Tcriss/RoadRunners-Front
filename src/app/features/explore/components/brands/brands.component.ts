@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Brand } from '../../../../core/interfaces/brand';
 
 @Component({
   selector: 'app-brands',
   templateUrl: './brands.component.html',
   styleUrls: ['./brands.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandsComponent {
  
