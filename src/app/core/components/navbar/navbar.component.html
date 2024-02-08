@@ -46,10 +46,12 @@
       <div class="credits">
         @if (auth.isAuthenticated$ | async) {
         <tui-hosted-dropdown tuiDropdownAlign="center" [content]="mobile" [(open)]="mobileOpen">
-          <div *ngIf="user$ | async as user" tuiHostedDropdownHost class="profile-section">
-            <p class="text">{{user.name}}</p>
-            <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
-          </div>
+          @if(user$ | async ; as user) {
+            <div tuiHostedDropdownHost class="profile-section">
+              <p class="text">{{user.name}}</p>
+              <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+            </div>
+          }
           <ng-template #mobile>
             <tui-data-list class="mobile-data-list" (click)="onClick()">
               <ng-container *ngTemplateOutlet="optionLinks"></ng-container>

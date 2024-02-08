@@ -1,10 +1,13 @@
 <h2 class="title">Configuración del usuario</h2>
-<a class="link" *ngFor="let link of links" [routerLink]="[link.path]" routerLinkActive="active">
-    <i class="{{link.icon}}"></i>
+@for(link of links; track link.name) {
+<a class="link" [routerLink]="[link.path]" routerLinkActive="active">
+  <i class="{{link.icon}}"></i>
   <p>{{link.name}}</p>
 </a>
-
-<a class="toolbar-link" *ngFor="let link of links" [routerLink]="[link.path]" routerLinkActive="toolbar-link-active">
+}
+@for(link of links; track link.name) {
+<a class="toolbar-link" [routerLink]="[link.path]" routerLinkActive="toolbar-link-active">
   <i class="{{link.icon}}"></i>
-<p>{{link.name}}</p>
+  <p>{{link.name}}</p>
 </a>
+}
