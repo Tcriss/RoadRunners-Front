@@ -1,12 +1,12 @@
 export const environment = {
-    production: true,
-    url: 'https://roadrunners-backend.onrender.com/',
-    config: {
-      domain: 'dev-3f45fsqiwdpfl2ds.us.auth0.com',
-      clientId: 'DIgl0vPzUoUVwVlk0OGZcRz37bJo8uCq',
-      audience: 'https://roadrunners-api/',
-      authorizationParams: {
-        redirect_uri: window.location.origin
-      }
+  production: false,
+  url: 'http://localhost:3000/',
+  config: {
+    domain: 'dev-3f45fsqiwdpfl2ds.us.auth0.com',
+    clientId: 'aphDtO4yTGzIEsmp9Wa37msp7cC2X5tX',
+    audience: 'https://roadrunners-api/',
+    authorizationParams: {
+      redirect_uri: window.location.origin
     }
-};
+  }
+}
