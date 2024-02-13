@@ -72,7 +72,21 @@
     <div class="brands">
         <h4>Marcas</h4>
         <tui-combo-box formControlName="brand" [tuiTextfieldLabelOutside]="true" [tuiTextfieldSize]="'m'" tuiTextfieldFiller="Marca">
-            <tui-data-list-wrapper *tuiDataList [items]="brands"></tui-data-list-wrapper>
+            Escoge la marca
+            <ng-template #value let-brand>
+                <tui-avatar size="xs" class="avatar" [avatarUrl]="brand.logo || null" [text]="brand.name"></tui-avatar>
+                <span class="name">{{ brand.name }}</span>
+            </ng-template>
+            <ng-template tuiDataList>
+                <tui-data-list>
+                    @for(brand of brands; track $index) {
+                    <button tuiOption class="option" [value]="brand.name">
+                        <img [src]="brand.logo" class="logo">
+                        <span class="name">{{ brand.name }}</span>
+                    </button>
+                    }
+                </tui-data-list>
+            </ng-template>
         </tui-combo-box>
     </div>
     <button class="btn-search" (click)="search()">

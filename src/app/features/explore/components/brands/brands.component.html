@@ -1,11 +1,11 @@
 <div class="brands">
     @for (brand of brands; track $index) {
-        <a class="brand" [routerLink]="[brand.link]" [queryParams]="{ brand: brand.name }">
+        <a class="brand" [routerLink]="['/explore/vehicles']" [queryParams]="{ brand: brand.name }" [tuiHint]="brand.name" tuiHintDirection="bottom" tuiHintAppearance="onDark">
             <img
                 width="90px"
                 [alt]="brand.name"
                 draggable="false"
-                [src]="brand.logoUrl"
+                [src]="brand.logo"
                 class="item"
             />
         </a>

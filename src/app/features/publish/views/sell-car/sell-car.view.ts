@@ -27,10 +27,10 @@ export class SellCarView implements OnInit {
     this.sellVehicleForm = this.fb.group({
       info: this.fb.group({
         brand: ['', Validators.required],
-        type: ['', Validators.required],
+        type: [null, Validators.required],
         model: ['', Validators.required],
-        condition: ['', Validators.required],
-        fuel: ['', Validators.required],
+        condition: [null,Validators.required],
+        fuel: [null, Validators.required],
         year: ['', Validators.required]
       }),
       contact: this.fb.group({

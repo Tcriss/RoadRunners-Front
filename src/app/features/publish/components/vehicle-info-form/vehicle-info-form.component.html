@@ -2,28 +2,55 @@
     <div class="vehicle-info">
         <h1 class="form-title">Información del vehículo</h1>
         <form class="vehicle-info-form" action="">
-            <tui-combo-box formControlName="brand">Marca
-                <tui-data-list-wrapper *tuiDataList [items]="brandsList"></tui-data-list-wrapper>
+            <tui-combo-box formControlName="brand" tuiTextfieldFiller="Marca">
+                Marca
+                <ng-template #value let-brand>
+                    <tui-avatar size="xs" class="avatar" [avatarUrl]="brand.logo || null" [text]="brand.name"></tui-avatar>
+                    <span class="name">{{ brand.name }}</span>
+                </ng-template>
+                <ng-template tuiDataList>
+                    <tui-data-list>
+                        @for(brand of brandsList; track $index) {
+                        <button tuiOption class="option" [value]="brand.name">
+                            <img [src]="brand.logo" class="logo">
+                            <span class="name">{{ brand.name }}</span>
+                        </button>
+                        }
+                    </tui-data-list>
+                </ng-template>
             </tui-combo-box>
 
-            <tui-combo-box formControlName="type">Tipo
-                <input tuiTextfield placeholder="Tipo de vehiculo" />
-                <tui-data-list-wrapper *tuiDataList [items]="type"></tui-data-list-wrapper>
+            <tui-combo-box formControlName="type" tuiTextfieldFiller="Marca">
+                Tipo de vehiculo
+                <ng-template #value let-type>
+                    <tui-avatar size="xs" class="avatar" [avatarUrl]="type.logo || null" [text]="type.name"></tui-avatar>
+                    <span class="name">{{ type.name }}</span>
+                </ng-template>
+                <ng-template tuiDataList>
+                    <tui-data-list>
+                        @for(vehicleType of vehicleTypes; track $index) {
+                        <button tuiOption class="option" [value]="vehicleType.name">
+                            <img [src]="vehicleType.logo" class="logo">
+                            <span class="name">{{ vehicleType.name }}</span>
+                        </button>
+                        }
+                    </tui-data-list>
+                </ng-template>
             </tui-combo-box>
 
             <tui-input formControlName="model">Modelo
                 <input tuiTextfield placeholder="Modelo del vehiculo" />
             </tui-input>
 
-            <tui-combo-box formControlName="condition">Condicion
-                <input tuiTextfield placeholder="Condicion del vehiculo" />
+            <tui-select class="control" formControlName="condition" >Condición
+                <input placeholder="¿En que condición se encuentra el vehículo?" tuiTextfield/>
                 <tui-data-list-wrapper *tuiDataList [items]="condition"></tui-data-list-wrapper>
-            </tui-combo-box>
+            </tui-select>
 
-            <tui-combo-box formControlName="fuel">Combustible
+            <tui-select [identityMatcher]="identityMatcher"  formControlName="fuel">Combustible
                 <input tuiTextfield placeholder="Tipo de Combustible" />
                 <tui-data-list-wrapper *tuiDataList [items]="fuel"></tui-data-list-wrapper>
-            </tui-combo-box>
+            </tui-select>
 
             <tui-input-year formControlName="year" class="b-form">Año del vehículo
                 <input tuiTextfield />
