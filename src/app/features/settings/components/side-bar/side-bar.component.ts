@@ -20,11 +20,11 @@ export class SideBarComponent {
       name: 'Publicaciones',
       path: '/settings/my-posts'
     },
-    {
-      icon: 'fi fi-rr-settings',
-      name: 'Configuración',
-      path: '/settings/account'
-    }
+    // {
+    //   icon: 'fi fi-rr-settings',
+    //   name: 'Configuración',
+    //   path: '/settings/account'
+    // }
   ];
 
   constructor() {}
