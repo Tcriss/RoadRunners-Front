@@ -2,21 +2,31 @@
     <div class="contact-info">
         <h1 class="form-title">Información de contacto</h1>
         <form class="contact-form" action="">
-            <tui-input formControlName="ownerEmail">Correo electronico
+            <tui-input formControlName="name">Nombre
+                <input tuiTextfield placeholder="Nombre publico de vendedor"/>
+            </tui-input>
+            <tui-input formControlName="email">Correo electrónico
                 <input tuiTextfield placeholder="E-mail para contactarte"/>
             </tui-input>
-
             <tui-input formControlName="location">Ubicación
                 <input tuiTextfield placeholder="Ubicacion de la venta"/>
             </tui-input>
-
-            <tui-input-number
-                formControlName="price"
-                [tuiTextfieldPrefix]="'RD$ ' | tuiCurrency"
-                decimal="never"
-            >
-              Precio del vehículo
+            <tui-input-phone formControlName="phone" countryCode="+1" phoneMaskAfterCountryCode="###-###-####">
+                Número de teléfono
+                <input tuiTextfield placeholder="Número telefonico de contacto"/>
+            </tui-input-phone>
+            @if(aditionalFields == true) {
+                <tui-input formControlName="whatsapp">Whatsapp
+                    <input tuiTextfield placeholder="Número telefonico de contacto"/>
+                </tui-input>
+                <tui-input formControlName="telegram">Telegram
+                    <input tuiTextfield placeholder="Número telefonico de contacto"/>
+                </tui-input>
+            }
+            <tui-input-number formControlName="price" [tuiTextfieldPrefix]="'RD$ ' | tuiCurrency" decimal="never">
+                Precio del vehículo
             </tui-input-number>
+            
         </form>
     </div>
 </ng-container>

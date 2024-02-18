@@ -4,6 +4,7 @@ import { types } from '../../../../core/utils/types.list';
 import { brands } from '../../../../core/utils/brands.list';
 import { Params } from '@angular/router';
 import { ChangeDetectionStrategy } from '@angular/core';
+import { Brand } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-filter-bar',
@@ -15,8 +16,8 @@ export class FilterBarComponent implements OnInit {
 
   @Input({alias: 'urlParams', required: true}) params: Params = {};
   @Output() filterParams = new EventEmitter<Params>;
-  type: string[] = types;
-  brands: string[] = brands;
+  readonly type = types;
+  readonly brands: Brand[] = brands;
   max: number = 5000000;
   min: number = 0;
   quantum: number = 0.00;

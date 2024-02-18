@@ -6,7 +6,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { BackendService } from '../../../../core/services/backend.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
-import { Vehicle } from '../../../../core/interfaces/vehicle';
+import { EditVehicle } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-edit-car',
@@ -44,9 +44,14 @@ export class EditCarView {
         year: ['', Validators.required]
       }),
       contact: this.fb.group({
-        ownerEmail: ['', Validators.required],
         location: ['', Validators.required],
-        price: [null, Validators.required]
+        price: [null, Validators.required],
+        picture: ['', Validators.required],
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', [Validators.required]],
+        whatsapp: [''],
+        telegram: [''],
       }),
       images: [[], Validators.required],
     });
@@ -67,9 +72,14 @@ export class EditCarView {
               year: vehicle.year,
             },
             contact: {
-              ownerEmail: vehicle.owner_email,
+              email: vehicle.seller.email,
               location: vehicle.location,
-              price: vehicle.price
+              price: vehicle.price,
+              picture: vehicle.seller.picture,
+              name: vehicle.seller.name,
+              phone: vehicle.seller.phone,
+              whatsapp: vehicle.seller.whatsapp,
+              telegram: vehicle.seller.telegram
             }
           });
         },
@@ -94,10 +104,9 @@ export class EditCarView {
 
   updateVehicle(uid: any) {
 
-    const update: Vehicle = {
+    const update: EditVehicle = {
       _id: this.id,
       owner: uid,
-      owner_email: this.editVehicleForm.value.contact.ownerEmail,
       location: this.editVehicleForm.value.contact.location,
       brand: this.editVehicleForm.value.info.brand,
       type: this.editVehicleForm.value.info.type,
@@ -105,7 +114,12 @@ export class EditCarView {
       condition: this.editVehicleForm.value.info.condition,
       fuel: this.editVehicleForm.value.info.fuel,
       year: this.editVehicleForm.value.info.year,
-      price:  this.editVehicleForm.value.contact.price
+      price:  this.editVehicleForm.value.contact.price,
+      email: this.editVehicleForm.value.contact.email,
+      name: this.editVehicleForm.value.contact.name,
+      phone: this.editVehicleForm.value.contact.phone,
+      whatsapp: this.editVehicleForm.value.contact.whatsapp,
+      telegram: this.editVehicleForm.value.contact.telegram
     };
 
     this.alerts.askMe('Guardar Cambios', `¿Deseas Guardar los cambios de este vehículo?`, 'Publicar', 'Cancelar')

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Link } from './core/interfaces/link';
+import { Link } from './core/interfaces';
 
 @Component({
   selector: 'app-root',
@@ -70,10 +70,10 @@ export class AppComponent {
       name: 'Vehículos publicados',
       path: '/settings/my-posts'
     },
-    {
-      icon: 'fi fi-rr-settings',
-      name: 'Cuenta',
-      path: '/settings/account'
-    },
+    // {
+    //   icon: 'fi fi-rr-settings',
+    //   name: 'Cuenta',
+    //   path: '/settings/account'
+    // },
   ];
 }

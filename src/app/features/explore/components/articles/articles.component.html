@@ -9,11 +9,11 @@
         }
       </div>
       <div class="description">
-        <p class="tui-text_body-xl year-tag"><strong>{{article.year}}</strong></p>
-        <h2 class="tui-island__title">{{article.brand}} {{article.model}}</h2>
+        <p class="year-tag"><strong>{{article.year}}</strong></p>
+        <h2 class="title">{{ article.brand + ' ' + article.model}}</h2>
         <p class="price"><tui-money currency="USD" [value]="article.price"></tui-money></p>
         <div>
-          <a class="buy-button" [routerLink]="['/explore/vehicle/', article._id]">Ver vehiculo</a>
+          <a class="buy-button" [routerLink]="['/explore/vehicle/', article._id]">Ver vehículo</a>
         </div>
       </div>
     </div>

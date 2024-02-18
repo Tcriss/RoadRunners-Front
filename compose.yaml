@@ -7,3 +7,8 @@ services:
       - 4200:80
     expose:
       - 80
+    environment:
+      URL: '${URL}'
+      DOMAIN: '${DOMAIN}'
+      CLIENT_ID: '${CLIENT_ID}'
+      AUDIENCE: '${AUDIENCE}'

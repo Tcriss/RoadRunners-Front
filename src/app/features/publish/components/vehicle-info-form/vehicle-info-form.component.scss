@@ -18,3 +18,24 @@
         gap: 20px;
     }
 }
+
+.option {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    transition: all 400ms;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    
+    &:hover {
+        background-color: #f5f5f5;
+    }
+
+    .logo {
+        width: 30px;
+    }
+}

@@ -19,8 +19,8 @@
             }
           </div>
           <div class="description">
-            <p class="tui-text_body-xl year-tag"><strong>{{vehicle.year}}</strong></p>
-            <h2 class="tui-island__title">{{vehicle.brand}} {{vehicle.model}}</h2>
+            <p><strong>{{vehicle.year}}</strong></p>
+            <h2 class="title">{{vehicle.brand}} {{vehicle.model}}</h2>
             <p class="price"><tui-money currency="USD" [value]="vehicle.price"></tui-money></p>
             <div>
               <a class="buy-button" [routerLink]="['/explore/vehicle/', vehicle._id]">Ver vehiculo</a>
