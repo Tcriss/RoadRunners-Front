@@ -11,10 +11,16 @@
     align-items: center;
     background-color: black;
     padding: 0px 200px;
-    height: 200px;
+    height: 250px;
+    gap: 20px;
 
     @include mid{
         padding: 5px;
+    }
+
+    .divider {
+        width: 150px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.671);
     }
 
     .image {
@@ -24,6 +30,38 @@
 
         .logo-brand {
             width: 200px;
+        }
+    }
+
+    .members {
+        display: flex;
+        gap: 30px;
+
+        .member {
+            display: grid;
+            gap: 5px;
+
+            .github-link {
+                color: white;
+                text-decoration: none;
+                text-align: center;
+            }
+        }
+    }
+
+    .credits {
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 200;
+
+        a {
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            text-decoration: none;
         }
     }
 }
