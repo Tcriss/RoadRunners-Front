@@ -1,4 +1,6 @@
-export const brands = [
+import { Brand } from "../interfaces";
+
+export const brands: Brand[] = [
   {
     name: 'Acura',
     logo: './assets/brands-logo/acura-logo.png',

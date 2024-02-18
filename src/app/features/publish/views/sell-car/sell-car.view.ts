@@ -4,7 +4,7 @@ import { maxFilesLength } from '../../validators/max-file.validator';
 import { AuthService } from '@auth0/auth0-angular';
 import { BackendService } from '../../../../core/services/backend.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
-import { Vehicle } from '../../../../core/interfaces/vehicle';
+import { Vehicle } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-sell-car',
@@ -34,9 +34,14 @@ export class SellCarView implements OnInit {
         year: ['', Validators.required]
       }),
       contact: this.fb.group({
-        ownerEmail: ['', Validators.required],
         location: ['', Validators.required],
-        price: [null, Validators.required]
+        price: [null, Validators.required],
+        picture: ['', Validators.required],
+        name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', [Validators.required]],
+        whatsapp: [''],
+        telegram: [''],
       }),
       images: [[], Validators.required],
     });
@@ -46,7 +51,8 @@ export class SellCarView implements OnInit {
     this.user$.subscribe(user => {
       this.sellVehicleForm.patchValue({
         contact: {
-          ownerEmail: user?.email
+          email: user?.email,
+          picture: user?.picture
         }
       })
     });
@@ -56,7 +62,6 @@ export class SellCarView implements OnInit {
     let formData = new FormData;
 
     formData.append('owner', uid);
-    formData.append('owner_email', this.sellVehicleForm.value.contact.ownerEmail);
     formData.append('location', this.sellVehicleForm.value.contact.location);
     formData.append('brand', this.sellVehicleForm.value.info.brand);
     formData.append('type', this.sellVehicleForm.value.info.type);
@@ -65,6 +70,13 @@ export class SellCarView implements OnInit {
     formData.append('fuel', this.sellVehicleForm.value.info.fuel);
     formData.append('year', this.sellVehicleForm.value.info.year);
     formData.append('price', this.sellVehicleForm.value.contact.price);
+    formData.append('price', this.sellVehicleForm.value.contact.price);
+    formData.append('picture', this.sellVehicleForm.value.contact.picture);
+    formData.append('name', this.sellVehicleForm.value.contact.name);
+    formData.append('email', this.sellVehicleForm.value.contact.email);
+    formData.append('phone', this.sellVehicleForm.value.contact.phone);
+    if(this.sellVehicleForm.value.contact.whatsapp !== '') formData.append('whatsapp', this.sellVehicleForm.value.contact.whatsapp);
+    if(this.sellVehicleForm.value.contact.whatsapp !== '') formData.append('telegram', this.sellVehicleForm.value.contact.telegram);
     for (let i = 0; i < this.sellVehicleForm.value.images.length; i++) {
       formData.append('images', this.sellVehicleForm.value.images[i]);
     }

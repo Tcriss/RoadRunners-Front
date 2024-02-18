@@ -4,7 +4,7 @@ import { PublishRoutingModule } from './publish-routing.module';
 import { PublishComponent } from './publish.component';
 import { VehicleInfoFormComponent } from './components/vehicle-info-form/vehicle-info-form.component';
 import { ContactInfoFormComponent } from './components/contact-info-form/contact-info-form.component';
-import { TuiCarouselModule, TuiInputNumberModule } from '@taiga-ui/kit';
+import { TuiCarouselModule, TuiInputNumberModule, TuiInputPhoneModule, TuiToggleModule } from '@taiga-ui/kit';
 import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { VehicleImagesFormComponent } from './components/vehicle-images-form/vehicle-images-form.component';
 import { SellCarView } from './views/sell-car/sell-car.view';
@@ -28,7 +28,9 @@ import { LoadingScreenComponent } from '../../core/components/loading-screen/loa
     TuiCarouselModule,
     TuiInputNumberModule,
     TuiCurrencyPipeModule,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    TuiInputPhoneModule,
+    TuiToggleModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

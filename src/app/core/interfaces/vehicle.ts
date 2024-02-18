@@ -1,10 +1,9 @@
-import { Image } from "./image";
+import { Image, Seller } from "./";
 
-export interface Vehicle{
+export interface Vehicle {
   _id: string,
   portrait?: Image,
   owner: string,
-  owner_email: string,
   location: string,
   brand: string,
   type: string,
@@ -13,5 +12,6 @@ export interface Vehicle{
   fuel: string,
   year: string,
   price: number,
+  seller: Seller;
   images?: Image[]
 }

@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Vehicle } from '../interfaces/vehicle';
-import { environment as env } from '../../../environments/environment';
 import { Params } from '@angular/router';
+import { EditVehicle, Vehicle } from '../interfaces';
+import { environment as env } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class BackendService {
     return this.http.post<unknown>(this.url + 'insert', vehicle);
   }
 
-  putVehicle(id: string, vehicle: Vehicle): Observable<string> {
+  putVehicle(id: string, vehicle: EditVehicle): Observable<string> {
     return this.http.put<string>(this.url + 'update/' + id, vehicle);
   }
 

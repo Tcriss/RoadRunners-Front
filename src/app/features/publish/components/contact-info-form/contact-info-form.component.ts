@@ -11,6 +11,7 @@ export class ContactInfoFormComponent implements OnInit {
 
   @Input() formGroupName!: string;
   form!: FormGroup;
+  aditionalFields: boolean = false;
 
   constructor(private rootForm: FormGroupDirective) {}
 

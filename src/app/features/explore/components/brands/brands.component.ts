@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Brand } from '../../../../core/interfaces/brand';
+import { Brand } from '../../../../core/interfaces';
 import { brands } from '../../../../core/utils/brands.list';
 
 @Component({

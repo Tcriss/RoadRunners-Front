@@ -3,6 +3,10 @@
 @import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+$base-color: #275669;
+$hover-color: #24637a;
+$active-color: #24637a;
+
 html {
     box-sizing: border-box;
 }
@@ -11,6 +15,22 @@ html {
 *:before,
 *:after {
     box-sizing: border-box;
+}
+
+button {
+    background-color: $base-color;
+    color: white;
+    cursor: pointer;
+    transition: all 400ms;
+    font-family: 'Inter', sans-serif;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+
+    &:active {
+        background-color: $active-color;
+    }
 }
 
 .empty {

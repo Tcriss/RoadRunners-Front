@@ -1,11 +1,11 @@
-import { Component, EventEmitter, OnInit, Output, Input, OnDestroy, inject, DestroyRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Output, Input, inject, DestroyRef, OnChanges, SimpleChanges, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Params } from '@angular/router';
 import { BackendService } from '../../../../core/services/backend.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
-import { Vehicle } from '../../../../core/interfaces/vehicle';
-import { Params } from '@angular/router';
+import { Vehicle } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-articles',
@@ -13,7 +13,7 @@ import { Params } from '@angular/router';
   styleUrls: ['./articles.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticlesComponent implements OnChanges{
+export class ArticlesComponent implements OnChanges {
 
   @Input({ alias: 'filteredParams' }) params: Params = {};
   @Input() articlesCount: number = 0;
@@ -28,58 +28,58 @@ export class ArticlesComponent implements OnChanges{
     private data: BackendService,
     private loader: SpinnerService,
     private alerts: AlertsService
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['params'].currentValue) {
       this.subcription = this.data.showVehicles(this.params)
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res) => {
-          this.articles = res.slice(this.articlesCount);
-          this.sendToParent.emit(this.articles.length);
-        },
-        error: (err) => {
-          switch (err.status) {
-            case 401:
-              this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
-              break;
-            case 500:
-              this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
-              break;
-            default:
-              this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
-              break;
-          }
-        },
-      });
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
+          next: (res) => {
+            this.articles = res.slice(this.articlesCount);
+            this.sendToParent.emit(this.articles.length);
+          },
+          error: (err) => {
+            switch (err.status) {
+              case 401:
+                this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
+                break;
+              case 500:
+                this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
+                break;
+              default:
+                this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
+                break;
+            }
+          },
+        });
     }
     if (changes['params'].currentValue == undefined) {
       this.subcription = this.data.showVehicles()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (res) => {
-          this.articles = res.slice(this.articlesCount);
-          this.sendToParent.emit(this.articles.length);
-        },
-        error: (err) => {
-          switch (err.status) {
-            case 401:
-              this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
-              break;
-            case 500:
-              this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
-              break;
-            default:
-              this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
-              break;
-          }
-        },
-      });
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe({
+          next: (res) => {
+            this.articles = res.slice(this.articlesCount);
+            this.sendToParent.emit(this.articles.length);
+          },
+          error: (err) => {
+            switch (err.status) {
+              case 401:
+                this.alerts.notify('Error al traer articulos', 'No estas autorizado', 'error');
+                break;
+              case 500:
+                this.alerts.notify('Error al cargar articulos', 'Intentalo más tarde', 'error');
+                break;
+              default:
+                this.alerts.notify('Error al traer articulos', `${err.status}: ${err.message}`, 'error')
+                break;
+            }
+          },
+        });
     }
   }
 
-  toBase64(buffer: any) {
+  toBase64(buffer: any): string {
     var binary = '';
     var bytes = new Uint8Array(buffer);
     var len = bytes.byteLength;
@@ -89,7 +89,7 @@ export class ArticlesComponent implements OnChanges{
     return window.btoa(binary);
   }
 
-  getByBrand(brand: string) {
+  getByBrand(brand: string): void {
     this.data.getVehiclesByBrand(brand).subscribe({
       next: res => this.articlesByBrand = res,
       error: err => this.alerts.notify('Error al traer articulos', err.message, 'error'),

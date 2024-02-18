@@ -4,7 +4,7 @@ import { types } from '../../../../core/utils/types.list';
 import { brands } from '../../../../core/utils/brands.list';
 import { Params } from '@angular/router';
 import { ChangeDetectionStrategy } from '@angular/core';
-import { Brand } from '../../../../core/interfaces/brand';
+import { Brand } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-filter-bar',

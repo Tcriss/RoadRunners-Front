@@ -2,10 +2,10 @@
     <div class="vehicle-info">
         <h1 class="form-title">Información del vehículo</h1>
         <form class="vehicle-info-form" action="">
-            <tui-combo-box formControlName="brand" tuiTextfieldFiller="Marca">
+            <tui-combo-box formControlName="brand" tuiTextfieldFiller="Buscar marca...">
                 Marca
                 <ng-template #value let-brand>
-                    <tui-avatar size="xs" class="avatar" [avatarUrl]="brand.logo || null" [text]="brand.name"></tui-avatar>
+                    <tui-avatar size="xs" class="avatar" [avatarUrl]="selectedBrand!.logo || null" [text]="brand.name"></tui-avatar>
                     <span class="name">{{ brand.name }}</span>
                 </ng-template>
                 <ng-template tuiDataList>
@@ -20,7 +20,7 @@
                 </ng-template>
             </tui-combo-box>
 
-            <tui-combo-box formControlName="type" tuiTextfieldFiller="Marca">
+            <tui-combo-box formControlName="type" tuiTextfieldFiller="Buscar tipo ...">
                 Tipo de vehiculo
                 <ng-template #value let-type>
                     <tui-avatar size="xs" class="avatar" [avatarUrl]="type.logo || null" [text]="type.name"></tui-avatar>
@@ -38,9 +38,27 @@
                 </ng-template>
             </tui-combo-box>
 
-            <tui-input formControlName="model">Modelo
-                <input tuiTextfield placeholder="Modelo del vehiculo" />
-            </tui-input>
+            <tui-combo-box formControlName="model" tuiTextfieldFiller="Buscar modelo ...">
+                Modelo
+                <ng-template #value let-model>
+                    <span class="name">{{ model }}</span>
+                </ng-template>
+                <ng-template tuiDataList>
+                    <tui-data-list>
+                        @if(form.value.brand) {
+                            @for(model of selectedBrand!.models; track $index) {
+                                <button tuiOption [value]="model">
+                                    <span class="name">{{ model }}</span>
+                                </button>
+                            }
+                        } @else {
+                            <button tuiOption>
+                                <span>Selecciona una marca primero</span>
+                            </button>
+                        }
+                    </tui-data-list>
+                </ng-template>
+            </tui-combo-box>
 
             <tui-select class="control" formControlName="condition" >Condición
                 <input placeholder="¿En que condición se encuentra el vehículo?" tuiTextfield/>

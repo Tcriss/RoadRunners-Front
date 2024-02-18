@@ -15,6 +15,7 @@ import { LoadingScreenComponent } from '../../core/components/loading-screen/loa
 import { ComingSoonComponent } from '../../core/components/coming-soon/coming-soon.component';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { TuiCheckboxModule, TuiInputRangeModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
+import { TuiPreviewDialogModule, TuiPreviewModule } from '@taiga-ui/addon-preview';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { TuiCheckboxModule, TuiInputRangeModule, TuiRadioLabeledModule } from '@
     TuiCheckboxModule,
     TuiRadioLabeledModule,
     TuiInputRangeModule,
+    TuiPreviewModule,
   ]
 })
 export class ExploreModule { }

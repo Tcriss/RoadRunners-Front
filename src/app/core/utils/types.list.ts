@@ -1,5 +1,4 @@
-import { Brand } from "../interfaces/brand";
-import { Type } from "../interfaces/type";
+import { Type } from "../interfaces";
 
 export const types: Type[] = [
     { 

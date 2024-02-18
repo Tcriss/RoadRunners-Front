@@ -11,6 +11,7 @@ import { environment as env } from "../environments/environment";
 import { FooterComponent } from './core/components/footer/footer.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { TuiPromptModule } from '@taiga-ui/kit';
+import { TuiPreviewModule } from '@taiga-ui/addon-preview';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { TuiPromptModule } from '@taiga-ui/kit';
     FooterComponent,
     TuiAlertModule,
     TuiPromptModule,
+    TuiDialogModule,
     TuiDialogModule,
     AuthModule.forRoot({
       ...env.config,
