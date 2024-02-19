@@ -10,8 +10,13 @@
   <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open"
     tuiDropdownHover>
     <div class="profile-section" tuiHostedDropdownHost>
-      <p class="text">{{user.name}}</p>
-      <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+      @if(user.nickname === '') {
+        <p class="text">{{user.name}}</p>
+        <tui-avatar [text]="user.name!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+      } @else {
+        <p class="text">{{user.given_name}} {{user.family_name}}</p>
+        <tui-avatar [text]="user.nickname!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+      }
     </div>
     <ng-template #options_list>
       <tui-data-list class="data-list" (click)="onClick()">
@@ -49,8 +54,13 @@
         <tui-hosted-dropdown tuiDropdownAlign="center" [content]="mobile" [(open)]="mobileOpen">
           <div tuiHostedDropdownHost class="profile-section">
             @if(user$ | async ; as user) {
-              <p class="text">{{user.name}}</p>
-              <tui-avatar text="{{user.name}}" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+              @if(user.nickname === '') {
+                <p class="text">{{user.name}}</p>
+                <tui-avatar [text]="user.name!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+              } @else {
+                <p class="text">{{user.given_name}} {{user.family_name}}</p>
+                <tui-avatar [text]="user.nickname!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+              }
             }
           </div>
           <ng-template #mobile>

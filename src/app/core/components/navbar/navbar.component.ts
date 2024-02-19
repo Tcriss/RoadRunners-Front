@@ -34,7 +34,6 @@ export class NavbarComponent {
   @ContentChild('links') links!: TemplateRef<unknown>;
   @ContentChild('linksSideNavBar') navLinks!: TemplateRef<unknown>;
   @ContentChild('optionLink') optionLinks!: TemplateRef<unknown>;
-  // @ContentChild('mobile_options') mobile_options!: TemplateRef<unknown>;
 
   expanded: boolean = false;
   open: boolean = false;
@@ -43,10 +42,12 @@ export class NavbarComponent {
   user$ = this.auth.user$;
 
   constructor (
+    @Inject(DOCUMENT) public document: Document,
     public auth: AuthService,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) public document: Document,
-  ) {}
+  ) {
+    this.user$.subscribe(user => console.log('user: ', user))
+  }
 
 	onClick(): void {
 	  this.open = false;

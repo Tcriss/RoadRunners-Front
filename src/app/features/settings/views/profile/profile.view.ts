@@ -67,7 +67,7 @@ export class ProfileView implements OnInit {
                   this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.','error');
                   break;
                 default:
-                  this.alerts.notify('Error al agregar vehículo', err,'error');
+                  this.alerts.notify('Error al guardar cambios', err,'error');
                   break;
               }
             }
