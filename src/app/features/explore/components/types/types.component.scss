@@ -1,9 +1,19 @@
+@mixin responsive($width) {
+    @media screen and (max-width: $width) {
+        @content
+    }
+};
+
 .type-cont{
     padding: 20px 0px;
     display: flex;
     justify-content: center;
     overflow-x: scroll;
     gap: 20px;
+
+    @include responsive(969px) {
+        justify-content: start;
+    }
 
     .type{
         display: flex;

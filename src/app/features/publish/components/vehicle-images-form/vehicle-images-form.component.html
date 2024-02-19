@@ -2,23 +2,37 @@
   <div class="images">
     <h1 class="form-title">Imagenes del vehículo</h1>
     <div class="images-form">
-      @for(image of previewImages; track image; let i = $index) {
-        <div class="image-preview">
-          <img [src]="image">
-          <button (click)="deletePreview(i)" class="delete-preview">
-            <i class="fi fi-rr-trash"></i>
-          </button>
-        </div>
-      } @empty {}
-      <input class="images-input" (change)="previewImage($event)" id="images-input" type="file" accept="image/png, image/jpg, image/jpeg, image/webp" multiple>
-      @if(previewImages.length < 7) { 
-        <label class="images-label" for="images-input">
-          <div class="logo">
-            <i class="fi fi-rr-inbox-out logo"></i>
-          </div>
-          <p>Clickea aquí para subir las imagenes</p>
-        </label>
-      }
+      <tui-input-files
+        accept="image/png, image/jpg, image/jpeg, image/webp"
+        [formControl]="form"
+        [multiple]="true"
+        (ngModelChange)="form.markAsTouched()"
+      >
+        <ng-template let-dragged>
+          @if(dragged) {
+            <div class="content">
+              <div class="logo">
+                <i class="fi fi-rr-inbox-out logo"></i>
+              </div>
+              <p>Puedes dejarla caer ya para añadirla</p>
+            </div>
+          } @else {
+            <div class="content">
+              <div class="logo">
+                <i class="fi fi-rr-inbox-out logo"></i>
+              </div>
+              <p>Arratra hasta aquí o clickea para subir las imagenes</p>
+            </div>
+          }
+        </ng-template>
+      </tui-input-files>
+      <tui-files [max]="3">
+        @for(file of form.valueChanges | async ; track $index) {
+          <tui-file [file]="file" [showDelete]="form.enabled" (removed)="removeFile(file)"></tui-file>
+        }
+      </tui-files>
+      <tui-error [error]="['maxLength'] | tuiFieldError | async" [formControl]="form"
+	></tui-error>
     </div>
   </div>
 </ng-container>

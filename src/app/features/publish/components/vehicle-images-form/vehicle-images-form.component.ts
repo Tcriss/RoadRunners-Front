@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
-import { AlertsService } from "../../../../core/services/alerts.service";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroupDirective } from '@angular/forms';
+import { TuiFileLike } from '@taiga-ui/kit';
+import { maxFilesLength } from '../../validators/max-file.validator';
 
 @Component({
   selector: 'app-vehicle-images-form',
@@ -12,49 +13,29 @@ export class VehicleImagesFormComponent implements OnInit {
 
   @Input() formGroupName!: string;
   @Input({ alias: 'images' }) images!: [];
-  previewImages: unknown[] = [];
-  form!: FormGroup;
+  files: File[] = [];
+  form: FormControl = new FormControl([], [maxFilesLength(7)]);
+  readonly file: TuiFileLike = {
+    name: 'custom.txt',
+  };
 
   constructor(
     private rootForm: FormGroupDirective,
-    private alerts: AlertsService,
+    private cdr: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
-    this.form = this.rootForm.control.get(this.formGroupName) as FormGroup;
+    this.form = this.rootForm.control.get(this.formGroupName) as FormControl;
   }
 
-  previewImage(event: any) {
-    if (event.target.files.length > 7) {
-      this.alerts.alertMe('Limite de imagenes', 'Solo es posible subir un máximo de 7 imagenes.', 'Aceptar');
-      return;
-    }
-
-    this.form.patchValue([...event.target.files]);
+  upload(event: any): void {
+    this.cdr.detectChanges();
+    this.form.patchValue(this.files);
   }
 
-  // dataURItoBlob(file: File): Blob {
-  //   const byteString = atob(dataURI.split(',')[1]);
-  //   const arrayBuffer = new ArrayBuffer(byteString.length);
-  //   const int8Array = new Uint8Array(arrayBuffer);
-  //   for (let i = 0; i < byteString.length; i++) {
-  //     int8Array[i] = byteString.charCodeAt(i);
-  //   }
-  //   return new Blob([int8Array], { type: 'image/jpeg' });
-  // }
-
-  toBase64(buffer: any) {
-    var binary = '';
-    var bytes = new Uint8Array(buffer);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
-
-  deletePreview(index: number) {
-    this.previewImages.splice(index, 1);
-    this.form.patchValue([...this.previewImages]);
+  removeFile({name}: File): void {
+    this.form.setValue(
+        this.form.value?.filter((current: File) => current.name !== name) ?? [],
+    );
   }
 }
