@@ -26,7 +26,7 @@
           }
         </ng-template>
       </tui-input-files>
-      <tui-files [max]="3">
+      <tui-files [max]="limit" [(expanded)]="expanded">
         @for(file of form.valueChanges | async ; track $index) {
           <tui-file [file]="file" [showDelete]="form.enabled" (removed)="removeFile(file)"></tui-file>
         }

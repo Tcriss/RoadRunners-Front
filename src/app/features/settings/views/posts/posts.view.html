@@ -4,12 +4,23 @@
       @for (vehicle of myVehicles; track vehicle.owner) {
         <div class="article">
           <div class="actions">
-            <button (click)="edit(vehicle._id)" class="edit-button">
-              <i class="fi fi-rr-pencil"></i>
-            </button>
-            <button (click)="delete(vehicle._id)" class="delete-button">
-              <i class="fi fi-rr-cross"></i> 
-            </button>
+            <tui-hosted-dropdown #dropdown [content]="menu" [(open)]="dropdownOpen" tuiDropdownHover>
+              <button class="menu-icon">
+                <i class="fi fi-bs-menu-dots-vertical"></i>
+              </button>
+            </tui-hosted-dropdown>
+            <ng-template #menu>
+              <tui-data-list>
+                <button (click)="edit(vehicle._id)" tuiOption class="edit-button">
+                  <i class="fi fi-bs-pencil"></i>
+                  Editar publicación
+                </button>
+                <button (click)="delete(vehicle._id)" tuiOption class="delete-button">
+                  <i class="fi fi-bs-trash"></i> 
+                  Borrar publicación
+                </button>
+              </tui-data-list>
+            </ng-template>
           </div>
           <div class="image">
             @if (vehicle.portrait) {
@@ -38,7 +49,6 @@
       <div class="skeleton">
         <div class="actions">
         <div class="edit-button"></div>
-        <div class="delete-button"></div>
       </div>
         <div class="image">
         </div>

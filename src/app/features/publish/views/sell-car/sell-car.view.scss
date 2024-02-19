@@ -53,10 +53,13 @@
             }
 
             .backward-button {
-                background-color: rgba(255, 255, 255, 0.873);
+                width: 60px;
+                border-radius: 100px;
+                background-color: rgba(255, 255, 255, 0.566);
                 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
                 color: black;
                 transition: all 400ms;
+                font-size: 18px;
 
                 &:hover {
                     box-shadow: rgba(149, 157, 165, 0.503) 0px 8px 24px;
@@ -71,23 +74,32 @@
             }
 
             .forward-button {
-                background-color: #234454;
-                color: white;
+                width: 60px;
+                font-size: 18px;
+                border-radius: 100px;
+                background-color: rgba(255, 255, 255, 0.566);
+                color: black;
                 box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
                 transition: all 400ms;
 
                 &:hover {
-                    background-color: #32627a;
+                    background-color: white;
                 }
 
                 &:active {
-                    background-color: #0d1a20;
+                    background-color: white;
                 }
             }
 
             .submit-button {
                 transition: all 400ms;
                 width: 190px;
+
+                &:disabled {
+                    background-color: rgb(220, 220, 220);
+                    color: rgb(151, 151, 151);
+                    cursor: default;
+                }
             }
         }
     }

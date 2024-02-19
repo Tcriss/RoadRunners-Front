@@ -1,4 +1,4 @@
-import { Component, OnInit, DestroyRef, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, DestroyRef, inject, ChangeDetectionStrategy, Inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
@@ -6,6 +6,7 @@ import { BackendService } from '../../../../core/services/backend.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
 import { Vehicle } from '../../../../core/interfaces/vehicle';
+import { TuiDialogService, TuiSizeL, TuiSizeM, TuiSizeS } from '@taiga-ui/core';
 
 @Component({
   templateUrl: './posts.view.html',
@@ -14,7 +15,9 @@ import { Vehicle } from '../../../../core/interfaces/vehicle';
 })
 export class UserPostsView implements OnInit {
 
-  user$ = this.auth.user$
+  dropdownOpen = false;
+	size: TuiSizeL | TuiSizeS = 's';
+  user$ = this.auth.user$;
   myVehicles: Vehicle[] = [];
   uid: any = '';
   isLoading$ = this.loader.loading;
@@ -22,6 +25,7 @@ export class UserPostsView implements OnInit {
   private destroyRef = inject(DestroyRef);
 
   constructor(
+    @Inject(TuiDialogService) private readonly dialog: TuiDialogService,
     private auth: AuthService,
     private backend: BackendService,
     private alerts: AlertsService,
@@ -34,7 +38,7 @@ export class UserPostsView implements OnInit {
     this.getUserPosts();
   }
 
-  toBase64(buffer: any) {
+  toBase64(buffer: any): string {
     var binary = '';
     var bytes = new Uint8Array(buffer);
     var len = bytes.byteLength;
@@ -44,7 +48,12 @@ export class UserPostsView implements OnInit {
     return window.btoa(binary);
   }
 
-  getUserPosts() {
+  selectOption(item: string): void {
+    this.dropdownOpen = false;
+    this.dialog.open(`You selected ${item}`).subscribe();
+  }
+
+  private getUserPosts(): void {
     this.backend.showVehicles()
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
@@ -62,11 +71,11 @@ export class UserPostsView implements OnInit {
     });
   }
 
-  edit(id: string) {
+  edit(id: string): void {
     this.router.navigate([`/publish/edit/${id}`]);
   }
 
-  delete(id: string) {
+  delete(id: string): void {
     this.alerts.askMe('Eliminar vehiculo', '¿Seguro que deseas eliminar esta publicación?', 'Aceptar', 'Cancelar').subscribe(res => {
       if (res == true) {
         this.backend.deleteVehicle(id).subscribe({

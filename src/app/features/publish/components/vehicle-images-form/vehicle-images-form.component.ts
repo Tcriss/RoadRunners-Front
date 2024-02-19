@@ -12,9 +12,9 @@ import { maxFilesLength } from '../../validators/max-file.validator';
 export class VehicleImagesFormComponent implements OnInit {
 
   @Input() formGroupName!: string;
-  @Input({ alias: 'images' }) images!: [];
-  files: File[] = [];
-  form: FormControl = new FormControl([], [maxFilesLength(7)]);
+  expanded: boolean = false;
+  limit: number = 3;
+  form: FormControl = new FormControl([], [maxFilesLength(this.limit)]);
   readonly file: TuiFileLike = {
     name: 'custom.txt',
   };
@@ -26,11 +26,6 @@ export class VehicleImagesFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.rootForm.control.get(this.formGroupName) as FormControl;
-  }
-
-  upload(event: any): void {
-    this.cdr.detectChanges();
-    this.form.patchValue(this.files);
   }
 
   removeFile({name}: File): void {

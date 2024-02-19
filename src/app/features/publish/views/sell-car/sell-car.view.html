@@ -8,12 +8,13 @@
                 <app-contact-info-form *tuiItem class="contact" formGroupName="contact"></app-contact-info-form>
             </tui-carousel>
             <div class="actions">
-                <button type="button" (click)="carousel.prev()" class="backward-button">Regresar</button>
-                @if (sellVehicleForm.valid) {
-                    <button type="submit" class="forward-button submit-button">Publicar Vehículo</button>
-                } @else {
-                    <button type="button" (click)="carousel.next()" class="forward-button">Siguiente</button>
-                }
+                <button type="button" (click)="carousel.prev()" class="backward-button">
+                    <i class="fi fi-br-angle-small-left"></i>
+                </button>
+                <button type="submit" class="submit-button" [disabled]="sellVehicleForm.invalid">Publicar Vehículo</button>
+                <button type="button" (click)="carousel.next()" class="forward-button">
+                    <i class="fi fi-br-angle-small-right"></i>
+                </button>
             </div>
         </form>
         }

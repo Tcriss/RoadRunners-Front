@@ -32,6 +32,8 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         @include mobileView {
             padding: 60px 10px;
             justify-content: center;
+            height: 70vh;
+            justify-content: start;
         }
 
         .header {

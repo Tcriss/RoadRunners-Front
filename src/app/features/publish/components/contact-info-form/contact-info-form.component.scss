@@ -16,4 +16,10 @@
         flex-direction: column;
         gap: 20px;
     }
+
+    button {
+        &:hover {
+            background-color: #f5f5f5;
+        }
+    }
 }

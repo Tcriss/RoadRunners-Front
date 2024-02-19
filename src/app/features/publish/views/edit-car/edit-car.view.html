@@ -9,9 +9,13 @@
                 <app-contact-info-form *tuiItem class="contact" formGroupName="contact" />
             </tui-carousel>
             <div class="actions">
-                <button type="button" (click)="carousel.prev()" class="backward-button">Regresar</button>
-                <button type="submit" class="forward-button submit-button">Editar Vehículo</button>
-                <button type="button" (click)="carousel.next()" class="forward-button">Siguiente</button>
+                <button type="button" (click)="carousel.prev()" class="backward-button">
+                    <i class="fi fi-br-angle-small-left"></i>
+                </button>
+                <button type="submit" class="submit-button" [disabled]="editVehicleForm.invalid">Editar Vehículo</button>
+                <button type="button" (click)="carousel.next()" class="forward-button">
+                    <i class="fi fi-br-angle-small-right"></i>
+                </button>
             </div>
         </form>
         }
