@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
 
-import { BackendService } from '../../../../common/services/backend.service';
-import { AlertsService } from '../../../../common/services/alerts.service';
+import { ConnectionService } from '../../../../services/connection.service';
+import { AlertsService } from '../../../../services/alerts.service';
 
 @Component({
   selector: 'app-sell-car',
@@ -20,7 +20,7 @@ export class SellCarView implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
-    private backendService: BackendService,
+    private backendService: ConnectionService,
     private alerts: AlertsService
   ) {
     this.sellVehicleForm = this.fb.group({

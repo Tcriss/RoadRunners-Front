@@ -6,8 +6,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { AccountView } from './views/account/account.view';
 import { UserPostsView } from './views/posts/posts.view';
 import { ProfileView } from './views/profile/profile.view';
-import { SharedModule } from '../shared/shared.module';
-import { ComingSoonComponent } from '../../common/components/coming-soon/coming-soon.component';
+import { SharedModule } from '../../shared/shared.module';
 import { routes } from './config/routes.config';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { routes } from './config/routes.config';
   imports: [
     RouterModule.forChild(routes),
     SharedModule,
-    ComingSoonComponent
   ],
 })
 export class SettingsModule { }

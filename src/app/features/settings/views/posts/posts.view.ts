@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { TuiDialogService, TuiSizeL, TuiSizeS } from '@taiga-ui/core';
 
-import { BackendService } from '../../../../common/services/backend.service';
-import { AlertsService } from '../../../../common/services/alerts.service';
-import { SpinnerService } from '../../../../common/services/spinner.service';
+import { ConnectionService } from '../../../../services/connection.service';
+import { AlertsService } from '../../../../services/alerts.service';
+import { SpinnerService } from '../../../../services/spinner.service';
 import { Vehicle } from '../../../../common/interfaces/vehicle';
 
 @Component({
@@ -28,7 +28,7 @@ export class UserPostsView implements OnInit {
   constructor(
     @Inject(TuiDialogService) private readonly dialog: TuiDialogService,
     private auth: AuthService,
-    private backend: BackendService,
+    private backend: ConnectionService,
     private alerts: AlertsService,
     private loader: SpinnerService,
     private router: Router

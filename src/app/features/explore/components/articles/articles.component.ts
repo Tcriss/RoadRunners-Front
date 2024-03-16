@@ -3,9 +3,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subscription } from 'rxjs';
 import { Params } from '@angular/router';
 
-import { BackendService } from '../../../../common/services/backend.service';
-import { SpinnerService } from '../../../../common/services/spinner.service';
-import { AlertsService } from '../../../../common/services/alerts.service';
+import { ConnectionService } from '../../../../services/connection.service';
+import { SpinnerService } from '../../../../services/spinner.service';
+import { AlertsService } from '../../../../services/alerts.service';
 import { Vehicle } from '../../../../common/interfaces';
 
 @Component({
@@ -25,7 +25,7 @@ export class ArticlesComponent implements OnChanges {
   private destroyRef = inject(DestroyRef);
 
   constructor(
-    private data: BackendService,
+    private data: ConnectionService,
     private loader: SpinnerService,
     private alerts: AlertsService
   ) { }

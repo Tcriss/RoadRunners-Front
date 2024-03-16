@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
 
-import { BackendService } from '../../../../common/services/backend.service';
-import { AlertsService } from '../../../../common/services/alerts.service';
+import { ConnectionService } from '../../../../services/connection.service';
+import { AlertsService } from '../../../../services/alerts.service';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +20,7 @@ export class ProfileView implements OnInit {
   constructor(
     private auth: AuthService,
     private fb: FormBuilder,
-    private backend: BackendService,
+    private backend: ConnectionService,
     private alerts: AlertsService,
   ) {
     this.profileForm = this.fb.group({

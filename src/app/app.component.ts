@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { TuiPromptModule } from '@taiga-ui/kit';
 
-import { FooterComponent } from './common/components/footer/footer.component';
-import { NavbarComponent } from './common/components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { Link } from './common/interfaces';
 
 @Component({
@@ -15,9 +13,7 @@ import { Link } from './common/interfaces';
     TuiRootModule,
     NavbarComponent,
     FooterComponent,
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
+    RouterModule,
     TuiAlertModule,
     TuiPromptModule,
     TuiDialogModule,
@@ -44,11 +40,6 @@ export class AppComponent {
       name: 'Publicar',
       path: '/publish/sell'
     },
-    // {
-    //   icon: 'fi fi-br-search',
-    //   name: 'Acerca de',
-    //   path: '/'
-    // },
   ];
   
   optionLinks: Link[] = [
@@ -62,10 +53,5 @@ export class AppComponent {
       name: 'Vehículos publicados',
       path: '/settings/my-posts'
     },
-    // {
-    //   icon: 'fi fi-rr-settings',
-    //   name: 'Cuenta',
-    //   path: '/settings/account'
-    // },
   ];
 }

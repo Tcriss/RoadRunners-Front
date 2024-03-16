@@ -4,13 +4,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { TuiDialogContext, TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
-import { TuiPreviewDialogService } from '@taiga-ui/addon-preview';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
-import { TuiSwipe, tuiClamp } from '@taiga-ui/cdk';
 
 import { Vehicle } from '../../../../common/interfaces';
-import { BackendService } from '../../../../common/services/backend.service';
-import { SpinnerService } from '../../../../common/services/spinner.service';
+import { ConnectionService } from '../../../../services/connection.service';
+import { SpinnerService } from '../../../../services/spinner.service';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -53,10 +51,8 @@ export class VehicleDetailsView {
   constructor(
     @Inject(TuiDialogService) 
     private readonly dialog: TuiDialogService,
-    @Inject(TuiPreviewDialogService) 
-    private readonly previewService: TuiPreviewDialogService,
     private route: ActivatedRoute,
-    private data: BackendService,
+    private data: ConnectionService,
     private location: Location,
     private loading: SpinnerService
   ) {
