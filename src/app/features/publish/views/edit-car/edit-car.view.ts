@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { AuthService } from '@auth0/auth0-angular';
 import { BackendService } from '../../../../core/services/backend.service';
 import { AlertsService } from '../../../../core/services/alerts.service';

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, TitleStrategy } from '@angular/router';
+
 import { UpdatePageTitle } from './core/utils/pageTitleStrategy';
 import { loginGuard } from './core/guards/login.guard';
-import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [
   {

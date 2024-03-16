@@ -1,8 +1,9 @@
-import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild, TemplateRef, ContentChild, Input } from '@angular/core';
+import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild, TemplateRef, ContentChild } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 import { TuiDropdownHostModule } from '@taiga-ui/cdk';
+
 import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
@@ -45,9 +46,7 @@ export class NavbarComponent {
     @Inject(DOCUMENT) public document: Document,
     public auth: AuthService,
     private renderer: Renderer2,
-  ) {
-    this.user$.subscribe(user => console.log('user: ', user))
-  }
+  ) {}
 
 	onClick(): void {
 	  this.open = false;

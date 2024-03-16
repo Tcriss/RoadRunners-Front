@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Link } from './core/interfaces';
 
 @Component({

@@ -3,7 +3,7 @@
     <div class="article">
       <div class="image">
         @if (article.portrait) {
-          <img src="data:{{article.portrait.contentType}};base64,{{toBase64(article.portrait.data.data)}}" fill>
+          <img [src]="article.portrait.url" fill>
         } @else {
           <img src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
         }

@@ -1,10 +1,11 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { TuiIdentityMatcher } from '@taiga-ui/cdk';
+
 import { brands } from '../../../../core/utils/brands.list';
 import { types } from '../../../../core/utils/types.list';
 import { fuel } from '../../../../core/utils/fuel.list';
 import { condition } from '../../../../core/utils/condition.list';
-import { TuiIdentityMatcher } from '@taiga-ui/cdk';
 import { Brand } from '../../../../core/interfaces';
 
 @Component({

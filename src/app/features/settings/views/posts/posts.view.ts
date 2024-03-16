@@ -2,11 +2,12 @@ import { Component, OnInit, DestroyRef, inject, ChangeDetectionStrategy, Inject 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
+import { TuiDialogService, TuiSizeL, TuiSizeS } from '@taiga-ui/core';
+
 import { BackendService } from '../../../../core/services/backend.service';
 import { AlertsService } from '../../../../core/services/alerts.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
 import { Vehicle } from '../../../../core/interfaces/vehicle';
-import { TuiDialogService, TuiSizeL, TuiSizeM, TuiSizeS } from '@taiga-ui/core';
 
 @Component({
   templateUrl: './posts.view.html',
@@ -36,16 +37,6 @@ export class UserPostsView implements OnInit {
   ngOnInit(): void {
     this.user$.subscribe(user => this.uid = user?.sub);
     this.getUserPosts();
-  }
-
-  toBase64(buffer: any): string {
-    var binary = '';
-    var bytes = new Uint8Array(buffer);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
   }
 
   selectOption(item: string): void {

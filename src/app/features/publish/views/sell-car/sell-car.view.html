@@ -1,7 +1,7 @@
 <div class="sell-car">
     <div class="sell">
         @if (user$ | async; as user) {
-        <form (ngSubmit)="publishVehicle(user.sub)" [formGroup]="sellVehicleForm" enctype="multipart/form-data">
+        <form (ngSubmit)="loadData(user.sub)" [formGroup]="sellVehicleForm" enctype="multipart/form-data">
             <tui-carousel class="slider" #carousel>
                 <app-vehicle-info-form *tuiItem class="info" formGroupName="info"></app-vehicle-info-form>
                 <app-vehicle-images-form *tuiItem class="images" formGroupName="images"></app-vehicle-images-form>

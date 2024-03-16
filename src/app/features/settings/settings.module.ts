@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { SettingsComponent } from './settings.component';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
@@ -20,6 +21,6 @@ import { ComingSoonComponent } from '../../core/components/coming-soon/coming-so
     SettingsRoutingModule,
     SharedModule,
     ComingSoonComponent
-  ]
+  ],
 })
 export class SettingsModule { }

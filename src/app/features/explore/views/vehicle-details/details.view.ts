@@ -1,15 +1,16 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, Inject, TemplateRef, ViewChild, inject } from '@angular/core';
-import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Location } from '@angular/common';
+import { Subject } from 'rxjs';
 import { TuiDialogContext, TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
-import { Vehicle } from '../../../../core/interfaces';
+import { TuiPreviewDialogService } from '@taiga-ui/addon-preview';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
+import { TuiSwipe, tuiClamp } from '@taiga-ui/cdk';
+
+import { Vehicle } from '../../../../core/interfaces';
 import { BackendService } from '../../../../core/services/backend.service';
 import { SpinnerService } from '../../../../core/services/spinner.service';
-import { TuiPreviewDialogService } from '@taiga-ui/addon-preview';
-import { TuiSwipe, tuiClamp } from '@taiga-ui/cdk';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -19,15 +20,10 @@ import { TuiSwipe, tuiClamp } from '@taiga-ui/cdk';
 })
 export class VehicleDetailsView {
 
-  @ViewChild('preview')
-  readonly preview?: TemplateRef<TuiDialogContext>;
-
-  @ViewChild('contentSample')
-  readonly contentSample?: TemplateRef<Record<string, unknown>>;
-
+  @ViewChild('preview') readonly preview?: TemplateRef<TuiDialogContext>;
+  @ViewChild('contentSample') readonly contentSample?: TemplateRef<Record<string, unknown>>;
   index = 0;
   length = 2;
-
   vehicle: Vehicle = {
     _id: '',
     owner: '',
@@ -55,8 +51,10 @@ export class VehicleDetailsView {
   private distroyRef = inject(DestroyRef);
 
   constructor(
-    @Inject(TuiDialogService) private readonly dialog: TuiDialogService,
-    @Inject(TuiPreviewDialogService) private readonly previewService: TuiPreviewDialogService,
+    @Inject(TuiDialogService) 
+    private readonly dialog: TuiDialogService,
+    @Inject(TuiPreviewDialogService) 
+    private readonly previewService: TuiPreviewDialogService,
     private route: ActivatedRoute,
     private data: BackendService,
     private location: Location,
@@ -75,41 +73,31 @@ export class VehicleDetailsView {
     }).subscribe();
   }
 
-  toBase64(buffer: any): string {
-    var binary = '';
-    var bytes = new Uint8Array(buffer);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
-
   getBack(): void {
     this.location.back();
   }
 
-  get title(): string {
+  getTitle(): string {
     return this.index === 0 ? 'Transaction cert.jpg' : 'My face.jpg';
   }
 
-  get previewContent(): PolymorpheusContent {
-      return 'https://avatars.githubusercontent.com/u/10106368';
+  getPreviewContent(): PolymorpheusContent {
+    return 'https://avatars.githubusercontent.com/u/10106368';
   }
 
   show(): void {
-      this.previewService.open(this.preview || '').subscribe({
-          complete: () => console.info('complete'),
-      });
+    this.previewService.open(this.preview || '').subscribe({
+      complete: () => console.info('complete'),
+    });
   }
 
   onSwipe(swipe: TuiSwipe): void {
     if (swipe.direction === 'left') {
-        this.index = tuiClamp(this.index + 1, 0, this.length - 1);
+      this.index = tuiClamp(this.index + 1, 0, this.length - 1);
     }
 
     if (swipe.direction === 'right') {
-        this.index = tuiClamp(this.index - 1, 0, this.length - 1);
+      this.index = tuiClamp(this.index - 1, 0, this.length - 1);
     }
-}
+  }
 }

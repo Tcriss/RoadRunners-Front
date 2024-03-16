@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ExploreComponent } from './explore.component';
 import { HomeView } from './views/home/home.view';
 import { VehiclesView } from './views/vehicles/vehicles.view';

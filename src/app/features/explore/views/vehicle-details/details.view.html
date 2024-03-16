@@ -2,7 +2,7 @@
     <div class="details">
         <div class="image-gallery">
             @for (image of vehicle.images; track i; let i = $index) {
-                <img class="image{{i}}" (click)="show()" src="data:{{image.contentType}};base64,{{toBase64(image.data.data)}}">
+                <img class="image{{i}}" (click)="show()" [src]="image.url">
             } @empty {
                 <img class="image1" src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
             }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { SettingsComponent } from './settings.component';
 import { ProfileView } from './views/profile/profile.view';
 import { AccountView } from './views/account/account.view';
