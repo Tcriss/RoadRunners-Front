@@ -10,13 +10,10 @@ import { Link } from './common/interfaces';
 @Component({
   standalone: true,
   imports: [
-    TuiRootModule,
     NavbarComponent,
     FooterComponent,
     RouterModule,
-    TuiAlertModule,
-    TuiPromptModule,
-    TuiDialogModule,
+    TuiRootModule
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',

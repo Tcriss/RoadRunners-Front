@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { AuthService } from '@auth0/auth0-angular';
+
 import { ConnectionService } from '../../../../services/connection.service';
 import { AlertsService } from '../../../../services/alerts.service';
-import { SpinnerService } from '../../../../services/spinner.service';
+import { LoaderService } from '../../../../services/loader.service';
 import { EditVehicle } from '../../../../common/interfaces';
 
 @Component({
@@ -24,7 +24,7 @@ export class EditCarView {
   editVehicleForm: FormGroup;
   previewImages: unknown[] = [];
   initialFormValue: any;
-  isLoading$ = this.loader.loading;
+  isLoading$ = this.loader.getStatus();
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +33,7 @@ export class EditCarView {
     private alerts: AlertsService,
     private router: Router,
     private route: ActivatedRoute,
-    private loader: SpinnerService
+    private loader: LoaderService
   ) {
     this.editVehicleForm = this.fb.group({
       info: this.fb.group({
@@ -54,12 +54,16 @@ export class EditCarView {
         whatsapp: [''],
         telegram: [''],
       }),
-      images: [[], Validators.required],
+      //images: [[], Validators.required],
     });
   }
 
   ngOnInit(): void {
-    this.backend.getVehicle(this.id)
+    this.getVehicle();
+  }
+
+  private getVehicle(): void {
+    this.backend.findOneVehicle(this.id)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (vehicle) => {
@@ -103,8 +107,7 @@ export class EditCarView {
       });
   }
 
-  updateVehicle(uid: any) {
-
+  updateVehicle(uid: any): void {
     const update: EditVehicle = {
       _id: this.id,
       owner: uid,
@@ -115,7 +118,7 @@ export class EditCarView {
       condition: this.editVehicleForm.value.info.condition,
       fuel: this.editVehicleForm.value.info.fuel,
       year: this.editVehicleForm.value.info.year,
-      price:  this.editVehicleForm.value.contact.price,
+      price: this.editVehicleForm.value.contact.price,
       email: this.editVehicleForm.value.contact.email,
       name: this.editVehicleForm.value.contact.name,
       phone: this.editVehicleForm.value.contact.phone,
@@ -123,35 +126,36 @@ export class EditCarView {
       telegram: this.editVehicleForm.value.contact.telegram
     };
 
-    this.alerts.askMe('Guardar Cambios', `¿Deseas Guardar los cambios de este vehículo?`, 'Publicar', 'Cancelar')
+    this.alerts.askMe('Guardado', `¿Desea guardar los cambios?`, 'Guardar', 'Cancelar').subscribe(res => {
+      if (res == true) this.save(update);
+    });
+  }
+
+  private save(vehicle: EditVehicle): void {
+    this.backend.editVehicle(this.id, vehicle)
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe(res => {
-        if (res == true) {
-          this.backend.putVehicle(this.id, update)
-            .pipe(takeUntilDestroyed(this.destroyRef))
-            .subscribe({
-              next: (res) => {
-                this.alerts.notify('Vehículo editado exitosamente', `${this.editVehicleForm.value.info.brand} ${this.editVehicleForm.value.info.model} editado.`, 'success');
-                this.router.navigate(['/settings/my-posts']);
-              },
-              error: (err) => {
-                switch (err.status) {
-                  case 401:
-                    this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
-                    break;
-                  case 404:
-                    this.alerts.notify('Error al editar vehículo', 'Error al guardar vehículo.', 'error');
-                    break;
-                  case 500:
-                    this.alerts.notify('Ooops', 'Ha ocurrido un error, intentalo mas tarde, intentalo más tarde.', 'error');
-                    break;
-                  default:
-                    this.alerts.notify('Error al editar vehículo', err.message, 'error');
-                    break;
-                }
-              },
-            });
-        }
+      .subscribe({
+        next: (res) => {
+          this.alerts.notify('Vehículo editado exitosamente', `${this.editVehicleForm.value.info.brand} ${this.editVehicleForm.value.info.model} editado.`, 'success');
+          this.router.navigate(['/settings/my-posts']);
+        },
+        error: (err) => {
+          switch (err.status) {
+            case 401:
+              this.alerts.notify('Sin autorización', 'No tienes permisos para hacer esta acción.', 'error');
+              break;
+            case 404:
+              this.alerts.notify('Error al editar vehículo', 'No existe.', 'error');
+              console.log(err);
+              break;
+            case 500:
+              this.alerts.notify('Ooops', 'Ha ocurrido un error, intentalo más tarde.', 'error');
+              break;
+            default:
+              this.alerts.notify('Error al editar vehículo', err.message, 'error');
+              break;
+          }
+        },
       });
   }
 

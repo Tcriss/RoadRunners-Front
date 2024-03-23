@@ -15,7 +15,7 @@ import { routes } from './config/routes.config';
     ProfileView,
     SideBarComponent,
     UserPostsView,
-    AccountView
+    //AccountView
   ],
   imports: [
     RouterModule.forChild(routes),

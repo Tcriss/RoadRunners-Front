@@ -22,6 +22,8 @@ export class VehicleInfoFormComponent implements OnInit {
   readonly vehicleTypes = types;
   readonly condition: string[] = condition;
   readonly fuel: string[] = fuel;
+  search: string = 'hyundai';
+  filtered: Brand[] = [];
   selectedBrand?: Brand = {
     name: '',
     logo: '',
@@ -39,6 +41,5 @@ export class VehicleInfoFormComponent implements OnInit {
 
   readonly identityMatcher: TuiIdentityMatcher<readonly string[]> = (items1, items2) =>
     items1.length === items2.length && items1.every(item => items2.includes(item));
-
   
 }

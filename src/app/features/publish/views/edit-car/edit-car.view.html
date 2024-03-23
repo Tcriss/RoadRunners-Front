@@ -2,22 +2,22 @@
 <div class="edit-car">
     <div class="edition">
         @if (user$ | async; as user) {
-        <form (ngSubmit)="updateVehicle(user.sub)" [formGroup]="editVehicleForm">
-            <tui-carousel class="slider" #carousel>
-                <app-vehicle-info-form *tuiItem class="info" formGroupName="info" />
-                <!-- <app-vehicle-images-form *tuiItem class="images" formGroupName="images"/> -->
-                <app-contact-info-form *tuiItem class="contact" formGroupName="contact" />
-            </tui-carousel>
-            <div class="actions">
-                <button type="button" (click)="carousel.prev()" class="backward-button">
-                    <i class="fi fi-br-angle-small-left"></i>
-                </button>
-                <button type="submit" class="submit-button" [disabled]="editVehicleForm.invalid">Editar Vehículo</button>
-                <button type="button" (click)="carousel.next()" class="forward-button">
-                    <i class="fi fi-br-angle-small-right"></i>
-                </button>
-            </div>
-        </form>
+            <form (ngSubmit)="updateVehicle(user.sub)" [formGroup]="editVehicleForm">
+                <tui-carousel class="slider" #carousel>
+                    <app-vehicle-info-form *tuiItem class="info" formGroupName="info" />
+                    <!-- <app-vehicle-images-form *tuiItem class="images" formGroupName="images"/> -->
+                    <app-contact-info-form *tuiItem class="contact" formGroupName="contact" />
+                </tui-carousel>
+                <div class="actions">
+                    <button type="button" (click)="carousel.prev()" class="backward-button">
+                        <i class="fi fi-br-angle-small-left"></i>
+                    </button>
+                    <button type="submit" class="submit-button" [disabled]="editVehicleForm.invalid">Editar Vehículo</button>
+                    <button type="button" (click)="carousel.next()" class="forward-button">
+                        <i class="fi fi-br-angle-small-right"></i>
+                    </button>
+                </div>
+            </form>
         }
     </div>
 </div>

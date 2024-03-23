@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output, Input, inject, DestroyRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { Params } from '@angular/router';
 
 import { ConnectionService } from '../../../../services/connection.service';
-import { SpinnerService } from '../../../../services/spinner.service';
+import { LoaderService } from '../../../../services/loader.service';
 import { AlertsService } from '../../../../services/alerts.service';
 import { Vehicle } from '../../../../common/interfaces';
 
@@ -19,16 +19,12 @@ export class ArticlesComponent implements OnChanges {
   @Input({ alias: 'filteredParams' }) params: Params = {};
   @Input() articlesCount: number = 0;
   @Output() sendToParent = new EventEmitter<number>();
-  isLoading = this.loader.loading;
+  isLoading: Subject<boolean> = this.loader.getStatus();
   articles: Vehicle[] = [];
   subcription!: Subscription;
   private destroyRef = inject(DestroyRef);
 
-  constructor(
-    private data: ConnectionService,
-    private loader: SpinnerService,
-    private alerts: AlertsService
-  ) { }
+  constructor(private data: ConnectionService, private loader: LoaderService, private alerts: AlertsService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['params'].currentValue) this.getVehiclesBy();
@@ -36,7 +32,7 @@ export class ArticlesComponent implements OnChanges {
   }
 
   private getVehicles(): void {
-    this.subcription = this.data.showVehicles()
+    this.subcription = this.data.findAllVehicles()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {
@@ -60,7 +56,7 @@ export class ArticlesComponent implements OnChanges {
   }
 
   private getVehiclesBy(): void {
-    this.subcription = this.data.showVehicles(this.params)
+    this.subcription = this.data.findAllVehicles(this.params)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {

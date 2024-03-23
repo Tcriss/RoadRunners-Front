@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
+import { Router } from '@angular/router';
 
 import { ConnectionService } from '../../../../services/connection.service';
 import { AlertsService } from '../../../../services/alerts.service';
@@ -21,7 +22,8 @@ export class SellCarView implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private backendService: ConnectionService,
-    private alerts: AlertsService
+    private alerts: AlertsService,
+    private router: Router
   ) {
     this.sellVehicleForm = this.fb.group({
       info: this.fb.group({
@@ -78,44 +80,39 @@ export class SellCarView implements OnInit {
       form.append('images', this.sellVehicleForm.value.images[i]);
     };
 
-    this.publishVehicle(form);
+    this.alerts.askMe('Publicar', `¿Desea guardar los cambios?`, 'Publicar', 'Cancelar').subscribe(res => {
+      if (res == true) this.publish(form);
+    });
   }
 
-  private publishVehicle(data: FormData): void {
-    this.alerts.askMe(
-      'Publicar',
-      `¿Deseas publicar a ${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model}?`,
-      'Publicar', 'Cancelar'
-    ).subscribe(res => {
-      if (res == true) {
-        this.backendService.postVehicle(data).subscribe({
-          next: (res) => {
+  private publish(vehicle: FormData): void {
+    this.backendService.createVehicle(vehicle).subscribe({
+      next: (res) => {
+        this.alerts.notify('Vehículo agregado exitosamente', `${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`, 'success');
+        this.sellVehicleForm.reset();
+        this.router.navigate(['settings/my-posts']);
+      },
+      error: (err) => {
+        switch (err.status) {
+          case 201:
             this.alerts.notify('Vehículo agregado exitosamente', `${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`, 'success');
             this.sellVehicleForm.reset();
-          },
-          error: (err) => {
-            switch (err.status) {
-              case 201:
-                this.alerts.notify('Vehículo agregado exitosamente', `${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`, 'success');
-                this.sellVehicleForm.reset();
-                break;
-              case 401:
-                this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
-                break;
-              case 404:
-                this.alerts.notify('Error al agregar vehículo', 'Error al guardar vehículo.', 'error');
-                break;
-              case 500:
-                this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.', 'error');
-                break;
-              default:
-                this.alerts.notify('Error al agregar vehículo', err.message, 'error');
-                break;
-            }
-          }
-        });
+            break;
+          case 401:
+            this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
+            break;
+          case 404:
+            this.alerts.notify('Error al agregar vehículo', 'Error al guardar vehículo.', 'error');
+            break;
+          case 500:
+            this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.', 'error');
+            break;
+          default:
+            this.alerts.notify('Error al agregar vehículo', err.message, 'error');
+            break;
+        }
       }
-    })
+    });
   }
 
 }

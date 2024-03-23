@@ -19,6 +19,6 @@ import { types } from '../../../../common/utils/types.list';
 })
 export class TypesComponent {
   
-  types: Brand[] = types
+  types: Partial<Brand>[] = types
 
 }

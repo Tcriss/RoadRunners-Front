@@ -8,7 +8,7 @@ import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 
 import { Vehicle } from '../../../../common/interfaces';
 import { ConnectionService } from '../../../../services/connection.service';
-import { SpinnerService } from '../../../../services/spinner.service';
+import { LoaderService } from '../../../../services/loader.service';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -54,9 +54,9 @@ export class VehicleDetailsView {
     private route: ActivatedRoute,
     private data: ConnectionService,
     private location: Location,
-    private loading: SpinnerService
+    private loading: LoaderService
   ) {
-    this.data.getVehicle(this.id)
+    this.data.findOneVehicle(this.id)
       .pipe(takeUntilDestroyed(this.distroyRef))
       .subscribe(vehicle => { this.vehicle = vehicle });
   }

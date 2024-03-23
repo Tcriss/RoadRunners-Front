@@ -4,19 +4,19 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SpinnerService {
-  
-  loading: Subject<boolean> = new Subject<boolean>();
+export class LoaderService {
 
-  show():void{
+  private loading: Subject<boolean> = new Subject<boolean>();
+
+  show(): void {
     this.loading.next(false);
   }
 
-  hide():void{
+  hide(): void {
     this.loading.next(true);
   }
 
-  getStatus() {
+  getStatus(): Subject<boolean> {
     return this.loading;
   }
 }

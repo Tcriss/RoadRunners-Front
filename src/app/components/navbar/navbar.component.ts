@@ -4,7 +4,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
 import { TuiDropdownHostModule } from '@taiga-ui/cdk';
 
-import { SharedModule } from '../../../modules/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   standalone: true,

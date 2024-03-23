@@ -3,6 +3,7 @@ import { TuiCurrencyPipeModule } from '@taiga-ui/addon-commerce';
 import { TuiErrorModule } from '@taiga-ui/core';
 import { TuiCarouselModule, TuiFieldErrorPipeModule, TuiInputFilesModule, TuiInputNumberModule, TuiInputPhoneModule, TuiToggleModule } from '@taiga-ui/kit';
 import { TuiValidatorModule } from '@taiga-ui/cdk';
+import { RouterModule } from '@angular/router';
 
 import { PublishComponent } from './publish.component';
 import { VehicleInfoFormComponent } from './components/vehicle-info-form/vehicle-info-form.component';
@@ -12,8 +13,8 @@ import { LoadingScreenComponent } from '../../components/loading-screen/loading-
 import { SellCarView } from './views/sell-car/sell-car.view';
 import { EditCarView } from './views/edit-car/edit-car.view';
 import { SharedModule } from '../../shared/shared.module';
-import { RouterModule } from '@angular/router';
 import { routes } from './config/routes.config';
+import { FilterBrandPipe } from './pipes/filter-brand.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { routes } from './config/routes.config';
     VehicleInfoFormComponent,
     ContactInfoFormComponent,
     VehicleImagesFormComponent,
+    FilterBrandPipe
   ],
   imports: [
     RouterModule.forChild(routes),

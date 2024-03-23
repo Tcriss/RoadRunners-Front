@@ -6,7 +6,7 @@ import { TuiDialogService, TuiSizeL, TuiSizeS } from '@taiga-ui/core';
 
 import { ConnectionService } from '../../../../services/connection.service';
 import { AlertsService } from '../../../../services/alerts.service';
-import { SpinnerService } from '../../../../services/spinner.service';
+import { LoaderService } from '../../../../services/loader.service';
 import { Vehicle } from '../../../../common/interfaces/vehicle';
 
 @Component({
@@ -21,7 +21,7 @@ export class UserPostsView implements OnInit {
   user$ = this.auth.user$;
   myVehicles: Vehicle[] = [];
   uid: any = '';
-  isLoading$ = this.loader.loading;
+  isLoading$ = this.loader.getStatus();
   item: number = 3;
   private destroyRef = inject(DestroyRef);
 
@@ -30,7 +30,7 @@ export class UserPostsView implements OnInit {
     private auth: AuthService,
     private backend: ConnectionService,
     private alerts: AlertsService,
-    private loader: SpinnerService,
+    private loader: LoaderService,
     private router: Router
   ) { }
 
@@ -45,7 +45,7 @@ export class UserPostsView implements OnInit {
   }
 
   private getUserPosts(): void {
-    this.backend.showVehicles()
+    this.backend.findAllVehicles()
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
       next: (vehicles) => this.myVehicles = vehicles.filter(vehicle => vehicle.owner == this.uid),

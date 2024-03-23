@@ -1,5 +1,5 @@
 export interface Brand {
     name: string,
-    logo?: string,
-    models?: string[]
+    logo: string,
+    models: string[]
 }
