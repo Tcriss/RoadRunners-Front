@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TuiAvatarModule } from '@taiga-ui/kit';
 
-import { Member } from '../../common/interfaces';
+import { Member } from '../../core/interfaces';
 
 @Component({
   standalone: true,

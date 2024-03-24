@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Params } from '@angular/router';
 
-import { types } from '../../../../common/utils/types.list';
-import { brands } from '../../../../common/utils/brands.list';
-import { Brand } from '../../../../common/interfaces';
+import { types } from '../../../../core/utils/types.list';
+import { brands } from '../../../../core/utils/brands.list';
+import { Brand } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-filter-bar',

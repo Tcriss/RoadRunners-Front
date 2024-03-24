@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Params } from '@angular/router';
 
-import { EditVehicle, Vehicle } from '../common/interfaces';
+import { EditVehicle, Vehicle } from '../core/interfaces';
 import { environment as env } from '../../environments/environment';
 
 @Injectable({

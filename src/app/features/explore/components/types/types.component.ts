@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 
-import { Brand } from '../../../../common/interfaces/brand';
-import { types } from '../../../../common/utils/types.list';
+import { Brand } from '../../../../core/interfaces/brand';
+import { types } from '../../../../core/utils/types.list';
 
 @Component({
   selector: 'app-types',

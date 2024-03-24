@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { TuiAlertModule, TuiDialogModule, TuiRootModule } from '@taiga-ui/core';
+import { TuiRootModule } from '@taiga-ui/core';
 import { RouterModule } from '@angular/router';
-import { TuiPromptModule } from '@taiga-ui/kit';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { Link } from './common/interfaces';
+import { Link } from './core/interfaces';
 
 @Component({
   standalone: true,

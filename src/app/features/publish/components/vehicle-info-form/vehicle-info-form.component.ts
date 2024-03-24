@@ -2,11 +2,11 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 import { TuiIdentityMatcher } from '@taiga-ui/cdk';
 
-import { brands } from '../../../../common/utils/brands.list';
-import { types } from '../../../../common/utils/types.list';
-import { fuel } from '../../../../common/utils/fuel.list';
-import { condition } from '../../../../common/utils/condition.list';
-import { Brand } from '../../../../common/interfaces';
+import { brands } from '../../../../core/utils/brands.list';
+import { types } from '../../../../core/utils/types.list';
+import { fuel } from '../../../../core/utils/fuel.list';
+import { condition } from '../../../../core/utils/condition.list';
+import { Brand } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-vehicle-info-form',

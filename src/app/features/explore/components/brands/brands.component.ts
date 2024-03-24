@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { Brand } from '../../../../common/interfaces';
-import { brands } from '../../../../common/utils/brands.list';
+import { Brand } from '../../../../core/interfaces';
+import { brands } from '../../../../core/utils/brands.list';
 
 @Component({
   selector: 'app-brands',

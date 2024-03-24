@@ -14,7 +14,6 @@ import { SellCarView } from './views/sell-car/sell-car.view';
 import { EditCarView } from './views/edit-car/edit-car.view';
 import { SharedModule } from '../../shared/shared.module';
 import { routes } from './config/routes.config';
-import { FilterBrandPipe } from './pipes/filter-brand.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { FilterBrandPipe } from './pipes/filter-brand.pipe';
     VehicleInfoFormComponent,
     ContactInfoFormComponent,
     VehicleImagesFormComponent,
-    FilterBrandPipe
   ],
   imports: [
     RouterModule.forChild(routes),

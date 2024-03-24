@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { TuiDialogContext, TuiDialogService, TuiDialogSize } from '@taiga-ui/core';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 
-import { Vehicle } from '../../../../common/interfaces';
+import { Vehicle } from '../../../../core/interfaces';
 import { ConnectionService } from '../../../../services/connection.service';
 import { LoaderService } from '../../../../services/loader.service';
 

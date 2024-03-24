@@ -7,7 +7,7 @@ import { TuiDialogService, TuiSizeL, TuiSizeS } from '@taiga-ui/core';
 import { ConnectionService } from '../../../../services/connection.service';
 import { AlertsService } from '../../../../services/alerts.service';
 import { LoaderService } from '../../../../services/loader.service';
-import { Vehicle } from '../../../../common/interfaces/vehicle';
+import { Vehicle } from '../../../../core/interfaces/vehicle';
 
 @Component({
   templateUrl: './posts.view.html',

@@ -6,7 +6,7 @@ import { Params } from '@angular/router';
 import { ConnectionService } from '../../../../services/connection.service';
 import { LoaderService } from '../../../../services/loader.service';
 import { AlertsService } from '../../../../services/alerts.service';
-import { Vehicle } from '../../../../common/interfaces';
+import { Vehicle } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-articles',

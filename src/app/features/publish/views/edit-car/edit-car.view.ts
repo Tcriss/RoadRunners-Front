@@ -7,7 +7,7 @@ import { AuthService } from '@auth0/auth0-angular';
 import { ConnectionService } from '../../../../services/connection.service';
 import { AlertsService } from '../../../../services/alerts.service';
 import { LoaderService } from '../../../../services/loader.service';
-import { EditVehicle } from '../../../../common/interfaces';
+import { EditVehicle } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-edit-car',
