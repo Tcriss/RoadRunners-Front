@@ -20,7 +20,7 @@ export class ConnectionService {
   }
 
   findOneVehicle(id: string): Observable<Vehicle> {
-    return this.http.get<Vehicle>(this.url + 'vei/' + id);
+    return this.http.get<Vehicle>(this.url + id);
   }
 
   createVehicle(vehicle: unknown): Observable<unknown> {
