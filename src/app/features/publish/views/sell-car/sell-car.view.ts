@@ -90,13 +90,17 @@ export class SellCarView implements OnInit {
       next: (res) => {
         this.alerts.notify('Vehículo agregado exitosamente', `${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`, 'success');
         this.sellVehicleForm.reset();
-        this.router.navigate(['settings/my-posts']);
+        this.router.navigate(['/settings/my-posts']);
       },
       error: (err) => {
         switch (err.status) {
           case 201:
             this.alerts.notify('Vehículo agregado exitosamente', `${this.sellVehicleForm.value.info.brand} ${this.sellVehicleForm.value.info.model} agregado.`, 'success');
             this.sellVehicleForm.reset();
+            this.router.navigate(['/settings/my-posts']);
+            break;
+          case 400:
+            this.alerts.notify('Error de validación', err.error.message, 'error');
             break;
           case 401:
             this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
@@ -108,7 +112,7 @@ export class SellCarView implements OnInit {
             this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.', 'error');
             break;
           default:
-            this.alerts.notify('Error al agregar vehículo', err.message, 'error');
+            this.alerts.notify('Error al agregar vehículo', err.error.message, 'error');
             break;
         }
       }

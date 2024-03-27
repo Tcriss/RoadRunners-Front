@@ -7,8 +7,7 @@
             <div class="empty">
                 <p class="empty-ms">Aún no hay nada aqui, se el primero en encender los motores agregando un vehículo.</p>
             </div>
-        } @else {
-            <app-articles class="articles" [filteredParams]="params.value" (sendToParent)="recieveArticles($event)"/>
         }
+        <app-articles class="articles" [filteredParams]="params.value" (sendToParent)="recieveArticles($event)"/>
     </div>
 </div>

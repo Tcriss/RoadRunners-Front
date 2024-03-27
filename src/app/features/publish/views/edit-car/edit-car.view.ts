@@ -140,13 +140,16 @@ export class EditCarView {
           this.router.navigate(['/settings/my-posts']);
         },
         error: (err) => {
+          console.log(err)
           switch (err.status) {
+            case 400:
+              this.alerts.notify('Error de validación', err.error.message, 'error');
+              break;
             case 401:
               this.alerts.notify('Sin autorización', 'No tienes permisos para hacer esta acción.', 'error');
               break;
             case 404:
               this.alerts.notify('Error al editar vehículo', 'No existe.', 'error');
-              console.log(err);
               break;
             case 500:
               this.alerts.notify('Ooops', 'Ha ocurrido un error, intentalo más tarde.', 'error');

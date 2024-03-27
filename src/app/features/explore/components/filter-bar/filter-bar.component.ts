@@ -17,8 +17,10 @@ export class FilterBarComponent implements OnInit {
 
   @Input({alias: 'urlParams', required: true}) params: Params = {};
   @Output() filterParams = new EventEmitter<Params>;
+
   readonly type = types;
   readonly brands: Brand[] = brands;
+
   max: number = 5000000;
   min: number = 0;
   quantum: number = 0.00;
@@ -38,7 +40,7 @@ export class FilterBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.params) {
+    if (this.params) {
       this.filter.patchValue({
         type: this.params['type'],
         brand: this.params['brand']
@@ -48,11 +50,11 @@ export class FilterBarComponent implements OnInit {
 
   search(): void {
     const filtered: Params = this.filter.value;
+
     for(let key in filtered) {
-      if ( filtered[key] == '' || filtered[key] == undefined) {
-        delete filtered[key];
-      }
+      if ( filtered[key] == '' || filtered[key] == undefined) delete filtered[key];
     }
+
     this.filterParams.emit(filtered);
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, Inject, TemplateRef, ViewChild, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, Inject, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Location } from '@angular/common';
@@ -18,13 +18,12 @@ import { LoaderService } from '../../../../services/loader.service';
 })
 export class VehicleDetailsView {
 
-  @ViewChild('preview') readonly preview?: TemplateRef<TuiDialogContext>;
-  @ViewChild('contentSample') readonly contentSample?: TemplateRef<Record<string, unknown>>;
-  isGalleryOpen: boolean = false;
-  isLoading$: Subject<boolean> = this.loading.getStatus();
   private params = this.route.snapshot.paramMap;
   private id: string = String(this.params.get('id'));
   private distroyRef = inject(DestroyRef);
+
+  isGalleryOpen: boolean = false;
+  isLoading$: Subject<boolean> = this.loading.getStatus();
   vehicle: Vehicle = {
     _id: '',
       owner: '',

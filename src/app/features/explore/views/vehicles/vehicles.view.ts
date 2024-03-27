@@ -14,9 +14,7 @@ export class VehiclesView implements OnInit {
   params = new BehaviorSubject<Params>({});
   filteredParams: Params = {};
 
-  constructor(
-    private activeRoute: ActivatedRoute,
-  ) { }
+  constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe(params => this.params.next(params));
