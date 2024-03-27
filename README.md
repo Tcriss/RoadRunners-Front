@@ -21,6 +21,11 @@ I made this project in collaboration with my partner [HaroldMart backend reposit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4 and was updated to Angular 17.0.3.
 
+## Dependecies
+
+- auth0
+- TaigaUI for UI Kit
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.

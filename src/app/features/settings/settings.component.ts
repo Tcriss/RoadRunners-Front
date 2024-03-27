@@ -13,7 +13,7 @@ import { Component, Renderer2 } from '@angular/core';
         </div>
     </div>
     `,
-    styleUrls: ['./settings.page.scss'],
+    styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent {
 

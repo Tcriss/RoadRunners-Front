@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class HomeView {
 
-  articlesCount = -8;
+  articlesCount = -4;
   params: Params = {};
 
   readonly items = [

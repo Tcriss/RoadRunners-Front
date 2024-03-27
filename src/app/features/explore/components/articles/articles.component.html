@@ -3,7 +3,7 @@
     <div class="article">
       <div class="image">
         @if (article.portrait) {
-          <img src="data:{{article.portrait.contentType}};base64,{{toBase64(article.portrait.data.data)}}" fill>
+          <img [src]="article.portrait.url" fill>
         } @else {
           <img src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
         }
@@ -19,7 +19,7 @@
     </div>
   }
 } @placeholder {
-  @for(skeleton of [].constructor(8); track skeleton) {
+  @for(skeleton of [].constructor(4); track skeleton) {
     <div class="skeleton">
       <div class="image">
       </div>

@@ -27,7 +27,6 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets",
-              "src/environments/env.js",
               {
 	              "glob": "**/*",
 	              "input": "node_modules/@taiga-ui/icons/src",

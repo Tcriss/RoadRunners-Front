@@ -2,17 +2,16 @@
     <div class="vehicle-info">
         <h1 class="form-title">Información del vehículo</h1>
         <form class="vehicle-info-form" action="">
-            <tui-combo-box formControlName="brand" tuiTextfieldFiller="Buscar marca...">
+            <tui-combo-box formControlName="brand">
                 Marca
                 <ng-template #value let-brand>
-                    <tui-avatar size="xs" class="avatar" [avatarUrl]="selectedBrand!.logo || null" [text]="brand.name"></tui-avatar>
                     <span class="name">{{ brand.name }}</span>
                 </ng-template>
                 <ng-template tuiDataList>
                     <tui-data-list>
                         @for(brand of brandsList; track $index) {
                         <button tuiOption class="option" [value]="brand.name">
-                            <img [src]="brand.logo" class="logo">
+                            <img [ngSrc]="brand.logo" class="logo" width="30" height="30">
                             <span class="name">{{ brand.name }}</span>
                         </button>
                         }
@@ -20,7 +19,7 @@
                 </ng-template>
             </tui-combo-box>
 
-            <tui-combo-box formControlName="type" tuiTextfieldFiller="Buscar tipo ...">
+            <tui-combo-box formControlName="type">
                 Tipo de vehiculo
                 <ng-template #value let-type>
                     <tui-avatar size="xs" class="avatar" [avatarUrl]="type.logo || null" [text]="type.name"></tui-avatar>
@@ -30,7 +29,7 @@
                     <tui-data-list>
                         @for(vehicleType of vehicleTypes; track $index) {
                         <button tuiOption class="option" [value]="vehicleType.name">
-                            <img [src]="vehicleType.logo" class="logo">
+                            <img [ngSrc]="vehicleType.logo" width="30" height="15" >
                             <span class="name">{{ vehicleType.name }}</span>
                         </button>
                         }
@@ -38,7 +37,7 @@
                 </ng-template>
             </tui-combo-box>
 
-            <tui-combo-box formControlName="model" tuiTextfieldFiller="Buscar modelo ...">
+            <tui-combo-box formControlName="model">
                 Modelo
                 <ng-template #value let-model>
                     <span class="name">{{ model }}</span>

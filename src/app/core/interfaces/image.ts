@@ -1,6 +1,4 @@
 export interface Image{
-    data: {
-        data: string
-    },
-    contentType: string
+    id: string
+    url: string
 }

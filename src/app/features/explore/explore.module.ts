@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { TuiCheckboxModule, TuiInputRangeModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
+import { RouterModule } from '@angular/router';
 
-import { ExploreRoutingModule } from './explore-routing.module';
 import { ExploreComponent } from './explore.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { BrandsComponent } from './components/brands/brands.component';
 import { ProcessComponent } from './components/process/process.component';
 import { TypesComponent } from './components/types/types.component';
+import { LoadingScreenComponent } from '../../components/loading-screen/loading-screen.component';
+import { ComingSoonComponent } from '../../components/coming-soon/coming-soon.component';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { HomeView } from './views/home/home.view';
 import { VehiclesView } from './views/vehicles/vehicles.view';
 import { VehicleDetailsView } from './views/vehicle-details/details.view';
 import { SharedModule } from '../../shared/shared.module';
-import { LoadingScreenComponent } from '../../core/components/loading-screen/loading-screen.component';
-import { ComingSoonComponent } from '../../core/components/coming-soon/coming-soon.component';
-import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
-import { TuiCheckboxModule, TuiInputRangeModule, TuiRadioLabeledModule } from '@taiga-ui/kit';
-import { TuiPreviewDialogModule, TuiPreviewModule } from '@taiga-ui/addon-preview';
+import { routes } from './config/routes.config';
+import { ImageGalleryComponent } from '../../components/image-gallery/image-gallery.component';
 
 @NgModule({
   declarations: [
@@ -27,18 +27,17 @@ import { TuiPreviewDialogModule, TuiPreviewModule } from '@taiga-ui/addon-previe
     BrandsComponent,
     ProcessComponent,
     TypesComponent,
-    FilterBarComponent
+    FilterBarComponent,
   ],
   imports: [
-    CommonModule,
-    ExploreRoutingModule,
+    RouterModule.forChild(routes),
     SharedModule,
     LoadingScreenComponent,
     ComingSoonComponent,
     TuiCheckboxModule,
     TuiRadioLabeledModule,
     TuiInputRangeModule,
-    TuiPreviewModule,
+    ImageGalleryComponent
   ]
 })
 export class ExploreModule { }

@@ -1,37 +1,23 @@
 import { Component } from '@angular/core';
+import { TuiRootModule } from '@taiga-ui/core';
+import { RouterModule } from '@angular/router';
+
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { Link } from './core/interfaces';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @Component({
+  standalone: true,
+  imports: [
+    NavbarComponent,
+    FooterComponent,
+    RouterModule,
+    TuiRootModule,
+    LoadingScreenComponent
+  ],
   selector: 'app-root',
-  template: `
-  <tui-root>
-    <app-navbar>
-        <ng-template #links let-link>
-            @for (route of routes; track route.name) {
-            <a class="link-item" [routerLink]='[route.path]' routerLinkActive="active">{{route.name}}</a>
-            }
-        </ng-template>
-        <ng-template #linksSideNavBar let-link>
-            @for (route of routes; track route.name) {
-            <div class="nav-item" [routerLink]='[route.path]' routerLinkActive="nav-link-item-active">
-                <i class="icon {{route.icon}}"></i>
-                <a class="nav-link-item">{{route.name}}</a>
-            </div>
-            }
-        </ng-template>
-        <ng-template #optionLink let-link>
-            @for (route of optionLinks; track route.name) {
-            <a class="option-link" [routerLink]='[route.path]' routerLinkActive="active">
-                <i class="icon {{route.icon}}"></i>
-                {{route.name}}
-            </a>
-            }
-        </ng-template>
-    </app-navbar>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-  </tui-root>
-  `,
+  templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
@@ -52,11 +38,6 @@ export class AppComponent {
       name: 'Publicar',
       path: '/publish/sell'
     },
-    // {
-    //   icon: 'fi fi-br-search',
-    //   name: 'Acerca de',
-    //   path: '/'
-    // },
   ];
   
   optionLinks: Link[] = [
@@ -70,10 +51,5 @@ export class AppComponent {
       name: 'Vehículos publicados',
       path: '/settings/my-posts'
     },
-    // {
-    //   icon: 'fi fi-rr-settings',
-    //   name: 'Cuenta',
-    //   path: '/settings/account'
-    // },
   ];
 }

@@ -2,11 +2,12 @@ import { Component, OnInit, DestroyRef, inject, ChangeDetectionStrategy, Inject 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { BackendService } from '../../../../core/services/backend.service';
-import { AlertsService } from '../../../../core/services/alerts.service';
-import { SpinnerService } from '../../../../core/services/spinner.service';
+import { TuiDialogService, TuiSizeL, TuiSizeS } from '@taiga-ui/core';
+
+import { ConnectionService } from '../../../../services/connection.service';
+import { AlertsService } from '../../../../services/alerts.service';
+import { LoaderService } from '../../../../services/loader.service';
 import { Vehicle } from '../../../../core/interfaces/vehicle';
-import { TuiDialogService, TuiSizeL, TuiSizeM, TuiSizeS } from '@taiga-ui/core';
 
 @Component({
   templateUrl: './posts.view.html',
@@ -20,16 +21,16 @@ export class UserPostsView implements OnInit {
   user$ = this.auth.user$;
   myVehicles: Vehicle[] = [];
   uid: any = '';
-  isLoading$ = this.loader.loading;
+  isLoading$ = this.loader.getStatus();
   item: number = 3;
   private destroyRef = inject(DestroyRef);
 
   constructor(
     @Inject(TuiDialogService) private readonly dialog: TuiDialogService,
     private auth: AuthService,
-    private backend: BackendService,
+    private backend: ConnectionService,
     private alerts: AlertsService,
-    private loader: SpinnerService,
+    private loader: LoaderService,
     private router: Router
   ) { }
 
@@ -38,23 +39,13 @@ export class UserPostsView implements OnInit {
     this.getUserPosts();
   }
 
-  toBase64(buffer: any): string {
-    var binary = '';
-    var bytes = new Uint8Array(buffer);
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
-  }
-
   selectOption(item: string): void {
     this.dropdownOpen = false;
     this.dialog.open(`You selected ${item}`).subscribe();
   }
 
   private getUserPosts(): void {
-    this.backend.showVehicles()
+    this.backend.findAllVehicles()
     .pipe(takeUntilDestroyed(this.destroyRef))
     .subscribe({
       next: (vehicles) => this.myVehicles = vehicles.filter(vehicle => vehicle.owner == this.uid),
