@@ -9,8 +9,6 @@ export const userInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
 
   return authService.isAuthenticated$.pipe(switchMap(isAuth => {
-    console.log('isAuth: ', isAuth);
-
     if (isAuth === false) return next(req);
 
     return authService.getAccessTokenSilently({ authorizationParams: { audience: env.config.audience } }).pipe(switchMap(token => {

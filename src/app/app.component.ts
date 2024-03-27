@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { Link } from './core/interfaces';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @Component({
   standalone: true,
@@ -12,7 +13,8 @@ import { Link } from './core/interfaces';
     NavbarComponent,
     FooterComponent,
     RouterModule,
-    TuiRootModule
+    TuiRootModule,
+    LoadingScreenComponent
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -15,6 +15,7 @@ import { VehiclesView } from './views/vehicles/vehicles.view';
 import { VehicleDetailsView } from './views/vehicle-details/details.view';
 import { SharedModule } from '../../shared/shared.module';
 import { routes } from './config/routes.config';
+import { ImageGalleryComponent } from '../../components/image-gallery/image-gallery.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { routes } from './config/routes.config';
     BrandsComponent,
     ProcessComponent,
     TypesComponent,
-    FilterBarComponent
+    FilterBarComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -36,6 +37,7 @@ import { routes } from './config/routes.config';
     TuiCheckboxModule,
     TuiRadioLabeledModule,
     TuiInputRangeModule,
+    ImageGalleryComponent
   ]
 })
 export class ExploreModule { }

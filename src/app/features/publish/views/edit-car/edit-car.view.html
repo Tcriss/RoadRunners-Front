@@ -4,9 +4,9 @@
         @if (user$ | async; as user) {
             <form (ngSubmit)="updateVehicle(user.sub)" [formGroup]="editVehicleForm">
                 <tui-carousel class="slider" #carousel>
-                    <app-vehicle-info-form *tuiItem class="info" formGroupName="info" />
+                    <app-vehicle-info-form *tuiItem class="info" formGroupName="info"/>
                     <!-- <app-vehicle-images-form *tuiItem class="images" formGroupName="images"/> -->
-                    <app-contact-info-form *tuiItem class="contact" formGroupName="contact" />
+                    <app-contact-info-form *tuiItem class="contact" formGroupName="contact"/>
                 </tui-carousel>
                 <div class="actions">
                     <button type="button" (click)="carousel.prev()" class="backward-button">

@@ -1,10 +1,17 @@
 @defer (when isLoading$ | async) {
     <div class="details">
         <div class="image-gallery">
-            @for (image of vehicle.images; track i; let i = $index) {
-                <img class="image{{i}}" [src]="image.url">
-            } @empty {
-                <img class="image1" src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
+            @if (vehicle.images) {
+                @for (image of vehicle.images; track i; let i = $index) {
+                    <img class="image{{i}}" [src]="image.url" (click)="toggleGallery(true)">
+                } @empty {
+                    <img class="image1" src="https://placehold.co/600x400?text=Preview+no+disponible">
+                }
+                <!-- @defer (when isGalleryOpen === true) {
+                    <app-image-gallery [images]="vehicle.images" (isOpen)="toggleGallery($event)"/>
+                }  -->
+            } @else {
+                <img class="image1" src="https://placehold.co/600x400?text=Error+al+traer+imagenes">
             }
         </div>
         <div class="detail">

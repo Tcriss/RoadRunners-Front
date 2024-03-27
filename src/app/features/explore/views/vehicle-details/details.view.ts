@@ -20,33 +20,32 @@ export class VehicleDetailsView {
 
   @ViewChild('preview') readonly preview?: TemplateRef<TuiDialogContext>;
   @ViewChild('contentSample') readonly contentSample?: TemplateRef<Record<string, unknown>>;
-  index = 0;
-  length = 2;
-  vehicle: Vehicle = {
-    _id: '',
-    owner: '',
-    location: '',
-    brand: '',
-    type: '',
-    model: '',
-    condition: '',
-    fuel: '',
-    year: '',
-    price: 0,
-    seller: {
-      picture: '',
-      name: '',
-      email: '',
-      phone: '',
-      whatsapp: '',
-      telegram: '',
-    },
-    images: []
-  };
+  isGalleryOpen: boolean = false;
   isLoading$: Subject<boolean> = this.loading.getStatus();
   private params = this.route.snapshot.paramMap;
   private id: string = String(this.params.get('id'));
   private distroyRef = inject(DestroyRef);
+  vehicle: Vehicle = {
+    _id: '',
+      owner: '',
+      location: '',
+      brand: '',
+      type: '',
+      model: '',
+      condition: '',
+      fuel: '',
+      year: '',
+      price: 0,
+      seller: {
+        picture: '',
+        name: '',
+        email: '',
+        phone: '',
+        whatsapp: '',
+        telegram: '',
+      },
+      images: []
+  };
 
   constructor(
     @Inject(TuiDialogService) 
@@ -71,5 +70,9 @@ export class VehicleDetailsView {
 
   getBack(): void {
     this.location.back();
+  }
+
+  toggleGallery(value: boolean): void {
+    this.isGalleryOpen = value;
   }
 }
