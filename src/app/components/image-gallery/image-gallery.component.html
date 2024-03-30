@@ -1,22 +1,23 @@
-<div class="background">
+<div class="background" (keydown)="close()">
     <section class="actions">
         <button class="close-button" (click)="close()">
             <i class="fi fi-rr-cross-small"></i>
         </button>
     </section>
     <section class="previewer">
-        <tui-carousel #carousel [itemsCount]="1">
+        <tui-carousel class="carousel" #carousel [index]="index" (indexChange)="trackIndex($event)">
             @for(image of images; track image.id) {
-                <img [src]="image.url" class="preview" *tuiItem >
+                <div class="image-cont" *tuiItem >
+                    <img [src]="image.url" class="preview">
+                </div>
             }
         </tui-carousel>
     </section>
-    <section class="selector">
-        <button class="backward" (click)="carousel.prev()">
-            <i class="fi fi-br-angle-small-left"></i>
-        </button>
-        <button class="forward" (click)="carousel.next()">
-            <i class="fi fi-br-angle-small-right"></i>
-        </button>
+    <section class="selector" >
+        <div class="images">
+            @for(image of images; track image.id) {
+                <img [src]="image.url" class="preview" (click)="changeIndex($index)">
+            }
+        </div>
     </section>
 </div>
