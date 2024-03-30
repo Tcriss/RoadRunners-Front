@@ -9,11 +9,14 @@ import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { Vehicle } from '../../../../core/interfaces';
 import { ConnectionService } from '../../../../services/connection.service';
 import { LoaderService } from '../../../../services/loader.service';
+import { showHide } from '../../../../core/animations/show-hide.animation';
+import { reveal } from '../../../../core/animations/reveal.animation';
 
 @Component({
   selector: 'app-vehicle-details',
   templateUrl: './details.view.html',
   styleUrls: ['./details.view.scss'],
+  animations: [showHide, reveal],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VehicleDetailsView {
@@ -21,6 +24,7 @@ export class VehicleDetailsView {
   private params = this.route.snapshot.paramMap;
   private id: string = String(this.params.get('id'));
   private distroyRef = inject(DestroyRef);
+  index: number = 0;
 
   isGalleryOpen: boolean = false;
   isLoading$: Subject<boolean> = this.loading.getStatus();
@@ -71,7 +75,9 @@ export class VehicleDetailsView {
     this.location.back();
   }
 
-  toggleGallery(value: boolean): void {
+  toggleGallery(value: boolean, index?: number): void {
+    if (index) this.index = index;
+    
     this.isGalleryOpen = value;
   }
 }

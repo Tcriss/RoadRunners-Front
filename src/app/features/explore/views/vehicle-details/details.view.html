@@ -2,14 +2,14 @@
     <div class="details">
         <div class="image-gallery">
             @if (vehicle.images) {
+                @if (isGalleryOpen) {
+                    <app-image-gallery [@reveal] [images]="vehicle.images" [openAt]="index" (isOpen)="toggleGallery($event)"/>
+                }
                 @for (image of vehicle.images; track i; let i = $index) {
-                    <img class="image{{i}}" [src]="image.url" (click)="toggleGallery(true)">
+                    <img class="image{{i}}" [src]="image.url" (click)="toggleGallery(true, i)">
                 } @empty {
                     <img class="image1" src="https://placehold.co/600x400?text=Preview+no+disponible">
                 }
-                <!-- @defer (when isGalleryOpen === true) {
-                    <app-image-gallery [images]="vehicle.images" (isOpen)="toggleGallery($event)"/>
-                }  -->
             } @else {
                 <img class="image1" src="https://placehold.co/600x400?text=Error+al+traer+imagenes">
             }
@@ -49,7 +49,7 @@
                     <p>{{vehicle.seller.name}}</p>
                 </div>
             </div>
-            <button class="button" (click)="onContact(content, header, 'm')">Contactar para comprar</button>
+            <button class="button base-button" (click)="onContact(content, header, 'm')">Contactar para comprar</button>
         </div>
     </div>
     <ng-template #content let-observer>
