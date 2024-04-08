@@ -6,7 +6,7 @@ import { provideAnimations } from "@angular/platform-browser/animations";
 import { TuiAlertModule, TuiDialogModule, TuiRootModule } from "@taiga-ui/core";
 import { TuiPromptModule } from "@taiga-ui/kit";
 
-import { routes } from "./routes.config";
+import { routes } from "../../routes.config";
 import { authOptions } from "./auth0.config";
 import { loaderInterceptor } from "../interceptors/loader.interceptor";
 import { userInterceptor } from "../interceptors/user.interceptor";

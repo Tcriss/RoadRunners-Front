@@ -6,9 +6,7 @@ import { Params } from '@angular/router';
 import { EditVehicle, Vehicle } from '../core/interfaces';
 import { environment as env } from '../../environments/environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ConnectionService {
 
   private readonly url: string = env.url + '/vehicles/';
