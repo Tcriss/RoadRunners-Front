@@ -20,36 +20,4 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-
-  routes: Link[] = [
-    {
-      icon: 'fi fi-bs-home',
-      name: 'Inicio',
-      path: '/explore/home'
-    },
-    {
-      icon: 'fi fi-rr-car',
-      name: 'Vehiculos',
-      path: '/explore/vehicles'
-    },
-    {
-      icon: 'fi fi-rr-megaphone',
-      name: 'Publicar',
-      path: '/publish/sell'
-    },
-  ];
-  
-  optionLinks: Link[] = [
-    {
-      icon: 'fi fi-rr-user',
-      name: 'Pérfil',
-      path: '/settings/profile'
-    },
-    {
-      icon: 'fi fi-rr-car',
-      name: 'Vehículos publicados',
-      path: '/settings/my-posts'
-    },
-  ];
-}
+export class AppComponent {}

@@ -1,0 +1,53 @@
+<div class="side-nav-bar">
+    <button type="button" class="nav-button" (click)="expanded = !expanded">
+      <i class="fi fi-br-apps icon"></i>
+    </button>
+    <div class="side-nav-menu" [@expansion]="!expanded? 'close' : 'open'">
+      <div class="nav-header">
+        <img src="./assets/images/RR-logo-dark.png" width="50px">
+        <button class="close-side-nav" (click)="expanded = !expanded">
+          <i class="fi fi-br-cross"></i>
+        </button>
+      </div>
+      <div class="nav-items">
+        @for(link of links; track $index) {
+          <div class="nav-item" [routerLink]='[link.path]' routerLinkActive="active">
+            <i class="icon {{link.icon}}"></i>
+            <a class="nav-link-item">{{link.name}}</a>
+          </div>
+        }
+      </div>
+      <div class="credits">
+        @if (auth.isAuthenticated$ | async) {
+          <tui-hosted-dropdown tuiDropdownAlign="center" [content]="mobile" [(open)]="open">
+            <div tuiHostedDropdownHost class="profile-section">
+              @if(user$ | async ; as user) {
+                @if(user.nickname === '') {
+                  <p class="text">{{user.name}}</p>
+                  <tui-avatar [text]="user.name!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+                } @else {
+                  <p class="text">{{user.given_name}} {{user.family_name}}</p>
+                  <tui-avatar [text]="user.nickname!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+                }
+              }
+            </div>
+            <ng-template #mobile>
+              <tui-data-list class="mobile-data-list" (click)="onClick()">
+                @for(option of optionLinks; track $index) {
+                  <a class="option-link" [routerLink]='[option.path]' routerLinkActive="active">
+                    <i class="icon {{option.icon}}"></i>
+                    <p>{{option.name}}</p>
+                  </a>
+                }
+                <button (click)="auth.logout({ logoutParams: { returnTo: '/' } })" tuiOption>
+                  <tui-svg src="tuiIconLogOut"></tui-svg> Cerrar Sesión
+                </button>
+              </tui-data-list>
+            </ng-template>
+          </tui-hosted-dropdown>
+        } @else {
+          <button class="log-in-btn base-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+        }
+      </div>
+    </div>
+  </div>

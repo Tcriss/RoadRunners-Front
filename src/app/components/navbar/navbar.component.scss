@@ -111,7 +111,12 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
         justify-content: center;
         gap: 20px;
 
-        .nav-link-item {
+        .active {
+            font-weight: 600;
+            color: black;
+        }
+
+        .link-item {
             font-size: 14px;
             text-transform: uppercase;
             color: #5e6e7b;
@@ -128,106 +133,38 @@ $box-shadow: rgba(0, 0, 0, 0.084) 0px 25px 20px -20px;
                 font-weight: 600;
             }
         }
-
-        .active {
-            font-weight: 600;
-            color: black;
-        }
     }
 
-    .items-mobile {
+    .side-nav-bar {
         display: none;
 
         @include responsive(850px) {
             display: block;
         }
+    }
+}
 
-        .nav-button {
-            border: none;
-            background-color: rgba(0, 0, 0, 0);
-            transition: transform 400ms;
-            width: 50px;
-            color: black;
+.option-link {
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: flex;
+    gap: 10px;
+    transition: all 400ms;
+    font-size: 16px;
 
-            .icon {
-                font-size: 20px;
-            }
-
-            &:active {
-                transform: scale(0.7);
-            }
-        }
-
-        .side-nav-menu {
-            box-sizing: border-box;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 260px;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.94);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 0 6px rgb(208, 208, 208);
-            z-index: 3;
-
-            .nav-header {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-
-                .close-side-nav {
-                    color: black;
-                    background-color: rgba(0, 0, 0, 0);
-                    border: none;
-                    transition: transform 400ms;
-
-                    &:active {
-                        transform: scale(0.7);
-                    }
-                }
-
-                .empty-box {
-                    width: 30px;
-                }
-            }
-
-            .nav-items {
-                box-sizing: border-box;
-                width: 100%;
-                display: grid;
-                gap: 10px;
-            }
-
-            .credits {
-                .log-in-btn {
-                    padding: 10px 15px;
-                    border-radius: 12px;
-                    border: none;
-                    background-color: #234454;
-                    color: white;
-                    font-size: 16px;
-                    transition: all 400ms;
-
-                    &:hover {
-                        background-color: #28586b;
-                        box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
-                    }
-
-                    &:active {
-                        background-color: #1f4453;
-                        box-shadow: rgba(0, 0, 0, 0.1) 0 10px 50px;
-                    }
-                }
-            }
-        }
+    &:hover {
+        background-color: #f5f5f5;
     }
 }
 
 .scrolled {
     background-color: rgba(255, 255, 255, 0.93);
     box-shadow: $box-shadow;
+}
+
+.active {
+    font-weight: 600;
+    color: black;
 }

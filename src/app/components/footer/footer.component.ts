@@ -31,6 +31,6 @@ export class FooterComponent {
       url: 'https://github.com/isael-Diroche',
       role: 'Designer'
     }
-  ]
+  ];
 
 }

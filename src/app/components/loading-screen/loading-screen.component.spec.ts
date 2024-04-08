@@ -1,23 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoadingScreenComponent } from './loading-screen.component';
 
 describe('LoadingScreenComponent', () => {
-  let component: LoadingScreenComponent;
-  let fixture: ComponentFixture<LoadingScreenComponent>;
+    it('should mount', () => {
+        cy.mount(LoadingScreenComponent);
+    });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LoadingScreenComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(LoadingScreenComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should recieve component height', () => {
+        cy.mount(LoadingScreenComponent, {
+            componentProperties: { 
+                componentHeight: '100vh' 
+            }
+        });
+        cy.get('.overlay').should('have.attr', 'style', 'not.be.empty');
+    });
 });

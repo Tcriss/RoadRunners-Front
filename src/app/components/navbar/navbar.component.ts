@@ -1,44 +1,56 @@
-import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild, TemplateRef, ContentChild } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Component, Inject, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { DOCUMENT } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TuiDropdownHostModule } from '@taiga-ui/cdk';
 
 import { SharedModule } from '../../shared/shared.module';
+import { Link } from '../../core/interfaces';
+import { SideNavBarComponent } from '../side-nav-bar/side-nav-bar.component';
 
 @Component({
   standalone: true,
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  imports: [SharedModule],
-  animations: [
-    trigger('expansion', [
-      state('close', style({
-        transform: 'translateX(-300px)',
-        opacity: 0.8,
-      })),
-      state('open', style({
-        transform: 'translateX(0)',
-        opacity: 1,
-      })),
-      transition('close <=> open',
-        animate('400ms ease')
-      ),
-    ])
-  ]
+  imports: [SharedModule, RouterLink, RouterLinkActive, SideNavBarComponent],
 })
 export class NavbarComponent {
 
   @ViewChild('navBar') navBar!: ElementRef;
   @ViewChild('img') img!: ElementRef<HTMLImageElement>;
-  @ContentChild('links') links!: TemplateRef<unknown>;
-  @ContentChild('linksSideNavBar') navLinks!: TemplateRef<unknown>;
-  @ContentChild('optionLink') optionLinks!: TemplateRef<unknown>;
 
-  expanded: boolean = false;
+  links: Link[] = [
+    {
+      icon: 'fi fi-bs-home',
+      name: 'Inicio',
+      path: '/explore/home'
+    },
+    {
+      icon: 'fi fi-rr-car',
+      name: 'Vehiculos',
+      path: '/explore/vehicles'
+    },
+    {
+      icon: 'fi fi-rr-megaphone',
+      name: 'Publicar',
+      path: '/publish/sell'
+    },
+  ];
+  optionLinks: Link[] = [
+    {
+      icon: 'fi fi-rr-user',
+      name: 'Pérfil',
+      path: '/settings/profile'
+    },
+    {
+      icon: 'fi fi-rr-car',
+      name: 'Vehículos publicados',
+      path: '/settings/my-posts'
+    },
+  ];
+
   open: boolean = false;
-  mobileOpen: boolean = false;
   index: number = 0;
   user$ = this.auth.user$;
 

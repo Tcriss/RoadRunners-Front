@@ -4,11 +4,11 @@
     </div>
     <div class="members">
         @for(member of members; track $index) {
-            <a class="member" [href]="member.url" target="_blank">
+            <a data-cy=`member${$index}` class="member" [href]="member.url" target="_blank">
                 <tui-avatar [avatarUrl]="member.pictureUrl" [rounded]="true"></tui-avatar>
                 <p class="github-link">{{ member.role }}</p>
             </a>
         }
     </div>
-    <p class="credits">Made with ❤️ by us, <a href="https://github.com/Tcriss/RoadRunners-Front" target="_blank">Source code</a></p>
+    <p class="credits">Made with ❤️, <a id="source-code" href="https://github.com/Tcriss/RoadRunners-Front" target="_blank">Source code</a></p>
 </div>

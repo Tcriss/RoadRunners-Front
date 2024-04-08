@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-loading-screen',
   template: `
     <div class="overlay" [style]="{height: componentHeight}">
-      <img class="logo" src="./assets/images/RR-logo-dark.png" alt="">
+      <img class="logo" src="./assets/images/RR-logo-dark.png">
       <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
   `,

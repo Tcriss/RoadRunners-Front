@@ -4,11 +4,12 @@
     <img class="logo-brand" src="./assets/images/RR-logo-brand-dark.png" width="200px">
   </div>
   <div class="items">
-    <ng-container *ngTemplateOutlet="links"></ng-container>
+    @for(link of links; track $index) {
+      <a class="link-item" [routerLink]='[link.path]' routerLinkActive="active">{{link.name}}</a>
+    }
   </div>
   @if (auth.isAuthenticated$ && user$ | async; as user) {
-    <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open"
-      tuiDropdownHover>
+    <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open" tuiDropdownHover>
       <div class="profile-section" tuiHostedDropdownHost>
         @if(user.nickname === '') {
           <p class="text">{{user.name}}</p>
@@ -21,7 +22,12 @@
       <ng-template #options_list>
         <tui-data-list class="data-list" (click)="onClick()">
           <tui-opt-group>
-            <ng-container *ngTemplateOutlet="optionLinks"></ng-container>
+            @for(option of optionLinks; track $index) {
+              <a class="option-link" [routerLink]='[option.path]' routerLinkActive="active">
+                <i class="icon {{option.icon}}"></i>
+                {{option.name}}
+              </a>
+            }
           </tui-opt-group>
           <tui-opt-group>
             <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption>
@@ -35,47 +41,5 @@
   } @else {
     <button class="log-in-button base-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
   }
-  <div class="items-mobile">
-    <button type="button" class="nav-button" (click)="expanded = !expanded">
-      <i class="fi fi-br-apps icon"></i>
-    </button>
-    <div class="side-nav-menu" [@expansion]="!expanded? 'close' : 'open'">
-      <div class="nav-header">
-        <img src="./assets/images/RR-logo-dark.png" width="50px">
-        <button class="close-side-nav" (click)="expanded = !expanded">
-          <i class="fi fi-br-cross"></i>
-        </button>
-      </div>
-      <div class="nav-items">
-        <ng-container *ngTemplateOutlet="navLinks"></ng-container>
-      </div>
-      <div class="credits">
-        @if (auth.isAuthenticated$ | async) {
-          <tui-hosted-dropdown tuiDropdownAlign="center" [content]="mobile" [(open)]="mobileOpen">
-            <div tuiHostedDropdownHost class="profile-section">
-              @if(user$ | async ; as user) {
-                @if(user.nickname === '') {
-                  <p class="text">{{user.name}}</p>
-                  <tui-avatar [text]="user.name!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
-                } @else {
-                  <p class="text">{{user.given_name}} {{user.family_name}}</p>
-                  <tui-avatar [text]="user.nickname!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
-                }
-              }
-            </div>
-            <ng-template #mobile>
-              <tui-data-list class="mobile-data-list" (click)="onClick()">
-                <ng-container *ngTemplateOutlet="optionLinks"></ng-container>
-                <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption>
-                  <tui-svg src="tuiIconLogOut"></tui-svg> Cerrar Sesión
-                </button>
-              </tui-data-list>
-            </ng-template>
-          </tui-hosted-dropdown>
-        } @else {
-          <button class="log-in-btn base-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
-        }
-      </div>
-    </div>
-  </div>
+  <app-side-nav-bar class="side-nav-bar"/>
 </nav>
