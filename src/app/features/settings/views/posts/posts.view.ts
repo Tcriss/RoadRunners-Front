@@ -20,7 +20,7 @@ export class UserPostsView implements OnInit {
 	size: TuiSizeL | TuiSizeS = 's';
   user$ = this.auth.user$;
   myVehicles: Vehicle[] = [];
-  uid: any = '';
+  uid: string | undefined = '';
   isLoading$ = this.loader.getStatus();
   item: number = 3;
   private destroyRef = inject(DestroyRef);
@@ -35,7 +35,9 @@ export class UserPostsView implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.user$.subscribe(user => this.uid = user?.sub);
+    this.user$.subscribe(user => {
+      if (user) this.uid = user.sub;
+    });
     this.getUserPosts();
   }
 

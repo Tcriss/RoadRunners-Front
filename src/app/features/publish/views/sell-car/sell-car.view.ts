@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 import { ConnectionService } from '../../../../services/connection.service';
 import { AlertsService } from '../../../../services/alerts.service';
@@ -17,6 +18,7 @@ export class SellCarView implements OnInit {
   user$ = this.auth.user$
   sellVehicleForm: FormGroup;
   previewImages: unknown[] = [];
+  uid = new BehaviorSubject<string>('');
 
   constructor(
     private fb: FormBuilder,
@@ -50,6 +52,8 @@ export class SellCarView implements OnInit {
 
   ngOnInit(): void {
     this.user$.subscribe(user => {
+      user && user.sub && this.uid.next(user.sub);
+
       this.sellVehicleForm.patchValue({
         contact: {
           email: user?.email,
@@ -59,9 +63,10 @@ export class SellCarView implements OnInit {
     });
   }
 
-  loadData(uid: any): void {
+  loadData(): void {
+    console.log('user: ', this.uid.value)
     const form: FormData = new FormData;
-    form.append('owner', uid);
+    form.append('owner', this.uid.value);
     form.append('location', this.sellVehicleForm.value.contact.location);
     form.append('brand', this.sellVehicleForm.value.info.brand);
     form.append('type', this.sellVehicleForm.value.info.type);
