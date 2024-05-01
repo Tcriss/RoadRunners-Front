@@ -21,16 +21,16 @@
                     <p class="field-name">Correo:</p>
                     <p class="field-desc">{{user.email}}</p>
                 </div>
-                <div class="profile-field">
+                <!-- <div class="profile-field">
                     <p class="field-name">Número de teléfono:</p>
                     <p class="field-desc">{{user.phone_number}}</p>
-                </div>
+                </div> -->
             </div>
             <div class="profile-actions">
                 <button class="edit-button" (click)="editable = !editable">Editar</button>
             </div>
         } @else {
-            <Form [formGroup]="profileForm" (ngSubmit)="editProfile(user.sub)">
+            <Form [formGroup]="profileForm" (ngSubmit)="editProfile()">
                 <header class="profile-header">
                     <img class="profile-picture" [src]="user.picture" alt="Foto de peril">
                     <div class="profile-data">
@@ -38,7 +38,7 @@
                         <h3 class="profile-email">{{user.email}}</h3>
                     </div>
                 </header>
-                <div class="profile-description">
+                <div class="profile-form-description">
                     <div class="profile-field">
                         <p class="field-name">Nombre:</p>
                         <input type="text" formControlName="name">
@@ -47,17 +47,17 @@
                         <p class="field-name">Apellido:</p>
                         <input type="text" formControlName="lastName">
                     </div>
-                    <div class="profile-field">
+                    <!-- <div class="profile-field">
                         <p class="field-name">Correo:</p>
                         <input type="email" formControlName="email" readonly>
                     </div>
                     <div class="profile-field">
                         <p class="field-name">Número de teléfono:</p>
                         <input type="text" formControlName="phoneNumber" disable>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="profile-actions">
-                    <button class="getBack-button" (click)="editable = !editable">Cancelar</button>
+                    <button class="getBack-button" (click)="editable = false">Cancelar</button>
                     <button class="save-button" type="submit">Guardar cambios</button>
                 </div>
             </Form>

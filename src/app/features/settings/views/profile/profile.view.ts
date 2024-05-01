@@ -37,22 +37,27 @@ export class ProfileView implements OnInit {
         name: profile?.given_name,
         lastName: profile?.family_name,
         email: profile?.email,
-        phoneNumber: profile?.phone_number
+        //phoneNumber: profile?.phone_number
       });
     });
   }
 
-  editProfile(uid: string | undefined) {
+  editProfile() {
     let profileUpdate = {
-      name: this.profileForm.value.name,
-      lastName: this.profileForm.value.lastName,
-      phoneNumber: this.profileForm.value.phoneNumber
-    }
+      given_name: this.profileForm.value.name,
+      family_name: this.profileForm.value.lastName,
+      //phoneNumber: this.profileForm.value.phoneNumber
+    };
+
     this.alerts.askMe('Guardar cambios','¿Seguro que deseas guardar los cambios?','Guardar','Cancelar').subscribe({
       next: (res: boolean) => {
         if (res == true) {
-          this.backend.updateUser(uid, profileUpdate).subscribe({
-            next: (res) => this.alerts.notify('Excelente','Tus perfil fue actualizado satisfactoriamente','success'),
+          this.backend.updateUser(profileUpdate).subscribe({
+            next: (res) => {
+              this.alerts.notify('Excelente','Tus perfil fue actualizado satisfactoriamente','success');
+              this.editable = false;
+              this.profileForm.reset();
+            },
             error: (err) => {
               switch(err.status) {
                 case 400:
@@ -73,8 +78,6 @@ export class ProfileView implements OnInit {
               }
             }
           });
-          this.editable = !this.editable;
-          this.profileForm.reset();
         } else {
           this.editable = !this.editable;
         }

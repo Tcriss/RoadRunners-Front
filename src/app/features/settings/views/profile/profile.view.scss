@@ -62,15 +62,55 @@
     .profile-description {
         width: 100%;
         display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
         gap: 20px;
-        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
 
         @include responsive(420px){
             width: 70%;
         }
 
         .profile-field {
+            width: 100px;
 
+            .field-name {
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            input {
+                width: 100%;
+                border: 1px solid rgb(182, 182, 182);
+                border-radius: 10px;
+                padding: 10px;
+                transition: all 400ms;
+
+                &:hover {
+                    border: 1px solid #32627a;
+                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                }
+    
+                &:active {
+                    border: 1px solid #0d1a20;
+                }
+
+                &:focus {
+                    border: 1px solid #0d1a20;
+                }
+            }
+        }
+    }
+
+    .profile-form-description {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @include responsive(420px){
+            width: 70%;
+        }
+
+        .profile-field {
             .field-name {
                 font-weight: 600;
                 text-transform: uppercase;

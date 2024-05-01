@@ -35,7 +35,7 @@ export class ConnectionService {
     return this.http.delete<string>(this.url + 'delete/' + id);
   }
 
-  updateUser(uid: string | undefined, user: unknown): Observable<unknown> {
-    return this.http.patch<unknown>(env.url + '/users/' + uid, user);
+  updateUser(user: unknown): Observable<unknown> {
+    return this.http.patch<unknown>(env.url + '/users', user);
   }
 }
