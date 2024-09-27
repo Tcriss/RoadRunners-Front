@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TuiAppearance, tuiButtonOptionsProvider } from '@taiga-ui/core';
 
-import { Brand } from '../../../../core/interfaces/brand';
 import { types } from '../../../../core/utils/types.list';
 
 @Component({
@@ -18,7 +17,7 @@ import { types } from '../../../../core/utils/types.list';
 ],
 })
 export class TypesComponent {
-  
-  types: Partial<Brand>[] = types
+
+  types = types;
 
 }

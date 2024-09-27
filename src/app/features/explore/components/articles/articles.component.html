@@ -3,9 +3,21 @@
     <div class="article">
       <div class="image">
         @if (article.portrait) {
-          <img [src]="article.portrait.url" fill>
+          <img
+            [ngSrc]="article.portrait.url | CloudinaryUrl"
+            width="254"
+            height="64"
+            [alt]="article.brand + ' ' + article.model"
+            placeholder
+            priority
+          >
         } @else {
-          <img src="https://placehold.co/600x400?text=Preview+no+disponible" alt="">
+          <img
+            ngSrc="https://placehold.co/600x400?text=Preview+no+disponible"
+            width="254"
+            height="200"
+            alt=""
+          >
         }
       </div>
       <div class="description">

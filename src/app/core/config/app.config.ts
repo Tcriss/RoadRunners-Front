@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from "@angular/core";
-import { TitleStrategy, provideRouter, withComponentInputBinding, withInMemoryScrolling, withViewTransitions } from "@angular/router";
+import { TitleStrategy, provideRouter, withComponentInputBinding, withInMemoryScrolling } from "@angular/router";
 import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import { provideAuth0 } from "@auth0/auth0-angular";
 import { provideAnimations } from "@angular/platform-browser/animations";
@@ -15,9 +15,9 @@ import { UpdatePageTitle } from "../utils/pageTitleStrategy";
 export const appConfig: ApplicationConfig = {
     providers: [
         provideRouter(
-            routes, 
+            routes,
             //withViewTransitions(),
-            withComponentInputBinding(), 
+            withComponentInputBinding(),
             withInMemoryScrolling({ scrollPositionRestoration: "top"})
         ),
         provideAnimations(),

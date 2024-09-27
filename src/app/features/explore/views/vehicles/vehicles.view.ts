@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
+
+import { LoaderService } from '../../../../services/loader.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -16,8 +18,9 @@ export class VehiclesView implements OnInit {
   public length!: number;
   params = new BehaviorSubject<Params>({});
   filteredParams: Params = {};
+  isLoading: Subject<boolean> = this.loader.getStatus();
 
-  constructor(private activeRoute: ActivatedRoute) { }
+  constructor(private activeRoute: ActivatedRoute, private loader: LoaderService) { }
 
   ngOnInit(): void {
     this.activeRoute.queryParams.subscribe(params => {

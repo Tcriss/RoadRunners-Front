@@ -9,11 +9,15 @@
             </div>
         }
         <app-articles class="articles" [filteredParams]="params.value" (sendToParent)="recieveArticles($event)"/>
-        <tui-pagination
-            [activePadding]="2"
-            [index]="index"
-            [length]="length"
-            (indexChange)="goToPage($event)"
-        />
+        @if (itemsLength !== 0) {
+          @defer (when isLoading | async) {
+            <tui-pagination
+              [activePadding]="2"
+              [index]="index"
+              [length]="length"
+              (indexChange)="goToPage($event)"
+            />
+          }
+        }
     </div>
 </div>

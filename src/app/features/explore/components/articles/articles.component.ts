@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, Input, inject, DestroyRef, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { provideCloudinaryLoader } from '@angular/common';
 import { Subject, Subscription } from 'rxjs';
 import { Params } from '@angular/router';
 
@@ -12,7 +13,10 @@ import { Vehicle } from '../../../../core/interfaces';
   selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrls: ['./articles.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    provideCloudinaryLoader('https://res.cloudinary.com/ddbfujz4g/')
+  ]
 })
 export class ArticlesComponent implements OnChanges {
 

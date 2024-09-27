@@ -16,6 +16,7 @@ import { VehicleDetailsView } from './views/vehicle-details/details.view';
 import { SharedModule } from '../../shared/shared.module';
 import { routes } from './config/routes.config';
 import { ImageGalleryComponent } from '../../components/image-gallery/image-gallery.component';
+import { CloudinaryRelativePath } from '../../pipes/cloudinary-relative-path.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ImageGalleryComponent } from '../../components/image-gallery/image-gall
     TuiCheckboxModule,
     TuiRadioLabeledModule,
     TuiInputRangeModule,
-    ImageGalleryComponent
+    ImageGalleryComponent,
+    CloudinaryRelativePath
   ]
 })
 export class ExploreModule { }

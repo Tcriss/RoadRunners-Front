@@ -10,6 +10,6 @@ import { brands } from '../../../../core/utils/brands.list';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandsComponent {
- 
-    brands: Brand[] = brands;
+
+  brands: Brand[] = brands;
 }
