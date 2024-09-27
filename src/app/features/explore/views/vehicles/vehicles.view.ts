@@ -11,21 +11,34 @@ import { BehaviorSubject } from 'rxjs';
 export class VehiclesView implements OnInit {
 
   itemsLength!: number;
+  private limit: number = 10;
+  protected index: number = 0;
+  public length!: number;
   params = new BehaviorSubject<Params>({});
   filteredParams: Params = {};
 
   constructor(private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activeRoute.queryParams.subscribe(params => this.params.next(params));
+    this.activeRoute.queryParams.subscribe(params => {
+      this.params.next({
+        limit: this.limit,
+        page: 1,
+        ...params
+      });
+    });
   }
 
   recieveArticles(event: number): void {
-    let number: number = event;
-    this.itemsLength = number;
+    this.itemsLength = event;
+    this.length = Math.ceil(this.itemsLength / this.limit);
   }
 
   handleParams(params: Params): void {
     this.params.next(params);
+  }
+
+  goToPage(index: number): void {
+    this.params.next({ limit: this.limit, page: index + 1 });
   }
 }

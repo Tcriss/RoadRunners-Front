@@ -49,6 +49,9 @@
         width: calc(100% - 140px);
         min-height: 100vh;
         height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
 
         @include responsive(800px){
             width: 100%;
@@ -60,7 +63,7 @@
 
         .articles {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
     }
