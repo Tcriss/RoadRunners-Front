@@ -3,7 +3,7 @@ import { Brand } from "../interfaces";
 export const brands: Brand[] = [
   {
     name: 'Acura',
-    logo: './assets/brands-logo/acura-logo.webp',
+    logo: './assets/brands-logo/acura-logo.png',
     models: [
       'MDX',
       'RDX',
@@ -15,7 +15,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Alfa Romeo',
-    logo: './assets/brands-logo/alfa.webp',
+    logo: './assets/brands-logo/alfa.png',
     models: [
       '159',
       'Giulia',
@@ -24,7 +24,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Audi',
-    logo: './assets/brands-logo/audi-logo.webp',
+    logo: './assets/brands-logo/audi-logo.png',
     models: [
       'A1',
       'A3',
@@ -55,7 +55,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Bmw',
-    logo: './assets/brands-logo/bmw.webp',
+    logo: './assets/brands-logo/bmw.png',
     models: [
       'B7',
       'i3',
@@ -71,7 +71,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Buick',
-    logo: './assets/brands-logo/buick.webp',
+    logo: './assets/brands-logo/buick.png',
     models: [
       'Enclave',
       'Encore',
@@ -79,7 +79,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Cadillac',
-    logo: './assets/brands-logo/cadillac.webp',
+    logo: './assets/brands-logo/cadillac.png',
     models: [
       'ATS',
       'Brougham',
@@ -95,7 +95,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Changan',
-    logo: './assets/brands-logo/changan.webp',
+    logo: './assets/brands-logo/changan.png',
     models: [
       'Cargo Box Refrigerada',
       'Chana',
@@ -116,7 +116,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Chevrolet',
-    logo: './assets/brands-logo/chevrolet.webp',
+    logo: './assets/brands-logo/chevrolet.png',
     models: [
       'Avalanche',
       'Aveo',
@@ -158,7 +158,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Daihatsu',
-    logo: './assets/brands-logo/daihatsu.webp',
+    logo: './assets/brands-logo/daihatsu.png',
     models: [
       'Boon',
       'Hijet',
@@ -169,7 +169,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Dodge',
-    logo: './assets/brands-logo/dodge.webp',
+    logo: './assets/brands-logo/dodge.png',
     models: [
       'Avenger',
       'Caliber',
@@ -186,7 +186,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Dongfeng',
-    logo: './assets/brands-logo/dongfeng.webp',
+    logo: './assets/brands-logo/dongfeng.png',
     models: [
       'AX7',
       'Cargo Box',
@@ -203,7 +203,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Ferrari',
-    logo: './assets/brands-logo/ferrari.webp',
+    logo: './assets/brands-logo/ferrari.png',
     models: [
       '296 GTB',
       '458',
@@ -218,7 +218,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Fiat',
-    logo: './assets/brands-logo/fiat.webp',
+    logo: './assets/brands-logo/fiat.png',
     models: [
       '500',
       'ARGO',
@@ -233,7 +233,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Ford',
-    logo: './assets/brands-logo/ford-logo.webp',
+    logo: './assets/brands-logo/ford-logo.png',
     models: [
       'Bronco',
       'C Max',
@@ -266,7 +266,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Great wall',
-    logo: './assets/brands-logo/great-wall.webp',
+    logo: './assets/brands-logo/great-wall.png',
     models: [
       'Kingkong Poer',
       'Poer',
@@ -275,7 +275,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Honda',
-    logo: './assets/brands-logo/honda-logo.webp',
+    logo: './assets/brands-logo/honda-logo.png',
     models: [
       'Accord',
       'Acty',
@@ -301,7 +301,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Hyundai',
-    logo: './assets/brands-logo/hyundai-logo.webp',
+    logo: './assets/brands-logo/hyundai-logo.png',
     models: [
       'Accent',
       'Avante',
@@ -333,7 +333,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Infiniti',
-    logo: './assets/brands-logo/infiniti.webp',
+    logo: './assets/brands-logo/infiniti.png',
     models: [
       'F35',
       'FQ-56',
@@ -351,7 +351,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Isuzu',
-    logo: './assets/brands-logo/isuzu.webp',
+    logo: './assets/brands-logo/isuzu.png',
     models: [
       'DMAX',
       'Mux',
@@ -360,7 +360,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'JAC Motors',
-    logo: './assets/brands-logo/jac.webp',
+    logo: './assets/brands-logo/jac.png',
     models: [
       'FRISON',
       'FRISON T8 PRO',
@@ -377,7 +377,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Jaguar',
-    logo: './assets/brands-logo/jaguar.webp',
+    logo: './assets/brands-logo/jaguar.png',
     models: [
       'F-Pace',
       'XE',
@@ -388,7 +388,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Jeep',
-    logo: './assets/brands-logo/jeep.webp',
+    logo: './assets/brands-logo/jeep.png',
     models: [
       'Cherokee',
       'Comander',
@@ -407,7 +407,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Kia',
-    logo: './assets/brands-logo/kia.webp',
+    logo: './assets/brands-logo/kia.png',
     models: [
       'Carens',
       'Carnival',
@@ -437,14 +437,14 @@ export const brands: Brand[] = [
   },
   {
     name: 'King long',
-    logo: './assets/brands-logo/king-long.webp',
+    logo: './assets/brands-logo/king-long.png',
     models: [
       '16 Pasajeros',
     ],
   },
   {
     name: 'Lamborghini',
-    logo: './assets/brands-logo/lamborghini.webp',
+    logo: './assets/brands-logo/lamborghini.png',
     models: [
       'Gallardo',
       'Huracan',
@@ -453,7 +453,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Land rover',
-    logo: './assets/brands-logo/land-rover.webp',
+    logo: './assets/brands-logo/land-rover.png',
     models: [
       'Defender',
       'Discovery',
@@ -463,7 +463,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Lexus',
-    logo: './assets/brands-logo/lexus.webp',
+    logo: './assets/brands-logo/lexus.png',
     models: [
       'ES',
       'GS',
@@ -483,7 +483,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Lincoln',
-    logo: './assets/brands-logo/lincoln.webp',
+    logo: './assets/brands-logo/lincoln.png',
     models: [
       'Aviator',
       'Continental',
@@ -495,7 +495,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Maserati',
-    logo: './assets/brands-logo/maserati.webp',
+    logo: './assets/brands-logo/maserati.png',
     models: [
       'Ghibli',
       'Gran Turismo',
@@ -507,7 +507,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Maxus',
-    logo: './assets/brands-logo/maxus.webp',
+    logo: './assets/brands-logo/maxus.png',
     models: [
       'D60',
       'Euniq 5',
@@ -519,7 +519,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Mazda',
-    logo: './assets/brands-logo/mazda.webp',
+    logo: './assets/brands-logo/mazda.png',
     models: [
       '2',
       '3',
@@ -544,7 +544,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Mclaren',
-    logo: './assets/brands-logo/mclaren.webp',
+    logo: './assets/brands-logo/mclaren.png',
     models: [
       '570',
       '650',
@@ -553,7 +553,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Mercedes-Benz',
-    logo: './assets/brands-logo/mercedes-logo.webp',
+    logo: './assets/brands-logo/mercedes-logo.png',
     models: [
       'Clase A',
       'Clase C',
@@ -587,14 +587,14 @@ export const brands: Brand[] = [
   },
   {
     name: 'Mini',
-    logo: './assets/brands-logo/mini.webp',
+    logo: './assets/brands-logo/mini.png',
     models: [
       'Cooper',
     ],
   },
   {
     name: 'Mitsubishi',
-    logo: './assets/brands-logo/mitsubishi.webp',
+    logo: './assets/brands-logo/mitsubishi.png',
     models: [
       '3000 GT',
       'ASX',
@@ -619,7 +619,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Nissan',
-    logo: './assets/brands-logo/nissan.webp',
+    logo: './assets/brands-logo/nissan.png',
     models: [
       '1200',
       '300 ZX',
@@ -665,7 +665,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Peugeot',
-    logo: './assets/brands-logo/peugeot.webp',
+    logo: './assets/brands-logo/peugeot.png',
     models: [
       '2008',
       '206',
@@ -682,7 +682,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Pontiac',
-    logo: './assets/brands-logo/pontiac.webp',
+    logo: './assets/brands-logo/pontiac.png',
     models: [
       'Fiero',
       'Firebird',
@@ -690,7 +690,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Porsche',
-    logo: './assets/brands-logo/porsche.webp',
+    logo: './assets/brands-logo/porsche.png',
     models: [
       '911',
       '944',
@@ -707,7 +707,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Ram',
-    logo: './assets/brands-logo/ram.webp',
+    logo: './assets/brands-logo/ram.png',
     models: [
       '1000',
       '1200',
@@ -719,7 +719,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Renault',
-    logo: './assets/brands-logo/renault.webp',
+    logo: './assets/brands-logo/renault.png',
     models: [
       '1000',
       '1200',
@@ -731,21 +731,21 @@ export const brands: Brand[] = [
   },
   {
     name: 'Rivian',
-    logo: './assets/brands-logo/rivian.webp',
+    logo: './assets/brands-logo/rivian.png',
     models: [
       'R1T',
     ],
   },
   {
     name: 'Rolls Royce',
-    logo: './assets/brands-logo/rollsroyce.webp',
+    logo: './assets/brands-logo/rollsroyce.png',
     models: [
       'Phantom',
     ],
   },
   {
     name: 'Suzuki',
-    logo: './assets/brands-logo/suzuki.webp',
+    logo: './assets/brands-logo/suzuki.png',
     models: [
       'EECO',
       'Alto',
@@ -766,7 +766,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Tesla',
-    logo: './assets/brands-logo/tesla-logo.webp',
+    logo: './assets/brands-logo/tesla-logo.png',
     models: [
       'Model S',
       'Model 3',
@@ -776,7 +776,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Toyota',
-    logo: './assets/brands-logo/toyota-logo.webp',
+    logo: './assets/brands-logo/toyota-logo.png',
     models: [
       '4 Runner',
       'Agya',
@@ -823,7 +823,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Volkswagen',
-    logo: './assets/brands-logo/volkswagen.webp',
+    logo: './assets/brands-logo/volkswagen.png',
     models: [
       'Amarok',
       'Atlas',
@@ -847,7 +847,7 @@ export const brands: Brand[] = [
   },
   {
     name: 'Volvo',
-    logo: './assets/brands-logo/volvo.webp',
+    logo: './assets/brands-logo/volvo.png',
     models: [
       'C30',
       'C40',
