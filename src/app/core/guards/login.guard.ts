@@ -1,9 +1,9 @@
 import type { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
-
-import { AlertsService } from '../../services/alerts.service';
 import { Location } from '@angular/common';
+
+import { AlertsService } from '../../common/services/alerts.service';
 
 export const loginGuard: CanActivateFn = (route, state) => {
   const auth = inject(AuthService);
@@ -16,8 +16,8 @@ export const loginGuard: CanActivateFn = (route, state) => {
   if (isAuth) return true;
 
   alerts.askMe(
-    'Iniciar sesión', 
-    'Necesitas iniciar sesión para acceder.', 
+    'Iniciar sesión',
+    'Necesitas iniciar sesión para acceder.',
     'Iniciar sesión', 'Cancelar'
   ).subscribe(res => {
     if(res == true) auth.loginWithRedirect();
@@ -25,6 +25,6 @@ export const loginGuard: CanActivateFn = (route, state) => {
 
     return;
   });
-  
+
   return false;
 };
