@@ -75,7 +75,6 @@ export class UserPostsView implements OnInit {
             this.getUserPosts();
           },
           error: (err) => {
-            console.log(err);
             switch (err.status) {
               case 400:
                 this.alerts.notify('Error en los campos', 'Chequea que los campos esten correctamente completado. ' + err.message, 'error');
@@ -84,13 +83,13 @@ export class UserPostsView implements OnInit {
                 this.alerts.notify('No autorizado', 'Hay error en el token de acceso o no estás autorizado.', 'error');
                 break;
               case 404:
-                this.alerts.notify('Error', 'Error al eliminar vehículo.', 'error');
+                this.alerts.notify('Error al eliminar vehículo', 'Vehículo no encontrado.', 'error');
                 break;
               case 500:
                 this.alerts.notify('Ooops', 'Ha ocurrido un error en el servidor, intentalo más tarde.', 'error');
                 break;
               default:
-                this.alerts.notify('Error al eliminar vehículo', err, 'error');
+                this.alerts.notify('Error al eliminar vehículo', err.message, 'error');
                 break;
             }
           }
