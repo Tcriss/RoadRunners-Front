@@ -6,9 +6,9 @@
                     <app-image-gallery [@reveal] [images]="vehicle.images" [openAt]="index" (isOpen)="toggleGallery($event)"/>
                 }
                 @for (image of vehicle.images; track i; let i = $index) {
-                    <img class="image{{i}}" [src]="image.url" (click)="toggleGallery(true, i)">
+                    <img class="image{{i}}" [src]="image.url" [alt]="'Imagen ' + i + 1" (click)="toggleGallery(true, i)">
                 } @empty {
-                    <img class="image1" src="https://placehold.co/600x400?text=Preview+no+disponible">
+                    <img class="image1" src="https://placehold.co/600x400?text=Preview+no+disponible" alt="No disponible">
                 }
             } @else {
                 <img class="image1" src="https://placehold.co/600x400?text=Error+al+traer+imagenes">

@@ -76,12 +76,12 @@ export class SellCarView implements OnInit {
     form.append('phone', this.sellVehicleForm.value.contact.phone);
     if(this.sellVehicleForm.value.contact.whatsapp !== '') form.append('whatsapp', this.sellVehicleForm.value.contact.whatsapp);
     if(this.sellVehicleForm.value.contact.whatsapp !== '') form.append('telegram', this.sellVehicleForm.value.contact.telegram);
-    for (let i = 0; i < this.sellVehicleForm.value.images.length; i++) {
-      form.append('images', this.sellVehicleForm.value.images[i]);
+    for (let image of this.sellVehicleForm.value.images) {
+      form.append('images', image);
     };
 
     this.alerts.askMe('Publicar', `¿Desea guardar los cambios?`, 'Publicar', 'Cancelar').subscribe(res => {
-      if (res == true) this.publish(form);
+      if (res) this.publish(form);
     });
   }
 

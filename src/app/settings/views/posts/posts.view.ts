@@ -68,7 +68,7 @@ export class UserPostsView implements OnInit {
 
   delete(id: string): void {
     this.alerts.askMe('Eliminar vehiculo', '¿Seguro que deseas eliminar esta publicación?', 'Aceptar', 'Cancelar').subscribe(res => {
-      if (res == true) {
+      if (res) {
         this.backend.deleteVehicle(id).subscribe({
           next: (res) => {
             this.alerts.notify('Vehículo eliminado', 'El vehículo fue eliminado satisfactoriamente.', 'success');

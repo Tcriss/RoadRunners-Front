@@ -20,10 +20,8 @@ export const loginGuard: CanActivateFn = (route, state) => {
     'Necesitas iniciar sesión para acceder.',
     'Iniciar sesión', 'Cancelar'
   ).subscribe(res => {
-    if(res == true) auth.loginWithRedirect();
-    if(res == false) location.back();
-
-    return;
+    if(res) auth.loginWithRedirect();
+    if(!res) location.back();
   });
 
   return false;

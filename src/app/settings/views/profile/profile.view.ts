@@ -50,7 +50,7 @@ export class ProfileView implements OnInit {
     }
     this.alerts.askMe('Guardar cambios','¿Seguro que deseas guardar los cambios?','Guardar','Cancelar').subscribe({
       next: (res: boolean) => {
-        if (res == true) {
+        if (res) {
           this.backend.updateUser(uid, profileUpdate).subscribe({
             next: (res) => this.alerts.notify('Excelente','Tus perfil fue actualizado satisfactoriamente','success'),
             error: (err) => {

@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ChangeDetectionStrategy } from '@angular/core';
 import { Params } from '@angular/router';
 
 import { types } from '../../../core/utils/types.list';
