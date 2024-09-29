@@ -33,7 +33,7 @@ export class ConnectionService {
     return this.http.delete<string>(this.url + 'delete/' + id);
   }
 
-  updateUser(user: unknown): Observable<unknown> {
-    return this.http.patch<unknown>(env.url + '/users', user);
+  updateUser(uid: string | undefined, user: unknown): Observable<unknown> {
+    return this.http.patch<unknown>(env.url + '/users/' + uid, user);
   }
 }

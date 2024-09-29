@@ -30,7 +30,7 @@
                 <button class="edit-button" (click)="editable = !editable">Editar</button>
             </div>
         } @else {
-            <Form [formGroup]="profileForm" (ngSubmit)="editProfile()">
+            <Form [formGroup]="profileForm" (ngSubmit)="editProfile(user.sub)">
                 <header class="profile-header">
                     <img class="profile-picture" [src]="user.picture" alt="Foto de peril">
                     <div class="profile-data">
