@@ -1,8 +1,0 @@
-<div class="type-cont">
-    @for(type of types; track $index) {
-        <div class="type">
-            <img [src]="type.logo" width="150px">
-            <a class="link-button" [routerLink]="['/explore/vehicles']" [queryParams]="{ type: type.name }" >{{type.name}}</a>
-        </div>
-    }
-</div>

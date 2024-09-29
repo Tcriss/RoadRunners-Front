@@ -1,0 +1,63 @@
+@defer (when isLoading | async) {
+  @for(article of articles; track article._id){
+    <div class="article">
+      <div class="image">
+        @if (article.portrait) {
+          <img
+            [ngSrc]="article.portrait.url | CloudinaryUrl"
+            width="254"
+            height="64"
+            [alt]="article.brand + ' ' + article.model"
+            placeholder
+            priority
+          >
+        } @else {
+          <img
+            ngSrc="https://placehold.co/600x400?text=Preview+no+disponible"
+            width="254"
+            height="200"
+            alt=""
+          >
+        }
+      </div>
+      <div class="description">
+        <p class="year-tag"><strong>{{article.year}}</strong></p>
+        <h2 class="title">{{ article.brand + ' ' + article.model}}</h2>
+        <p class="price"><tui-money currency="USD" [value]="article.price"></tui-money></p>
+        <div>
+          <a class="buy-button" [routerLink]="['/explore/vehicle/', article._id]">Ver vehículo</a>
+        </div>
+      </div>
+    </div>
+  }
+} @placeholder {
+  @for(skeleton of [].constructor(4); track skeleton) {
+    <div class="skeleton">
+      <div class="image">
+      </div>
+      <div class="description">
+        <div class="Year"></div>
+        <div class="brand"></div>
+        <div class="price"></div>
+        <div>
+          <div class="buy-button"></div>
+        </div>
+      </div>
+    </div>
+  }
+}
+
+<!-- @for(skeleton of [].constructor(8); track skeleton) {
+  <div class="skeleton">
+    <div class="image">
+    </div>
+    <div class="description">
+      <div class="Year"></div>
+      <div class="brand"></div>
+      <div class="price"></div>
+      <div>
+        <div class="buy-button"></div>
+      </div>
+    </div>
+  </div>
+} -->

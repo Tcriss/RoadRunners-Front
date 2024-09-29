@@ -1,0 +1,14 @@
+<div class="footer">
+    <div class="image">
+        <img class="logo-brand" src="./assets/images/RR-logo-brand.png">
+    </div>
+    <div class="members">
+        @for(member of members; track $index) {
+            <a data-cy=`member${$index}` class="member" [href]="member.url" target="_blank">
+                <tui-avatar [avatarUrl]="member.pictureUrl" [rounded]="true"></tui-avatar>
+                <p class="github-link">{{ member.role }}</p>
+            </a>
+        }
+    </div>
+    <p class="credits">Made with ❤️, <a id="source-code" href="https://github.com/Tcriss/RoadRunners-Front" target="_blank">Source code</a></p>
+</div>

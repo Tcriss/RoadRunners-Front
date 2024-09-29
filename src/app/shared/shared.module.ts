@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { TuiModeModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule, TuiSvgModule, TuiHostedDropdownModule, TuiAlertModule, TuiDialogModule, TuiHintModule, TuiFormatPhonePipeModule } from '@taiga-ui/core';
-import { TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule, TuiInputPhoneModule, TuiFilterByInputPipeModule, TuiPromptModule, TuiSelectModule } from '@taiga-ui/kit';
+import { TuiModeModule, TuiDropdownModule, TuiDataListModule, TuiTextfieldControllerModule, TuiSvgModule, TuiHostedDropdownModule, TuiHintModule, TuiFormatPhonePipeModule } from '@taiga-ui/core';
+import { TuiInputModule, TuiDataListWrapperModule, TuiInputYearModule, TuiComboBoxModule, TuiAvatarModule, TuiInputPhoneModule, TuiFilterByInputPipeModule, TuiSelectModule, TuiPaginationModule } from '@taiga-ui/kit';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
 
 @NgModule({
@@ -31,6 +31,7 @@ import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
     TuiFilterByInputPipeModule,
     TuiHintModule,
     TuiFormatPhonePipeModule,
+    TuiPaginationModule
   ]
 })
 export class SharedModule { }

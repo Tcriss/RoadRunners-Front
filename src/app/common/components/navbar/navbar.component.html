@@ -1,0 +1,45 @@
+<nav class="navbar" #navBar>
+  <div class="box"></div>
+  <div #logo class="logo">
+    <img class="logo-brand" src="./assets/images/RR-logo-brand-dark.png" width="200px">
+  </div>
+  <div class="items">
+    @for(link of links; track $index) {
+      <a class="link-item" [routerLink]='[link.path]' routerLinkActive="active">{{link.name}}</a>
+    }
+  </div>
+  @if (auth.isAuthenticated$ && user$ | async; as user) {
+    <tui-hosted-dropdown class="dropdown" tuiDropdownAlign="right" [content]="options_list" [(open)]="open" tuiDropdownHover>
+      <div class="profile-section" tuiHostedDropdownHost>
+        @if(user.nickname === '') {
+          <p class="text">{{user.name}}</p>
+          <tui-avatar [text]="user.name!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+        } @else {
+          <p class="text">{{user.given_name}} {{user.family_name}}</p>
+          <tui-avatar [text]="user.nickname!" size="s" avatarUrl="{{user.picture}}"></tui-avatar>
+        }
+      </div>
+      <ng-template #options_list>
+        <tui-data-list class="data-list" (click)="onClick()">
+          <tui-opt-group>
+            @for(option of optionLinks; track $index) {
+              <a class="option-link" [routerLink]='[option.path]' routerLinkActive="active">
+                <i class="icon {{option.icon}}"></i>
+                {{option.name}}
+              </a>
+            }
+          </tui-opt-group>
+          <tui-opt-group>
+            <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })" tuiOption>
+              <tui-svg src="tuiIconLogOut"></tui-svg>
+              Cerrar Sesión
+            </button>
+          </tui-opt-group>
+        </tui-data-list>
+      </ng-template>
+    </tui-hosted-dropdown>
+  } @else {
+    <button class="log-in-button base-button" (click)="auth.loginWithRedirect()">Iniciar Sesión</button>
+  }
+  <app-side-nav-bar class="side-nav-bar"/>
+</nav>

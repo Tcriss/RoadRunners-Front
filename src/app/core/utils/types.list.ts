@@ -1,24 +1,24 @@
 import { Type } from "../interfaces";
 
 export const types: Type[] = [
-    { 
-      name: 'Sedán', 
-      logo: '../../../../assets/images/vehicle-type/sedan.png',
+    {
+      name: 'Sedán',
+      logo: '../../../../assets/images/vehicle-type/sedan.jpeg',
     },
-    { 
-      name: 'Jeepeta', 
-      logo: '../../../../assets/images/vehicle-type/SUV.png',
+    {
+      name: 'Jeepeta',
+      logo: '../../../../assets/images/vehicle-type/SUV.jpeg',
     },
-    { 
-      name: 'Camioneta', 
-      logo: '../../../../assets/images/vehicle-type/pick-up.png',
+    {
+      name: 'Camioneta',
+      logo: '../../../../assets/images/vehicle-type/pick-up.jpeg',
     },
-    { 
-      name: 'Sport', 
-      logo: '../../../../assets/images/vehicle-type/sport.png',
+    {
+      name: 'Sport',
+      logo: '../../../../assets/images/vehicle-type/sport.jpeg',
     },
-    { 
-      name: 'Camión', 
-      logo: '../../../../assets/images/vehicle-type/truck.jpg',
+    {
+      name: 'Camión',
+      logo: '../../../../assets/images/vehicle-type/truck.jpeg',
     }
   ]

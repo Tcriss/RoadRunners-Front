@@ -1,0 +1,23 @@
+<div class="content">
+    <div class="filter-bar">
+        <app-filter-bar [urlParams]="params.value" (filterParams)="handleParams($event)"/>
+    </div>
+    <div class="articles-content">
+        @if (itemsLength == 0) {
+            <div class="empty">
+                <p class="empty-ms">Aún no hay nada aqui, se el primero en encender los motores agregando un vehículo.</p>
+            </div>
+        }
+        <app-articles class="articles" [filteredParams]="params.value" (sendToParent)="recieveArticles($event)"/>
+        @if (itemsLength !== 0) {
+          @defer (when isLoading | async) {
+            <tui-pagination
+              [activePadding]="2"
+              [index]="index"
+              [length]="length"
+              (indexChange)="goToPage($event)"
+            />
+          }
+        }
+    </div>
+</div>

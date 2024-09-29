@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { TuiRootModule } from '@taiga-ui/core';
 import { RouterModule } from '@angular/router';
 
-import { FooterComponent } from './components/footer/footer.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { Link } from './core/interfaces';
-import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { FooterComponent } from './common/components/footer/footer.component';
+import { NavbarComponent } from './common/components/navbar/navbar.component';
+import { LoadingScreenComponent } from './common/components/loading-screen/loading-screen.component';
 
 @Component({
   standalone: true,
@@ -20,36 +19,4 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-
-  routes: Link[] = [
-    {
-      icon: 'fi fi-bs-home',
-      name: 'Inicio',
-      path: '/explore/home'
-    },
-    {
-      icon: 'fi fi-rr-car',
-      name: 'Vehiculos',
-      path: '/explore/vehicles'
-    },
-    {
-      icon: 'fi fi-rr-megaphone',
-      name: 'Publicar',
-      path: '/publish/sell'
-    },
-  ];
-  
-  optionLinks: Link[] = [
-    {
-      icon: 'fi fi-rr-user',
-      name: 'Pérfil',
-      path: '/settings/profile'
-    },
-    {
-      icon: 'fi fi-rr-car',
-      name: 'Vehículos publicados',
-      path: '/settings/my-posts'
-    },
-  ];
-}
+export class AppComponent {}
